@@ -22,5 +22,7 @@ public abstract class Bike {
 	public static int getNumBike() {
 		return numBike;
 	}
+	
+	public abstract double getCost();
 
 }
