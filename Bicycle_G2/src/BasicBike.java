@@ -4,5 +4,6 @@ public class BasicBike {
 	int i;
 	int x;
 	int y;
+	int a;
 
 }
