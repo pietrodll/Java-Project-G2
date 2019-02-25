@@ -1,3 +1,4 @@
+package velib.core;
 
 public abstract class Bike {
 	

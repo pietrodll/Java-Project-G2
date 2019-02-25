@@ -1,3 +1,4 @@
+package velib.core;
 
 public class ElectricBike extends Bike {
 	
