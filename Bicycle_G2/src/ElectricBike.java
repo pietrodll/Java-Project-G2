@@ -1,6 +1,4 @@
 
-public class ElectricBike {
-	
-	private int id;
+public class ElectricBike extends Bike {
 
 }
