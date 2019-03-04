@@ -31,7 +31,6 @@ class BikeTest {
 		for (int i = 0; i < 5; i++) {
 			Bike mechanicBike = new MechanicBike();
 		}
-		System.out.println("testGetNumBike : " + Bike.getNumBike());
 		assertEquals(15, Bike.getNumBike());
 	}
 
@@ -39,8 +38,10 @@ class BikeTest {
 	void testGetCost() {
 		Bike electricBike = new ElectricBike();
 		Bike mechanicBike = new MechanicBike();
-		assertEquals(2, electricBike.getCost());
-		assertEquals(1, mechanicBike.getCost());
+		assertAll("Cost",
+			() -> assertEquals(2, electricBike.getCost()),
+			() -> assertEquals(1, mechanicBike.getCost())
+		);
 	}
 
 }
