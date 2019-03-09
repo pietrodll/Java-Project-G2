@@ -1,9 +1,9 @@
-package velib.core.test;
-import velib.core.*;
-
+package bike.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import bike.*;
 
 class BikeTest {
 
