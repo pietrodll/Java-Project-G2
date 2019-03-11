@@ -7,6 +7,9 @@ import bike.*;
 
 class BikeTest {
 
+	/**
+	 * Tests if there is no error when each type of bike is created.
+	 */
 	@Test
 	void testBike() {
 		Bike electricBike = new ElectricBike();
