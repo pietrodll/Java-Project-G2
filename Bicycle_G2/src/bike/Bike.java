@@ -1,29 +1,26 @@
 package bike;
 
+/**
+ * A class representing bikes. Each {@code Bike} has an unique id, regardless of the type.
+ * @author Pietro Dellino
+ *
+ */
 public abstract class Bike {
 	
 	private int id;
-	private static int numBike;
+	private boolean isRented;
+	private int stationId;
+	private int slotId;
 	
 	public Bike() {
-		this.id = Bike.numBike;
-		Bike.numBike += 1;
+		this.id = 0;
 	}
 
 	/**
-	 * @return the id
+	 * @return The ID
 	 */
 	public int getId() {
 		return id;
 	}
-
-	/**
-	 * @return the numBike
-	 */
-	public static int getNumBike() {
-		return numBike;
-	}
-	
-	public abstract double getCost();
 
 }

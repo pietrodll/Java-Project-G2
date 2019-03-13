@@ -3,6 +3,11 @@ package card;
 import bike.ElectricBike;
 import bike.MechanicBike;
 
+/**
+ * This abstract class is the basis to create user cards. Each {@code Card} has a unique {@code id} (regardless of the type of the card) and a {@code timeCredit}.
+ * @author Pietro Dellino
+ *
+ */
 public abstract class Card implements CardVisitor {
 	
 	private int id;
