@@ -5,5 +5,10 @@ package station;
  *
  */
 public class StationFactory {
+	
+	public Station createStation ( String type, Point p, int NumberSlots ) {
+		
+		
+	}
 
 }
