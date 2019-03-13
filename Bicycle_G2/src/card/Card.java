@@ -6,7 +6,9 @@ import bike.MechanicBike;
 /**
  * This abstract class is the basis to create user cards. Each {@code Card} has a unique {@code id} (regardless of the type of the card) and a {@code timeCredit}.
  * @author Pietro Dellino
- *
+ * @see CardIdGenerator
+ * @see VlibreCard
+ * @see VmaxCard
  */
 public abstract class Card implements CardVisitor {
 	
@@ -14,19 +16,14 @@ public abstract class Card implements CardVisitor {
 	private int timeCredit;
 	
 	public Card() {
-		this.id = 0;
+		CardIdGenerator idGenerator = CardIdGenerator.getInstance();
+		this.id = idGenerator.getNextId();
 	}
 
-	/**
-	 * @return the id
-	 */
 	public int getId() {
 		return id;
 	}
 
-	/**
-	 * @return the timeCredit
-	 */
 	public int getTimeCredit() {
 		return timeCredit;
 	}
@@ -46,7 +43,7 @@ public abstract class Card implements CardVisitor {
 	}
 	
 	/**
-	 * If the timeCredit is high enough, it removes credit from it. If not, it raises a InsufficientCreditException.
+	 * If the {@code timeCredit} is high enough, it removes {@code credit} from it. If not, it raises a {@code InsufficientCreditException}.
 	 * @param credit the credit to use.
 	 */
 	protected void useCredit(int credit) throws InsufficientCreditException {
