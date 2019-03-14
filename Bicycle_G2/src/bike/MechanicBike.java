@@ -1,6 +1,6 @@
 package bike;
 
-import card.Card;
+import card.CardVisitor;
 
 public class MechanicBike extends Bike {
 	
@@ -9,7 +9,7 @@ public class MechanicBike extends Bike {
 	 * @see bike.Bike#ridePrice(card.Card, int)
 	 */
 	@Override
-	public float ridePrice(Card card, int rideTime) {
+	public float ridePrice(CardVisitor card, int rideTime) {
 		return card.computeRidePrice(this, rideTime);
 	}
 

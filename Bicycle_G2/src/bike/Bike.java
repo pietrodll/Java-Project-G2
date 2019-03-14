@@ -1,12 +1,13 @@
 package bike;
 
 import card.Card;
+import card.CardVisitor;
 
 /**
  * A class representing bikes. Each {@code Bike} has an unique id, regardless of the type.
  * @author Pietro Dellino
  */
-public abstract class Bike {
+public abstract class Bike implements CardVisitable {
 	
 	private int id;
 	private boolean isRented;
@@ -22,6 +23,6 @@ public abstract class Bike {
 		return id;
 	}
 	
-	public abstract float ridePrice(Card card, int rideTime);
+	public abstract float ridePrice(CardVisitor card, int rideTime);
 
 }

@@ -4,6 +4,6 @@ import card.CardVisitor;
 
 public interface CardVisitable {
 	
-	public int accept(CardVisitor card);
+	public float ridePrice(CardVisitor card, int rideTime);
 
 }
