@@ -20,20 +20,20 @@ class CardTest {
 		assertAll("Ride prices for electric bikes",
 			() -> {
 				assertAll("With no time credit",
-					() -> assertEquals(0, VMax.computeRidePrice(bike, 15)),
-					() -> assertEquals(3, VLibre.computeRidePrice(bike, 120)),
-					() -> assertEquals(1, VMax.computeRidePrice(bike, 120)),
-					() -> assertEquals(0.25, VLibre.computeRidePrice(bike, 15))
+					() -> assertEquals(0, VMax.computeRidePrice(bike, 15), "15 minutes"),
+					() -> assertEquals(3, VLibre.computeRidePrice(bike, 120), "120 minutes"),
+					() -> assertEquals(1, VMax.computeRidePrice(bike, 120), "120 minutes"),
+					() -> assertEquals(0.25, VLibre.computeRidePrice(bike, 15), "15 minutes")
 				);
 			},
 			() -> {
 				VLibre.setTimeCredit(20);
 				VMax.setTimeCredit(20);
 				assertAll("With time credit",
-					() -> assertEquals(1.5, VLibre.computeRidePrice(bike, 95)),
-					() -> assertEquals(0, VMax.computeRidePrice(bike, 75)),
-					() -> assertEquals(0, VLibre.getTimeCredit()),
-					() -> assertEquals(5, VMax.getTimeCredit())
+					() -> assertEquals(1.5, VLibre.computeRidePrice(bike, 95), "95 minutes"),
+					() -> assertEquals(0, VMax.computeRidePrice(bike, 75), "75 minutes"),
+					() -> assertEquals(0, VLibre.getTimeCredit(), "Vlibre time credit"),
+					() -> assertEquals(5, VMax.getTimeCredit(), "Vmax time credit")
 				);
 			}
 		);
@@ -44,13 +44,13 @@ class CardTest {
 		VlibreCard VLibre = new VlibreCard();
 		VmaxCard VMax = new VmaxCard();
 		MechanicBike bike = new MechanicBike();
-		assertAll("Ride prices for electric bikes",
+		assertAll("Ride prices for mechanic bikes",
 			() -> {
 				assertAll("With no time credit",
-					() -> assertEquals(0, VMax.computeRidePrice(bike, 15)),
-					() -> assertEquals(1, VLibre.computeRidePrice(bike, 120)),
-					() -> assertEquals(1, VMax.computeRidePrice(bike, 120)),
-					() -> assertEquals(0, VLibre.computeRidePrice(bike, 15))
+					() -> assertEquals(0, VMax.computeRidePrice(bike, 15), "15 minutes"),
+					() -> assertEquals(1, VLibre.computeRidePrice(bike, 120), "120 minutes"),
+					() -> assertEquals(1, VMax.computeRidePrice(bike, 120), "120 minutes"),
+					() -> assertEquals(0, VLibre.computeRidePrice(bike, 15), "15 minutes")
 				);
 			},
 			() -> {
