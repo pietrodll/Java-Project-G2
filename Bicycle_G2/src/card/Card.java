@@ -31,14 +31,14 @@ public abstract class Card implements CardVisitor {
 	/**
 	 * @param timeCredit the timeCredit to set
 	 */
-	protected void setTimeCredit(int timeCredit) {
-		this.timeCredit = timeCredit;
+	public void setTimeCredit(int timeCredit) {
+		if (timeCredit >= 0) this.timeCredit = timeCredit;
 	}
 	
 	/**
 	 * @param newCredit the credit to add to the previous timeCredit
 	 */
-	protected void addCredit(int newCredit) {
+	public void addCredit(int newCredit) {
 		this.timeCredit += newCredit;
 	}
 	
@@ -46,7 +46,7 @@ public abstract class Card implements CardVisitor {
 	 * If the {@code timeCredit} is high enough, it removes {@code credit} from it. If not, it raises a {@code InsufficientCreditException}.
 	 * @param credit the credit to use.
 	 */
-	protected void useCredit(int credit) throws InsufficientCreditException {
+	public void useCredit(int credit) throws InsufficientCreditException {
 		if (this.timeCredit >= credit) {
 			this.timeCredit -= credit;
 		} else {

@@ -26,6 +26,7 @@ public class VlibreCard extends Card {
 					this.useCredit(exceedingTime);
 				} catch (InsufficientCreditException e) {
 					e.printStackTrace();
+					this.setTimeCredit(0);
 				} finally {
 					cost = 1;
 				}
@@ -34,12 +35,13 @@ public class VlibreCard extends Card {
 					this.useCredit(credit);
 				} catch (InsufficientCreditException e) {
 					e.printStackTrace();
+					this.setTimeCredit(0);
 				} finally {
-					cost = 1 + 2*(exceedingTime - credit)/60;
+					cost = 1 + (float) (2*(exceedingTime - credit)/60.0);
 				}
 			}
 		} else {
-			cost = rideTime/60;
+			cost = (float) rideTime/60;
 		}
 		return cost;
 	}
@@ -68,9 +70,8 @@ public class VlibreCard extends Card {
 				} catch (InsufficientCreditException e) {
 					e.printStackTrace();
 					this.setTimeCredit(0);
-				} finally {
-					cost = (exceedingTime - credit)/60;
 				}
+				cost = (float) (exceedingTime - credit)/60;
 			}
 		}
 		return cost;
