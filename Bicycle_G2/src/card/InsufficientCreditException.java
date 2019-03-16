@@ -28,6 +28,15 @@ public class InsufficientCreditException extends Exception {
 	public int getCreditToUse() {
 		return creditToUse;
 	}
+
+	/**
+	 * Returns a message to explain the {@code Exception}.
+	 * @see java.lang.Throwable#getMessage()
+	 */
+	@Override
+	public String getMessage() {
+		return "Not enough credit ! Tried to use " + this.creditToUse + " but only " + this.userCredit;
+	}
 	
 	
 
