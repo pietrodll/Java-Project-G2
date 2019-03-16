@@ -1,5 +1,10 @@
 package bike;
 
+/**
+ * This class creates {@code Bike} objects.
+ * @author Pietro Dellino
+ * @see Bike
+ */
 public class BikeFactory {
 	
 	public static final int ELECTRIC = 1;
