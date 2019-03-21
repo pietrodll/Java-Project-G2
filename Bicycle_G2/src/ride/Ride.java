@@ -1,6 +1,7 @@
 package ride;
 
 import point.Point;
+import ride.path.PathStrategy;
 import station.Station;
 
 public class Ride {
@@ -15,7 +16,7 @@ public class Ride {
 		this.end = end;
 	}
 	
-	public void computePath(Network net, pathStrategy ps) {
+	public void computePath(Network net, PathStrategy ps) {
 		
 	}
 
