@@ -10,6 +10,8 @@ public class User {
 	private final int id;
 	private boolean isRentingABike;
 	private Ride ongoingRide;
+	private UserStat userStat;
+	
 	
 	
 	
@@ -21,6 +23,7 @@ public class User {
 		position = new Point (0,0);
 		isRentingABike = false;
 		ongoingRide = null;
+		userStat = new UserStat();
 	
 	}
 	
@@ -32,7 +35,7 @@ public class User {
 		this.position = position;
 		isRentingABike = false;
 		ongoingRide = null;
-		
+		userStat = new UserStat();
 	}
 
 	public String getLastName() {
@@ -78,8 +81,16 @@ public class User {
 	public int getId() {
 		return id;
 	}
+
+	public UserStat getUserStat() {
+		return userStat;
+	}
+
+	public void setUserStat(UserStat userStat) {
+		this.userStat = userStat;
+	}
 	
-	
+
 	
 
 }
