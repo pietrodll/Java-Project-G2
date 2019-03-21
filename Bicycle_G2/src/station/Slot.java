@@ -1,5 +1,7 @@
 package station;
 
+import user.UserIDGenerator;
+
 /**
  * A class representing parking slots
  *
@@ -20,8 +22,10 @@ public class Slot {
 	
 	
 	public Slot(Station s) {
-		super();
 		this.s = s;
+		id = s.getId()*1000 + SlotIDGenerator.getInstance().getNextSlotID();
+		isOnline = false;
+		
 	}
 	
 	

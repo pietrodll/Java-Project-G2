@@ -3,6 +3,7 @@ package station;
 import java.util.ArrayList;
 
 import point.Point;
+import user.UserIDGenerator;
 
 /**
  * An abstract class to represent the stations
@@ -19,8 +20,77 @@ public abstract class Station {
 	private double totalRents;
 	private double totalReturns;
 	
-	// constructeur crée une station avec lieu, id se fait automatiquement, elle est online et on lui crée un nombre de slots
-	// comment relier le nombre de slots et la taille de l'array ?
-	//les slots sont pas associés à un type de vélo si? 
+	
+	public Station(Point p) {
+		this.p = p;
+		id = StationIDGenerator.getInstance().getNextStationID();
+	}
 
+
+	public Point getP() {
+		return p;
+	}
+
+
+	public void setP(Point p) {
+		this.p = p;
+	}
+
+
+	public boolean isOnline() {
+		return isOnline;
+	}
+
+
+	public void setOnline(boolean isOnline) {
+		this.isOnline = isOnline;
+	}
+
+
+	public ArrayList<Slot> getParkingSlots() {
+		return parkingSlots;
+	}
+
+
+	public void setParkingSlots(ArrayList<Slot> parkingSlots) {
+		this.parkingSlots = parkingSlots;
+	}
+
+
+	public int getNumberSlots() {
+		return NumberSlots;
+	}
+
+
+	public void setNumberSlots(int numberSlots) {
+		NumberSlots = numberSlots;
+	}
+
+
+	public double getTotalRents() {
+		return totalRents;
+	}
+
+
+	public void setTotalRents(double totalRents) {
+		this.totalRents = totalRents;
+	}
+
+
+	public double getTotalReturns() {
+		return totalReturns;
+	}
+
+
+	public void setTotalReturns(double totalReturns) {
+		this.totalReturns = totalReturns;
+	}
+
+
+	public double getId() {
+		return id;
+	}
+	
+
+	
 }
