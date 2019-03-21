@@ -5,7 +5,7 @@ import ride.path.PathStrategy;
 import station.Station;
 
 /**
- * This class represents a 
+ * This class represents an itinerary for the users. There is a start.
  * @author Pietro Dellino
  *
  */
