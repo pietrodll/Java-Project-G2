@@ -4,6 +4,11 @@ import point.Point;
 import ride.path.PathStrategy;
 import station.Station;
 
+/**
+ * This class represents a 
+ * @author Pietro Dellino
+ *
+ */
 public class Itinerary {
 	
 	private Point start;
@@ -21,5 +26,35 @@ public class Itinerary {
 		this.startStation = stations[0];
 		this.endStation = stations[1];
 	}
+
+	/**
+	 * @return the start
+	 */
+	protected Point getStart() {
+		return start;
+	}
+
+	/**
+	 * @return the end
+	 */
+	protected Point getEnd() {
+		return end;
+	}
+
+	/**
+	 * @return the startStation
+	 */
+	protected Station getStartStation() {
+		return startStation;
+	}
+
+	/**
+	 * @return the endStation
+	 */
+	protected Station getEndStation() {
+		return endStation;
+	}
+	
+	
 
 }
