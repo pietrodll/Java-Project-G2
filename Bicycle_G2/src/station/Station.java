@@ -1,5 +1,7 @@
 package station;
 
+import java.util.ArrayList;
+
 import point.Point;
 
 /**
@@ -12,7 +14,8 @@ public abstract class Station {
 	private Point p;
 	private boolean isOnline;
 	private ArrayList<Slot> parkingSlots;
-	private int NumberSlots
+	private int NumberSlots;
+	
 	private double totalRents;
 	private double totalReturns;
 	

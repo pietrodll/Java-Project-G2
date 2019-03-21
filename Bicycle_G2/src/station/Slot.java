@@ -5,15 +5,19 @@ package station;
  *
  */
 public class Slot {
+	
+	public static final int EMPTY = 0;
+	public static final int ELECTRIC = 1;
+	public static final int MECHANIC = 2;
 
 	private Station s;
 	private double id;
 	private boolean isOnline;
-	private boolean hasABike;
-	/**
-	private Bike bikeParked;
-	**/
-	// est ce que tu penses que l'on dit quel bike est garé où ? Genre un parking slot sait quel bike est chez lui ?
+	private int bikeType = Slot.EMPTY;
+	
+	//faire ID générator qui dépend de la station les trois derniers chiffres sont id du slot et l'ID de la station fois 1000
+
+	
 	
 	public Slot(Station s) {
 		super();
