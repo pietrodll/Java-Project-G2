@@ -30,30 +30,22 @@ public class Itinerary {
 	/**
 	 * @return the start
 	 */
-	protected Point getStart() {
-		return start;
-	}
+	public Point getStart() { return start; }
 
 	/**
 	 * @return the end
 	 */
-	protected Point getEnd() {
-		return end;
-	}
+	public Point getEnd() { return end; }
 
 	/**
 	 * @return the startStation
 	 */
-	protected Station getStartStation() {
-		return startStation;
-	}
+	public Station getStartStation() { return startStation; }
 
 	/**
 	 * @return the endStation
 	 */
-	protected Station getEndStation() {
-		return endStation;
-	}
+	public Station getEndStation() { return endStation; }
 	
 	
 
