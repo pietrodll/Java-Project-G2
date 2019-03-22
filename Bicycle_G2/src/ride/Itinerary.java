@@ -5,9 +5,10 @@ import ride.path.PathStrategy;
 import station.Station;
 
 /**
- * This class represents an itinerary for the users. There is a start.
+ * This class represents an itinerary for the users.
+ * An {@code Itinerary} object is created with only a start point and an end point, and then the method
+ * {@code computePath } affects values to the attributes {@code startStation} and {@code endStation}. 
  * @author Pietro Dellino
- *
  */
 public class Itinerary {
 	
@@ -21,30 +22,26 @@ public class Itinerary {
 		this.end = end;
 	}
 	
+	/**
+	 * This method affects a value to {@code startStation} and {@code endStation} according to the
+	 * network (which gives the availability of the bikes) and the strategy of choice of the stations.
+	 * @param net The {@code Network} object
+	 * @param ps An object implementing the {@code PathStrategy} interface, which gives the way of
+	 * choosing the stations.
+	 * @param bikeType An integer which corresponds to the type of the bike. The values have to be taken
+	 * from {@code ELECTRIC} and {@code MECHANIC} constants from {@link bike.BikeFactory}.
+	 * @see bike.BikeFactory
+	 * @see PathStrategy
+	 */
 	public void computePath(Network net, PathStrategy ps, int bikeType) {
 		Station[] stations = ps.findPath(this.start, this.end, net, bikeType);
 		this.startStation = stations[0];
 		this.endStation = stations[1];
 	}
 
-	/**
-	 * @return the start
-	 */
 	public Point getStart() { return start; }
-
-	/**
-	 * @return the end
-	 */
 	public Point getEnd() { return end; }
-
-	/**
-	 * @return the startStation
-	 */
 	public Station getStartStation() { return startStation; }
-
-	/**
-	 * @return the endStation
-	 */
 	public Station getEndStation() { return endStation; }
 	
 	

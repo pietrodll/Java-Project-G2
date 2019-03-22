@@ -29,8 +29,6 @@ public class BikeIdGenerator implements Serializable {
 	 * @return The unique instance of the class.
 	 * @throws ObjectStreamException.
 	 */
-	public Object readResolve() throws ObjectStreamException {
-		return instance;
-	}
+	public Object readResolve() throws ObjectStreamException { return instance; }
 
 }
