@@ -18,8 +18,9 @@ public class SlotIDGenerator implements Serializable {
 		
 	}
 		
-	public int getNextSlotID() {
-		return num ++;
+	public int getSlotID(Station s) {
+		int numSlots = s.getNumberSlots();
+		return 1000*s.getId() + numSlots + 1;
 	}
 
 
