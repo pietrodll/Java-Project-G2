@@ -16,5 +16,12 @@ class BikeTest {
 		Bike mechanicBike = new MechanicBike();
 		assertTrue(electricBike.getId() != mechanicBike.getId());
 	}
+	
+	@Test
+	void instanceTest() {
+		Bike electricBike = new ElectricBike();
+		Bike mechanicBike = new MechanicBike();
+		assertTrue(electricBike instanceof ElectricBike);
+	}
 
 }
