@@ -1,7 +1,8 @@
+
 package user;
 
-import point.Point;
 import ride.Ride;
+import tools.Point;
 
 public class User {
 	
@@ -11,7 +12,6 @@ public class User {
 	private final int id;
 	private Ride ongoingRide;
 	private UserStat userStat;
-	
 	
 	
 	

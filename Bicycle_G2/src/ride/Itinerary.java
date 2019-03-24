@@ -1,8 +1,8 @@
 package ride;
 
-import point.Point;
 import ride.path.PathStrategy;
 import station.Station;
+import tools.Point;
 
 /**
  * This class represents an itinerary for the users. There is a start.
@@ -21,6 +21,7 @@ public class Itinerary {
 		this.end = end;
 	}
 	
+	//il faudrait permettre de ne pas choisir de strategy (mettre une stratégie par défaut)
 	public void computePath(Network net, PathStrategy ps, int bikeType) {
 		Station[] stations = ps.findPath(this.start, this.end, net, bikeType);
 		this.startStation = stations[0];

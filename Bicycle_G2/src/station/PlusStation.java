@@ -1,6 +1,6 @@
 package station;
 
-import point.Point;
+import tools.Point;
 
 public class PlusStation extends Station {
 	

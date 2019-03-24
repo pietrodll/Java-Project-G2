@@ -1,8 +1,8 @@
 package ride.path;
 
-import point.Point;
 import ride.Network;
 import station.Station;
+import tools.Point;
 
 public interface PathStrategy {
 	

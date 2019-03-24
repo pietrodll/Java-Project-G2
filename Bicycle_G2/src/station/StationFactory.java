@@ -1,6 +1,6 @@
 package station;
 
-import point.Point;
+import tools.Point;
 
 /**
  * Class representing a simple factory that can create new types of Stations, to respect the open-close principle

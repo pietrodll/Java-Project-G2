@@ -2,8 +2,10 @@ package ride;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+import sorting.station.SortingStrategy;
 import station.Station;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Network implements Serializable {
 	
@@ -13,7 +15,16 @@ public class Network implements Serializable {
 	private static final long serialVersionUID = -3127825538872149011L;
 	
 	private static Network instance;
-	private ArrayList<Station> stations;
+	private static ArrayList<Station> stations;
+	private static ArrayList<Ride> rideHistory;
 	
 
+	public static ArrayList<Station> sortingStations (SortingStrategy s) {
+		ArrayList<Station> sortedStations = (ArrayList<Station>) stations.clone();		
+		return s.sorting(sortedStations);
+	}
+	
+	public static void archiveRide (Ride r) {
+		rideHistory.add(r);
+	}
 }

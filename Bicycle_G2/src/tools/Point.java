@@ -1,4 +1,4 @@
-package point;
+package tools;
 
 /**
  * A class to represent locations on the map using simple GPS coordinates (x,y)
