@@ -1,5 +1,6 @@
 package ride;
 
+import java.io.ObjectStreamException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import sorting.station.SortingStrategy;
@@ -14,9 +15,26 @@ public class Network implements Serializable {
 	 */
 	private static final long serialVersionUID = -3127825538872149011L;
 	
-	private static Network instance;
+
+	private static Network instance = null;
 	private static ArrayList<Station> stations;
 	private static ArrayList<Ride> rideHistory;
+	
+	private Network() {}
+	
+	public static synchronized Network getInstance() {
+		if (instance == null) { instance = new Network(); }
+		return instance;
+	}
+	
+	public ArrayList<Station> getStations() { return this.stations; }
+	
+	public Object readResolve() throws ObjectStreamException { return instance; }
+	
+	public void addStation(Station station) {
+		this.stations.add(station);
+	}
+	
 	
 
 	public static ArrayList<Station> sortingStations (SortingStrategy s) {
