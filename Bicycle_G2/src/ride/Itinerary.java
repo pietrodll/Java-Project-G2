@@ -35,6 +35,8 @@ public class Itinerary {
 	 * @see PathStrategy
 	 */
 	
+	//rmq Chloé : est ce qu'on pourrait pas envisager des cas où il n'y a pas de préférences de vélos et ou de stations ?
+	// Network static non ? Y en a qu'un seul ?
 	public void computePath(Network net, PathStrategy ps, int bikeType) {
 		Station[] stations = ps.findPath(this.start, this.end, net, bikeType);
 		this.startStation = stations[0];

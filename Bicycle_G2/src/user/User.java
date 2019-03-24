@@ -3,8 +3,9 @@ package user;
 
 import ride.Ride;
 import tools.Point;
+import java.util.*;
 
-public class User {
+public class User implements Observer {
 	
 	private String lastName;
 	private String firstName; 
@@ -81,5 +82,11 @@ public class User {
 		this.userStat = userStat;
 	}
 	
-
+	@Override
+	public void update(boolean isStationFull) {
+		System.out.println("The destination Station does not have any more available slots");
+		net = 
+		Itinerary newItinerary = ongoingRide.getItinerary().computePath(net, ps, bikeType);
+		ongoingRide.setItinerary(newItinerary);
+	}
 }

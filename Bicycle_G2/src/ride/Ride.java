@@ -1,17 +1,20 @@
 package ride;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import bike.*;
 import user.*;
 import ride.*;
 
-public class Ride {
+public class Ride implements Observable{
 	
 	private Itinerary itinerary;
 	private Bike bike;
 	private User user;
 	private LocalDateTime startRide;
 	private LocalDateTime endRide; 
+	private boolean changed;
+	private ArrayList<Observer> observers = new ArrayList<Observer>();
 	
 	public Ride(Itinerary itinerary, Bike bike, User user, LocalDateTime startRide) {
 		super();
@@ -52,9 +55,22 @@ public class Ride {
 		Network.archiveRide(this);
 	}
 	
-	
+	@Override
+	public void registerObserver (Observer observer) {
+		observers.add(observer);}
 
-	
+
+	@Override
+	public void removeObserver(Observer observer) {
+		observers.remove(observer);}
+
+	@Override 
+	public void notifyObservers () {
+		if (this.itinerary.getEndStation().isStationFull()) {
+			for (Observer ob : observers)
+				ob.update(this.itinerary.getEndStation().isStationFull());
+		}
+	}
 	
 
 }
