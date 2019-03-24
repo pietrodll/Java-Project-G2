@@ -19,7 +19,7 @@ public class Slot {
 	public static final int MECHANIC = 2;
 
 	private Station s;
-	private double id;
+	private int id;
 	private boolean isOnline;
 	private int bikeType = Slot.EMPTY;
 	private Bike bike;

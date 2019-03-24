@@ -14,7 +14,7 @@ import user.UserIDGenerator;
  */
 public abstract class Station {
 	
-	private double id;
+	private int id;
 	private Point p;
 	private boolean isOnline;
 	private ArrayList<Slot> parkingSlots;
@@ -92,7 +92,7 @@ public abstract class Station {
 	}
 
 
-	public double getId() {
+	public int getId() {
 		return id;
 	}
 
