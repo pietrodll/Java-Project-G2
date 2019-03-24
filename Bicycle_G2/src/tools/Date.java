@@ -32,7 +32,7 @@ public class Date {
 		}
 	}
 
-	public static LocalDateTime dateInput(String userInput) {//throws DateFormatException(String userIput) {
+	public static LocalDateTime dateInput(String userInput) {
 		try {
 			LocalDateTime formatDateTime = LocalDateTime.parse(userInput, formatter);
 			return (formatDateTime);
@@ -46,7 +46,7 @@ public class Date {
 	//test
 	public static void main(String[] args) throws NegativeTimeException {
 		String user = "2019-11-23 12:54";
-		String user2 = "2019-11-22 12:59";
+		String user2 = "2019-11/23 12:59";
 		LocalDateTime d1 = dateInput(user);
 		LocalDateTime d2 =  dateInput (user2);
 		System.out.println("new date d1 : " + d1);

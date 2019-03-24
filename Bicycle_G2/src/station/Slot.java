@@ -26,7 +26,6 @@ public class Slot {
 	private ArrayList<SlotState> slotHistory;
 	
 	//faire ID générator qui dépend de la station les trois derniers chiffres sont id du slot et l'ID de la station fois 1000
-
 	
 	//il y a un pb avec l'IDGenerator
 	public Slot(Station s) {

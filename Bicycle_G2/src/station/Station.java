@@ -130,7 +130,7 @@ public abstract class Station {
 		return true;
 	}
 	
-	public boolean hasABikeAvailable() {
+	public boolean hasBikeAvailable() {
 		for (Slot s : parkingSlots) {
 			if (s.isOnline() == true && s.getBikeType() != 0) {
 				return true;
@@ -143,7 +143,7 @@ public abstract class Station {
 	 * @param type
 	 * @return
 	 */
-	public boolean hasABikeAvailable(int type) {
+	public boolean hasBikeAvailable(int type) {
 		for (Slot s : parkingSlots) {
 			if (s.isOnline() == true && s.getBikeType() != type) {
 				return true;
