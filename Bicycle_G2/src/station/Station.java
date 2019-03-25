@@ -34,9 +34,6 @@ public abstract class Station {
 
 
 
-
-
-
 	public int getRateOccupation(LocalDateTime startTime, LocalDateTime endTime){
 		int occupationRate = -1;
 		try {
@@ -62,6 +59,15 @@ public abstract class Station {
 			}
 		}
 		return true;
+	}
+	
+	public Slot availableSlot() {
+		for (Slot s : parkingSlots) {
+			if (s.getisOccupied()==false) {
+				return s;
+			}
+		}
+		return null;
 	}
 	
 	public Slot hasBikeAvailable() {
@@ -98,16 +104,50 @@ public abstract class Station {
 		return card.getUser();
 	}
 	
-	public synchronized void pickUpABike(User user, LocalDateTime pickUpTime) {
-		
-		if (this.hasBikeAvailable() == true) {
-			for (Slot s : parkingSlots) {
-				if (s.isOnline())
-			}
+	public synchronized void pickUpBike(User user, LocalDateTime pickUpTime) {
+		Slot s = hasBikeAvailable();
+		if (s != null) {
+			Bike b = s.getBike();
+			user.startOngoingRide(b, pickUpTime);
+			s.setBike(null);
+			this.setTotalRents(getTotalRents()+1);
+		} else { System.out.println("Could not pick up a bike from Station" + this + ", no bike available");
 		}
-	
-	
 	}
+	
+	public synchronized void pickUpElectricBike(User user, LocalDateTime pickUpTime) {
+		Slot s = hasElectricBikeAvailable();
+		if (s != null) {
+			Bike b = s.getBike();
+			user.startOngoingRide(b, pickUpTime);
+			s.setBike(null);
+			this.setTotalRents(getTotalRents()+1);
+		}else { System.out.println("Could not pick up an electric bike from Station" + this + ", no electric bike available");
+		}
+	}
+	
+	public synchronized void pickUpMechanicBike(User user, LocalDateTime pickUpTime) {
+		Slot s = hasMechanicBikeAvailable();
+		if (s != null) {
+			Bike b = s.getBike();
+			user.startOngoingRide(b, pickUpTime);
+			s.setBike(null);
+			this.setTotalRents(getTotalRents()+1);
+		}else { System.out.println("Could not pick up a mechanic bike from Station" + this + ", no mechanic bike available");
+		}
+	}
+	
+	public synchronized void dropBike (User user, LocalDateTime dropTime, Bike bike) {
+		if (this.isStationFull() == false) {
+			Slot s = availableSlot();
+			s.setBike(bike);
+			user.endOngoingRide // a faire !!!
+			this.setTotalReturns(getTotalReturns()+1);
+		}else {System.out.println("Could not drop bike because Station" + this + "is full");
+		}
+	}
+	
+	// faire les méthodes pour quand une station tombe en panne
 	
 	public Point getP() {
 		return p;

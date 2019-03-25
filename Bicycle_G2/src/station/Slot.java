@@ -22,12 +22,13 @@ public class Slot {
 	
 	//faire ID générator qui dépend de la station les trois derniers chiffres sont id du slot et l'ID de la station fois 1000
 	//il y a un pb avec l'IDGenerator
-	public Slot(Station s) {
+	
+	/*public Slot//(Station s) {
 		this.s = s;
 		id = s.getId()*1000 + SlotIDGenerator.getInstance().getNextSlotID();
 		isOnline = false;
 	}
-
+	 */
 	
 	public int indexSlotState (LocalDateTime t) {
 		int index = -1;

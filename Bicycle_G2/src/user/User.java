@@ -48,8 +48,10 @@ public class User implements Observer {
 	
 	public void startOngoingRide (Bike bike, LocalDateTime startRide) {
 		this.ongoingRide = new Ride (bike, this, startRide);
+		
 	}
-
+ // when finishing a ride you have to add all the user stat
+	public void endOngoingRide
 	
 	public String getLastName() {
 		return lastName;
