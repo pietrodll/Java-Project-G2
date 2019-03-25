@@ -88,6 +88,7 @@ class StationComparatorTest {
 			() -> {
 				Station s1 = fact.createStation("Standard", new Point(0, 10));
 				Station s2 = fact.createStation("Standard", new Point(0, 20));
+				assertEquals(0, dec.compare(s1, s2), "Comparing two stations with no free slot");
 			}
 		);
 	}

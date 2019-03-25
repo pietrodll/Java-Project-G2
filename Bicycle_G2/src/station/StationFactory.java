@@ -9,15 +9,13 @@ import tools.Point;
  */
 public class StationFactory  {
 	
-	private Network net;
+	public Network net;
 	
 	public StationFactory(Network net) { this.net = net; }
 	
 	public Station createStation (String stationType, Point p ) throws TypeStationException, StationSamePositionException {
-		if (this.net.getStations() != null ) {
-			for (Station s : this.net.getStations()) {
-				if (s.getP().equals(p) ) { throw new StationSamePositionException(p); }
-			}
+		for (Station s : this.net.getStations()) {
+			if (s.getP().equals(p) ) { throw new StationSamePositionException(p); }
 		}
 		if (stationType == null) { return null; }
 		if (stationType.equalsIgnoreCase("Standard")) {
