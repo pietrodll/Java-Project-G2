@@ -28,7 +28,7 @@ public class CardIdGenerator implements Serializable {
 		return instance;
 	}
 	
-	public int getNextId() { return numCards++; }
+	public synchronized int getNextId() { return numCards++; }
 	
 	/**
 	 * This methods ensures that even when an {@code CardIdGenerator} is serialized, the unique instance is always returned.

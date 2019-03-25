@@ -18,7 +18,7 @@ public class StationIDGenerator implements Serializable {
 		
 	}
 		
-	public int getNextStationID() {
+	public synchronized int getNextStationID() {
 		return num ++;
 	}
 

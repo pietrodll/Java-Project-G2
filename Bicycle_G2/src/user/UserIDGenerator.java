@@ -17,7 +17,7 @@ public class UserIDGenerator implements Serializable {
 		
 	}
 	
-	public int getNextUserID() {
+	public synchronized int getNextUserID() {
 		return num ++;
 	}
 

@@ -23,7 +23,7 @@ public class BikeIdGenerator implements Serializable {
 		return instance;
 	}
 	
-	public int getNextId() { return numBikes++; }
+	public synchronized int getNextId() { return this.numBikes++; }
 	
 	/**
 	 * This methods ensures that even when an {@code CardIdGenerator} is serialized, the unique instance is always returned.
