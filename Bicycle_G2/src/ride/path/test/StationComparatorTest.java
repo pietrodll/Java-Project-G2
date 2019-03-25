@@ -5,6 +5,8 @@ package ride.path.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,11 +15,14 @@ import ride.Network;
 import ride.path.DistanceBasicComparator;
 import ride.path.DistanceEndComparator;
 import station.Station;
+import station.Slot;
 import station.StationFactory;
+import station.StationSamePositionException;
+import station.TypeStationException;
 import tools.Point;
 
 /**
- * The test class for {@link StationComparator}. It contains the tests for each subclass.
+ * The test class for {@link ride.path.StationComparator}. It contains the tests for each subclass.
  *
  */
 class StationComparatorTest {
@@ -83,17 +88,19 @@ class StationComparatorTest {
 	}
 
 	@Test
-	void testDistanceEndComparator() {
+	void testDistanceEndComparator() throws TypeStationException, StationSamePositionException {
 		DistanceEndComparator dec = new DistanceEndComparator(point);
 		Station s1 = fact.createStation("Standard", new Point(0, 10));
 		Station s2 = fact.createStation("Standard", new Point(0, 20));
 		assertAll(
 			() -> {
-				
 				assertEquals(0, dec.compare(s1, s2), "Comparing two stations with no free slot");
 			},
 			() -> {
-				s1.
+				ArrayList<Slot> parkingSlots = new ArrayList<Slot>();
+				parkingSlots.add(new Slot(s1));
+				parkingSlots.add(new Slot(s1));
+				s1.setParkingSlots(parkingSlots);
 			}
 		);
 	}

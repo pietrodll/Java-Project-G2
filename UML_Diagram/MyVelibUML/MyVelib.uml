@@ -306,7 +306,7 @@
       <generalization xmi:type="uml:Generalization" xmi:id="_Cq98cEfgEemzKf38hXMYDg" general="_Lc_FUEfYEemzKf38hXMYDg"/>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_rWsMYEfZEemzKf38hXMYDg" name="point">
+  <packagedElement xmi:type="uml:Package" xmi:id="_rWsMYEfZEemzKf38hXMYDg" name="tools">
     <packagedElement xmi:type="uml:Class" xmi:id="_tVy9YEfZEemzKf38hXMYDg" name="Point">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_-U7_EEfZEemzKf38hXMYDg" name="x" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
@@ -344,6 +344,34 @@
   <packagedElement xmi:type="uml:Association" xmi:id="_mc_Y4EfhEemzKf38hXMYDg"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_Rf4QUEfiEemzKf38hXMYDg"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_Mu1RQEfkEemzKf38hXMYDg" name="thows"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_hUh8YE9XEem8EYOBggYCvQ" name="ride">
+    <packagedElement xmi:type="uml:Class" xmi:id="_mL23sE9XEem8EYOBggYCvQ" name="Network">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_zm6uoE9XEem8EYOBggYCvQ" name="stations" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_-rX6kE9XEem8EYOBggYCvQ" name="rideHistory" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_BeIWEE9YEem8EYOBggYCvQ" name="addStation">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_HDc_0E9YEem8EYOBggYCvQ" name="station" type="_Lc_FUEfYEemzKf38hXMYDg"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_JLJsIE9YEem8EYOBggYCvQ" name="removeStation">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_JLJsIU9YEem8EYOBggYCvQ" name="station" type="_Lc_FUEfYEemzKf38hXMYDg"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_MagkEE9YEem8EYOBggYCvQ" name="getStations">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_VeBzAE9YEem8EYOBggYCvQ" name="stations" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_bZ0cAE9YEem8EYOBggYCvQ" name="Ride"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_cYIeYE9YEem8EYOBggYCvQ" name="Itinerary"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_gFp5AE9YEem8EYOBggYCvQ" name="user">
+    <packagedElement xmi:type="uml:Class" xmi:id="_hMFVkE9YEem8EYOBggYCvQ" name="User"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_izTLAE9YEem8EYOBggYCvQ" name="UserStat"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_kQ7moE9YEem8EYOBggYCvQ" name="UserIDGenerator"/>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_sOKlEEZnEemNTJH6NZhuqA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sONBUEZnEemNTJH6NZhuqA" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>

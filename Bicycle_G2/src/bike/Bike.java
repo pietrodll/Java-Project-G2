@@ -19,9 +19,7 @@ public abstract class Bike implements CardVisitable {
 		this.id = idGenerator.getNextId();
 	}
 
-	public int getId() {
-		return id;
-	}
+	public int getId() { return id; }
 	
 	public abstract float ridePrice(CardVisitor card, int rideTime);
 

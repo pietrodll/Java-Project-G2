@@ -57,7 +57,7 @@ public class Network implements Serializable {
 		return s.sorting(sortedStations);
 	}
 	
-	public void archiveRide (Ride r) {
+	public void archiveRide(Ride r) {
 		this.rideHistory.add(r);
 	}
 }

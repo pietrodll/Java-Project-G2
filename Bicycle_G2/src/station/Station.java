@@ -66,7 +66,7 @@ public abstract class Station {
 	
 	public Slot availableSlot() {
 		for (Slot s : parkingSlots) {
-			if (s.getisOccupied()==false) {
+			if (s.getisOccupied() == false) {
 				return s;
 			}
 		}

@@ -22,6 +22,10 @@ public class Itinerary {
 		this.end = end;
 	}
 	
+	public Point getStart() { return start; }
+	public Point getEnd() { return end; }
+	public Station getStartStation() { return startStation; }
+	public Station getEndStation() { return endStation; }
 
 	/**
 	 * This method affects a value to {@code startStation} and {@code endStation} according to the
@@ -41,12 +45,5 @@ public class Itinerary {
 		this.startStation = stations[0];
 		this.endStation = stations[1];
 	}
-
-	public Point getStart() { return start; }
-	public Point getEnd() { return end; }
-	public Station getStartStation() { return startStation; }
-	public Station getEndStation() { return endStation; }
-	
-	
 
 }

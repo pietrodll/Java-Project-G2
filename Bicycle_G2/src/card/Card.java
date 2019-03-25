@@ -24,18 +24,11 @@ public abstract class Card implements CardVisitor {
 		this.user = user;
 	}
 
-	public int getId() {
-		return id;
-	}
+	public int getId() { return id; }
 
-	public int getTimeCredit() {
-		return timeCredit;
-	}
+	public int getTimeCredit() { return timeCredit; }
 
-	
-	public User getUser() {
-		return user;
-	}
+	public User getUser() { return user; }
 
 	/**
 	 * @param timeCredit the timeCredit to set
