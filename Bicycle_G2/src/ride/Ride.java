@@ -8,7 +8,6 @@ import ride.*;
 
 public class Ride implements Observable{
 	
-	private Itinerary itinerary;
 	private Bike bike;
 	private User user;
 	private LocalDateTime startRide;
@@ -16,22 +15,14 @@ public class Ride implements Observable{
 	private boolean changed;
 	private ArrayList<Observer> observers = new ArrayList<Observer>();
 	
-	public Ride(Itinerary itinerary, Bike bike, User user, LocalDateTime startRide) {
+	
+	public Ride(Bike bike, User user, LocalDateTime startRide) {
 		super();
-		this.itinerary = itinerary;
 		this.bike = bike;
 		this.user = user;
 		this.startRide = startRide;
 	}
 	
-
-	public Itinerary getItinerary() {
-		return itinerary;
-	}
-
-	public void setItinerary(Itinerary itinerary) {
-		this.itinerary = itinerary;
-	}
 
 	public Bike getBike() {
 		return bike;
