@@ -22,8 +22,8 @@ import tools.Point;
  */
 class StationComparatorTest {
 	
-	private static Point point;
-	private static StationFactory fact;
+	private Point point;
+	private StationFactory fact;
 
 	/**
 	 * This method creates a network which is used in each test.
@@ -32,7 +32,7 @@ class StationComparatorTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		point = new Point(0, 0);
-		fact = new StationFactory(Network.getNetwork());
+		fact = new StationFactory(new Network());
 	}
 
 	/**
@@ -70,13 +70,13 @@ class StationComparatorTest {
 				assertTrue(dbc.compare(s1, s2) < 0);
 			},
 			() -> {
-				Station s1 = fact.createStation("Standard", new Point(0, 10));
+				Station s1 = fact.createStation("Standard", new Point(10, 0));
 				Station s2 = fact.createStation("Standard", new Point(0, -10));
 				assertTrue(dbc.compare(s1, s2) == 0);
 			},
 			() -> {
 				Station s1 = fact.createStation("Standard", new Point(0, 30));
-				Station s2 = fact.createStation("Standard", new Point(0, 20));
+				Station s2 = fact.createStation("Standard", new Point(20, 0));
 				assertTrue(dbc.compare(s1, s2) > 0);
 			}
 		);
@@ -85,11 +85,15 @@ class StationComparatorTest {
 	@Test
 	void testDistanceEndComparator() {
 		DistanceEndComparator dec = new DistanceEndComparator(point);
+		Station s1 = fact.createStation("Standard", new Point(0, 10));
+		Station s2 = fact.createStation("Standard", new Point(0, 20));
 		assertAll(
 			() -> {
-				Station s1 = fact.createStation("Standard", new Point(0, 10));
-				Station s2 = fact.createStation("Standard", new Point(0, 20));
+				
 				assertEquals(0, dec.compare(s1, s2), "Comparing two stations with no free slot");
+			},
+			() -> {
+				s1.
 			}
 		);
 	}

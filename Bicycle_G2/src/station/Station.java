@@ -167,29 +167,15 @@ public abstract class Station {
 	
 	// faire les méthodes pour quand une station tombe en panne
 	
-	public Point getP() {
-		return p;
-	}
+	public Point getP() { return p; }
 
+	public void setP(Point p) { this.p = p; }
 
-	public void setP(Point p) {
-		this.p = p;
-	}
+	public boolean isOnline() { return isOnline; }
 
+	public void setOnline(boolean isOnline) { this.isOnline = isOnline; }
 
-	public boolean isOnline() {
-		return isOnline;
-	}
-
-
-	public void setOnline(boolean isOnline) {
-		this.isOnline = isOnline;
-	}
-
-
-	public ArrayList<Slot> getParkingSlots() {
-		return parkingSlots;
-	}
+	public ArrayList<Slot> getParkingSlots() { return parkingSlots; }
 
 
 	public void setParkingSlots(ArrayList<Slot> parkingSlots) {
@@ -197,42 +183,25 @@ public abstract class Station {
 		this.NumberSlots= parkingSlots.size();
 	}
 
+	public int getNumberSlots() { return NumberSlots; }
 
-	public int getNumberSlots() {
-		return NumberSlots;
-	}
-
-	
-	public int getTotalRents() {
-		return totalRents;
-	}
-
+	public int getTotalRents() { return totalRents; }
 
 	public void setTotalRents(int totalRents) {
 		this.totalRents = totalRents;
 		this.totalOperations = this.totalRents + this.totalReturns;
 	}
 
-
-	public int getTotalReturns() {
-		return totalReturns;
-	}
-
+	public int getTotalReturns() { return totalReturns; }
 
 	public void setTotalReturns(int totalReturns) {
 		this.totalReturns = totalReturns;
 		this.totalOperations = this.totalRents + this.totalReturns;
 	}
 	
+	public int getTotalOperations() { return totalOperations; }
 	
-	public int getTotalOperations() {
-		return totalOperations;
-	}
-	
-
-	public int getId() {
-		return id;
-	}
+	public int getId() { return id; }
 	
 	public static void main(String[] args) {
 		Bike b = new ElectricBike();
