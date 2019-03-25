@@ -4,8 +4,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import tools.*;
+import user.User;
 import user.UserIDGenerator;
 import bike.*;
+import card.Card;
 
 /**
  * An abstract class to represent the stations
@@ -62,47 +64,50 @@ public abstract class Station {
 		return true;
 	}
 	
-	public boolean hasBikeAvailable() {
+	public Slot hasBikeAvailable() {
 		for (Slot s : parkingSlots) {
 			if (s.isOnline() == true && s.getBike() != null) {
-				return true;
+				return s;
 			}
 		}
-		return false;
+		return null;
 	}
 	/**
 	 * Allows to look for a specific bike type
 	 * @param type
 	 * @return
 	 */
-	public boolean hasElectricBikeAvailable() {
+	public Slot hasElectricBikeAvailable() {
 		for (Slot s : parkingSlots) {
 			if (s.isOnline() == true && s.getBike() instanceof ElectricBike);
-				return true;
+				return s;
 			}
-		return false;
+		return null;
 	}
 	
-	public boolean hasMechanicBikeAvailable() {
+	public Slot hasMechanicBikeAvailable() {
 		for (Slot s : parkingSlots) {
 			if (s.isOnline() == true && s.getBike() instanceof MechanicBike);
-				return true;
+				return s;
 			}
-		return false;
+		return null;
 	}
-// not finished
-/*
-	public void pickUpABike() {
-		for (Slot s : parkingSlots) {
-			if (s.isOnline() == true && s.getBikeType() != 0) {
-				
-			}
+
+	
+	public User identifyUser (Card card) {
+		return card.getUser();
+	}
+	
+	public synchronized void pickUpABike(User user, LocalDateTime pickUpTime) {
 		
+		if (this.hasBikeAvailable() == true) {
+			for (Slot s : parkingSlots) {
+				if (s.isOnline())
+			}
 		}
+	
+	
 	}
-*/		
-	
-	
 	
 	public Point getP() {
 		return p;

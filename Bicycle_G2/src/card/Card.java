@@ -2,6 +2,7 @@ package card;
 
 import bike.ElectricBike;
 import bike.MechanicBike;
+import user.User;
 
 /**
  * This abstract class is the basis to create user cards. Each {@code Card} has a unique {@code id} (regardless of the type of the card) and a {@code timeCredit}.
@@ -14,10 +15,12 @@ public abstract class Card implements CardVisitor {
 	
 	private int id;
 	private int timeCredit;
+	private User user;
 	
-	public Card() {
+	public Card(User user) {
 		CardIdGenerator idGenerator = CardIdGenerator.getInstance();
 		this.id = idGenerator.getNextId();
+		this.user = user;
 	}
 
 	public int getId() {
@@ -26,6 +29,11 @@ public abstract class Card implements CardVisitor {
 
 	public int getTimeCredit() {
 		return timeCredit;
+	}
+
+	
+	public User getUser() {
+		return user;
 	}
 
 	/**

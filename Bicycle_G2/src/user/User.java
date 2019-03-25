@@ -1,9 +1,14 @@
 
 package user;
 
+import ride.Itinerary;
 import ride.Ride;
 import tools.Point;
+
+import java.time.LocalDateTime;
 import java.util.*;
+
+import bike.Bike;
 
 public class User implements Observer {
 	
@@ -12,6 +17,7 @@ public class User implements Observer {
 	private Point position;
 	private final int id;
 	private Ride ongoingRide;
+	private Itinerary itinerary;
 	private UserStat userStat;
 	
 	
@@ -23,6 +29,7 @@ public class User implements Observer {
 		id = UserIDGenerator.getInstance().getNextUserID();
 		position = new Point (0,0);
 		ongoingRide = null;
+		itinerary = null;
 		userStat = new UserStat();
 	
 	}
@@ -34,9 +41,16 @@ public class User implements Observer {
 		id = UserIDGenerator.getInstance().getNextUserID();
 		this.position = position;
 		ongoingRide = null;
+		itinerary = null;
+		
 		userStat = new UserStat();
 	}
+	
+	public void startOngoingRide (Bike bike, LocalDateTime startRide) {
+		this.ongoingRide = new Ride (bike, this, startRide);
+	}
 
+	
 	public String getLastName() {
 		return lastName;
 	}
@@ -70,6 +84,14 @@ public class User implements Observer {
 		this.ongoingRide = ongoingRide;
 	}
 
+	public Itinerary getItinerary() {
+		return itinerary;
+	}
+
+	public void setItinerary(Itinerary itinerary) {
+		this.itinerary = itinerary;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -82,11 +104,11 @@ public class User implements Observer {
 		this.userStat = userStat;
 	}
 	
+	/*
 	@Override
 	public void update(boolean isStationFull) {
 		System.out.println("The destination Station does not have any more available slots");
-		net = 
-		Itinerary newItinerary = ongoingRide.getItinerary().computePath(net, ps, bikeType);
+		Itinerary newItinerary = ongoingRide.getItinerary().computePath(ps, bikeType);
 		ongoingRide.setItinerary(newItinerary);
-	}
+	}*/
 }
