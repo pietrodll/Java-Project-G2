@@ -27,12 +27,12 @@ public class Network implements Serializable {
 		return instance;
 	}
 	
-	public ArrayList<Station> getStations() { return this.stations; }
+	public static ArrayList<Station> getStations() { return stations; }
 	
 	public Object readResolve() throws ObjectStreamException { return instance; }
 	
 	public void addStation(Station station) {
-		this.stations.add(station);
+		stations.add(station);
 	}
 	
 	
