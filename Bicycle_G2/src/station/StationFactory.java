@@ -19,9 +19,13 @@ public class StationFactory  {
 		if (stationType == null) { return null; }
 		
 		if (stationType.equalsIgnoreCase("Standard")) {
-			return new StandardStation(p);
+			Station s1 = new StandardStation(p);
+			Network.getStations().add(s1);
+			return s1;
 		} else if (stationType.equalsIgnoreCase("Plus")) {
-			return new PlusStation(p);
+			Station s2 = new PlusStation(p);
+			Network.getStations().add(s2);		
+			return s2;
 		} else {
 			throw new TypeStationException(stationType);
 		}

@@ -1,8 +1,8 @@
 package tools;
 
 /**
- * A class to represent locations on the map using simple GPS coordinates (x,y)
- * 
+ * This class represents locations on the map using simple GPS coordinates (x,y)
+ * @author Chloé
  *
  */
 public class Point {
@@ -41,7 +41,7 @@ public class Point {
 	}
 	
 	/**
-	 * Redefinition of the equals() method on Point so that it says that two points are equal when they have the same coordinates
+	 * Redefinition of the equals() method in for class Point
 	 */
 	@Override
 	public boolean equals (Object obj) {
