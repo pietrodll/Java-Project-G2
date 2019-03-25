@@ -8,9 +8,18 @@ import ride.Network;
 import station.Station;
 import tools.Point;
 
+/**
+ * This class is an implementation of the {@code PathStrategy} interface and finds the start station and end station which minimize the walking distance of the user.
+ * @author Pietro Dellino
+ *
+ */
 public class MinimalWalkingStrategy implements PathStrategy {
 	
-	ArrayList<Station> stations = Network.getStations();
+	private ArrayList<Station> stations;
+	
+	public MinimalWalkingStrategy() {
+		this.stations = Network.getStations();
+	}
 
 	@Override
 	public Station[] findPath(Point start, Point end, int bikeType) {
