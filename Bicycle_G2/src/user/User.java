@@ -2,6 +2,7 @@
 package user;
 
 import ride.Itinerary;
+import ride.Network;
 import ride.Ride;
 import tools.NegativeTimeException;
 import tools.Point;
@@ -48,8 +49,8 @@ public class User implements Observer {
 	}
 	
 	//la fonction startOngoingRide est forcément utilsée par la fonction pickUpBike qui vérifie deja si ongoing riede
-	public void startOngoingRide (Bike bike, LocalDateTime startRide, Card card) {
-		this.ongoingRide = new Ride (bike, this, card, startRide);
+	public void startOngoingRide (Network net, Bike bike, LocalDateTime startRide, Card card) {
+		this.ongoingRide = new Ride (net, bike, this, card, startRide);
 	}
 	
  // when finishing a ride you have to add all the user stat : time and credit

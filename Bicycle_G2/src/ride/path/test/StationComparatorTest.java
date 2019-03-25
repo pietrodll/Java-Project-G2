@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import ride.Network;
 import ride.path.DistanceBasicComparator;
 import ride.path.DistanceEndComparator;
 import station.Station;
@@ -30,7 +31,7 @@ class StationComparatorTest {
 	@BeforeAll
 	static void setUp() throws Exception {
 		point = new Point(0, 0);
-		fact = new StationFactory();
+		fact = new StationFactory(Network.getNetwork());
 	}
 
 	/**

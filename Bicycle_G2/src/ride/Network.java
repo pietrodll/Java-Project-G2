@@ -16,33 +16,39 @@ public class Network implements Serializable {
 	private static final long serialVersionUID = -3127825538872149011L;
 	
 
-	private static Network instance = null;
-	private static ArrayList<Station> stations;
-	private static ArrayList<Ride> rideHistory;
+	private static Network network = null;
+	private ArrayList<Station> stations;
+	private ArrayList<Ride> rideHistory;
 	
 	private Network() {}
 	
-	public static synchronized Network getInstance() {
-		if (instance == null) { instance = new Network(); }
-		return instance;
+	public static synchronized Network getNetwork() {
+		if (network == null) { network = new Network(); }
+		return network;
 	}
 	
-	public static ArrayList<Station> getStations() { return stations; }
+	public ArrayList<Station> getStations() { return stations; }
 	
-	public Object readResolve() throws ObjectStreamException { return instance; }
+	public Object readResolve() throws ObjectStreamException { return network; }
 	
 	public void addStation(Station station) {
-		stations.add(station);
+		this.stations.add(station);
 	}
 	
-	
+	public void removeStation(Station station) {
+		for (Station s : this.stations) {
+			if (s.equals(station)) {
+				this.stations.remove(s);
+			}
+		}
+	}
 
-	public static ArrayList<Station> sortingStations (SortingStrategy s) {
-		ArrayList<Station> sortedStations = (ArrayList<Station>) stations.clone();		
+	public ArrayList<Station> sortingStations (SortingStrategy s) {
+		ArrayList<Station> sortedStations = (ArrayList<Station>) this.stations.clone();		
 		return s.sorting(sortedStations);
 	}
 	
-	public static void archiveRide (Ride r) {
-		rideHistory.add(r);
+	public void archiveRide (Ride r) {
+		this.rideHistory.add(r);
 	}
 }

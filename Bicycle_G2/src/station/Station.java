@@ -8,6 +8,7 @@ import user.User;
 import user.UserIDGenerator;
 import bike.*;
 import card.Card;
+import ride.Network;
 
 /**
  * An abstract class to represent the stations
@@ -20,6 +21,7 @@ public abstract class Station {
 	private boolean isOnline;
 	private ArrayList<Slot> parkingSlots;
 	private int NumberSlots;
+	private Network net;
 	
 	private int totalRents;
 	private int totalReturns;
@@ -111,7 +113,7 @@ public abstract class Station {
 			Slot s = hasBikeAvailable();
 			if (s != null) {
 				Bike b = s.getBike();
-				user.startOngoingRide(b, pickUpTime, card);
+				user.startOngoingRide(this.net, b, pickUpTime, card);
 				s.setBike(null, pickUpTime);
 				this.setTotalRents(getTotalRents()+1);
 			} else { System.out.println("Could not pick up a bike from Station" + this + ", no bike available");
@@ -126,7 +128,7 @@ public abstract class Station {
 			Slot s = hasElectricBikeAvailable();
 			if (s != null) {
 				Bike b = s.getBike();
-				user.startOngoingRide(b, pickUpTime, card);
+				user.startOngoingRide(this.net, b, pickUpTime, card);
 				s.setBike(null, pickUpTime);
 				this.setTotalRents(getTotalRents()+1);
 			}else { System.out.println("Could not pick up an electric bike from Station" + this + ", no electric bike available");
@@ -141,7 +143,7 @@ public abstract class Station {
 			Slot s = hasMechanicBikeAvailable();
 			if (s != null) {
 				Bike b = s.getBike();
-				user.startOngoingRide(b, pickUpTime, card);
+				user.startOngoingRide(this.net, b, pickUpTime, card);
 				s.setBike(null, pickUpTime);
 				this.setTotalRents(getTotalRents()+1);
 			}else { System.out.println("Could not pick up a mechanic bike from Station" + this + ", no mechanic bike available");

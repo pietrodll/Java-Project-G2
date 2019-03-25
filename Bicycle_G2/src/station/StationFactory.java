@@ -9,22 +9,24 @@ import tools.Point;
  */
 public class StationFactory  {
 	
+	private Network net;
+	
+	public StationFactory(Network net) { this.net = net; }
+	
 	public Station createStation (String stationType, Point p ) throws TypeStationException, StationSamePositionException {
-		if (Network.getStations() != null ) {
-			for (Station s : Network.getStations()) {
+		if (this.net.getStations() != null ) {
+			for (Station s : this.net.getStations()) {
 				if (s.getP().equals(p) ) { throw new StationSamePositionException(p); }
 			}
 		}
-
 		if (stationType == null) { return null; }
-		
 		if (stationType.equalsIgnoreCase("Standard")) {
 			Station s1 = new StandardStation(p);
-			Network.getStations().add(s1);
+			this.net.getStations().add(s1);
 			return s1;
 		} else if (stationType.equalsIgnoreCase("Plus")) {
 			Station s2 = new PlusStation(p);
-			Network.getStations().add(s2);		
+			this.net.getStations().add(s2);		
 			return s2;
 		} else {
 			throw new TypeStationException(stationType);

@@ -13,8 +13,8 @@ public class FastestPathStrategy implements PathStrategy {
 	
 	private ArrayList<Station> stations;
 
-	public FastestPathStrategy() {
-		this.stations = Network.getStations();
+	public FastestPathStrategy(Network net) {
+		this.stations = net.getStations();
 	}
 
 	@Override

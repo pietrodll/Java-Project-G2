@@ -17,8 +17,8 @@ public class MinimalWalkingStrategy implements PathStrategy {
 	
 	private ArrayList<Station> stations;
 	
-	public MinimalWalkingStrategy() {
-		this.stations = Network.getStations();
+	public MinimalWalkingStrategy(Network net) {
+		this.stations = net.getStations();
 	}
 
 	@Override

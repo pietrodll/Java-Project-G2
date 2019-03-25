@@ -13,8 +13,8 @@ public class PreferPlusStrategy implements PathStrategy {
 	
 	private ArrayList<Station> stations;
 	
-	public PreferPlusStrategy() {
-		this.stations = Network.getStations();
+	public PreferPlusStrategy(Network net) {
+		this.stations = net.getStations();
 	}
 
 	@Override

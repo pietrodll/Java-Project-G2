@@ -13,8 +13,8 @@ public class AvoidPlusStrategy implements PathStrategy {
 	
 	private ArrayList<Station> stations;
 
-	public AvoidPlusStrategy() {
-		this.stations = Network.getStations();
+	public AvoidPlusStrategy(Network net) {
+		this.stations = net.getStations();
 	}
 
 	@Override

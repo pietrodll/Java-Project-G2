@@ -18,10 +18,12 @@ public class Ride implements Observable{
 	private LocalDateTime endRide; 
 	private boolean changed;
 	private ArrayList<Observer> observers = new ArrayList<Observer>();
+	private Network net;
 	
 	
-	public Ride(Bike bike, User user, Card card, LocalDateTime startRide) {
+	public Ride(Network net, Bike bike, User user, Card card, LocalDateTime startRide) {
 		super();
+		this.net = net;
 		this.bike = bike;
 		this.user = user;
 		this.card = card;
@@ -29,31 +31,17 @@ public class Ride implements Observable{
 	}
 	
 
-	public Bike getBike() {
-		return bike;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public LocalDateTime getStartRide() {
-		return startRide;
-	}
-
-	public LocalDateTime getEndRide() {
-		return endRide;
-	}
-
-
-	public Card getCard() {
-		return card;
-	}
+	public Network getNet() { return this.net; }
+	public Bike getBike() { return bike; }
+	public User getUser() { return user; }
+	public LocalDateTime getStartRide() { return startRide; }
+	public LocalDateTime getEndRide() { return endRide; }
+	public Card getCard() { return card; }
 
 
 	public void endRide(LocalDateTime endRide) {
 		this.endRide = endRide;
-		Network.archiveRide(this);
+		this.net.archiveRide(this);
 	}
 	
 	public int getRideTime() throws NegativeTimeException {
