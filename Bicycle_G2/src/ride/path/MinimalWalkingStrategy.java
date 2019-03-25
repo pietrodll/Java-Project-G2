@@ -15,7 +15,7 @@ public class MinimalWalkingStrategy implements PathStrategy {
 	@Override
 	public Station[] findPath(Point start, Point end, int bikeType) {
 		Station[] stations = new Station[2];
-		DistanceToPointComparator distanceComp = new DistanceToPointComparator(start);
+		DistanceStartComparator distanceComp = new DistanceStartComparator(start, bikeType);
 		stations[0] = Collections.min(this.stations, distanceComp);
 		distanceComp.setPoint(end);
 		stations[1] = Collections.min(this.stations, distanceComp);
@@ -25,7 +25,7 @@ public class MinimalWalkingStrategy implements PathStrategy {
 	@Override
 	public Station[] findPath(Point start, Point end) {
 		Station[] stations = new Station[2];
-		DistanceToPointComparator distanceComp = new DistanceToPointComparator(start);
+		DistanceStartComparator distanceComp = new DistanceStartComparator(start);
 		stations[0] = Collections.min(this.stations, distanceComp);
 		distanceComp.setPoint(end);
 		stations[1] = Collections.min(this.stations, distanceComp);
