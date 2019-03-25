@@ -3,10 +3,9 @@ package station;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import tools.Date;
-import tools.NegativeTimeException;
-import tools.Point;
+import tools.*;
 import user.UserIDGenerator;
+import bike.*;
 
 /**
  * An abstract class to represent the stations
@@ -31,6 +30,79 @@ public abstract class Station {
 		id = StationIDGenerator.getInstance().getNextStationID();
 	}
 
+
+
+
+
+
+	public int getRateOccupation(LocalDateTime startTime, LocalDateTime endTime){
+		int occupationRate = -1;
+		try {
+			int totalOccupationTime = 0;
+			long delta = Date.computeTime (startTime, endTime);
+			int N = this.NumberSlots;
+			for (Slot slot : parkingSlots) {
+				long time = slot.computeOccupationTime(startTime, endTime);
+				totalOccupationTime =(int) + time;
+			}
+			occupationRate = (int) (totalOccupationTime / (delta * N));
+		} catch (NegativeTimeException e) {
+			System.out.println("Error : Could not calculate rate Occupation");
+		}
+		return occupationRate;
+	}
+	
+	
+	public boolean isStationFull() {
+		for (Slot s : parkingSlots) {
+			if (s.getisOccupied()==false) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean hasBikeAvailable() {
+		for (Slot s : parkingSlots) {
+			if (s.isOnline() == true && s.getBike() != null) {
+				return true;
+			}
+		}
+		return false;
+	}
+	/**
+	 * Allows to look for a specific bike type
+	 * @param type
+	 * @return
+	 */
+	public boolean hasElectricBikeAvailable() {
+		for (Slot s : parkingSlots) {
+			if (s.isOnline() == true && s.getBike() instanceof ElectricBike);
+				return true;
+			}
+		return false;
+	}
+	
+	public boolean hasMechanicBikeAvailable() {
+		for (Slot s : parkingSlots) {
+			if (s.isOnline() == true && s.getBike() instanceof MechanicBike);
+				return true;
+			}
+		return false;
+	}
+// not finished
+/*
+	public void pickUpABike() {
+		for (Slot s : parkingSlots) {
+			if (s.isOnline() == true && s.getBikeType() != 0) {
+				
+			}
+		
+		}
+	}
+*/		
+	
+	
 	
 	public Point getP() {
 		return p;
@@ -59,6 +131,7 @@ public abstract class Station {
 
 	public void setParkingSlots(ArrayList<Slot> parkingSlots) {
 		this.parkingSlots = parkingSlots;
+		this.NumberSlots= parkingSlots.size();
 	}
 
 
@@ -66,12 +139,7 @@ public abstract class Station {
 		return NumberSlots;
 	}
 
-
-	public void setNumberSlots(int numberSlots) {
-		NumberSlots = numberSlots;
-	}
-
-
+	
 	public int getTotalRents() {
 		return totalRents;
 	}
@@ -79,6 +147,7 @@ public abstract class Station {
 
 	public void setTotalRents(int totalRents) {
 		this.totalRents = totalRents;
+		this.totalOperations = this.totalRents + this.totalReturns;
 	}
 
 
@@ -89,77 +158,25 @@ public abstract class Station {
 
 	public void setTotalReturns(int totalReturns) {
 		this.totalReturns = totalReturns;
+		this.totalOperations = this.totalRents + this.totalReturns;
 	}
-
+	
+	
+	public int getTotalOperations() {
+		return totalOperations;
+	}
+	
 
 	public int getId() {
 		return id;
 	}
-
-
-	public int getTotalOperations() {
-		return getTotalRents()+ getTotalReturns() ;
-	}
 	
-
-	public int getRateOccupation(LocalDateTime startTime, LocalDateTime endTime){
-		int occupationRate = -1;
-		try {
-			int totalOccupationTime = 0;
-			long delta = Date.computeTime (startTime, endTime);
-			int N = this.NumberSlots;
-			for (Slot slot : parkingSlots) {
-				long time = slot.computeOccupationTime(startTime, endTime);
-				totalOccupationTime =(int) + time;
-			}
-			occupationRate = (int) (totalOccupationTime / (delta * N));
-		} catch (NegativeTimeException e) {
-			System.out.println("Error : Could not calculate rate Occupation");
+	public static void main(String[] args) {
+		Bike b = new ElectricBike();
+		b = null;
+		if (b instanceof ElectricBike) {
+			System.out.println("yes");
 		}
-		
-		return occupationRate;
+		else {System.out.println("no");}		
 	}
-	
-	
-	public boolean isStationFull() {
-		for (Slot s : parkingSlots) {
-			if (s.getisOccupied()==false) {
-				return false;
-			}
-		}
-		return true;
-	}
-	
-	public boolean hasBikeAvailable() {
-		for (Slot s : parkingSlots) {
-			if (s.isOnline() == true && s.getBikeType() != 0) {
-				return true;
-			}
-		}
-		return false;
-	}
-	/**
-	 * Allows to look for a specific bike type
-	 * @param type
-	 * @return
-	 */
-	public boolean hasBikeAvailable(int type) {
-		for (Slot s : parkingSlots) {
-			if (s.isOnline() == true && s.getBikeType() != type) {
-				return true;
-			}
-		}
-		return false;
-	}
-// not finished
-	public void pickUpABike() {
-		for (Slot s : parkingSlots) {
-			if (s.isOnline() == true && s.getBikeType() != 0) {
-				
-			}
-		
-		}
-	}
-		
-	
 }

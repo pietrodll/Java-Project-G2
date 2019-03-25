@@ -14,19 +14,13 @@ import user.UserIDGenerator;
  */
 public class Slot {
 	
-	public static final int EMPTY = 0;
-	public static final int ELECTRIC = 1;
-	public static final int MECHANIC = 2;
-
 	private Station s;
 	private int id;
 	private boolean isOnline;
-	private int bikeType = Slot.EMPTY;
 	private Bike bike;
 	private ArrayList<SlotState> slotHistory;
 	
 	//faire ID générator qui dépend de la station les trois derniers chiffres sont id du slot et l'ID de la station fois 1000
-	
 	//il y a un pb avec l'IDGenerator
 	public Slot(Station s) {
 		this.s = s;
@@ -34,6 +28,7 @@ public class Slot {
 		isOnline = false;
 	}
 
+	
 	public int indexSlotState (LocalDateTime t) {
 		int index = -1;
 		for (SlotState state : slotHistory) {
@@ -46,6 +41,7 @@ public class Slot {
 	return index;
 	}
 	
+	
 	public long computeOccupationTime (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException {
 		long totalOccupationTime = 0;
 		int iStart = indexSlotState (startTime);
@@ -57,9 +53,19 @@ public class Slot {
 				long time = Date.computeTime (state.getStartTime(), state.getEndTime());
 				totalOccupationTime =+ time;
 			}
-			
 		}
 		return totalOccupationTime;
+	}
+	
+	
+	public boolean getisOccupied() {
+		if (isOnline == false) {
+			return true;
+		}
+		else if ( bike != null ) {
+			return true;
+		}
+		else {return false;}
 	}
 	
 	
@@ -69,14 +75,6 @@ public class Slot {
 
 	public void setOnline(boolean isOnline) {
 		this.isOnline = isOnline;
-	}
-
-	public int getBikeType() {
-		return bikeType;
-	}
-
-	public void setBikeType(int bikeType) {
-		this.bikeType = bikeType;
 	}
 
 	public ArrayList<SlotState> getSlotHistory() {
@@ -95,15 +93,6 @@ public class Slot {
 		return id;
 	}
 	
-	public boolean getisOccupied() {
-		if (isOnline == false) {
-			return true;
-		}
-		else if (getBikeType() == Slot.ELECTRIC || getBikeType()==Slot.MECHANIC) {
-			return true;
-		}
-		else {return false;}
-	}
 
 	public Bike getBike() {
 		return bike;
@@ -113,9 +102,10 @@ public class Slot {
 		this.bike = bike;
 	}
 
-										
+									
 	
 	
 
 	
 }
+
