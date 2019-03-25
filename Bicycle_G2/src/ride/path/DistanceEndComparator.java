@@ -1,27 +1,21 @@
 package ride.path;
 
-import java.util.Comparator;
-
 import station.Station;
 import tools.Point;
 
-public class DistanceEndComparator implements Comparator<Station> {
-	
-	private Point point;
+public class DistanceEndComparator extends StationComparator {
 	
 	public DistanceEndComparator(Point point) {
-		this.point = point;
+		super(point);
 	}
-	
-	public Point getPoint() { return point; }
-	public void setPoint(Point point) { this.point = point; }
-
-
 
 	@Override
-	public int compare(Station o1, Station o2) {
+	public int compare(Station arg0, Station arg1) {
 		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		double distanceDiff = this.getDistanceDiff(arg0, arg1);
+		res = distanceDiff < 0 && !arg0.isStationFull() ? -1 : distanceDiff > 0 && !arg1.isStationFull() ? 1 : 0;
+		return res;
 	}
 
 }

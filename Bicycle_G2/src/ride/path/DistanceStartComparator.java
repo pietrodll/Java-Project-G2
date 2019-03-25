@@ -1,7 +1,5 @@
 package ride.path;
 
-import java.util.Comparator;
-
 import bike.BikeFactory;
 import station.Station;
 import tools.Point;
@@ -11,24 +9,15 @@ import tools.Point;
  * @author Pietro Dellino
  *
  */
-public class DistanceStartComparator implements Comparator<Station> {
-	
-	private Point point;
-	private int bikeType = 0;
+public class DistanceStartComparator extends StationComparator {
 	
 	public DistanceStartComparator(Point p, int bikeType) {
-		this.point = p;
-		if (bikeType == BikeFactory.ELECTRIC || bikeType == BikeFactory.MECHANIC) {
-			this.bikeType = bikeType;
-		}
+		super(p, bikeType);
 	}
 	
 	public DistanceStartComparator(Point p) {
-		this.point = p;
+		super(p);
 	}
-	
-	public Point getPoint() { return this.point; }
-	public void setPoint(Point p) { this.point = p; }
 
 	/**
 	 * Compares the stations according to their distance to {@code this.point}.
@@ -37,7 +26,7 @@ public class DistanceStartComparator implements Comparator<Station> {
 	@Override
 	public int compare(Station arg0, Station arg1) {
 		int res = 0;
-		double distanceDiff = this.point.distancePoint(arg0.getP()) - this.point.distancePoint(arg1.getP());
+		double distanceDiff = this.getDistanceDiff(arg0, arg1);
 		if (bikeType == 0) {
 			res = distanceDiff < 0 && arg0.hasBikeAvailable() != null ? -1 : distanceDiff > 0 && arg1.hasBikeAvailable() != null ? 1 : 0;
 		} else if (bikeType == BikeFactory.ELECTRIC) {
