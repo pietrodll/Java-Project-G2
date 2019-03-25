@@ -15,7 +15,6 @@ public class PreferPlusStrategy implements PathStrategy {
 	
 	public PreferPlusStrategy() {
 		this.stations = Network.getStations();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -46,7 +45,6 @@ public class PreferPlusStrategy implements PathStrategy {
 		DistanceStartComparator distanceComp = new DistanceStartComparator(start);
 		stations[0] = Collections.min(this.stations, distanceComp);
 		DistanceEndComparator distEndComp = new DistanceEndComparator(end);
-		stations[1] = Collections.min(this.stations, distEndComp);
 		stations[0] = Collections.min(this.stations, distanceComp);
 		Collections.sort(stationsBis, distEndComp);
 		double minDist = end.distancePoint(stationsBis.get(0).getP());
@@ -64,8 +62,20 @@ public class PreferPlusStrategy implements PathStrategy {
 
 	@Override
 	public Station findEndStation(Point start, Point end, Bike bike) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Station> stationsBis = (ArrayList<Station>) this.stations.clone();
+		DistanceEndComparator dec = new DistanceEndComparator(end);
+		Collections.sort(stationsBis, dec);
+		Station station = stationsBis.get(0);
+		double minDist = end.distancePoint(station.getP());
+		for (Station s : stationsBis) {
+			if (s instanceof PlusStation && s.getP().distancePoint(end) <= 1.10*minDist) {
+				station = s;
+				break;
+			} else if (s.getP().distancePoint(end) > 1.10*minDist) {
+				break;
+			}
+		}
+		return station;
 	}
 
 }

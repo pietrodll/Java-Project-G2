@@ -1,5 +1,6 @@
 package ride.path;
 
+import java.awt.SecondaryLoop;
 import java.util.Comparator;
 
 import bike.BikeFactory;
@@ -28,6 +29,12 @@ public abstract class StationComparator implements Comparator<Station> {
 	@Override
 	public abstract int compare(Station arg0, Station arg1);
 	
+	/**
+	 * 
+	 * @param s1 The first {@code Station}
+	 * @param s2 The second {@code Station}
+	 * @return The difference between the distances of the stations to {@code this.point}
+	 */
 	protected double getDistanceDiff(Station s1, Station s2) {
 		return this.point.distancePoint(s1.getP()) - this.point.distancePoint(s2.getP());
 	}
