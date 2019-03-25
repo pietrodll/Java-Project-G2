@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import ride.path.DistanceBasicComparator;
 import station.Station;
 import station.StationFactory;
 import tools.Point;
@@ -19,21 +20,16 @@ import tools.Point;
 class StationComparatorTest {
 	
 	private static Point point;
-	private static Station s1;
-	private static Station s2;
+	private static StationFactory fact;
 
 	/**
 	 * This method creates a network which is used in each test.
 	 * @throws java.lang.Exception
 	 */
 	@BeforeAll
-	void setUp() throws Exception {
+	static void setUp() throws Exception {
 		point = new Point(0, 0);
-		StationFactory fact = new StationFactory();
-		s1 = fact.createStation("Standard", new Point(0, 10));
-		s2 = fact.createStation("Standard", new Point(0, 20));
-		System.out.println(s1);
-		System.out.println(s2);
+		fact = new StationFactory();
 	}
 
 	/**
@@ -41,13 +37,46 @@ class StationComparatorTest {
 	 */
 	@Test
 	void testGetDistanceDiff() {
-		
-		fail("Not yet implemented");
+		DistanceBasicComparator dbc = new DistanceBasicComparator(point);
+		assertAll("Many distance differences tests",
+			() -> {
+				Station s1 = fact.createStation("Standard", new Point(0, 10));
+				Station s2 = fact.createStation("Standard", new Point(0, 20));
+				assertEquals(10, dbc.getDistanceDiff(s2, s1));
+			},
+			() -> {
+				Station s1 = fact.createStation("Standard", new Point(5, 0));
+				Station s2 = fact.createStation("Standard", new Point(10, 0));
+				assertEquals(5, dbc.getDistanceDiff(s2, s1));
+			},
+			() -> {
+				Station s1 = fact.createStation("Standard", new Point(10, 10));
+				Station s2 = fact.createStation("Standard", new Point(20, 20));
+				assertEquals(10*Math.sqrt(2), dbc.getDistanceDiff(s2, s1));
+			}
+		);
 	}
 	
 	@Test
 	void testDistanceBasicComparator() {
-		fail("Not yet implemented");
+		DistanceBasicComparator dbc = new DistanceBasicComparator(point);
+		assertAll(
+			() -> {
+				Station s1 = fact.createStation("Standard", new Point(0, 10));
+				Station s2 = fact.createStation("Standard", new Point(0, 20));
+				assertTrue(dbc.compare(s1, s2) < 0);
+			},
+			() -> {
+				Station s1 = fact.createStation("Standard", new Point(0, 10));
+				Station s2 = fact.createStation("Standard", new Point(0, 10));
+				assertTrue(dbc.compare(s1, s2) == 0);
+			},
+			() -> {
+				Station s1 = fact.createStation("Standard", new Point(0, 30));
+				Station s2 = fact.createStation("Standard", new Point(0, 20));
+				assertTrue(dbc.compare(s1, s2) > 0);
+			}
+		);
 	}
 
 }
