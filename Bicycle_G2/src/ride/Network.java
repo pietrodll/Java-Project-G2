@@ -20,7 +20,7 @@ public class Network implements Serializable {
 	private ArrayList<Station> stations;
 	private ArrayList<Ride> rideHistory;
 	
-	private Network() {
+	public Network() {
 		this.stations = new ArrayList<Station>();
 		this.rideHistory = new ArrayList<Ride>();
 	}
