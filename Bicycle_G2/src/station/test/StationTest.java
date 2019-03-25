@@ -34,11 +34,9 @@ public class StationTest {
 		assertAll(
 				() -> assertEquals(s1.getId()+1, s2.getId()),
 				() -> assertEquals(s1.getId()+2, s3.getId())
-		);
-					
+		);				
 	}
 				
-	
 
 	@Test 
 	void testSamePositionStation() throws TypeStationException, StationSamePositionException {
@@ -59,6 +57,11 @@ public class StationTest {
 		assertTrue(s1.isStationFull());
 	}
 	
+	void testIfNoSlotThenSlotAvailableNull() throws TypeStationException, StationSamePositionException {
+		Point p1 = new Point(3, 10);
+		Station s1 = sf.createStation("Standard", p1);
+		assertEquals(null, s1.availableSlot());
+	}
 	
 
 }
