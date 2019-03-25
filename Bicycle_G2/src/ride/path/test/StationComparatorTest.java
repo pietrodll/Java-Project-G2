@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import ride.path.DistanceBasicComparator;
+import ride.path.DistanceEndComparator;
 import station.Station;
 import station.StationFactory;
 import tools.Point;
@@ -79,4 +80,14 @@ class StationComparatorTest {
 		);
 	}
 
+	@Test
+	void testDistanceEndComparator() {
+		DistanceEndComparator dec = new DistanceEndComparator(point);
+		assertAll(
+			() -> {
+				Station s1 = fact.createStation("Standard", new Point(0, 10));
+				Station s2 = fact.createStation("Standard", new Point(0, 20));
+			}
+		);
+	}
 }
