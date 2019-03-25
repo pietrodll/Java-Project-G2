@@ -11,20 +11,20 @@ public class Date {
 	
 	static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-	public static long computeTime (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException {
-		long timeSpend = 0;
+	public static int computeTime (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException {
+		int timeSpend = 0;
 		if (startTime == null) {
 			System.out.println("Error : The starting date is null");
-			return (Long) null;
+			return (Integer) null;
 		} else if (endTime == null) {
 			System.out.println("Error : The ending date is null");
-			return (Long) null;
+			return (Integer) null;
 		} else if (startTime== null && endTime == null){
 			System.out.println("Error : Both the starting date and the endind date are null");
-			return (Long) null;
+			return (Integer) null;
 		}
 		else {
-			timeSpend = startTime.until (endTime, ChronoUnit.MINUTES);
+			timeSpend = (int) startTime.until (endTime, ChronoUnit.MINUTES);
 			if (timeSpend < 0) {
 				throw new NegativeTimeException(startTime, endTime);
 			}

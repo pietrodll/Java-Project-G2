@@ -3,12 +3,13 @@ package user;
 
 import ride.Itinerary;
 import ride.Ride;
+import tools.NegativeTimeException;
 import tools.Point;
 
 import java.time.LocalDateTime;
 import java.util.*;
-
 import bike.Bike;
+import card.Card;
 
 public class User implements Observer {
 	
@@ -46,12 +47,22 @@ public class User implements Observer {
 		userStat = new UserStat();
 	}
 	
-	public void startOngoingRide (Bike bike, LocalDateTime startRide) {
-		this.ongoingRide = new Ride (bike, this, startRide);
-		
+	//la fonction startOngoingRide est forcément utilsée par la fonction pickUpBike qui vérifie deja si ongoing riede
+	public void startOngoingRide (Bike bike, LocalDateTime startRide, Card card) {
+		this.ongoingRide = new Ride (bike, this, card, startRide);
 	}
- // when finishing a ride you have to add all the user stat
-	public void endOngoingRide
+	
+ // when finishing a ride you have to add all the user stat : time and credit
+	public void endOngoingRide(LocalDateTime endRide) throws NegativeTimeException {
+		int timeRide = ongoingRide.getRideTime();
+		Bike bike = ongoingRide.getBike();
+		Card card = ongoingRide.getCard();
+		ongoingRide.endRide(endRide);
+		float price = bike.ridePrice(card, timeRide);
+		userStat.setNumberRides(userStat.getNumberRides() + 1 );	
+		userStat.setTotalAmount(userStat.getTotalAmount() + price);
+		userStat.setTotalTime(userStat.getTotalTime() + timeRide);
+	}
 	
 	public String getLastName() {
 		return lastName;
@@ -106,11 +117,12 @@ public class User implements Observer {
 		this.userStat = userStat;
 	}
 	
-	/*
+	
 	@Override
 	public void update(boolean isStationFull) {
-		System.out.println("The destination Station does not have any more available slots");
+	/*	System.out.println("The destination Station does not have any more available slots");
 		Itinerary newItinerary = ongoingRide.getItinerary().computePath(ps, bikeType);
 		ongoingRide.setItinerary(newItinerary);
-	}*/
+		*/
+	}
 }

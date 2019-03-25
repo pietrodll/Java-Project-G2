@@ -2,6 +2,7 @@ package card;
 
 import bike.ElectricBike;
 import bike.MechanicBike;
+import user.User;
 
 /**
  * This class represents VLibre Cards.
@@ -9,6 +10,10 @@ import bike.MechanicBike;
  * @author Pietro Dellino
  */
 public class VlibreCard extends Card {
+	
+	public VlibreCard(User user) {
+		super(user);
+	}
 
 	/**
 	 * This method calculates the price of a ride for a user having a {@code VlibreCard} when he uses an {@code ElectricBike}.

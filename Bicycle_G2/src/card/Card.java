@@ -3,6 +3,7 @@ package card;
 import bike.ElectricBike;
 import bike.MechanicBike;
 import user.User;
+import user.UserStat;
 
 /**
  * This abstract class is the basis to create user cards. Each {@code Card} has a unique {@code id} (regardless of the type of the card) and a {@code timeCredit}.
@@ -44,10 +45,14 @@ public abstract class Card implements CardVisitor {
 	}
 	
 	/**
+	 * This method adds credit to the card and updates the total time-credit earned by a user
 	 * @param newCredit the credit to add to the previous timeCredit
 	 */
 	public void addCredit(int newCredit) {
 		this.timeCredit += newCredit;
+		UserStat us = user.getUserStat();
+		double totalTimeCredit = us.getTotalCreditEarned();
+		us.setTotalCreditEarned(totalTimeCredit + newCredit);
 	}
 	
 	/**

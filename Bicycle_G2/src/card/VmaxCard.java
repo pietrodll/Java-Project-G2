@@ -3,8 +3,13 @@ package card;
 import bike.Bike;
 import bike.ElectricBike;
 import bike.MechanicBike;
+import user.User;
 
 public class VmaxCard extends Card {
+
+	public VmaxCard(User user) {
+		super(user);
+	}
 
 	@Override
 	public float computeRidePrice(ElectricBike bike, int rideTime) {
