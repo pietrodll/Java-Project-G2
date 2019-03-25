@@ -3,12 +3,13 @@ package user;
 public class UserStat {
 	
 	private double numberRides;
-	private double totalTime;
-	private double totalAmount;
-	private double totalCreditEarned;
+	private double totalTime =0;
+	private double totalAmount=0;
+	private double totalCreditEarned=0;
 	
 	public UserStat() {
 		super();
+		
 	}
 
 	public double getNumberRides() {

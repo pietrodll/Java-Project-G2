@@ -2,23 +2,33 @@ package station;
 
 import java.time.LocalDateTime;
 
+import bike.Bike;
+
 public class SlotState {
 	
-	// il y a le problème de l'initialisation et des getters and setters de isOnline et de bikeType. Il faut voir comment on ajoute un nouveau SlotState
 
 	private LocalDateTime startTime;
 	private LocalDateTime endTime;
 	private boolean isOnline;
-	private int bikeType;
+	private Bike bike;
 	
-	public SlotState(LocalDateTime startTime, LocalDateTime endTime, boolean isOnline, int bikeType) {
+	public SlotState(LocalDateTime startTime, boolean isOnline, Bike bike) {
+		super();
+		this.startTime = startTime;
+		this.isOnline = isOnline;
+		this.bike = bike;
+	}
+	
+	public SlotState(LocalDateTime startTime, LocalDateTime endTime, boolean isOnline, Bike bike) {
 		super();
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.isOnline = isOnline;
-		this.bikeType = bikeType;
+		this.bike = bike;
 	}
-
+	
+// Il faut voir comment on crée le premier SlotState
+	
 	public LocalDateTime getStartTime() {
 		return startTime;
 	}
@@ -39,21 +49,15 @@ public class SlotState {
 		return isOnline;
 	}
 
-	public int getBikeType() {
-		return bikeType;
+	public Bike getBike() {
+		return bike;
 	}
 
-	// no setters for the attributes that are already in slot
-	
-	/**
-	 * This method returns whether or not a slot is occupied, notice that if the slot is out of order it is considered Occupied
-	 * @return
-	 */
 	public boolean getisOccupied() {
 		if (isOnline == false) {
 			return true;
 		}
-		else if (getBikeType() == Slot.ELECTRIC || getBikeType()==Slot.MECHANIC) {
+		else if ( bike != null ) {
 			return true;
 		}
 		else {return false;}

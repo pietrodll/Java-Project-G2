@@ -30,6 +30,7 @@ public abstract class Station {
 	public Station(Point p) {
 		this.p = p;
 		id = StationIDGenerator.getInstance().getNextStationID();
+		this.parkingSlots = new ArrayList<Slot>();
 	}
 
 
@@ -111,7 +112,7 @@ public abstract class Station {
 			if (s != null) {
 				Bike b = s.getBike();
 				user.startOngoingRide(b, pickUpTime, card);
-				s.setBike(null);
+				s.setBike(null, pickUpTime);
 				this.setTotalRents(getTotalRents()+1);
 			} else { System.out.println("Could not pick up a bike from Station" + this + ", no bike available");
 			}
@@ -126,7 +127,7 @@ public abstract class Station {
 			if (s != null) {
 				Bike b = s.getBike();
 				user.startOngoingRide(b, pickUpTime, card);
-				s.setBike(null);
+				s.setBike(null, pickUpTime);
 				this.setTotalRents(getTotalRents()+1);
 			}else { System.out.println("Could not pick up an electric bike from Station" + this + ", no electric bike available");
 			}
@@ -141,7 +142,7 @@ public abstract class Station {
 			if (s != null) {
 				Bike b = s.getBike();
 				user.startOngoingRide(b, pickUpTime, card);
-				s.setBike(null);
+				s.setBike(null, pickUpTime);
 				this.setTotalRents(getTotalRents()+1);
 			}else { System.out.println("Could not pick up a mechanic bike from Station" + this + ", no mechanic bike available");
 			}
@@ -154,7 +155,7 @@ public abstract class Station {
 		if (user.getOngoingRide() != null) {
 			if (this.isStationFull() == false) {
 				Slot s = availableSlot();
-				s.setBike(user.getOngoingRide().getBike());
+				s.setBike(user.getOngoingRide().getBike(), dropTime);
 				this.setTotalReturns(getTotalReturns()+1);
 				user.endOngoingRide(dropTime);
 			}else {System.out.println("Could not drop bike because Station" + this + "is full");

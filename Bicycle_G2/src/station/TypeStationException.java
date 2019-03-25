@@ -11,7 +11,6 @@ public class TypeStationException extends Exception {
 		this.type = type;
 	}
 
-
 	public String getType() {
 		return type;
 	}

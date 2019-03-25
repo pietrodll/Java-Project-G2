@@ -23,12 +23,13 @@ public class Slot {
 	//faire ID générator qui dépend de la station les trois derniers chiffres sont id du slot et l'ID de la station fois 1000
 	//il y a un pb avec l'IDGenerator
 	
-	/*public Slot//(Station s) {
+	public Slot(Station s) {
 		this.s = s;
-		id = s.getId()*1000 + SlotIDGenerator.getInstance().getNextSlotID();
+		//id = s.getId()*1000 + SlotIDGenerator.getInstance().getNextSlotID();
 		isOnline = false;
+		slotHistory = new ArrayList<SlotState>();
 	}
-	 */
+	 
 	
 	public int indexSlotState (LocalDateTime t) {
 		int index = -1;
@@ -74,16 +75,30 @@ public class Slot {
 		return isOnline;
 	}
 
-	public void setOnline(boolean isOnline) {
-		this.isOnline = isOnline;
+	public void setOnline(boolean isOnline, LocalDateTime changeTime) {
+		if (isOnline != this.isOnline) {
+			this.isOnline = isOnline;
+			SlotState lastState = slotHistory.get(slotHistory.size()-1);
+			lastState.setEndTime (changeTime);
+			SlotState newState = new SlotState (changeTime, isOnline, lastState.getBike());	
+			slotHistory.add(newState);
+		}
 	}
+	
+	public void setBike(Bike bike, LocalDateTime changeTime) {
+		if (bike != this.bike) {
+			this.bike = bike;
+			SlotState lastState = slotHistory.get(slotHistory.size()-1);
+			lastState.setEndTime(changeTime);
+			SlotState newState = new SlotState (changeTime, lastState.isOnline(), bike);
+			slotHistory.add(newState);
+			
+		}
+	}
+	
 
 	public ArrayList<SlotState> getSlotHistory() {
 		return slotHistory;
-	}
-
-	public void setSlotHistory(ArrayList<SlotState> slotHistory) {
-		this.slotHistory = slotHistory;
 	}
 
 	public Station getS() {
@@ -99,9 +114,6 @@ public class Slot {
 		return bike;
 	}
 
-	public void setBike(Bike bike) {
-		this.bike = bike;
-	}
 
 									
 	

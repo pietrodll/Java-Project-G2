@@ -2,6 +2,7 @@ package card.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import bike.ElectricBike;
@@ -9,13 +10,21 @@ import bike.MechanicBike;
 import card.InsufficientCreditException;
 import card.VlibreCard;
 import card.VmaxCard;
+import user.User;
 
 class CardTest {
+	
+	private static User u1;
+	
+	@BeforeAll
+	static void setup() {
+		u1 = new User("Paul", "Legrand");
+	}
 
 	@Test
 	void testComputeRidePriceElectricBikeInt() {
-		VlibreCard VLibre = new VlibreCard();
-		VmaxCard VMax = new VmaxCard();
+		VlibreCard VLibre = new VlibreCard(u1);
+		VmaxCard VMax = new VmaxCard(u1);
 		ElectricBike bike = new ElectricBike();
 		assertAll("Ride prices for electric bikes",
 			() -> {
@@ -41,8 +50,8 @@ class CardTest {
 
 	@Test
 	void testComputeRidePriceMechanicBikeInt() {
-		VlibreCard VLibre = new VlibreCard();
-		VmaxCard VMax = new VmaxCard();
+		VlibreCard VLibre = new VlibreCard(u1);
+		VmaxCard VMax = new VmaxCard(u1);
 		MechanicBike bike = new MechanicBike();
 		assertAll("Ride prices for mechanic bikes",
 			() -> {
@@ -68,15 +77,15 @@ class CardTest {
 
 	@Test
 	void testSetTimeCredit() {
-		VlibreCard Vlibre = new VlibreCard();
+		VlibreCard Vlibre = new VlibreCard(u1);
 		Vlibre.setTimeCredit(10);
 		assertEquals(10, Vlibre.getTimeCredit());
 	}
 
 	@Test
 	void testAddCredit() {
-		VlibreCard vlibre = new VlibreCard();
-		VmaxCard vmax = new VmaxCard();
+		VlibreCard vlibre = new VlibreCard(u1);
+		VmaxCard vmax = new VmaxCard(u1);
 		vlibre.addCredit(10);
 		vmax.addCredit(10);
 		assertAll("Adding Time Credit",
@@ -87,8 +96,8 @@ class CardTest {
 
 	@Test
 	void testUseCredit() {
-		VlibreCard vlibre = new VlibreCard();
-		VmaxCard vmax = new VmaxCard();
+		VlibreCard vlibre = new VlibreCard(u1);
+		VmaxCard vmax = new VmaxCard(u1);
 		vlibre.addCredit(10);
 		vmax.addCredit(10);
 		assertAll("Using time credit",
