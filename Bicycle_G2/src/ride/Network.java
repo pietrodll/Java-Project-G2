@@ -16,7 +16,7 @@ public class Network implements Serializable {
 	private static final long serialVersionUID = -3127825538872149011L;
 	
 
-	private static Network network = null;
+	// private static Network network = null;
 	private ArrayList<Station> stations;
 	private ArrayList<Ride> rideHistory;
 	
@@ -25,14 +25,20 @@ public class Network implements Serializable {
 		this.rideHistory = new ArrayList<Ride>();
 	}
 	
+	/*
+	
 	public static synchronized Network getNetwork() {
 		if (network == null) { network = new Network(); }
 		return network;
 	}
 	
+	public Object readResolve() throws ObjectStreamException { return network; }
+	
+	*/
+	
 	public ArrayList<Station> getStations() { return stations; }
 	
-	public Object readResolve() throws ObjectStreamException { return network; }
+	
 	
 	public void addStation(Station station) {
 		this.stations.add(station);

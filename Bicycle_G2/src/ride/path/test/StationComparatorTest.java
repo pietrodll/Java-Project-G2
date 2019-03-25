@@ -6,6 +6,7 @@ package ride.path.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ride.Network;
@@ -28,8 +29,8 @@ class StationComparatorTest {
 	 * This method creates a network which is used in each test.
 	 * @throws java.lang.Exception
 	 */
-	@BeforeAll
-	static void setUp() throws Exception {
+	@BeforeEach
+	void setUp() throws Exception {
 		point = new Point(0, 0);
 		fact = new StationFactory(Network.getNetwork());
 	}
@@ -70,7 +71,7 @@ class StationComparatorTest {
 			},
 			() -> {
 				Station s1 = fact.createStation("Standard", new Point(0, 10));
-				Station s2 = fact.createStation("Standard", new Point(0, 10));
+				Station s2 = fact.createStation("Standard", new Point(0, -10));
 				assertTrue(dbc.compare(s1, s2) == 0);
 			},
 			() -> {
