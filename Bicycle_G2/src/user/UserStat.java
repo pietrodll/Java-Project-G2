@@ -3,45 +3,34 @@ package user;
 public class UserStat {
 	
 	private double numberRides;
-	private double totalTime =0;
-	private double totalAmount=0;
-	private double totalCreditEarned=0;
+	private double totalTime = 0;
+	private double totalAmount = 0;
+	private double totalCreditEarned = 0;
 	
-	public UserStat() {
-		super();
-		
+	public UserStat() { super(); }
+
+	public double getNumberRides() { return numberRides; }
+
+	public void addRide() {
+		this.numberRides++;
 	}
 
-	public double getNumberRides() {
-		return numberRides;
+	public double getTotalTime() { return totalTime; }
+
+	public void addTime(double time) {
+		this.totalTime += time;
 	}
 
-	public void setNumberRides(double numberRides) {
-		this.numberRides = numberRides;
+	public double getTotalAmount() { return totalAmount; }
+
+	public void addAmount(double amount) {
+		this.totalAmount += amount;
 	}
 
-	public double getTotalTime() {
-		return totalTime;
-	}
+	public double getTotalCreditEarned() { return totalCreditEarned; }
 
-	public void setTotalTime(double totalTime) {
-		this.totalTime = totalTime;
-	}
-
-	public double getTotalAmount() {
-		return totalAmount;
-	}
-
-	public void setTotalAmount(double totalAmount) {
-		this.totalAmount = totalAmount;
-	}
-
-	public double getTotalCreditEarned() {
-		return totalCreditEarned;
-	}
-
-	public void setTotalCreditEarned(double totalCreditEarned) {
-		this.totalCreditEarned = totalCreditEarned;
+	public void addCreditEarned(double creditEarned) {
+		this.totalCreditEarned += creditEarned;
 	}
 	
 	

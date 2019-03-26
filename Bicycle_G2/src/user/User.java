@@ -23,7 +23,6 @@ public class User implements Observer {
 	private UserStat userStat;
 	
 	
-	
 	public User(String lastName, String firstName) {
 		super();
 		this.lastName = lastName;
@@ -33,7 +32,6 @@ public class User implements Observer {
 		ongoingRide = null;
 		itinerary = null;
 		userStat = new UserStat();
-	
 	}
 	
 	public User(String lastName, String firstName, Point position) {
@@ -60,63 +58,31 @@ public class User implements Observer {
 		Card card = ongoingRide.getCard();
 		ongoingRide.endRide(endRide);
 		float price = bike.ridePrice(card, timeRide);
-		userStat.setNumberRides(userStat.getNumberRides() + 1 );	
-		userStat.setTotalAmount(userStat.getTotalAmount() + price);
-		userStat.setTotalTime(userStat.getTotalTime() + timeRide);
+		userStat.addRide();
+		userStat.addAmount(price);
+		userStat.addTime(timeRide);
 	}
 	
-	public String getLastName() {
-		return lastName;
-	}
+	public String getLastName() { return lastName; }
+	public void setLastName(String lastName) { this.lastName = lastName; }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+	public String getFirstName() { return firstName; }
+	public void setFirstName(String firstName) { this.firstName = firstName; }
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public Point getPosition() {
-		return position;
-	}
-
-	public void setPosition(Point position) {
-		this.position = position;
-	}
+	public Point getPosition() { return position; }
+	public void setPosition(Point position) { this.position = position; }
 
 
-	public Ride getOngoingRide() {
-		return ongoingRide;
-	}
+	public Ride getOngoingRide() { return ongoingRide; }
+	public void setOngoingRide(Ride ongoingRide) { this.ongoingRide = ongoingRide; }
 
-	public void setOngoingRide(Ride ongoingRide) {
-		this.ongoingRide = ongoingRide;
-	}
+	public Itinerary getItinerary() { return itinerary; }
+	public void setItinerary(Itinerary itinerary) { this.itinerary = itinerary; }
 
-	public Itinerary getItinerary() {
-		return itinerary;
-	}
+	public int getId() { return id; }
 
-	public void setItinerary(Itinerary itinerary) {
-		this.itinerary = itinerary;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public UserStat getUserStat() {
-		return userStat;
-	}
-
-	public void setUserStat(UserStat userStat) {
-		this.userStat = userStat;
-	}
+	public UserStat getUserStat() { return userStat; }
+	public void setUserStat(UserStat userStat) { this.userStat = userStat; }
 	
 	
 	@Override

@@ -22,7 +22,7 @@ public class Date {
 	
 
 	/**
-	 * This method calculates the time between two LocalDateTime objects, and returns an {@code int} number of minutes
+	 * This method calculates the time between two {@code LocalDateTime} objects, and returns an {@code int} number of minutes
 	 * 
 	 * @param startTime ({@code LocalDateTime})
 	 * @param endTime ({@code LocalDateTime})
