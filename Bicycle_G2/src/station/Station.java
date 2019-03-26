@@ -178,6 +178,11 @@ public abstract class Station {
 	public void addSlot() {
 		this.parkingSlots.add(new Slot(this)); }
 	
+	public void addSlot(int n) {
+		for (int i = 0; i<n; i++) {
+			this.parkingSlots.add(new Slot(this)); }
+	}
+	
 	public void removeSlot (Slot slot) {
 		for (Slot s : parkingSlots) {
 			if (s.equals(slot)) {
