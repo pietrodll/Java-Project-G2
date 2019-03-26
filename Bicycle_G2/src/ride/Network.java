@@ -22,11 +22,19 @@ public class Network implements Serializable {
 	private ArrayList<Station> stations;
 	private ArrayList<Card> cards;
 	private ArrayList<Ride> rideHistory;
+	private String name;
 	
 	public Network() {
 		this.stations = new ArrayList<Station>();
 		this.rideHistory = new ArrayList<Ride>();
 		this.cards = new ArrayList<Card>();
+	}
+	
+	public Network(String name) {
+		this.stations = new ArrayList<Station>();
+		this.rideHistory = new ArrayList<Ride>();
+		this.cards = new ArrayList<Card>();
+		this.name = name;
 	}
 	
 	/*
