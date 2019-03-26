@@ -38,5 +38,17 @@ public abstract class StationComparator implements Comparator<Station> {
 	public double getDistanceDiff(Station s1, Station s2) {
 		return this.point.distancePoint(s1.getP()) - this.point.distancePoint(s2.getP());
 	}
+	
+	public static int availabilityComparator(double distanceDiff, boolean available1, boolean available2) {
+		int res = 0;
+		if (distanceDiff < 0) {
+			res = available1 ? -1 : available2 ? 1 : 0;
+		} else if (distanceDiff > 0) {
+			res = available2 ? 1 : available1 ? -1 : 0;
+		} else {
+			res = !available1 ? (!available2 ? 0 : 1) : (available2 ? 0 : -1);
+		}
+		return res;
+	}
 
 }

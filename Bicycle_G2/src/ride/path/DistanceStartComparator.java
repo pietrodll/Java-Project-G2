@@ -28,11 +28,11 @@ public class DistanceStartComparator extends StationComparator {
 		int res = 0;
 		double distanceDiff = this.getDistanceDiff(arg0, arg1);
 		if (bikeType == 0) {
-			res = distanceDiff < 0 && arg0.hasBikeAvailable() != null ? -1 : distanceDiff > 0 && arg1.hasBikeAvailable() != null ? 1 : 0;
+			res = StationComparator.availabilityComparator(distanceDiff, arg0.hasBikeAvailable() != null, arg1.hasBikeAvailable() != null);
 		} else if (bikeType == BikeFactory.ELECTRIC) {
-			res = distanceDiff < 0 && arg0.hasElectricBikeAvailable() != null ? -1 : distanceDiff > 0 && arg1.hasElectricBikeAvailable() != null ? 1 : 0;
+			res = StationComparator.availabilityComparator(distanceDiff, arg0.hasElectricBikeAvailable() != null, arg1.hasElectricBikeAvailable() != null);
 		} else {
-			res = distanceDiff < 0 && arg0.hasMechanicBikeAvailable() != null ? -1 : distanceDiff > 0 && arg1.hasMechanicBikeAvailable() != null ? 1 : 0;
+			res = StationComparator.availabilityComparator(distanceDiff, arg0.hasMechanicBikeAvailable() != null, arg1.hasMechanicBikeAvailable() != null);
 		}
 		return res;
 	}

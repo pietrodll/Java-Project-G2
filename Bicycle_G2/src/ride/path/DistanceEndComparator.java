@@ -11,7 +11,7 @@ public class DistanceEndComparator extends StationComparator {
 	public int compare(Station arg0, Station arg1) {
 		int res = 0;
 		double distanceDiff = this.getDistanceDiff(arg0, arg1);
-		res = distanceDiff < 0 && !arg0.isStationFull() ? -1 : distanceDiff > 0 && !arg1.isStationFull() ? 1 : 0;
+		res = StationComparator.availabilityComparator(distanceDiff, !arg0.isStationFull(), !arg1.isStationFull());
 		return res;
 	}
 

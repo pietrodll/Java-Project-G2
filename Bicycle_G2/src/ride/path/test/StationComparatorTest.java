@@ -5,15 +5,21 @@ package ride.path.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import bike.Bike;
+import bike.BikeFactory;
+import bike.ElectricBike;
+import bike.MechanicBike;
 import ride.Network;
 import ride.path.DistanceBasicComparator;
 import ride.path.DistanceEndComparator;
+import ride.path.DistanceStartComparator;
 import station.Station;
 import station.Slot;
 import station.StationFactory;
@@ -93,14 +99,66 @@ class StationComparatorTest {
 		Station s1 = fact.createStation("Standard", new Point(0, 10));
 		Station s2 = fact.createStation("Standard", new Point(0, 20));
 		assertAll(
+			() -> assertEquals(0, dec.compare(s1, s2), "Comparing two stations with no free slot"),
 			() -> {
-				assertEquals(0, dec.compare(s1, s2), "Comparing two stations with no free slot");
+				s2.addSlot(2);
+				assertTrue(dec.compare(s1, s2) > 0, "s1 closer but has no available slot");
 			},
 			() -> {
-				ArrayList<Slot> parkingSlots = new ArrayList<Slot>();
-				parkingSlots.add(new Slot(s1));
-				parkingSlots.add(new Slot(s1));
-				s1.setParkingSlots(parkingSlots);
+				s1.addSlot();
+				assertTrue(dec.compare(s1, s2) < 0, "s1 closer and both have available slots");
+			}
+		);
+	}
+	
+	@Test
+	void testDistanceStartComparator() throws TypeStationException, StationSamePositionException {
+		Station s1 = fact.createStation("Standard", new Point(0, 10));
+		Station s2 = fact.createStation("Standard", new Point(0, 20));
+		assertAll(
+			() -> {
+				DistanceStartComparator dsc = new DistanceStartComparator(point);
+				assertAll("Distance Start Comparator with no bikeType",
+					() -> assertEquals(0, dsc.compare(s1, s2), "Comparing stations with no slot"),
+					() -> {
+						s1.addSlot();
+						s2.addSlot();
+						Bike b2 = new ElectricBike();
+						s2.getParkingSlots().get(0).setBike(b2, LocalDateTime.of(2012, 12, 21, 22, 3));
+						assertTrue(dsc.compare(s1, s2) > 0, "s1 is closer but has no bike available");
+					},
+					() -> {
+						Bike b1 = new MechanicBike();
+						s1.getParkingSlots().get(0).setBike(b1, LocalDateTime.of(2012, 12, 21, 22, 5));
+						assertTrue(dsc.compare(s1, s2) > 0, "s1 is closer and both have bikes");
+					}
+				);
+			},
+			() -> {
+				DistanceStartComparator dscE = new DistanceStartComparator(point, BikeFactory.ELECTRIC);
+				assertAll("Distance Start Comparator with ElectricBike",
+						() -> assertEquals(0, dscE.compare(s1, s2), "Comparing stations with no slot"),
+						() -> {
+							s1.addSlot();
+							s2.addSlot();
+							Bike b2 = new ElectricBike();
+							s2.getParkingSlots().get(0).setBike(b2, LocalDateTime.of(2012, 12, 21, 22, 3));
+							assertTrue(dscE.compare(s1, s2) > 0, "s1 is closer but has no bike available");
+						},
+						() -> {
+							Bike b1 = new MechanicBike();
+							s1.getParkingSlots().get(0).setBike(b1, LocalDateTime.of(2012, 12, 21, 22, 5));
+							assertTrue(dscE.compare(s1, s2) > 0, "s1 is closer but has MechanicBike instead of ElectricBike");
+						},
+						() -> {
+							Bike b1 = new MechanicBike();
+							s1.getParkingSlots().get(0).setBike(b1, LocalDateTime.of(2012, 12, 21, 22, 5));
+							assertTrue(dscE.compare(s1, s2) > 0, "s1 is closer but has MechanicBike instead of ElectricBike");
+						}
+					);
+			},
+			() -> {
+				DistanceStartComparator dscM = new DistanceStartComparator(point, BikeFactory.MECHANIC);
 			}
 		);
 	}
