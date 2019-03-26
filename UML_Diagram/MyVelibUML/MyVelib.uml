@@ -368,9 +368,73 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_cYIeYE9YEem8EYOBggYCvQ" name="Itinerary"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_gFp5AE9YEem8EYOBggYCvQ" name="user">
-    <packagedElement xmi:type="uml:Class" xmi:id="_hMFVkE9YEem8EYOBggYCvQ" name="User"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_hMFVkE9YEem8EYOBggYCvQ" name="User">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_KTxo0E-fEem8EYOBggYCvQ" name="firstName" visibility="private" aggregation="shared">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_S21PAE-fEem8EYOBggYCvQ" name="lastName" visibility="private" aggregation="shared">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_WCwYcE-fEem8EYOBggYCvQ" name="itinerary" visibility="private" type="_cYIeYE9YEem8EYOBggYCvQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_aXe9AE-fEem8EYOBggYCvQ" name="ongoingRide" visibility="private" type="_bZ0cAE9YEem8EYOBggYCvQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_f6D0wE-fEem8EYOBggYCvQ" name="position" visibility="private" type="_tVy9YEfZEemzKf38hXMYDg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_j5SqcE-fEem8EYOBggYCvQ" name="userStat" visibility="private" type="_izTLAE9YEem8EYOBggYCvQ"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rgByUE-fEem8EYOBggYCvQ" name="getFirstName">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_uutU0E-fEem8EYOBggYCvQ" name="firstName" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_y-g9IE-fEem8EYOBggYCvQ" name="getLastName">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_y-g9IU-fEem8EYOBggYCvQ" name="firstName" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_3T7eME-fEem8EYOBggYCvQ" name="setFirstName">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_3T7eMU-fEem8EYOBggYCvQ" name="firstName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_6kNjME-fEem8EYOBggYCvQ" name="setLastName">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_6kNjMU-fEem8EYOBggYCvQ" name="firstName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_94W0gE-fEem8EYOBggYCvQ" name="getId">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_94W0gU-fEem8EYOBggYCvQ" name="id" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_HRmb0E-gEem8EYOBggYCvQ" name="getItinerary">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_HRmb0U-gEem8EYOBggYCvQ" name="itinerary" type="_cYIeYE9YEem8EYOBggYCvQ" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_QAJgUE-gEem8EYOBggYCvQ" name="setItinerary">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_QAJgUU-gEem8EYOBggYCvQ" name="itinerary" type="_cYIeYE9YEem8EYOBggYCvQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_o_B_wE-gEem8EYOBggYCvQ" name="getOngoingRide">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_o_B_wU-gEem8EYOBggYCvQ" name="ride" type="_bZ0cAE9YEem8EYOBggYCvQ" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_tv34kE-gEem8EYOBggYCvQ" name="setOngoingRide">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_tv34kU-gEem8EYOBggYCvQ" name="ride" type="_bZ0cAE9YEem8EYOBggYCvQ"/>
+      </ownedOperation>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_izTLAE9YEem8EYOBggYCvQ" name="UserStat"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_kQ7moE9YEem8EYOBggYCvQ" name="UserIDGenerator"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_-Ev8oE-dEem8EYOBggYCvQ" name="Observer">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_bZ__YE-eEem8EYOBggYCvQ" name="update">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_m0aNME-eEem8EYOBggYCvQ" name="isStationFull">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="__jhnwE-dEem8EYOBggYCvQ" name="Observable">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Fwh8kE-eEem8EYOBggYCvQ" name="notifyObservers"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_IbvloE-eEem8EYOBggYCvQ" name="registerObserver" concurrency="guarded">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_OOZgwE-eEem8EYOBggYCvQ" name="observer" type="_-Ev8oE-dEem8EYOBggYCvQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_PXdakE-eEem8EYOBggYCvQ" name="removeObserver" concurrency="guarded">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_PXdakU-eEem8EYOBggYCvQ" name="observer" type="_-Ev8oE-dEem8EYOBggYCvQ"/>
+      </ownedOperation>
+    </packagedElement>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_sOKlEEZnEemNTJH6NZhuqA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sONBUEZnEemNTJH6NZhuqA" source="http://www.eclipse.org/uml2/2.0.0/UML">
