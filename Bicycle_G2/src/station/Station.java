@@ -32,20 +32,21 @@ public abstract class Station {
 		this.p = p;
 		id = StationIDGenerator.getInstance().getNextStationID();
 		this.parkingSlots = new ArrayList<Slot>();
+		this.isOnline = true;
 	}
 
 
-	public int getRateOccupation(LocalDateTime startTime, LocalDateTime endTime) throws NoSlotStateAtDateException{
-		int occupationRate = -1;
+	public double getRateOccupation(LocalDateTime startTime, LocalDateTime endTime) throws NoSlotStateAtDateException{
+		double occupationRate = -1;
 		try {
 			int totalOccupationTime = 0;
-			long delta = Date.computeTime (startTime, endTime);
+			int delta = Date.computeTime (startTime, endTime);
 			int N = parkingSlots.size();
 			for (Slot slot : parkingSlots) {
-				long time = slot.computeOccupationTime(startTime, endTime);
+				int time = slot.computeOccupationTime(startTime, endTime);
 				totalOccupationTime =(int) + time;
 			}
-			occupationRate = (int) (totalOccupationTime / (delta * N));
+			occupationRate = (double) (totalOccupationTime / (delta * N));
 		} catch (NegativeTimeException e) {
 			System.out.println("Error : Could not calculate rate Occupation");
 		}
@@ -54,6 +55,7 @@ public abstract class Station {
 	
 	
 	public boolean isStationFull() {
+		if (this.isOnline==false) {return true;}
 		for (Slot s : parkingSlots) {
 			if (!s.getisOccupied()) {
 				return false;
@@ -63,18 +65,22 @@ public abstract class Station {
 	}
 	
 	public Slot availableSlot() {
-		for (Slot s : parkingSlots) {
-			if (s.getisOccupied() == false) {
-				return s;
+		if (this.isOnline) {
+			for (Slot s : parkingSlots) {
+				if (s.getisOccupied() == false) {
+					return s;
+				}
 			}
 		}
 		return null;
 	}
 	
 	public Slot hasBikeAvailable() {
-		for (Slot s : parkingSlots) {
-			if (s.isOnline() == true && s.getBike() != null) {
-				return s;
+		if (this.isOnline) {
+			for (Slot s : parkingSlots) {
+				if (s.isOnline() == true && s.getBike() != null) {
+					return s;
+				}
 			}
 		}
 		return null;
@@ -83,84 +89,101 @@ public abstract class Station {
 	 * Allows to look for a specific bike type
 	 * @param type
 	 * @return
-	 */
+	 */							
 	public Slot hasElectricBikeAvailable() {
-		for (Slot s : parkingSlots) {
-			if (s.isOnline() == true && s.getBike() instanceof ElectricBike);
-				return s;
+		if (this.isOnline) {
+			for (Slot s : parkingSlots) {
+				if (s.isOnline() && s.getBike() instanceof ElectricBike) {
+					return s;
+				}
 			}
+		}
 		return null;
 	}
 	
 	public Slot hasMechanicBikeAvailable() {
-		for (Slot s : parkingSlots) {
-			if (s.isOnline() == true && s.getBike() instanceof MechanicBike);
-				return s;
+		if (this.isOnline) {
+			for (Slot s : parkingSlots) {
+				if (s.isOnline() && s.getBike() instanceof MechanicBike) {
+					return s;
+				}
 			}
+		}
 		return null;
 	}
 
 	
 	public User identifyUser (Card card) {
-		return card.getUser();
+		if (this.isOnline) {
+			return card.getUser();
+		}
+		else {return null;}
 	}
 	
 	public synchronized void pickUpBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException {
-		User user = identifyUser (card);
-		if (user.getOngoingRide() == null) {
-			Slot s = hasBikeAvailable();
-			if (s != null) {
-				Bike b = s.getBike();
-				user.startOngoingRide(this.net, b, pickUpTime, card);
-				s.setBike(null, pickUpTime);
-				this.setTotalRents(getTotalRents()+1);
-			} else { System.out.println("Could not pick up a bike from Station" + this + ", no bike available");
+		if (this.isOnline) {
+			User user = identifyUser (card);
+			if (user.getOngoingRide() == null) {
+				Slot s = hasBikeAvailable();
+				if (s != null) {
+					Bike b = s.getBike();
+					user.startOngoingRide(this.net, b, pickUpTime, card);
+					s.setBike(null, pickUpTime);
+					this.setTotalRents(getTotalRents()+1);
+				} else { System.out.println("Could not pick up a bike from Station" + this + ", no bike available");
+				}
+			} else {System.out.println("Could not pick up a bike because there is already an ongoing Ride ");	
 			}
-		} else {System.out.println("Could not pick up a bike because there is already an ongoing Ride ");	
 		}
 	}
 	
 	public synchronized void pickUpElectricBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException {
-		User user = identifyUser (card);
-		if (user.getOngoingRide() == null) {
-			Slot s = hasElectricBikeAvailable();
-			if (s != null) {
-				Bike b = s.getBike();
-				user.startOngoingRide(this.net, b, pickUpTime, card);
-				s.setBike(null, pickUpTime);
-				this.setTotalRents(getTotalRents()+1);
-			}else { System.out.println("Could not pick up an electric bike from Station" + this + ", no electric bike available");
+		if (this.isOnline) {
+			User user = identifyUser (card);
+			if (user.getOngoingRide() == null) {
+				Slot s = hasElectricBikeAvailable();
+				if (s != null) {
+					Bike b = s.getBike();
+					user.startOngoingRide(this.net, b, pickUpTime, card);
+					s.setBike(null, pickUpTime);
+					this.setTotalRents(getTotalRents()+1);
+				}else { System.out.println("Could not pick up an electric bike from Station" + this + ", no electric bike available");
+				}
+			} else {System.out.println("Could not pick up a bike because there is already an ongoing Ride ");	
 			}
-		} else {System.out.println("Could not pick up a bike because there is already an ongoing Ride ");	
 		}
 	}
 	
 	public synchronized void pickUpMechanicBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException {
-		User user = identifyUser (card);
-		if (user.getOngoingRide() == null) {
-			Slot s = hasMechanicBikeAvailable();
-			if (s != null) {
-				Bike b = s.getBike();
-				user.startOngoingRide(this.net, b, pickUpTime, card);
-				s.setBike(null, pickUpTime);
-				this.setTotalRents(getTotalRents()+1);
-			}else { System.out.println("Could not pick up a mechanic bike from Station" + this + ", no mechanic bike available");
+		if (this.isOnline) {
+			User user = identifyUser (card);
+			if (user.getOngoingRide() == null) {
+				Slot s = hasMechanicBikeAvailable();
+				if (s != null) {
+					Bike b = s.getBike();
+					user.startOngoingRide(this.net, b, pickUpTime, card);
+					s.setBike(null, pickUpTime);
+					this.setTotalRents(getTotalRents()+1);
+				}else { System.out.println("Could not pick up a mechanic bike from Station" + this + ", no mechanic bike available");
+				}
+			} else {System.out.println("Could not pick up a bike because there is already an ongoing Ride ");	
 			}
-		} else {System.out.println("Could not pick up a bike because there is already an ongoing Ride ");	
 		}
 	}
 	
 	public synchronized void dropBike (Card card, LocalDateTime dropTime) throws NegativeTimeException {
-		User user = identifyUser (card);
-		if (user.getOngoingRide() != null) {
-			if (this.isStationFull() == false) {
-				Slot s = availableSlot();
-				s.setBike(user.getOngoingRide().getBike(), dropTime);
-				this.setTotalReturns(getTotalReturns()+1);
-				user.endOngoingRide(dropTime);
-			}else {System.out.println("Could not drop bike because Station" + this + "is full");
+		if (this.isOnline) {	
+			User user = identifyUser (card);
+			if (user.getOngoingRide() != null) {
+				if (this.isStationFull() == false) {
+					Slot s = availableSlot();
+					s.setBike(user.getOngoingRide().getBike(), dropTime);
+					this.setTotalReturns(getTotalReturns()+1);
+					user.endOngoingRide(dropTime);
+				}else {System.out.println("Could not drop bike because Station" + this + "is full");
+				}
+			} else {System.out.println("Could not drop bike because there is no Ongoing Ride");}
 			}
-		} else {System.out.println("Could not drop bike because there is no Ongoing Ride");}
 	}
 	
 	// faire les méthodes pour quand une station tombe en panne
@@ -208,15 +231,6 @@ public abstract class Station {
 	public int getTotalOperations() { return totalOperations; }
 	
 	public int getId() { return id; }
-	
-	public static void main(String[] args) {
-		Bike b = new ElectricBike();
-		b = null;
-		if (b instanceof ElectricBike) {
-			System.out.println("yes");
-		}
-		else {System.out.println("no");}		
-	}
 	
 	@Override
 	public abstract boolean equals(Object obj);

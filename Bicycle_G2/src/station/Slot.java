@@ -29,28 +29,41 @@ public class Slot {
 		slotHistory = new ArrayList<SlotState>();
 	}
 	 
-	//Attention, il faut que l'on change la méthode pour que si t concorde avec startTime ou endTime ca marche
+	//revoir la méthode avec le throw
 	public int indexSlotState (LocalDateTime t) throws NoSlotStateAtDateException{
 		int index = -1;
 		for (SlotState state : this.slotHistory) {
 			if (state.getStartTime().isBefore(t) && state.getEndTime().isAfter(t)){
 				return this.slotHistory.indexOf(state);
-			}	
+			}
+			if (t.equals(state.getStartTime())) {
+				return this.slotHistory.indexOf(state);
+			}
+		}	
+		int size = this.slotHistory.size();
+		SlotState a = slotHistory.get(size-1);
+		if (t.isAfter(a.getStartTime())){
+			return size - 1;
 		}
-		throw new NoSlotStateAtDateException(t);	
+		throw new NoSlotStateAtDateException(t);	// possible que quand c'est avant le premier slot enregistré
 	}
 	
 	
-	public long computeOccupationTime (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException, NoSlotStateAtDateException {
-		long totalOccupationTime = 0;
+	//crée la méthode si date avant le début
+	public int computeOccupationTime (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException, NoSlotStateAtDateException {
+		int totalOccupationTime = 0;
 		int iStart = indexSlotState (startTime);
 		int iEnd = indexSlotState (endTime);
 		
 		for (int i = iStart; i <= iEnd; i++) {
 			SlotState state = slotHistory.get(i);
 			if (state.getisOccupied() == true) {
-				long time = Date.computeTime (state.getStartTime(), state.getEndTime());
+				if (state.getEndTime() == null) { 
+					int time = Date.computeTime (state.getStartTime(), endTime);
+				}
+				else {int time = Date.computeTime (state.getStartTime(), state.getEndTime());
 				totalOccupationTime =+ time;
+				}
 			}
 		}
 		return totalOccupationTime;

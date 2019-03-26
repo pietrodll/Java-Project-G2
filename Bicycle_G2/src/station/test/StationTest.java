@@ -80,8 +80,8 @@ public class StationTest {
 		Station s1 = sf.createStation("Standard", p1);
 		Card c1 = CardFactory.createCard(1,u1);
 		Card c2 = CardFactory.createCard(2, u2);
-		assertEquals(u1, s1.identifyUser(c1));
-		assertEquals(u2, s1.identifyUser(c2));
+		assertEquals(u1, s1.identifyUser(c1), "ll");
+		assertEquals(u2, s1.identifyUser(c2), "mm");
 		
 	}	
 	
@@ -182,8 +182,7 @@ public class StationTest {
 						assertAll("Stations methods isStationFull/hasBikeAvailable",
 								() -> assertFalse(s1.isStationFull()),
 								() -> assertEquals(slot11, s1.hasBikeAvailable()),
-								//IMCOMPREHENSION TOTALE SOS
-								//() -> assertEquals(null, s1.hasElectricBikeAvailable()),
+								() -> assertNull(s1.hasElectricBikeAvailable()),
 								() -> assertEquals(slot11, s1.hasMechanicBikeAvailable()),
 								() -> assertFalse(b2 instanceof ElectricBike),
 								() -> assertTrue(b2 instanceof Bike), 
@@ -204,34 +203,43 @@ public class StationTest {
 						);
 					},
 					() -> {
-						// Attention, si on demande index Slot de la date précise d'un changement il ne trouve pas
+						
 						LocalDateTime t10 = LocalDateTime.of(2019,03,26,16,30);
+						LocalDateTime t11 = LocalDateTime.of(2019,03,25,16,30);
 						assertAll("Computing Occupation Rate and all associated methods",
-								/*() -> {
-								assertThrows(NoSlotStateAtDateException.class,
-										() -> {
-										Object i = slot11.indexSlotState(t10);	
-										System.out.println("i is equal to " + i);
-										}
-								);
-								},*/
-								() -> assertEquals(2, slot11.indexSlotState(t10), "20"),
-								
-								() -> assertTrue(t10.isAfter(t1), "1"),
-								() -> assertTrue(t1.isBefore(t10)),
-								() -> assertTrue(t10.isAfter(t2), "2"),
-								() -> assertTrue(t10.isAfter(t3), "3"),
-								() -> assertTrue(t10.isBefore(t4), "4"),
-								() -> assertTrue(t4.isAfter(t10)),
-								() -> assertTrue(t10.isBefore(t5), "5")
-						);
+								() -> {
+									assertAll("IndexSlotState method",
+											() -> {
+												assertThrows(NoSlotStateAtDateException.class,
+														() -> {
+															Object i = slot11.indexSlotState(t11);	
+														}
+													);
+											},
+											() -> assertEquals(2, slot11.indexSlotState(t10), "20"),
+											()-> assertEquals(2, slot11.indexSlotState(t3)),
+											
+											() -> assertTrue(t10.isAfter(t1), "1"),
+											() -> assertTrue(t10.isAfter(t2), "2"),
+											() -> assertTrue(t10.isAfter(t3), "3"),
+											() -> assertTrue(t10.isBefore(t4), "4"),
+											() -> assertTrue(t10.isBefore(t5), "5")
+										);
+								},
+								() -> {
+									assertAll("ComputeOccupationsTime for a Slot",
+											() -> {
+												// a faire
+											}
+									);
+								}
+							);
 					}
 				);
 		
 				}
 		);
+	
 	}
-	
-	
 
 }
