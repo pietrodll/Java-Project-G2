@@ -97,21 +97,22 @@ public class Slot {
 	}
 	
 
-	public ArrayList<SlotState> getSlotHistory() {
-		return slotHistory;
-	}
+	public ArrayList<SlotState> getSlotHistory() { return slotHistory; }
 
-	public Station getS() {
-		return s;
-	}
+	public Station getS() { return s; }
 
-	public double getId() {
-		return id;
-	}
+	public double getId() { return id; }
 	
-
-	public Bike getBike() {
-		return bike;
+	public Bike getBike() { return bike; }
+	
+	@Override
+	public boolean equals(Object obj) {
+		boolean res = false;
+		if (obj instanceof Slot) {
+			Slot other = (Slot) obj;
+			res = this.getId() == other.getId();
+		}
+		return res;
 	}
 
 

@@ -12,5 +12,15 @@ public class MechanicBike extends Bike {
 	public float ridePrice(CardVisitor card, int rideTime) {
 		return card.computeRidePrice(this, rideTime);
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		boolean res = false;
+		if (obj instanceof MechanicBike) {
+			MechanicBike other = (MechanicBike) obj;
+			res = this.getId() == other.getId();
+		}
+		return res;
+	}
 
 }

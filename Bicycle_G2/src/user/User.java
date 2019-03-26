@@ -4,6 +4,7 @@ package user;
 import ride.Itinerary;
 import ride.Network;
 import ride.Ride;
+import station.StandardStation;
 import tools.NegativeTimeException;
 import tools.Point;
 
@@ -91,5 +92,15 @@ public class User implements Observer {
 		Itinerary newItinerary = ongoingRide.getItinerary().computePath(ps, bikeType);
 		ongoingRide.setItinerary(newItinerary);
 		*/
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		boolean res = false;
+		if (obj instanceof User) {
+			User other = (User) obj;
+			res = this.getId() == other.getId();
+		}
+		return res;
 	}
 }

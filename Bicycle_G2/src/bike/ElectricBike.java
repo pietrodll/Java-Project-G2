@@ -12,6 +12,16 @@ public class ElectricBike extends Bike {
 	public float ridePrice(CardVisitor card, int rideTime) {
 		return card.computeRidePrice(this, rideTime);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean res = false;
+		if (obj instanceof ElectricBike) {
+			ElectricBike other = (ElectricBike) obj;
+			res = this.getId() == other.getId();
+		}
+		return res;
+	}
 	
 	
 

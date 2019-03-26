@@ -8,6 +8,8 @@ import station.Station;
 import java.util.Collections;
 import java.util.Comparator;
 
+import card.Card;
+
 public class Network implements Serializable {
 	
 	/**
@@ -18,11 +20,13 @@ public class Network implements Serializable {
 
 	// private static Network network = null;
 	private ArrayList<Station> stations;
+	private ArrayList<Card> cards;
 	private ArrayList<Ride> rideHistory;
 	
 	public Network() {
 		this.stations = new ArrayList<Station>();
 		this.rideHistory = new ArrayList<Ride>();
+		this.cards = new ArrayList<Card>();
 	}
 	
 	/*
@@ -50,6 +54,14 @@ public class Network implements Serializable {
 				this.stations.remove(s);
 			}
 		}
+	}
+	
+	public void addCard(Card card) {
+		this.cards.add(card);
+	}
+	
+	public void removeCard(Card card) {
+		this.cards.remove(card);
 	}
 
 	public ArrayList<Station> sortingStations (SortingStrategy s) {
