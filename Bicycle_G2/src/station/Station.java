@@ -35,7 +35,6 @@ public abstract class Station {
 	}
 
 
-
 	public int getRateOccupation(LocalDateTime startTime, LocalDateTime endTime) throws NoSlotStateAtDateException{
 		int occupationRate = -1;
 		try {
@@ -56,7 +55,7 @@ public abstract class Station {
 	
 	public boolean isStationFull() {
 		for (Slot s : parkingSlots) {
-			if (s.getisOccupied()==false) {
+			if (!s.getisOccupied()) {
 				return false;
 			}
 		}
@@ -213,4 +212,7 @@ public abstract class Station {
 		}
 		else {System.out.println("no");}		
 	}
+	
+	@Override
+	public abstract boolean equals(Object obj);
 }

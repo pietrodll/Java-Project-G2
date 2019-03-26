@@ -941,7 +941,7 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hMiBk09YEem8EYOBggYCvQ"/>
         </children>
         <element xmi:type="uml:Class" href="MyVelib.uml#_hMFVkE9YEem8EYOBggYCvQ"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hMiBgU9YEem8EYOBggYCvQ" x="194" y="19"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hMiBgU9YEem8EYOBggYCvQ" x="534" y="19"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_izv28E9YEem8EYOBggYCvQ" type="Class_Shape_CN">
         <children xmi:type="notation:DecorationNode" xmi:id="_izv28k9YEem8EYOBggYCvQ" type="Class_NameLabel_CN"/>
@@ -991,10 +991,6 @@
             <element xmi:type="uml:Operation" href="MyVelib.uml#_-Q0Btk-oEem8EYOBggYCvQ"/>
             <layoutConstraint xmi:type="notation:Location" xmi:id="_-Q0BuU-oEem8EYOBggYCvQ"/>
           </children>
-          <children xmi:type="notation:Shape" xmi:id="_-Q0Buk-oEem8EYOBggYCvQ" type="Operation_ClassOperationLabel">
-            <element xmi:type="uml:Operation" href="MyVelib.uml#_-Q0BsE-oEem8EYOBggYCvQ"/>
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_-Q0Bu0-oEem8EYOBggYCvQ"/>
-          </children>
           <children xmi:type="notation:Shape" xmi:id="_-Q0BvE-oEem8EYOBggYCvQ" type="Operation_ClassOperationLabel">
             <element xmi:type="uml:Operation" href="MyVelib.uml#_-Q0BtE-oEem8EYOBggYCvQ"/>
             <layoutConstraint xmi:type="notation:Location" xmi:id="_-Q0BvU-oEem8EYOBggYCvQ"/>
@@ -1002,6 +998,10 @@
           <children xmi:type="notation:Shape" xmi:id="_-Q0Bvk-oEem8EYOBggYCvQ" type="Operation_ClassOperationLabel">
             <element xmi:type="uml:Operation" href="MyVelib.uml#_-Q0Bsk-oEem8EYOBggYCvQ"/>
             <layoutConstraint xmi:type="notation:Location" xmi:id="_-Q0Bv0-oEem8EYOBggYCvQ"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_-Q0Buk-oEem8EYOBggYCvQ" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_-Q0BsE-oEem8EYOBggYCvQ"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_-Q0Bu0-oEem8EYOBggYCvQ"/>
           </children>
           <styles xmi:type="notation:TitleStyle" xmi:id="_izv2-09YEem8EYOBggYCvQ"/>
           <styles xmi:type="notation:SortingStyle" xmi:id="_izv2_E9YEem8EYOBggYCvQ"/>
@@ -1015,7 +1015,7 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_izv3A09YEem8EYOBggYCvQ"/>
         </children>
         <element xmi:type="uml:Class" href="MyVelib.uml#_izTLAE9YEem8EYOBggYCvQ"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_izv28U9YEem8EYOBggYCvQ" x="34" y="179"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_izv28U9YEem8EYOBggYCvQ" x="14" y="79"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_kRYSkE9YEem8EYOBggYCvQ" type="Class_Shape_CN">
         <children xmi:type="notation:DecorationNode" xmi:id="_kRhcgE9YEem8EYOBggYCvQ" type="Class_NameLabel_CN"/>
@@ -1057,7 +1057,7 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kRhckU9YEem8EYOBggYCvQ"/>
         </children>
         <element xmi:type="uml:Class" href="MyVelib.uml#_kQ7moE9YEem8EYOBggYCvQ"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kRYSkU9YEem8EYOBggYCvQ" x="14" y="19"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kRYSkU9YEem8EYOBggYCvQ" x="354" y="19"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_-FfjgE-dEem8EYOBggYCvQ" type="Interface_Shape_CN">
         <children xmi:type="notation:DecorationNode" xmi:id="_-Ffjgk-dEem8EYOBggYCvQ" type="Interface_NameLabel_CN"/>
@@ -1087,7 +1087,7 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-Ffjk0-dEem8EYOBggYCvQ"/>
         </children>
         <element xmi:type="uml:Interface" href="MyVelib.uml#_-Ev8oE-dEem8EYOBggYCvQ"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-FfjgU-dEem8EYOBggYCvQ" x="394" y="19"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-FfjgU-dEem8EYOBggYCvQ" x="734" y="19"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="__kROoE-dEem8EYOBggYCvQ" type="Interface_Shape_CN">
         <children xmi:type="notation:DecorationNode" xmi:id="__kROok-dEem8EYOBggYCvQ" type="Interface_NameLabel_CN"/>
@@ -1125,13 +1125,13 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="__kROs0-dEem8EYOBggYCvQ"/>
         </children>
         <element xmi:type="uml:Interface" href="MyVelib.uml#__jhnwE-dEem8EYOBggYCvQ"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="__kROoU-dEem8EYOBggYCvQ" x="654" y="19"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="__kROoU-dEem8EYOBggYCvQ" x="994" y="19"/>
       </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_gFp5BU9YEem8EYOBggYCvQ"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gFp5Bk9YEem8EYOBggYCvQ"/>
     </children>
     <element xmi:type="uml:Package" href="MyVelib.uml#_gFp5AE9YEem8EYOBggYCvQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gFp5Ak9YEem8EYOBggYCvQ" x="3120" y="493" width="961"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gFp5Ak9YEem8EYOBggYCvQ" x="2780" y="493" width="1301"/>
   </children>
   <styles xmi:type="notation:StringValueStyle" xmi:id="_vFerkUA0EemMsdUqvG6aSA" name="diagram_compatibility_version" stringValue="1.4.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_vFerkkA0EemMsdUqvG6aSA"/>

@@ -18,4 +18,14 @@ public class PlusStation extends Station {
 		card.addCredit(5);
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		boolean res = false;
+		if (obj instanceof PlusStation) {
+			PlusStation other = (PlusStation) obj;
+			res = this.getId() == other.getId();
+		}
+		return res;
+	}
+
 }

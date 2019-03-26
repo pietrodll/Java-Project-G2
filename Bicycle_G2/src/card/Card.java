@@ -44,8 +44,7 @@ public abstract class Card implements CardVisitor {
 	public void addCredit(int newCredit) {
 		this.timeCredit += newCredit;
 		UserStat us = user.getUserStat();
-		double totalTimeCredit = us.getTotalCreditEarned();
-		us.setTotalCreditEarned(totalTimeCredit + newCredit);
+		us.addCreditEarned(newCredit);
 	}
 	
 	/**

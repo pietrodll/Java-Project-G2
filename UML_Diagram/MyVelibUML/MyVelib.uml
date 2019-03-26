@@ -490,21 +490,17 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_-Q0BsE-oEem8EYOBggYCvQ" name="setTotalAmount">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_-Q0BsU-oEem8EYOBggYCvQ" name="totalAmount">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_-Q0BsE-oEem8EYOBggYCvQ" name="addAmount">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_-Q0BsU-oEem8EYOBggYCvQ" name="amount">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_-Q0Bsk-oEem8EYOBggYCvQ" name="setTotalTime">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_-Q0Bs0-oEem8EYOBggYCvQ" name="totalTime">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_-Q0Bsk-oEem8EYOBggYCvQ" name="addTime">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_-Q0Bs0-oEem8EYOBggYCvQ" name="time">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_-Q0BtE-oEem8EYOBggYCvQ" name="setNumberRides">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_-Q0BtU-oEem8EYOBggYCvQ" name="numberRides">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
-        </ownedParameter>
-      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_-Q0BtE-oEem8EYOBggYCvQ" name="addRide"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_-Q0Btk-oEem8EYOBggYCvQ" name="setTotalCreditEarned">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_-Q0Bt0-oEem8EYOBggYCvQ" name="totalCreditEarned">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>

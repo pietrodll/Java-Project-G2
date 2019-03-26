@@ -22,5 +22,8 @@ public abstract class Bike implements CardVisitable {
 	public int getId() { return id; }
 	
 	public abstract float ridePrice(CardVisitor card, int rideTime);
+	
+	@Override
+	public abstract boolean equals(Object obj);
 
 }
