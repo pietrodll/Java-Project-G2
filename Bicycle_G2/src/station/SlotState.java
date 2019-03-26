@@ -3,6 +3,7 @@ package station;
 import java.time.LocalDateTime;
 
 import bike.Bike;
+import tools.NegativeTimeException;
 
 public class SlotState {
 	
@@ -19,8 +20,11 @@ public class SlotState {
 		this.bike = bike;
 	}
 	
-	public SlotState(LocalDateTime startTime, LocalDateTime endTime, boolean isOnline, Bike bike) {
+	public SlotState(LocalDateTime startTime, LocalDateTime endTime, boolean isOnline, Bike bike) throws NegativeTimeException {
 		super();
+		if (endTime.isBefore(startTime)) {
+			throw new NegativeTimeException(startTime, endTime);
+		}
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.isOnline = isOnline;
@@ -41,7 +45,10 @@ public class SlotState {
 		return endTime;
 	}
 
-	public void setEndTime(LocalDateTime endTime) {
+	public void setEndTime(LocalDateTime endTime) throws NegativeTimeException {
+		if (endTime.isBefore(this.startTime)) {
+			throw new NegativeTimeException(this.startTime, endTime);
+		}
 		this.endTime = endTime;
 	}
 	

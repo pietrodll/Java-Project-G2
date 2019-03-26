@@ -20,31 +20,28 @@ public class Slot {
 	private Bike bike;
 	private ArrayList<SlotState> slotHistory;
 	
-	//faire ID générator qui dépend de la station les trois derniers chiffres sont id du slot et l'ID de la station fois 1000
-	//il y a un pb avec l'IDGenerator
 	
 	public Slot(Station s) {
 		this.s = s;
-		//id = s.getId()*1000 + SlotIDGenerator.getInstance().getNextSlotID();
-		isOnline = false;
+		id = SlotIDGenerator.getInstance().getSlotID(s);
+		bike = null;
+		isOnline = true;
 		slotHistory = new ArrayList<SlotState>();
 	}
 	 
-	
-	public int indexSlotState (LocalDateTime t) {
+	//Attention, il faut que l'on change la méthode pour que si t concorde avec startTime ou endTime ca marche
+	public int indexSlotState (LocalDateTime t) throws NoSlotStateAtDateException{
 		int index = -1;
-		for (SlotState state : slotHistory) {
-			if (state.getStartTime().isBefore(t) && t.isBefore(state.getStartTime())){
-				index = slotHistory.indexOf(s);
-			}
-			else { System.out.println("Error : no slot state has been saved for time [" + t + "].");
+		for (SlotState state : this.slotHistory) {
+			if (state.getStartTime().isBefore(t) && state.getEndTime().isAfter(t)){
+				return this.slotHistory.indexOf(state);
 			}	
 		}
-	return index;
+		throw new NoSlotStateAtDateException(t);	
 	}
 	
 	
-	public long computeOccupationTime (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException {
+	public long computeOccupationTime (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException, NoSlotStateAtDateException {
 		long totalOccupationTime = 0;
 		int iStart = indexSlotState (startTime);
 		int iEnd = indexSlotState (endTime);
@@ -75,24 +72,25 @@ public class Slot {
 		return isOnline;
 	}
 
-	public void setOnline(boolean isOnline, LocalDateTime changeTime) {
+	public void setOnline(boolean isOnline, LocalDateTime changeTime) throws NegativeTimeException {
 		if (isOnline != this.isOnline) {
 			this.isOnline = isOnline;
-			SlotState lastState = slotHistory.get(slotHistory.size()-1);
-			lastState.setEndTime (changeTime);
-			SlotState newState = new SlotState (changeTime, isOnline, lastState.getBike());	
+			if (slotHistory.size()!= 0) {
+				SlotState lastState = slotHistory.get(slotHistory.size()-1);
+				lastState.setEndTime (changeTime);}
+			SlotState newState = new SlotState (changeTime, isOnline, this.getBike());
 			slotHistory.add(newState);
 		}
 	}
 	
-	public void setBike(Bike bike, LocalDateTime changeTime) {
+	public void setBike(Bike bike, LocalDateTime changeTime) throws NegativeTimeException {
 		if (bike != this.bike) {
 			this.bike = bike;
+			if (slotHistory.size()!= 0) {
 			SlotState lastState = slotHistory.get(slotHistory.size()-1);
-			lastState.setEndTime(changeTime);
-			SlotState newState = new SlotState (changeTime, lastState.isOnline(), bike);
+			lastState.setEndTime(changeTime);}
+			SlotState newState = new SlotState (changeTime, this.isOnline(), bike);
 			slotHistory.add(newState);
-			
 		}
 	}
 	
@@ -109,7 +107,6 @@ public class Slot {
 		return id;
 	}
 	
-
 	public Bike getBike() {
 		return bike;
 	}

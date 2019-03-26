@@ -20,7 +20,6 @@ public abstract class Station {
 	private Point p;
 	private boolean isOnline;
 	private ArrayList<Slot> parkingSlots;
-	private int NumberSlots;
 	private Network net;
 	
 	private int totalRents;
@@ -37,12 +36,12 @@ public abstract class Station {
 
 
 
-	public int getRateOccupation(LocalDateTime startTime, LocalDateTime endTime){
+	public int getRateOccupation(LocalDateTime startTime, LocalDateTime endTime) throws NoSlotStateAtDateException{
 		int occupationRate = -1;
 		try {
 			int totalOccupationTime = 0;
 			long delta = Date.computeTime (startTime, endTime);
-			int N = this.NumberSlots;
+			int N = parkingSlots.size();
 			for (Slot slot : parkingSlots) {
 				long time = slot.computeOccupationTime(startTime, endTime);
 				totalOccupationTime =(int) + time;
@@ -107,7 +106,7 @@ public abstract class Station {
 		return card.getUser();
 	}
 	
-	public synchronized void pickUpBike(Card card, LocalDateTime pickUpTime) {
+	public synchronized void pickUpBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException {
 		User user = identifyUser (card);
 		if (user.getOngoingRide() == null) {
 			Slot s = hasBikeAvailable();
@@ -122,7 +121,7 @@ public abstract class Station {
 		}
 	}
 	
-	public synchronized void pickUpElectricBike(Card card, LocalDateTime pickUpTime) {
+	public synchronized void pickUpElectricBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException {
 		User user = identifyUser (card);
 		if (user.getOngoingRide() == null) {
 			Slot s = hasElectricBikeAvailable();
@@ -137,7 +136,7 @@ public abstract class Station {
 		}
 	}
 	
-	public synchronized void pickUpMechanicBike(Card card, LocalDateTime pickUpTime) {
+	public synchronized void pickUpMechanicBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException {
 		User user = identifyUser (card);
 		if (user.getOngoingRide() == null) {
 			Slot s = hasMechanicBikeAvailable();
@@ -177,13 +176,16 @@ public abstract class Station {
 
 	public ArrayList<Slot> getParkingSlots() { return parkingSlots; }
 
-
-	public void setParkingSlots(ArrayList<Slot> parkingSlots) {
-		this.parkingSlots = parkingSlots;
-		this.NumberSlots= parkingSlots.size();
+	public void addSlot() {
+		this.parkingSlots.add(new Slot(this)); }
+	
+	public void removeSlot (Slot slot) {
+		for (Slot s : parkingSlots) {
+			if (s.equals(slot)) {
+				parkingSlots.remove(s);
+			}
+		}
 	}
-
-	public int getNumberSlots() { return NumberSlots; }
 
 	public int getTotalRents() { return totalRents; }
 
