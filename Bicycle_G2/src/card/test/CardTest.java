@@ -18,7 +18,7 @@ class CardTest {
 	
 	@BeforeAll
 	static void setup() {
-		u1 = new User("Paul", "Legrand");
+		u1 = new User("PaulLegrand");
 	}
 
 	@Test

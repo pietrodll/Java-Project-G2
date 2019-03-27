@@ -15,8 +15,7 @@ import card.Card;
 
 public class User implements Observer {
 	
-	private String lastName;
-	private String firstName; 
+	private String userName;
 	private Point position;
 	private final int id;
 	private Ride ongoingRide;
@@ -24,10 +23,9 @@ public class User implements Observer {
 	private UserStat userStat;
 	
 	
-	public User(String lastName, String firstName) {
+	public User(String userName) {
 		super();
-		this.lastName = lastName;
-		this.firstName = firstName;
+		this.userName = userName;
 		id = UserIDGenerator.getInstance().getNextUserID();
 		position = new Point (0,0);
 		ongoingRide = null;
@@ -35,10 +33,9 @@ public class User implements Observer {
 		userStat = new UserStat();
 	}
 	
-	public User(String lastName, String firstName, Point position) {
+	public User(String userName, Point position) {
 		super();
-		this.lastName = lastName;
-		this.firstName = firstName;
+		this.userName = userName;
 		id = UserIDGenerator.getInstance().getNextUserID();
 		this.position = position;
 		ongoingRide = null;
@@ -47,12 +44,12 @@ public class User implements Observer {
 		userStat = new UserStat();
 	}
 	
-	//la fonction startOngoingRide est forcément utilsée par la fonction pickUpBike qui vérifie deja si ongoing riede
+	// la fonction startOngoingRide est forcément utilsée par la fonction pickUpBike qui vérifie deja si ongoing riede
 	public void startOngoingRide (Network net, Bike bike, LocalDateTime startRide, Card card) {
 		this.ongoingRide = new Ride (net, bike, this, card, startRide);
 	}
 	
- // when finishing a ride you have to add all the user stat : time and credit
+	// when finishing a ride you have to add all the user stat : time and credit
 	public void endOngoingRide(LocalDateTime endRide) throws NegativeTimeException {
 		int timeRide = ongoingRide.getRideTime();
 		Bike bike = ongoingRide.getBike();
@@ -64,11 +61,8 @@ public class User implements Observer {
 		userStat.addTime(timeRide);
 	}
 	
-	public String getLastName() { return lastName; }
-	public void setLastName(String lastName) { this.lastName = lastName; }
-
-	public String getFirstName() { return firstName; }
-	public void setFirstName(String firstName) { this.firstName = firstName; }
+	public String getUserName() { return userName; }
+	public void setLastName(String userName) { this.userName = userName; }
 
 	public Point getPosition() { return position; }
 	public void setPosition(Point position) { this.position = position; }
