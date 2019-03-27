@@ -1,4 +1,4 @@
-package controller;
+package controller.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,6 +10,10 @@ import card.Card;
 import card.CardFactory;
 import card.VlibreCard;
 import card.VmaxCard;
+import controller.ExistingNameException;
+import controller.InexistingNetworkNameException;
+import controller.InexistingStationIdException;
+import controller.NetworkManager;
 import ride.Network;
 import station.Station;
 import tools.Point;
