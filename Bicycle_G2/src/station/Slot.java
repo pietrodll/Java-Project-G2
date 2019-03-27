@@ -29,7 +29,6 @@ public class Slot {
 		slotHistory = new ArrayList<SlotState>();
 	}
 	 
-	//revoir la méthode avec le throw
 	public int indexSlotState (LocalDateTime t) throws NoSlotStateAtDateException{
 		int index = -1;
 		for (SlotState state : this.slotHistory) {
@@ -45,26 +44,36 @@ public class Slot {
 		if (t.isAfter(a.getStartTime())){
 			return size - 1;
 		}
-		throw new NoSlotStateAtDateException(t);	// possible que quand c'est avant le premier slot enregistré
+		throw new NoSlotStateAtDateException(t);	
 	}
 	
 	
-	//crée la méthode si date avant le début
 	public int computeOccupationTime (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException, NoSlotStateAtDateException {
 		int totalOccupationTime = 0;
-		int iStart = indexSlotState (startTime);
-		int iEnd = indexSlotState (endTime);
-		
+		int iStart;
+		int iEnd;
+		try {
+			iEnd = indexSlotState (endTime);
+		} catch (NoSlotStateAtDateException e){
+			System.out.println("The Slot " + this + " did not exist during this interval of time ");
+			return -1;
+			
+		} try {
+			iStart = indexSlotState (startTime);
+		} catch (NoSlotStateAtDateException e) {
+			iStart = 0;
+		}
 		for (int i = iStart; i <= iEnd; i++) {
 			SlotState state = slotHistory.get(i);
 			if (state.getisOccupied() == true) {
 				if (state.getEndTime() == null) { 
-					int time = Date.computeTime (state.getStartTime(), endTime);
+					int time = Date.computeTime (state.getStartTime(), endTime);	
 				}
 				else {int time = Date.computeTime (state.getStartTime(), state.getEndTime());
-				totalOccupationTime =+ time;
+					totalOccupationTime =+ time;
 				}
 			}
+			
 		}
 		return totalOccupationTime;
 	}
@@ -100,8 +109,8 @@ public class Slot {
 		if (bike != this.bike) {
 			this.bike = bike;
 			if (slotHistory.size()!= 0) {
-			SlotState lastState = slotHistory.get(slotHistory.size()-1);
-			lastState.setEndTime(changeTime);}
+				SlotState lastState = slotHistory.get(slotHistory.size()-1);
+				lastState.setEndTime(changeTime);}
 			SlotState newState = new SlotState (changeTime, this.isOnline(), bike);
 			slotHistory.add(newState);
 		}

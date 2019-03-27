@@ -36,13 +36,22 @@ public abstract class Station {
 	}
 
 
-	public double getRateOccupation(LocalDateTime startTime, LocalDateTime endTime) throws NoSlotStateAtDateException{
+	public double getRateOccupation(LocalDateTime startTime, LocalDateTime endTime) throws NoSlotStateAtDateException, NegativeTimeException{
 		double occupationRate = -1;
+		ArrayList<Slot> existingSlots = new ArrayList<Slot>();
+		for (Slot slot : parkingSlots) {
+			if (slot.computeOccupationTime(startTime, endTime) != -1) {
+				existingSlots.add(slot);
+			}
+		}
+		if (existingSlots.size() == 0) {
+			throw new NoSlotStateAtDateException(endTime);
+		}
 		try {
 			int totalOccupationTime = 0;
 			int delta = Date.computeTime (startTime, endTime);
-			int N = parkingSlots.size();
-			for (Slot slot : parkingSlots) {
+			int N = existingSlots.size();
+			for (Slot slot : existingSlots) {
 				int time = slot.computeOccupationTime(startTime, endTime);
 				totalOccupationTime =(int) + time;
 			}
