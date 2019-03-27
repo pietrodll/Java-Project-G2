@@ -9,6 +9,8 @@ import java.util.Random;
 
 import bike.Bike;
 import bike.BikeFactory;
+import card.Card;
+import card.CardFactory;
 import ride.Network;
 import station.Slot;
 import station.Station;
@@ -17,26 +19,31 @@ import station.StationSamePositionException;
 import station.TypeStationException;
 import tools.NegativeTimeException;
 import tools.Point;
+import user.User;
 
 /**
- * This class provides the methods to set up a network and manage it, which is useful in the CLUI.
+ * This class provides the methods to set up a network and manage it, which is useful in both CLUI and GUI.
  * @author Pietro Dellino
  *
  */
 public class NetworkManager {
 	
+	// penser à comment gerer la date de creation de network
 	public static final LocalDateTime CREATION_DATE = LocalDateTime.of(2000, 1, 1, 0, 0);
 	private ArrayList<Network> networks;
 	
 	public NetworkManager() { this.networks = new ArrayList<Network>(); }
 	
+	public ArrayList<Network> getNetworks() { return this.networks; }
+	
 	/**
 	 * This method returns a {@code Network} object with 10 stations placed in a square area of size 4km, each station has 10 slots and the occupation rate of the network is 75%.
 	 * @param name ({@code String}) The name of the network
 	 * @return a {@code Network}
+	 * @throws ExistingNameException 
 	 * @see #setupNetwork(String, int, int, double, int)
 	 */
-	public Network setupNetwork(String name) {
+	public Network setupNetwork(String name) throws ExistingNameException {
 		Network net = this.setupNetwork(name, 10, 10, 4, 75);
 		return net;
 	}
@@ -49,10 +56,17 @@ public class NetworkManager {
 	 * @param s The side of the square area to place the stations
 	 * @param nBikes The total number of bikes
 	 * @return a network
+	 * @throws ExistingNameException 
 	 * @see #getPointDistribution(int, double)
 	 */
-	public Network setupNetwork(String name, int nStation, int nSlot, double s, int nBikes) {
+	public Network setupNetwork(String name, int nStation, int nSlot, double s, int nBikes) throws ExistingNameException {
 		Network net = new Network(name);
+		for (Network n : this.networks) {
+			if (net.getName().equals(n.getName())) {
+				throw new ExistingNameException(name);
+			}
+		}
+		this.networks.add(net);
 		Random rand = new Random();
 		StationFactory sf = new StationFactory(net);
 		Point[] points = this.getPointDistribution(nStation, s);
@@ -126,5 +140,39 @@ public class NetworkManager {
 		}
 		return points;
 	}
+	
+	private Network findNetworkByName(String name) throws InexistingNetworkNameException {
+		for (Network n : this.networks) {
+			if (name.equals(n.getName())) { return n; }
+		}
+		throw new InexistingNetworkNameException(name);
+	}
+	
+	private Station findStationByID(int id, Network net) throws InexistingStationIdException {
+		for (Station s : net.getStations()) {
+			if (s.getId() == id) { return s; }
+		}
+		throw new InexistingStationIdException(id);
+	}
 
+	public void addUser(String userName, int cardType, String networkName) throws InexistingNetworkNameException {
+		User user = new User(userName);
+		Card card = CardFactory.createCard(cardType, user);
+		Network net = this.findNetworkByName(networkName);
+		net.addCard(card);
+	}
+	
+	public void setStationOffline(String networkName, int stationID) throws InexistingNetworkNameException, InexistingStationIdException {
+		Network net = this.findNetworkByName(networkName);
+		Station s = this.findStationByID(stationID, net);
+		s.setOnline(false);
+	}
+	
+	public void setStationOnline(String networkName, int stationID) throws InexistingNetworkNameException, InexistingStationIdException {
+		Network net = this.findNetworkByName(networkName);
+		Station s = this.findStationByID(stationID, net);
+		s.setOnline(true);
+	}
+	
+	
 }

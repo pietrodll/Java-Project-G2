@@ -11,6 +11,7 @@ public class CardFactory {
 	
 	public static final int VLIBRE = 1;
 	public static final int VMAX = 2;
+	public static final int CREDIT = 3;
 	
 	public static Card createCard(int cardType, User user) {
 		switch (cardType) {
@@ -18,6 +19,8 @@ public class CardFactory {
 			return new VlibreCard(user);
 		case VMAX:
 			return new VmaxCard(user);
+		case CREDIT:
+			return new CreditCard(user);
 		default:
 			return null;
 		}

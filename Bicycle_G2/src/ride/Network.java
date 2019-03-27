@@ -50,7 +50,7 @@ public class Network implements Serializable {
 	
 	public ArrayList<Station> getStations() { return stations; }
 	
-	
+	public String getName() { return this.name; }
 	
 	public void addStation(Station station) {
 		this.stations.add(station);
