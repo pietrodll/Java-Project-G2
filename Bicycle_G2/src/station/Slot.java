@@ -30,21 +30,26 @@ public class Slot {
 	}
 	 
 	public int indexSlotState (LocalDateTime t) throws NoSlotStateAtDateException{
-		int index = -1;
-		for (SlotState state : this.slotHistory) {
-			if (state.getStartTime().isBefore(t) && state.getEndTime().isAfter(t)){
-				return this.slotHistory.indexOf(state);
-			}
-			if (t.equals(state.getStartTime())) {
-				return this.slotHistory.indexOf(state);
-			}
-		}	
+		int i;
 		int size = this.slotHistory.size();
+		for (i=0; i<=size -2; i ++) {
+			if (slotHistory.get(i).getStartTime().isBefore(t) && slotHistory.get(i).getEndTime().isAfter(t)){
+				return i;
+			}
+			if (t.equals(slotHistory.get(i).getStartTime())) {
+				return i;
+			}
+		}
+		if (t.equals(slotHistory.get(size-1).getStartTime())) {
+			return i;
+		}
 		SlotState a = slotHistory.get(size-1);
 		if (t.isAfter(a.getStartTime())){
 			return size - 1;
 		}
-		throw new NoSlotStateAtDateException(t);	
+		else {
+			throw new NoSlotStateAtDateException(t);	
+		}
 	}
 	
 	
@@ -57,7 +62,6 @@ public class Slot {
 		} catch (NoSlotStateAtDateException e){
 			System.out.println("The Slot " + this + " did not exist during this interval of time ");
 			return -1;
-			
 		} try {
 			iStart = indexSlotState (startTime);
 		} catch (NoSlotStateAtDateException e) {
@@ -67,13 +71,11 @@ public class Slot {
 			SlotState state = slotHistory.get(i);
 			if (state.getisOccupied() == true) {
 				if (state.getEndTime() == null) { 
-					int time = Date.computeTime (state.getStartTime(), endTime);	
+					totalOccupationTime += Date.computeTime (state.getStartTime(), endTime);	
 				}
-				else {int time = Date.computeTime (state.getStartTime(), state.getEndTime());
-					totalOccupationTime =+ time;
+				else {totalOccupationTime += Date.computeTime (state.getStartTime(), state.getEndTime());
 				}
-			}
-			
+			}			
 		}
 		return totalOccupationTime;
 	}

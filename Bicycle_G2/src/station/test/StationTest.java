@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.Computer;
 
 import bike.Bike;
 import bike.ElectricBike;
@@ -144,6 +145,12 @@ public class StationTest {
 					SlotState slotstate114 = slot11.getSlotHistory().get(3);
 					SlotState slotstate115 = slot11.getSlotHistory().get(4);
 					
+					SlotState slotstate131 = slot13.getSlotHistory().get(0);
+					SlotState slotstate132 = slot13.getSlotHistory().get(1);
+					SlotState slotstate133 = slot13.getSlotHistory().get(2);
+					SlotState slotstate134 = slot13.getSlotHistory().get(3);
+					SlotState slotstate135 = slot13.getSlotHistory().get(4);
+					
 					assertAll("Station and Slots",
 					() -> {
 						assertAll("ID Station and Slots",
@@ -198,8 +205,19 @@ public class StationTest {
 								() -> assertEquals(true, slot11.getisOccupied(), "Slot 1 is Online and has a Bike"),
 								() -> assertEquals(false, slot12.getisOccupied(), "Slot 2 is Online without a Bike"),
 								() -> assertEquals(true, slot13.getisOccupied(), "Slot 3 is Offline and without a Bike")
-
-
+						);
+					},
+					() -> {
+						assertAll("Slot State method isOccupied",
+								() -> assertEquals(true, slotstate111.getisOccupied(), "State 1 of Slot 11"),
+								() -> assertEquals(false, slotstate112.getisOccupied(), "State 2 of Slot 11"),
+								() -> assertEquals(true, slotstate113.getisOccupied(), "State 3 of Slot 11"),
+								() -> assertEquals(false, slotstate114.getisOccupied(), "State 4 of Slot 11"),
+								() -> assertEquals(true, slotstate131.getisOccupied(), "State 1 of Slot 13"),
+								() -> assertEquals(true, slotstate132.getisOccupied(), "State 2 of Slot 13"),
+								() -> assertEquals(true, slotstate133.getisOccupied(), "State 3 of Slot 13"),
+								() -> assertEquals(false, slotstate134.getisOccupied(), "State 4 of Slot 13")
+								
 						);
 					},
 					() -> {
@@ -208,9 +226,10 @@ public class StationTest {
 						LocalDateTime t11 = LocalDateTime.of(2019,03,25,16,30);
 						LocalDateTime t1t2 = LocalDateTime.of(2019, 03, 26, 15, 00);
 						LocalDateTime t4t5 = LocalDateTime.of(2019,  03, 26, 16, 40);
+						LocalDateTime t6 = LocalDateTime.of(2019, 03, 26, 16, 50);
 						assertAll("Computing Occupation Rate and all associated methods",
 								() -> {
-									assertAll("IndexSlotState method Slot 11",
+									assertAll("IndexSlotState method for Slot 11",
 											() -> {
 												assertThrows(NoSlotStateAtDateException.class, 
 														() -> {
@@ -219,31 +238,39 @@ public class StationTest {
 													);
 											},
 											() -> assertEquals(2, slot11.indexSlotState(t10), "If date is during a Slot State"),
-											()-> assertEquals(2, slot11.indexSlotState(t3), "If date is at a change of Slot State"),
+											() -> assertEquals(2, slot11.indexSlotState(t3), "If date is at a change of Slot State"),
+											() -> assertEquals (4, slot11.indexSlotState(t6), "If date is during the current Slot State"),
 											
-											() -> assertTrue(t10.isAfter(t1)),
-											() -> assertTrue(t10.isAfter(t2)),
-											() -> assertTrue(t10.isAfter(t3)),
-											() -> assertTrue(t10.isBefore(t4)),
-											() -> assertTrue(t10.isBefore(t5))
+											() -> assertTrue(t10.isAfter(t1), "1"),
+											() -> assertTrue(t10.isAfter(t2), "2"),
+											() -> assertTrue(t10.isAfter(t3), "3"),
+											() -> assertTrue(t10.isBefore(t4), "4"),
+											() -> assertTrue(t10.isBefore(t5), "5")
 										);
 								},
 								() -> {
 									assertAll("ComputeOccupationsTime for Slot 11",
 											() -> assertEquals (69,slot11.computeOccupationTime(t1t2, t4t5),"If start time and end time are during finished Slot States"),
 											() -> assertEquals(35, slot11.computeOccupationTime(t2,t4t5), "If start time is a junction time and end time is during Slot State"),
-											() -> assertEquals(35, slot11.computeOccupationTime(t3, t4t5)),
+											() -> assertEquals(35, slot11.computeOccupationTime(t3, t5), "If start time and end time are junction times"),
 											() -> assertEquals(35, slot11.computeOccupationTime(t3, t4), "If start time and end time are the start and the end of the same Slot State"),
-											() -> assertEquals(69, slot11.computeOccupationTime(t1, t4t5))
-									);
+											
+											() -> assertEquals(69, slot11.computeOccupationTime(t11,t5), "Start time is before creation of the Slot, the exception is handled and the time is computed from the begginning of the last Slot"),
+											() -> assertEquals(74, slot11.computeOccupationTime(t1, t6), "End time is during the current slot state, the time of the last Slot State is computed until the end of observation")
+										);
 								},
 								() -> {
 									assertAll("ComputeOccupationsTime for Slot 13",
-											() -> assertEquals (69,slot13.computeOccupationTime(t1t2, t4t5),"If start time and end time are during finished Slot States"),
-											() -> assertEquals(35, slot11.computeOccupationTime(t2,t4t5), "If start time is a junction time and end time is during Slot State"),
-											() -> assertEquals(35, slot11.computeOccupationTime(t3, t4t5)),
-											() -> assertEquals(35, slot11.computeOccupationTime(t3, t4), "If start time and end time are the start and the end of the same Slot State"),
-											() -> assertEquals(69, slot11.computeOccupationTime(t1, t4t5))
+											() -> assertEquals(96, slot13.computeOccupationTime(t1,t5)),
+											() -> assertEquals(62, slot13.computeOccupationTime(t2,t5)), 
+											() -> assertEquals(96, slot13.computeOccupationTime(t1t2,t4t5))
+									);
+								},
+								
+								() -> {
+									assertAll("getRateOccupation for Station 1",
+											() -> assertEquals((96+61+69)/(3*109), s1.getRateOccupation(t1, t5)),
+											() -> assertEquals((96+61+69)/(3*109), s1.getRateOccupation(t1t2, t4t5))
 									);
 								}
 							);
