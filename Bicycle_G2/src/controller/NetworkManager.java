@@ -135,22 +135,20 @@ public class NetworkManager {
 				y = j*side + Math.random()*side;
 				points[n] = new Point(x, y);
 				j++; n++;
-				System.out.println(i);
-				System.out.println(j);
 			}
 			i++;
 		}
 		return points;
 	}
 	
-	private Network findNetworkByName(String name) throws InexistingNetworkNameException {
+	public Network findNetworkByName(String name) throws InexistingNetworkNameException {
 		for (Network n : this.networks) {
 			if (name.equals(n.getName())) { return n; }
 		}
 		throw new InexistingNetworkNameException(name);
 	}
 	
-	private Station findStationByID(int id, Network net) throws InexistingStationIdException {
+	public Station findStationByID(int id, Network net) throws InexistingStationIdException {
 		for (Station s : net.getStations()) {
 			if (s.getId() == id) { return s; }
 		}

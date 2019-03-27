@@ -4,23 +4,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import card.Card;
 import card.CardFactory;
 import card.VlibreCard;
+import card.VmaxCard;
 import ride.Network;
 import station.Station;
 import tools.Point;
 
 class NetworkManagerTest {
-	
-	/*
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
-	*/
 	
 	@Test
 	void testNetworkManager() {
@@ -61,6 +55,7 @@ class NetworkManagerTest {
 			() -> assertThrows(ExistingNameException.class, () -> { Network net1 = nm.setupNetwork("VLib"); })
 		);
 	}
+	
 
 	@Test
 	void testSetupNetworkStringIntIntDoubleInt() {
@@ -89,10 +84,11 @@ class NetworkManagerTest {
 					}
 				);
 			},
-			() -> assertThrows(ExistingNameException.class, () -> { Network net1 = nm.setupNetwork("VLib"); }),
-			() -> assertThrows(ExistingNameException.class, () -> { Network net1 = nm.setupNetwork("VLib", 12, 15, 7.1, 3); })
+			() -> assertThrows(ExistingNameException.class, () -> { nm.setupNetwork("VLib"); }),
+			() -> assertThrows(ExistingNameException.class, () -> { nm.setupNetwork("VLib", 12, 15, 7.1, 3); })
 		);
 	}
+	
 
 	@Test
 	void testAddUser() {
@@ -100,7 +96,7 @@ class NetworkManagerTest {
 		assertAll(
 			() -> {
 				Network net = nm.setupNetwork("VLib");
-				nm.addUser("Pietro", CardFactory.VLIBRE, "Vlib");
+				nm.addUser("Pietro", CardFactory.VLIBRE, "VLib");
 				ArrayList<Card> cards = net.getCards();
 				assertAll("Check user added",
 					() -> assertEquals(1, cards.size(), "Check the number of cards on the network"),
@@ -109,21 +105,57 @@ class NetworkManagerTest {
 				);
 			},
 			() -> {
-				
+				Network net = nm.findNetworkByName("VLib");
+				nm.addUser("Chloe", CardFactory.VMAX, "VLib");
+				ArrayList<Card> cards = net.getCards();
+				assertAll("Check second user added",
+					() -> assertEquals(2, cards.size(), "Check the number of cards on the network"),
+					() -> assertEquals("Pietro", cards.get(0).getUser().getUserName(), "Check the name of the first user"),
+					() -> assertTrue(cards.get(0) instanceof VlibreCard, "Check the type of the first card"),
+					() -> assertEquals("Chloe", cards.get(1).getUser().getUserName(), "Check the name of the second user"),
+					() -> assertTrue(cards.get(1) instanceof VmaxCard, "Check the type of the second card")
+				);
 			},
 			() -> assertThrows(InexistingNetworkNameException.class, () -> { nm.addUser("Chloe", CardFactory.VMAX, "Network"); })
 		);
 	}
+	
 
 	@Test
-	void testSetStationOffline() {
-		fail("Not yet implemented");
+	void testSetStationOffline() throws ExistingNameException {
+		NetworkManager nm = new NetworkManager();
+		Network net = nm.setupNetwork("Vlib");
+		Station s = net.getStations().get(1);
+		int id = s.getId();
+		assertAll(
+			() -> {
+				nm.setStationOffline("Vlib", id);
+				assertFalse(s.isOnline());
+			},
+			() -> assertThrows(InexistingNetworkNameException.class, () -> { nm.setStationOffline("Network", id); }),
+			() -> assertThrows(InexistingStationIdException.class, () -> { nm.setStationOffline("Vlib", 250); })
+		);
 	}
+	
 
 	@Test
-	void testSetStationOnline() {
-		fail("Not yet implemented");
+	void testSetStationOnline() throws ExistingNameException {
+		NetworkManager nm = new NetworkManager();
+		Network net = nm.setupNetwork("Vlib");
+		Station s = net.getStations().get(1);
+		int id = s.getId();
+		assertAll(
+			() -> {
+				s.setOnline(false);
+				assertFalse(s.isOnline());
+				nm.setStationOnline("Vlib", id);
+				assertTrue(s.isOnline());
+			},
+			() -> assertThrows(InexistingNetworkNameException.class, () -> { nm.setStationOnline("Network", id); }),
+			() -> assertThrows(InexistingStationIdException.class, () -> { nm.setStationOnline("Vlib", 250); })
+		);
 	}
+	
 	
 	@Test
 	void testGetPointDistribution() {
@@ -147,4 +179,28 @@ class NetworkManagerTest {
 		);
 	}
 
+	@Test
+	void testFindStationByID() throws ExistingNameException {
+		NetworkManager nm = new NetworkManager();
+		Network net = nm.setupNetwork("Vlib");
+		assertAll(
+			() -> {
+				Station s = net.getStations().get(5);
+				assertSame(s, nm.findStationByID(s.getId(), net), "Checking the IDs");
+			},
+			() -> assertThrows(InexistingStationIdException.class, () -> { nm.findStationByID(250, net); })
+		);
+	}
+	
+	@Test
+	void testFindNetworkByName() throws ExistingNameException {
+		NetworkManager nm = new NetworkManager();
+		Network net1 = nm.setupNetwork("Velib1");
+		Network net2 = nm.setupNetwork("Velib2");
+		assertAll(
+			() -> assertSame(net1, nm.findNetworkByName("Velib1")),
+			() -> assertSame(net2, nm.findNetworkByName("Velib2")),
+			() -> assertThrows(InexistingNetworkNameException.class, () -> { nm.findNetworkByName("Velib3"); })
+		);
+	}
 }
