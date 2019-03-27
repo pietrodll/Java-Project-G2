@@ -81,7 +81,6 @@ public class NetworkManager {
 				e.printStackTrace();
 			}
 			station.addSlot(nSlot);
-			net.addStation(station);
 		}
 		for (int i = 0; i < nBikes; i++) {
 			Station randomStation = net.getStations().get(rand.nextInt(nStation));
@@ -122,21 +121,24 @@ public class NetworkManager {
 	 * @param s ({@code double}) the side of the square
 	 * @return an array of {@code Point} where the points are equally distributed on the area
 	 */
-	private Point[] getPointDistribution(int N, double s) {
+	public Point[] getPointDistribution(int N, double s) {
 		int nSquares = 2;
 		Point[] points = new Point[N];
-		while (nSquares < N) { nSquares = nSquares*nSquares; }
+		while (nSquares*nSquares < N) { nSquares++; }
 		double side = s/nSquares;
 		double x, y;
 		int n = 0, i = 0, j = 0;
 		while (i < nSquares && n < N) {
+			j = 0;
 			while (j < nSquares && n < N) {
 				x = i*side + Math.random()*side;
 				y = j*side + Math.random()*side;
 				points[n] = new Point(x, y);
-				n = nSquares*i + j;
-				i++; j++;
+				j++; n++;
+				System.out.println(i);
+				System.out.println(j);
 			}
+			i++;
 		}
 		return points;
 	}

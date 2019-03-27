@@ -49,6 +49,9 @@ public class Network implements Serializable {
 	*/
 	
 	public ArrayList<Station> getStations() { return stations; }
+	public ArrayList<Ride> getRideHistory() { return rideHistory; }
+	public ArrayList<Card> getCards() { return cards; }
+
 	
 	public String getName() { return this.name; }
 	

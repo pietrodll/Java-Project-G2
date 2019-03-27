@@ -52,5 +52,9 @@ public class Point {
 		return false;
 	}
 	
+	@Override
+	public String toString() {
+		return "Point(" + this.x + "; " + this.y + ")";
+	}
 
 }

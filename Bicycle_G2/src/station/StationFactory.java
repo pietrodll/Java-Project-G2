@@ -20,11 +20,11 @@ public class StationFactory  {
 		if (stationType == null) { return null; }
 		if (stationType.equalsIgnoreCase("Standard")) {
 			Station s1 = new StandardStation(p);
-			this.net.getStations().add(s1);
+			this.net.addStation(s1);
 			return s1;
 		} else if (stationType.equalsIgnoreCase("Plus")) {
 			Station s2 = new PlusStation(p);
-			this.net.getStations().add(s2);		
+			this.net.addStation(s2);	
 			return s2;
 		} else {
 			throw new TypeStationException(stationType);
