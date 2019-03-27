@@ -26,9 +26,30 @@ public class NetworkManager {
 	
 	public void setupNetwork(String name, int nStation, int nSlot, double s, int nBikes) {}
 	
+	/**
+	 * 
+	 * @param N ({@code int}) the number of points
+	 * @param s ({@code double} the side of the square
+	 * @return an array of {@code Point} where the points are equally distributed on the area
+	 */
 	private Point[] getPointDistribution(int N, double s) {
 		// TODO Write this method
-		return null;
+		int nSquares = 2;
+		Point[] points = new Point[N];
+		while (nSquares < N) { nSquares = nSquares*nSquares; }
+		double side = s/nSquares;
+		double x, y;
+		int n = 0, i = 0, j = 0;
+		while (i < nSquares && n < N) {
+			while (j < nSquares && n < N) {
+				x = i*side + Math.random()*side;
+				y = j*side + Math.random()*side;
+				points[n] = new Point(x, y);
+				n = nSquares*i + j;
+				i++; j++;
+			}
+		}
+		return points;
 	}
 
 }

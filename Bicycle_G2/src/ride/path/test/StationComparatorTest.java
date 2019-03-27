@@ -113,10 +113,10 @@ class StationComparatorTest {
 	
 	@Test
 	void testDistanceStartComparator() throws TypeStationException, StationSamePositionException {
-		Station s1 = fact.createStation("Standard", new Point(0, 10));
-		Station s2 = fact.createStation("Standard", new Point(0, 20));
 		assertAll(
 			() -> {
+				Station s1 = fact.createStation("Standard", new Point(0, 10));
+				Station s2 = fact.createStation("Standard", new Point(0, 20));
 				DistanceStartComparator dsc = new DistanceStartComparator(point);
 				assertAll("Distance Start Comparator with no bikeType",
 					() -> assertEquals(0, dsc.compare(s1, s2), "Comparing stations with no slot"),
@@ -130,35 +130,61 @@ class StationComparatorTest {
 					() -> {
 						Bike b1 = new MechanicBike();
 						s1.getParkingSlots().get(0).setBike(b1, LocalDateTime.of(2012, 12, 21, 22, 5));
-						assertTrue(dsc.compare(s1, s2) > 0, "s1 is closer and both have bikes");
+						assertTrue(dsc.compare(s1, s2) < 0, "s1 is closer and both have bikes");
 					}
 				);
 			},
 			() -> {
+				Station s1 = fact.createStation("Standard", new Point(0, 30));
+				Station s2 = fact.createStation("Standard", new Point(0, 40));
 				DistanceStartComparator dscE = new DistanceStartComparator(point, BikeFactory.ELECTRIC);
 				assertAll("Distance Start Comparator with ElectricBike",
-						() -> assertEquals(0, dscE.compare(s1, s2), "Comparing stations with no slot"),
-						() -> {
-							s1.addSlot();
-							s2.addSlot();
-							Bike b2 = new ElectricBike();
-							s2.getParkingSlots().get(0).setBike(b2, LocalDateTime.of(2012, 12, 21, 22, 3));
-							assertTrue(dscE.compare(s1, s2) > 0, "s1 is closer but has no bike available");
-						},
-						() -> {
-							Bike b1 = new MechanicBike();
-							s1.getParkingSlots().get(0).setBike(b1, LocalDateTime.of(2012, 12, 21, 22, 5));
-							assertTrue(dscE.compare(s1, s2) > 0, "s1 is closer but has MechanicBike instead of ElectricBike");
-						},
-						() -> {
-							Bike b1 = new MechanicBike();
-							s1.getParkingSlots().get(0).setBike(b1, LocalDateTime.of(2012, 12, 21, 22, 5));
-							assertTrue(dscE.compare(s1, s2) > 0, "s1 is closer but has MechanicBike instead of ElectricBike");
-						}
-					);
+					() -> assertEquals(0, dscE.compare(s1, s2), "Comparing stations with no slot"),
+					() -> {
+						s1.addSlot();
+						s2.addSlot();
+						Bike b2 = new ElectricBike();
+						s2.getParkingSlots().get(0).setBike(b2, LocalDateTime.of(2012, 12, 21, 22, 3));
+						assertTrue(dscE.compare(s1, s2) > 0, "s1 is closer but has no bike available");
+					},
+					() -> {
+						Bike b1 = new MechanicBike();
+						s1.getParkingSlots().get(0).setBike(b1, LocalDateTime.of(2012, 12, 21, 22, 5));
+						assertTrue(dscE.compare(s1, s2) > 0, "s1 is closer but has MechanicBike instead of ElectricBike");
+					},
+					() -> {
+						Bike b1 = new ElectricBike();
+						s1.addSlot();
+						s1.getParkingSlots().get(1).setBike(b1, LocalDateTime.of(2012, 12, 21, 22, 5));
+						assertTrue(dscE.compare(s1, s2) < 0, "s1 is closer and both have ElectricBike");
+					}
+				);
 			},
 			() -> {
+				Station s1 = fact.createStation("Standard", new Point(0, 50));
+				Station s2 = fact.createStation("Standard", new Point(0, 60));
 				DistanceStartComparator dscM = new DistanceStartComparator(point, BikeFactory.MECHANIC);
+				assertAll("Distance Start Comparator with ElectricBike",
+					() -> assertEquals(0, dscM.compare(s1, s2), "Comparing stations with no slot"),
+					() -> {
+						s1.addSlot();
+						s2.addSlot();
+						Bike b2 = new MechanicBike();
+						s2.getParkingSlots().get(0).setBike(b2, LocalDateTime.of(2012, 12, 21, 22, 3));
+						assertTrue(dscM.compare(s1, s2) > 0, "s1 is closer but has no bike available");
+					},
+					() -> {
+						Bike b1 = new ElectricBike();
+						s1.getParkingSlots().get(0).setBike(b1, LocalDateTime.of(2012, 12, 21, 22, 5));
+						assertTrue(dscM.compare(s1, s2) > 0, "s1 is closer but has ElectricBike instead of MechanicBike");
+					},
+					() -> {
+						Bike b1 = new MechanicBike();
+						s1.addSlot();
+						s1.getParkingSlots().get(1).setBike(b1, LocalDateTime.of(2012, 12, 21, 22, 5));
+						assertTrue(dscM.compare(s1, s2) < 0, "s1 is closer and both have MechanicBike");
+					}
+				);
 			}
 		);
 	}
