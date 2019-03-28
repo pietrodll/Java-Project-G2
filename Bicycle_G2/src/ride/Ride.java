@@ -41,13 +41,14 @@ public class Ride implements Observable{
 
 	public void endRide(LocalDateTime endRide) {
 		this.endRide = endRide;
+		
 		this.net.archiveRide(this);
 	}
 	
 	public int getRideTime() throws NegativeTimeException {
 		int rideTime = -1;
-		if (endRide != null) {
-			rideTime = Date.computeTime(startRide, endRide);
+		if (this.endRide != null) {
+			rideTime = Date.computeTime(this.startRide, this.endRide);
 		} else { System.out.println("Could not get the total ride time because the ride is not finished");
 		}
 		return rideTime;

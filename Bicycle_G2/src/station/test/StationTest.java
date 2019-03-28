@@ -186,8 +186,9 @@ public class StationTest {
 						);
 					},
 					() -> {
-						assertAll("Stations methods isStationFull/hasBikeAvailable",
+						assertAll("Stations methods isStationFull/availableSlot/hasBikeAvailable",
 								() -> assertFalse(s1.isStationFull()),
+								() -> assertEquals(slot12, s1.availableSlot()),
 								() -> assertEquals(slot11, s1.hasBikeAvailable()),
 								() -> assertNull(s1.hasElectricBikeAvailable()),
 								() -> assertEquals(slot11, s1.hasMechanicBikeAvailable()),
@@ -201,11 +202,15 @@ public class StationTest {
 						);
 					},
 					() -> {
-						assertAll("Slot method isOccupied",
+						assertAll("Slot method isOccupied and isOnline",
 								() -> assertEquals(true, slot11.getisOccupied(), "Slot 1 is Online and has a Bike"),
 								() -> assertEquals(false, slot12.getisOccupied(), "Slot 2 is Online without a Bike"),
-								() -> assertEquals(true, slot13.getisOccupied(), "Slot 3 is Offline and without a Bike")
-						);
+								() -> assertEquals(true, slot13.getisOccupied(), "Slot 3 is Offline and without a Bike"),
+								
+								() -> assertTrue(slot11.isOnline()),
+								() -> assertTrue(slot12.isOnline()),
+								() -> assertFalse(slot13.isOnline())
+							);
 					},
 					() -> {
 						assertAll("Slot State method isOccupied",
@@ -270,7 +275,9 @@ public class StationTest {
 								() -> {
 									assertAll("getRateOccupation for Station 1",
 											() -> assertEquals((96+61+69)/(3*109), s1.getRateOccupation(t1, t5)),
-											() -> assertEquals((96+61+69)/(3*109), s1.getRateOccupation(t1t2, t4t5))
+											() -> assertEquals((96+61+69)/(3*109), s1.getRateOccupation(t1t2, t4t5)),
+											() -> assertEquals((96+61+69+5)/(3*109), s1.getRateOccupation(t1, t6), "If end time is during the current slot slate"), 
+											() -> assertEquals((96+61+69-34*3)/(3*109), s1.getRateOccupation(t2, t4t5))
 									);
 								}
 							);
@@ -283,3 +290,5 @@ public class StationTest {
 	}
 
 }
+
+

@@ -32,14 +32,24 @@ public class Itinerary {
 	 * network (which gives the availability of the bikes) and the strategy of choice of the stations.
 	 * @param ps An object implementing the {@code PathStrategy} interface, which gives the way of
 	 * choosing the stations.
+	 * @see PathStrategy
+	 */
+	public void computePath(PathStrategy ps) {
+		Station[] stations = ps.findPath(this.start, this.end);
+		this.startStation = stations[0];
+		this.endStation = stations[1];
+	}
+	
+	/**
+	 * This method affects a value to {@code startStation} and {@code endStation} according to the
+	 * network (which gives the availability of the bikes) and the strategy of choice of the stations.
+	 * @param ps An object implementing the {@code PathStrategy} interface, which gives the way of
+	 * choosing the stations.
 	 * @param bikeType An integer which corresponds to the type of the bike. The values have to be taken
 	 * from {@code ELECTRIC} and {@code MECHANIC} constants from {@link bike.BikeFactory}.
 	 * @see bike.BikeFactory
 	 * @see PathStrategy
 	 */
-	
-	//rmq Chloé : est ce qu'on pourrait pas envisager des cas où il n'y a pas de préférences de vélos et ou de stations ?
-	// Network static non ? Y en a qu'un seul ?
 	public void computePath(PathStrategy ps, int bikeType) {
 		Station[] stations = ps.findPath(this.start, this.end, bikeType);
 		this.startStation = stations[0];
