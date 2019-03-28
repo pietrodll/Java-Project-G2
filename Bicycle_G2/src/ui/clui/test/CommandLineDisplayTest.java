@@ -17,6 +17,7 @@ import tools.NegativeTimeException;
 import tools.Point;
 import ui.clui.CommandLineDisplay;
 import user.User;
+import user.UserStat;
 
 class CommandLineDisplayTest {
 	
@@ -30,18 +31,23 @@ class CommandLineDisplayTest {
 	@Test
 	void testDisplayStation() throws NegativeTimeException {
 		Station s = new StandardStation(new Point(1.055645,10.54896));
-		s.addSlot(3);
-		LocalDateTime time = LocalDateTime.of(2019, 01, 01, 00, 00);
-		s.getParkingSlots().get(1).setBike(new ElectricBike(), time);
-		s.getParkingSlots().get(2).setBike(new MechanicBike(), time);
-		String disp = cld.display(s);
-		String expected = "Station: id:0\n"
-			+ "\tPosition: x=1.056 y=10.549\n"
-			+ "Slots: 3\n"
-			+ "\tid:0\tOccupied:false\n"
-			+ "\tid:1\tOccupied:true\tBike id:0\tType: Electric\n"
-			+ "\tid:2\tOccupied:true\tBike id:1\tType: Mechanic\n";
-		assertEquals(expected, disp);
+		assertAll(
+			() -> assertEquals("Station: id:0\n" + "\tPosition: x=1.056 y=10.549\n" + "Slots: 0\n", cld.display(s)),
+			() -> {
+				s.addSlot(3);
+				LocalDateTime time = LocalDateTime.of(2019, 01, 01, 00, 00);
+				s.getParkingSlots().get(1).setBike(new ElectricBike(), time);
+				s.getParkingSlots().get(2).setBike(new MechanicBike(), time);
+				String disp = cld.display(s);
+				String expected = "Station: id:0\n"
+					+ "\tPosition: x=1.056 y=10.549\n"
+					+ "Slots: 3\n"
+					+ "\tid:0\tFree\n"
+					+ "\tid:1\tOccupied\tBike id:0\tType: Electric\n"
+					+ "\tid:2\tOccupied\tBike id:1\tType: Mechanic\n";
+				assertEquals(expected, disp);
+			}
+		);
 	}
 
 	@Test
@@ -58,7 +64,21 @@ class CommandLineDisplayTest {
 
 	@Test
 	void testDisplayUser() {
-		fail("Not yet implemented");
+		String expected = "User: id:1\n"
+				+ "\tName: Chloe\n"
+				+ "\tTotal amount paid: 3.54 euros\n"
+				+ "\tTotal number of rides: 2\n"
+				+ "\tTotal ride time: 50 minutes\n"
+				+ "\tTotal credit earned: 10 minutes\n";
+		User user = new User("Chloe");
+		UserStat us = new UserStat();
+		us.addAmount(3.5368);
+		us.addCreditEarned(10);
+		us.addRide(); us.addRide();
+		us.addTime(50);
+		user.setUserStat(us);
+		String disp = cld.display(user);
+		assertEquals(expected, disp);
 	}
 
 	@Test
