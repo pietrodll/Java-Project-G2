@@ -298,4 +298,9 @@ public abstract class Station {
 	 */
 	@Override
 	public abstract boolean equals(Object obj);
+	
+	@Override
+	public String toString() {
+		return "Station" + this.getId();
+	}
 }
