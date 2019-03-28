@@ -98,7 +98,7 @@ public class Slot {
 		return totalOccupationTime;
 	}
 	
-	/creation de computeOccupationTime2 ?
+	// creation de computeOccupationTime2 ?
 	public int computeOccupationTime2 (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException, NoSlotStateAtDateException, NullDateException {
 		int totalOccupationTime = 0;
 		int iStart;
