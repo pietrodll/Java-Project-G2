@@ -1057,7 +1057,7 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kRhckU9YEem8EYOBggYCvQ"/>
         </children>
         <element xmi:type="uml:Class" href="MyVelib.uml#_kQ7moE9YEem8EYOBggYCvQ"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kRYSkU9YEem8EYOBggYCvQ" x="354" y="19"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kRYSkU9YEem8EYOBggYCvQ" x="294" y="19"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_-FfjgE-dEem8EYOBggYCvQ" type="Interface_Shape_CN">
         <children xmi:type="notation:DecorationNode" xmi:id="_-Ffjgk-dEem8EYOBggYCvQ" type="Interface_NameLabel_CN"/>
@@ -1087,7 +1087,7 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-Ffjk0-dEem8EYOBggYCvQ"/>
         </children>
         <element xmi:type="uml:Interface" href="MyVelib.uml#_-Ev8oE-dEem8EYOBggYCvQ"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-FfjgU-dEem8EYOBggYCvQ" x="734" y="19"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-FfjgU-dEem8EYOBggYCvQ" x="294" y="179"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="__kROoE-dEem8EYOBggYCvQ" type="Interface_Shape_CN">
         <children xmi:type="notation:DecorationNode" xmi:id="__kROok-dEem8EYOBggYCvQ" type="Interface_NameLabel_CN"/>
@@ -1204,8 +1204,8 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_MM4C8UagEemyBK4PUSviPg"/>
     <element xmi:type="uml:Association" href="MyVelib.uml#_MMu5AEagEemyBK4PUSviPg"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MM4C8kagEemyBK4PUSviPg"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MPt7kEagEemyBK4PUSviPg" id="(0.0,0.6050420168067226)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MPt7kUagEemyBK4PUSviPg" id="(1.0,0.6050420168067226)"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MPt7kEagEemyBK4PUSviPg" id="(0.0,0.5925925925925926)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MPt7kUagEemyBK4PUSviPg" id="(1.0,0.6722689075630253)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_W6QLoEagEemyBK4PUSviPg" type="InterfaceRealization_Edge" source="_DXAiMEZjEemNTJH6NZhuqA" target="_9nhFkUKNEemGZJ64oLpHbA">
     <children xmi:type="notation:DecorationNode" xmi:id="_W6QLo0agEemyBK4PUSviPg" type="InterfaceRealization_StereotypeLabel">
