@@ -17,18 +17,18 @@ import station.Station;
 import station.StationFactory;
 import tools.Point;
 
-class MinimalWalkingTest {
+class FastestPathStrategyTest {
 	
-	private static Network net;
-	private static LocalDateTime changeTime = LocalDateTime.of(2019, 1, 1, 0, 0);
-	private static MinimalWalkingStrategy mws;
-	private static Point start;
-	private static Point destination;
-	
+	static Network net;
+	static LocalDateTime changeTime = LocalDateTime.of(2019, 1, 1, 0, 0);
+	static MinimalWalkingStrategy mws;
+	static Point start;
+	static Point destination;
+
 	@BeforeAll
-	static void setUpAll() {
+	static void setUpBeforeClass() throws Exception {
 		start = new Point(0,0);
-		destination = new Point(0,60);
+		destination = new Point(0,100);
 	}
 
 	@BeforeEach
@@ -36,84 +36,66 @@ class MinimalWalkingTest {
 		net = new Network();
 		mws = new MinimalWalkingStrategy(net);
 		StationFactory sf = new StationFactory(net);
-		for (int i = 1; i <= 5; i++) {
+		for (int i = 1; i <= 9; i++) {
 			sf.createStation("Standard", new Point(0, 10*i));
 			net.getStations().get(i-1).addSlot();
 		}
 	}
 
 	@Test
-	void testFindPathElectricBike() throws Exception {
-		assertAll(
+	void testFindPathPointPointInt() {
+		assertAll("ElectriBike",
 			() -> {
 				net.getStations().get(1).availableSlot().setBike(new ElectricBike(), changeTime);
 				net.getStations().get(0).availableSlot().setBike(new MechanicBike(), changeTime);
 				Station[] stations = mws.findPath(start, destination, BikeFactory.ELECTRIC);
-				Station[] expectedStations = {net.getStations().get(1), net.getStations().get(4)};
+				Station[] expectedStations = {net.getStations().get(1), net.getStations().get(8)};
 				assertArrayEquals(expectedStations, stations, "Station 1 is closer than station 2 but has no ElectricBike");
 			},
 			() -> {
 				net.getStations().get(0).getParkingSlots().get(0).setBike(new ElectricBike(), changeTime);
 				Station[] stations = mws.findPath(start, destination, BikeFactory.ELECTRIC);
-				Station[] expectedStations = {net.getStations().get(0), net.getStations().get(4)};
+				Station[] expectedStations = {net.getStations().get(0), net.getStations().get(8)};
 				assertArrayEquals(expectedStations, stations, "Station 1 is the closest and has ElectricBike");
 			},
 			() -> {
 				net.getStations().get(4).availableSlot().setBike(new MechanicBike(), changeTime);
 				Station[] stations = mws.findPath(start, destination, BikeFactory.ELECTRIC);
-				Station[] expectedStations = {net.getStations().get(0), net.getStations().get(3)};
-				assertArrayEquals(expectedStations, stations, "Station 5 is the closer to the destination but has no free slot");
+				Station[] expectedStations = {net.getStations().get(0), net.getStations().get(7)};
+				assertArrayEquals(expectedStations, stations, "Station 9 is the closer to the destination but has no free slot");
 			}
 		);
-	}
-	
-	@Test
-	void testFindPathMechanicBike() throws Exception {
-		assertAll(
+		assertAll("MechanicBike",
 			() -> {
 				net.getStations().get(1).availableSlot().setBike(new MechanicBike(), changeTime);
 				net.getStations().get(0).availableSlot().setBike(new ElectricBike(), changeTime);
 				Station[] stations = mws.findPath(start, destination, BikeFactory.MECHANIC);
-				Station[] expectedStations = {net.getStations().get(1), net.getStations().get(4)};
+				Station[] expectedStations = {net.getStations().get(1), net.getStations().get(8)};
 				assertArrayEquals(expectedStations, stations, "Station 1 is closer than station 2 but has no MechanicBike");
 			},
 			() -> {
 				net.getStations().get(0).getParkingSlots().get(0).setBike(new MechanicBike(), changeTime);
 				Station[] stations = mws.findPath(start, destination, BikeFactory.MECHANIC);
-				Station[] expectedStations = {net.getStations().get(0), net.getStations().get(4)};
+				Station[] expectedStations = {net.getStations().get(0), net.getStations().get(8)};
 				assertArrayEquals(expectedStations, stations, "Station 1 is the closest and has MechanicBike");
 			},
 			() -> {
 				net.getStations().get(4).availableSlot().setBike(new ElectricBike(), changeTime);
 				Station[] stations = mws.findPath(start, destination, BikeFactory.MECHANIC);
-				Station[] expectedStations = {net.getStations().get(0), net.getStations().get(3)};
+				Station[] expectedStations = {net.getStations().get(0), net.getStations().get(7)};
 				assertArrayEquals(expectedStations, stations, "Station 5 is the closer to the destination but has no free slot");
 			}
 		);
 	}
-	
+
 	@Test
-	void testFindPathBike() throws Exception {
-		assertAll(
-			() -> {
-				net.getStations().get(1).availableSlot().setBike(new MechanicBike(), changeTime);
-				Station[] stations = mws.findPath(start, destination);
-				Station[] expectedStations = {net.getStations().get(1), net.getStations().get(4)};
-				assertArrayEquals(expectedStations, stations, "Station 1 is closer than station 2 but has no Bike");
-			},
-			() -> {
-				net.getStations().get(0).getParkingSlots().get(0).setBike(new MechanicBike(), changeTime);
-				Station[] stations = mws.findPath(start, destination);
-				Station[] expectedStations = {net.getStations().get(0), net.getStations().get(4)};
-				assertArrayEquals(expectedStations, stations, "Station 1 is the closest and has Bike");
-			},
-			() -> {
-				net.getStations().get(4).availableSlot().setBike(new ElectricBike(), changeTime);
-				Station[] stations = mws.findPath(start, destination);
-				Station[] expectedStations = {net.getStations().get(0), net.getStations().get(3)};
-				assertArrayEquals(expectedStations, stations, "Station 5 is the closer to the destination but has no free slot");
-			}
-		);
+	void testFindPathPointPoint() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testFindEndStation() {
+		fail("Not yet implemented");
 	}
 
 }
