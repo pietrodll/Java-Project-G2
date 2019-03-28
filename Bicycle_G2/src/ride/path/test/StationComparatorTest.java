@@ -6,9 +6,6 @@ package ride.path.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +18,6 @@ import ride.path.DistanceBasicComparator;
 import ride.path.DistanceEndComparator;
 import ride.path.DistanceStartComparator;
 import station.Station;
-import station.Slot;
 import station.StationFactory;
 import station.StationSamePositionException;
 import station.TypeStationException;

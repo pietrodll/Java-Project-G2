@@ -56,7 +56,7 @@ class NetworkManagerTest {
 					}
 				);
 			},
-			() -> assertThrows(ExistingNameException.class, () -> { Network net1 = nm.setupNetwork("VLib"); })
+			() -> assertThrows(ExistingNameException.class, () -> { nm.setupNetwork("VLib"); })
 		);
 	}
 	
