@@ -71,12 +71,11 @@ class CommandLineDisplayTest {
 				+ "\tTotal ride time: 50 minutes\n"
 				+ "\tTotal credit earned: 10 minutes\n";
 		User user = new User("Chloe");
-		UserStat us = new UserStat();
+		UserStat us = user.getUserStat();
 		us.addAmount(3.5368);
 		us.addCreditEarned(10);
 		us.addRide(); us.addRide();
 		us.addTime(50);
-		user.setUserStat(us);
 		String disp = cld.display(user);
 		assertEquals(expected, disp);
 	}
