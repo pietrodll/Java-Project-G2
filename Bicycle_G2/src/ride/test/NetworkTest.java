@@ -142,9 +142,4 @@ class NetworkTest {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	void testArchiveRide() {
-		fail("Not yet implemented");
-	}
-
 }

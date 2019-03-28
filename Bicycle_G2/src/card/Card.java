@@ -58,6 +58,8 @@ public abstract class Card implements CardVisitor {
 			throw new InsufficientCreditException(this.timeCredit, credit);
 		}
 	}
+	
+	public abstract String getTypeString();
 
 	@Override
 	public abstract float computeRidePrice(ElectricBike bike, int rideTime);

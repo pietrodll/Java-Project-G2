@@ -60,11 +60,7 @@ public class Network implements Serializable {
 	}
 	
 	public void removeStation(Station station) {
-		for (Station s : this.stations) {
-			if (s.equals(station)) {
-				this.stations.remove(s);
-			}
-		}
+		this.stations.remove(station);
 	}
 	
 	public void addCard(Card card) {

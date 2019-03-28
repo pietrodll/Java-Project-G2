@@ -123,7 +123,7 @@ public class Slot {
 
 	public Station getS() { return s; }
 
-	public double getId() { return id; }
+	public int getId() { return id; }
 	
 	public Bike getBike() { return bike; }
 	

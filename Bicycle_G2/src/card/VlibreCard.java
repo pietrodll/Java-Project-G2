@@ -82,4 +82,9 @@ public class VlibreCard extends Card {
 		return cost;
 	}
 
+	@Override
+	public String getTypeString() {
+		return "Vlibre";
+	}
+
 }

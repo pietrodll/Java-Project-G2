@@ -23,4 +23,9 @@ public class CreditCard extends Card {
 		return (float) rideTime/60;
 	}
 
+	@Override
+	public String getTypeString() {
+		return "Credit";
+	}
+
 }

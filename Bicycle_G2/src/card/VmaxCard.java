@@ -47,4 +47,9 @@ public class VmaxCard extends Card {
 		return cost;
 	}
 
+	@Override
+	public String getTypeString() {
+		return "Vmax";
+	}
+
 }
