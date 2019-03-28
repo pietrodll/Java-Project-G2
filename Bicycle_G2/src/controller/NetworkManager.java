@@ -214,5 +214,76 @@ public class NetworkManager {
 		station.dropBike(card, returnTime);
 	}
 	
+	public Slot findSlotById(int id, Network net) throws InexistingSlotIdException {
+		int stationId = id/1000;
+		Station s = null;
+		Slot sl = null;
+		try {
+			s = this.findStationByID(stationId, net);
+		} catch (InexistingStationIdException e) {
+			throw new InexistingSlotIdException(id);
+		}
+		if (s != null) {
+			for (Slot slot : s.getParkingSlots()) {
+				if (slot.getId() == id) {
+					sl = slot;
+				}
+			}
+		}
+		if (sl != null) {
+			return sl;
+		} else {
+			throw new InexistingSlotIdException(id);
+		}
+	}
 	
+	public void setSlotOnline(String networkName, int slotID, LocalDateTime changeTime) throws InexistingNetworkNameException, InexistingSlotIdException, NegativeTimeException {
+		Network net = this.findNetworkByName(networkName);
+		Slot s = this.findSlotById(slotID, net);
+		s.setOnline(true, changeTime);
+	}
+	
+	public void setSlotOffline(String networkName, int slotID, LocalDateTime changeTime) throws InexistingNetworkNameException, InexistingSlotIdException, NegativeTimeException {
+		Network net = this.findNetworkByName(networkName);
+		Slot s = this.findSlotById(slotID, net);
+		s.setOnline(false, changeTime);
+	}
+
+	public void addSlot(Network net, int stationID, int numSlots) throws InexistingStationIdException {
+		Station s = this.findStationByID(stationID, net);
+		s.addSlot(numSlots);
+	}
+	
+	public void addStandardStation(Network net, int numSlots, double x, double y) throws TypeStationException, StationSamePositionException {
+		StationFactory sf = new StationFactory(net);
+		Station s = sf.createStation("Standard", new Point(x, y));
+		s.addSlot(numSlots);
+	}
+	
+	public void addPlusStation(Network net, int numSlots, double x, double y) throws TypeStationException, StationSamePositionException {
+		StationFactory sf = new StationFactory(net);
+		Station s = sf.createStation("Plus", new Point(x, y));
+		s.addSlot(numSlots);
+	}
+	
+	public void addElectricBike(Network net, LocalDateTime changeTime) throws NegativeTimeException {
+		Bike b = BikeFactory.createBike(BikeFactory.ELECTRIC);
+		for (Station s : net.getStations()) {
+			Slot sl = s.availableSlot();
+			if (sl != null) {
+				sl.setBike(b, changeTime);
+			}
+		}
+	}
+	
+	public void addMechanicBike(Network net, LocalDateTime changeTime) throws NegativeTimeException {
+		Bike b = BikeFactory.createBike(BikeFactory.MECHANIC);
+		for (Station s : net.getStations()) {
+			Slot sl = s.availableSlot();
+			if (sl != null) {
+				sl.setBike(b, changeTime);
+			}
+		}
+	}
+
 }

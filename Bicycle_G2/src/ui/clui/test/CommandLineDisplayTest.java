@@ -42,9 +42,9 @@ class CommandLineDisplayTest {
 				String expected = "Station: id:0\n"
 					+ "\tPosition: x=1.056 y=10.549\n"
 					+ "Slots: 3\n"
-					+ "\tid:0\tFree\n"
-					+ "\tid:1\tOccupied\tBike id:0\tType: Electric\n"
-					+ "\tid:2\tOccupied\tBike id:1\tType: Mechanic\n";
+					+ "\tid:0\tOnline\tFree\n"
+					+ "\tid:1\tOnline\tOccupied\tBike id:0\tType: Electric\n"
+					+ "\tid:2\tOnline\tOccupied\tBike id:1\tType: Mechanic\n";
 				assertEquals(expected, disp);
 			}
 		);
@@ -79,11 +79,6 @@ class CommandLineDisplayTest {
 		user.setUserStat(us);
 		String disp = cld.display(user);
 		assertEquals(expected, disp);
-	}
-
-	@Test
-	void testDisplay() {
-		fail("Not yet implemented");
 	}
 
 }

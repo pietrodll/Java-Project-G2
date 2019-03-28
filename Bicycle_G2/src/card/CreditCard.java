@@ -6,11 +6,10 @@ import user.User;
 
 public class CreditCard extends Card {
 	
-	private final int timeCredit;
+	private final int timeCredit = 0;
 
 	public CreditCard(User user) {
 		super(user);
-		this.timeCredit = 0;
 	}
 
 	@Override
@@ -24,8 +23,9 @@ public class CreditCard extends Card {
 	}
 
 	@Override
-	public String getTypeString() {
-		return "Credit";
-	}
+	public String getTypeString() { return "Credit"; }
+	
+	@Override
+	public int getTimeCredit() { return this.timeCredit; }
 
 }
