@@ -6,9 +6,9 @@ import tools.Point;
 
 public class FastestPathComparator extends StationComparator {
 	
-	public final static float WALKING_SPEED = 4;
-	public final static float ELECTRIC_SPEED = 20;
-	public final static float MECHANIC_SPEED = 15;
+	public final static double WALKING_SPEED = 4.0;
+	public final static double ELECTRIC_SPEED = 20.0;
+	public final static double MECHANIC_SPEED = 15.0;
 	
 	private Point returnPoint;
 
@@ -24,14 +24,14 @@ public class FastestPathComparator extends StationComparator {
 	@Override
 	public int compare(Station arg0, Station arg1) {
 		int res = 0;
-		float speed = this.bikeType == BikeFactory.ELECTRIC ? ELECTRIC_SPEED : MECHANIC_SPEED;
-		double timeDiff = WALKING_SPEED*this.getDistanceDiff(arg0, arg1) + speed*this.getReturnDiff(arg0, arg1);
+		double speed = this.bikeType == BikeFactory.ELECTRIC ? ELECTRIC_SPEED : MECHANIC_SPEED;
+		double timeDiff = this.getDistanceDiff(arg0, arg1)/WALKING_SPEED + this.getReturnDiff(arg0, arg1)/speed;
 		if (bikeType == 0) {
-			res = timeDiff < 0 && arg0.hasBikeAvailable() != null ? -1 : timeDiff > 0 && arg1.hasBikeAvailable() != null ? 1 : 0;
+			res = StationComparator.availabilityComparator(timeDiff, arg0.hasBikeAvailable() != null, arg1.hasBikeAvailable() != null);
 		} else if (bikeType == BikeFactory.ELECTRIC) {
-			res = timeDiff < 0 && arg0.hasElectricBikeAvailable() != null ? -1 : timeDiff > 0 && arg1.hasElectricBikeAvailable() != null ? 1 : 0;
+			res = StationComparator.availabilityComparator(timeDiff, arg0.hasElectricBikeAvailable() != null, arg1.hasElectricBikeAvailable() != null);
 		} else {
-			res = timeDiff < 0 && arg0.hasMechanicBikeAvailable() != null ? -1 : timeDiff > 0 && arg1.hasMechanicBikeAvailable() != null ? 1 : 0;
+			res = StationComparator.availabilityComparator(timeDiff, arg0.hasMechanicBikeAvailable() != null, arg1.hasMechanicBikeAvailable() != null);
 		}
 		return res;
 	}

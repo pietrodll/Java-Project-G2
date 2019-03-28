@@ -31,9 +31,11 @@ public class FastestPathStrategy implements PathStrategy {
 	public Station[] findPath(Point start, Point end) {
 		Station[] stElec = this.findPath(start, end, BikeFactory.ELECTRIC);
 		Station[] stMech = this.findPath(start, end, BikeFactory.MECHANIC);
-		double timeMechanic = FastestPathComparator.MECHANIC_SPEED*stMech[0].getP().distancePoint(stMech[1].getP()) + FastestPathComparator.WALKING_SPEED*(start.distancePoint(stMech[0].getP()) + end.distancePoint(stMech[1].getP()));
-		double timeElec = FastestPathComparator.ELECTRIC_SPEED*stElec[0].getP().distancePoint(stElec[1].getP()) + FastestPathComparator.WALKING_SPEED*(start.distancePoint(stElec[0].getP()) + end.distancePoint(stElec[1].getP()));
-		return timeElec < timeMechanic ? stElec : stMech;
+		Point startMech = stMech[0].getP(), endMech = stMech[1].getP();
+		Point startElec = stElec[0].getP(), endElec = stElec[1].getP();
+		double timeMechanic = startMech.distancePoint(endMech)/FastestPathComparator.MECHANIC_SPEED + (start.distancePoint(startMech) + end.distancePoint(endMech))/FastestPathComparator.WALKING_SPEED;
+		double timeElec = endElec.distancePoint(startElec)/FastestPathComparator.ELECTRIC_SPEED + (start.distancePoint(startElec) + end.distancePoint(endElec))/FastestPathComparator.WALKING_SPEED;
+		return timeElec <= timeMechanic ? stElec : stMech;
 	}
 
 	@Override
