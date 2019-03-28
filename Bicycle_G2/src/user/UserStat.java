@@ -2,14 +2,14 @@ package user;
 
 public class UserStat {
 	
-	private double numberRides;
+	private int numberRides;
 	private double totalTime = 0;
 	private double totalAmount = 0;
 	private double totalCreditEarned = 0;
 	
 	public UserStat() { super(); }
 
-	public double getNumberRides() { return numberRides; }
+	public int getNumberRides() { return numberRides; }
 
 	public void addRide() {
 		this.numberRides++;
