@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 public class NoSlotStateAtDateException extends Exception {
 	
+	private static final long serialVersionUID = 2651831164435357865L;
+	
 	private LocalDateTime time;
 
 	public NoSlotStateAtDateException(LocalDateTime time) {

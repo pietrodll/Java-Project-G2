@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import bike.Bike;
 import tools.Date;
 import tools.NegativeTimeException;
-import user.UserIDGenerator;
+
 
 /**
  * A class representing parking slots

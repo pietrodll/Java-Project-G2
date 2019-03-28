@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class UserIDGenerator implements Serializable {
 	
+	private static final long serialVersionUID = -2557421117736232615L;
 	private static UserIDGenerator instance = null;
 	private int num;
 	

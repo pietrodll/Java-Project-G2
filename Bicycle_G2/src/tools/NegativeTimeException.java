@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class NegativeTimeException extends Exception {
 	
+	private static final long serialVersionUID = -1897800301626475809L;
 	private LocalDateTime startTime;
 	private LocalDateTime endTime;
 	

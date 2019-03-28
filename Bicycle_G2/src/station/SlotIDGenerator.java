@@ -5,8 +5,9 @@ import java.io.Serializable;
 public class SlotIDGenerator implements Serializable {
 
 		
+	private static final long serialVersionUID = -3812093926679281274L;
+	
 	private static SlotIDGenerator instance = null;
-	private int num;
 		
 	private SlotIDGenerator() {}
 		

@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 public class StationIDGenerator implements Serializable {
 
-		
+	private static final long serialVersionUID = 8251873607435713002L;
+	
 	private static StationIDGenerator instance = null;
 	private int num;
 		

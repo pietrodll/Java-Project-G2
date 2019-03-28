@@ -1,12 +1,11 @@
 package ride;
 
-import java.io.ObjectStreamException;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import sorting.station.SortingStrategy;
 import station.Station;
-import java.util.Collections;
-import java.util.Comparator;
+
 
 import card.Card;
 

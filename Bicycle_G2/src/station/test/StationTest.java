@@ -1,14 +1,11 @@
 package station.test;
 
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.Computer;
 
 import bike.Bike;
 import bike.ElectricBike;
@@ -52,10 +49,10 @@ public class StationTest {
 	@Test 
 	void testSamePositionStation() throws TypeStationException, StationSamePositionException {
 		Point p1 = new Point(3, 10);
-		Station s1 = sf.createStation("Standard", p1);
+		sf.createStation("Standard", p1);
 		assertThrows(StationSamePositionException.class,
 				() -> {
-					Station s2 = sf.createStation("Standard", p1);
+					sf.createStation("Standard", p1);
 				}
 		);
 		
@@ -95,11 +92,7 @@ public class StationTest {
 		Bike b1 = new ElectricBike();
 		Bike b2 = new MechanicBike();
 		Bike b3 = new MechanicBike();
-		Bike b4 = new ElectricBike();
-		Bike b5 = new ElectricBike();
-		Bike b6 = new MechanicBike();
-		Bike b7 = new MechanicBike();
-		Bike b8 = new MechanicBike();
+	
 		s1.addSlot();
 		s2.addSlot();
 		s1.addSlot();
@@ -149,7 +142,7 @@ public class StationTest {
 					SlotState slotstate132 = slot13.getSlotHistory().get(1);
 					SlotState slotstate133 = slot13.getSlotHistory().get(2);
 					SlotState slotstate134 = slot13.getSlotHistory().get(3);
-					SlotState slotstate135 = slot13.getSlotHistory().get(4);
+					
 					
 					assertAll("Station and Slots",
 					() -> {

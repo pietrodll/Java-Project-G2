@@ -4,6 +4,7 @@ import tools.Point;
 
 public class StationSamePositionException extends Exception {
 	
+	private static final long serialVersionUID = -1530901007820608772L;
 	private Point position;
 
 	public StationSamePositionException(Point position) {
