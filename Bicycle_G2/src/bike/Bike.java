@@ -1,6 +1,5 @@
 package bike;
 
-
 import card.CardVisitor;
 
 /**
@@ -10,9 +9,6 @@ import card.CardVisitor;
 public abstract class Bike implements CardVisitable {
 	
 	private int id;
-	private boolean isRented;
-	private int stationId;
-	private int slotId;
 	
 	public Bike() {
 		BikeIdGenerator idGenerator = BikeIdGenerator.getInstance();

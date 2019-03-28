@@ -16,7 +16,7 @@ public class CommandLineDisplay {
 		disp += '\t' + "Position: x=" + x + " y=" + y + '\n';
 		disp += "Slots: " + s.getParkingSlots().size() + '\n';
 		for (Slot slot : s.getParkingSlots()) {
-			disp += '\t' + "id:" + slot.getId() + '\t' + (slot.getisOccupied() ? "Occupied" : "Free");
+			disp += '\t' + "id:" + slot.getId() + '\t' + (slot.isOnline() ? "Online" : "Offline") +'\t' + (slot.getisOccupied() ? "Occupied" : "Free");
 			if (slot.getisOccupied()) {
 				disp += '\t' + "Bike id:" + slot.getBike().getId();
 				String bt = slot.getBike() instanceof ElectricBike ? "Electric" : "Mechanic";
