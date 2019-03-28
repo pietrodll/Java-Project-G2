@@ -1,6 +1,9 @@
-package tools;
+package tools.test;
 
 import org.junit.jupiter.api.Test;
+
+import tools.Point;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PointTest {

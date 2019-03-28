@@ -12,6 +12,14 @@ import java.time.LocalDateTime;
 import bike.Bike;
 import card.Card;
 
+/**
+ * This class represents the users of the network. A {@code User} is created with a Username, and can have or not an initial position.
+ * Each {@code User} has a unique {@code id} and its own {@code UserStat} class that contains his statistics.
+ * A {@code User} can have an Ongoing {@code Ride} and can be following an {@code Itinerary}.
+ * @author Chloé
+ *@see UserStat
+ *@see UserIDGenerator
+ */
 public class User implements Observer {
 	
 	private String userName;
@@ -42,58 +50,66 @@ public class User implements Observer {
 		userStat = new UserStat();
 	}
 	
-	
+	/**
+	 * If the {@code User} does not have an ongoing {@code Ride}, this method sets a new ongoing {@code Ride}. This method checks if the card used belongs to the user.
+	 * @param net
+	 * @param bike
+	 * @param startRide
+	 * @param card
+	 */
 	public void startOngoingRide (Network net, Bike bike, LocalDateTime startRide, Card card) {
 		if (ongoingRide == null) {
-			this.ongoingRide = new Ride (net, bike, this, card, startRide);
+			if (card.getUser() == this) {
+				this.ongoingRide = new Ride (net, bike, this, card, startRide);
+			}
 		}
 	}
 	
+	/**
+	 * If the {@code User} has an ongoing {@code Ride}, this method ends the ongoing {@code Ride}, resets the {@code Itinerary}, computes the cost of the ride and updates the user's statistics.
+	 * @param endRide
+	 * @throws NegativeTimeException
+	 */
 	public void endOngoingRide(LocalDateTime endRide) throws NegativeTimeException {
-		if (ongoingRide != null) {
+		if (this.ongoingRide != null) {
 			if (this.itinerary != null) {
 				this.itinerary = null;	
 			}
-			int timeRide = ongoingRide.getRideTime();
-			Bike bike = ongoingRide.getBike();
-			Card card = ongoingRide.getCard();
 			ongoingRide.endRide(endRide);
-			float price = bike.ridePrice(card, timeRide);
+			int timeRide = ongoingRide.getRideTime();
+			float price = ongoingRide.getBike().ridePrice(ongoingRide.getCard(), timeRide);
+			
 			userStat.addRide();
 			userStat.addAmount(price);	
 			userStat.addTime(timeRide);
+			this.ongoingRide = null;
 		}
 	}
 	
+	/**
+	 * This method calculates an itinerary given an arrival position and a {@code PathStrategy}. The start position is the current position of the {@code} User.
+	 * @param arrival
+	 * @param ps
+	 * @return itinerary
+	 */
 	public Itinerary calculateItinerary(Point arrival, PathStrategy ps) {
 		Itinerary i1 = new Itinerary(this.position, arrival);
 		i1.computePath(ps);
 		return i1;		
 	}
 	
+	/**
+	 * This method calculates an itinerary given a starting position, an arrival position and a {@code PathStrategy}. 
+	 * @param start
+	 * @param arrival
+	 * @param ps
+	 * @return itinerary
+	 */
 	public Itinerary calculateItinerary(Point start, Point arrival, PathStrategy ps) {
 		Itinerary i1 = new Itinerary(start, arrival);
 		i1.computePath(ps);
 		return i1;		
 	}
-	
-	public String getUserName() { return userName; }
-	public void setLastName(String userName) { this.userName = userName; }
-
-	public Point getPosition() { return position; }
-	public void setPosition(Point position) { this.position = position; }
-
-
-	public Ride getOngoingRide() { return ongoingRide; }
-	public void setOngoingRide(Ride ongoingRide) { this.ongoingRide = ongoingRide; }
-
-	public Itinerary getItinerary() { return itinerary; }
-	public void setItinerary(Itinerary itinerary) { this.itinerary = itinerary; }
-
-	public int getId() { return id; }
-
-	public UserStat getUserStat() { return userStat; }
-	public void setUserStat(UserStat userStat) { this.userStat = userStat; }
 	
 	
 	@Override
@@ -104,6 +120,23 @@ public class User implements Observer {
 		*/
 	}
 	
+	public String getUserName() { return userName; }
+
+	public Point getPosition() { return position; }
+	public void setPosition(Point position) { this.position = position; }
+
+	public Ride getOngoingRide() { return ongoingRide; }
+
+	public Itinerary getItinerary() { return itinerary; }
+	public void setItinerary(Itinerary itinerary) { this.itinerary = itinerary; }
+
+	public int getId() { return id; }
+
+	public UserStat getUserStat() { return userStat; }
+	
+	/**
+	 * This method redefines the equals method for the {@code User} class. {@code User} are compared on their ID.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		boolean res = false;

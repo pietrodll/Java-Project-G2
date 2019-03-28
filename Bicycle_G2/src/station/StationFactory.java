@@ -4,8 +4,9 @@ import ride.Network;
 import tools.Point;
 
 /**
- * Class representing a simple factory that can create new types of Stations, to respect the open-close principle
- *
+ * This class creates {@code Station} objects.
+ * @author Chloé
+ * @see Station
  */
 public class StationFactory  {
 	
@@ -13,11 +14,20 @@ public class StationFactory  {
 	
 	public StationFactory(Network net) { this.net = net; }
 	
+	/**
+	 * When creating a new {@code Station}, the method checks if there is no other stations at the same position.
+	 * @param stationType
+	 * @param p
+	 * @return
+	 * @throws TypeStationException
+	 * @throws StationSamePositionException
+	 */
 	public Station createStation (String stationType, Point p ) throws TypeStationException, StationSamePositionException {
 		for (Station s : this.net.getStations()) {
-			if (s.getP().equals(p) ) { throw new StationSamePositionException(p); }
+			if (s.getP().equals(p) ) { 
+				throw new StationSamePositionException(p); }
 		}
-		if (stationType == null) { return null; }
+		
 		if (stationType.equalsIgnoreCase("Standard")) {
 			Station s1 = new StandardStation(p);
 			this.net.addStation(s1);

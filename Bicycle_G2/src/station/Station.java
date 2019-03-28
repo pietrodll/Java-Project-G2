@@ -10,8 +10,10 @@ import card.Card;
 import ride.Network;
 
 /**
- * An abstract class to represent the stations
- *
+ * An abstract class to represent the stations. Each {@code Station} has a unique {@code id} (regardless of its type). A {@code Station} is part of a {@code Network}, has a position, a number of {@code Slot} objects. A {@code Station} is online when created. 
+ * @author Chloé
+ * @see StandardStation
+ * @see PlusStation
  */
 public abstract class Station {
 	
@@ -34,8 +36,16 @@ public abstract class Station {
 		this.isOnline = true;
 	}
 
-
-	public double getRateOccupation(LocalDateTime startTime, LocalDateTime endTime) throws NoSlotStateAtDateException, NegativeTimeException{
+	/**
+	 * This method calculates the rate of occupation of an entire {@code Station} during a time period.
+	 * @param startTime
+	 * @param endTime
+	 * @return Rate of occupation during startTime and endTime
+	 * @throws NoSlotStateAtDateException
+	 * @throws NegativeTimeException
+	 * @throws NullDateException
+	 */
+	public double getRateOccupation(LocalDateTime startTime, LocalDateTime endTime) throws NoSlotStateAtDateException, NegativeTimeException, NullDateException{
 		double occupationRate = -1;
 		ArrayList<Slot> existingSlots = new ArrayList<Slot>();
 		for (Slot slot : parkingSlots) {
@@ -61,7 +71,10 @@ public abstract class Station {
 		return occupationRate;
 	}
 	
-	
+	/**
+	 * A {@code Station} is full when it is offline, or when all of its {@code Slots} are occupied.
+	 * @return if the {@code Station} is full
+	 */
 	public boolean isStationFull() {
 		if (this.isOnline==false) {return true;}
 		for (Slot s : parkingSlots) {
@@ -72,6 +85,10 @@ public abstract class Station {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * @return an available {@code Slot}
+	 */
 	public Slot availableSlot() {
 		if (this.isOnline) {
 			for (Slot s : parkingSlots) {
@@ -83,6 +100,10 @@ public abstract class Station {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @return a {@code Slot} online and with an available {@code Bike}
+	 */
 	public Slot hasBikeAvailable() {
 		if (this.isOnline) {
 			for (Slot s : parkingSlots) {
@@ -93,7 +114,11 @@ public abstract class Station {
 		}
 		return null;
 	}
-						
+	
+	/**
+	 * 
+	 * @return a {@code Slot} online and with an available {@code ElectricBike}
+	 */
 	public Slot hasElectricBikeAvailable() {
 		if (this.isOnline) {
 			for (Slot s : parkingSlots) {
@@ -105,6 +130,10 @@ public abstract class Station {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @return a {@code Slot} online and with an available {@code MechanicBike}
+	 */
 	public Slot hasMechanicBikeAvailable() {
 		if (this.isOnline) {
 			for (Slot s : parkingSlots) {
@@ -116,14 +145,25 @@ public abstract class Station {
 		return null;
 	}
 
-	
+	/**
+	 * 
+	 * @param card
+	 * @return user of the card
+	 */
 	public User identifyUser (Card card) {
 		if (this.isOnline) {
 			return card.getUser();
 		}
-		else {return null;}
+		else {return null;} 
 	}
 	
+	
+	/**
+	 * This method allows to pick up a {@code Bike} if the {@code Station} is online, if the {@code User} of the {@code Card} has no ongoing {@code Ride} and if there is an a {@code Slot} with a {@code Bike} available
+	 * @param card
+	 * @param pickUpTime
+	 * @throws NegativeTimeException
+	 */
 	public synchronized void pickUpBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException {
 		if (this.isOnline) {
 			User user = identifyUser (card);
@@ -141,6 +181,12 @@ public abstract class Station {
 		}
 	}
 	
+	/**
+	 * This method allows to pick up a {@code ElectricBike} if the {@code Station} is online, if the {@code User} of the {@code Card} has no ongoing {@code Ride} and if there is an a {@code Slot} with a {@code ElectricBike} available
+	 * @param card
+	 * @param pickUpTime
+	 * @throws NegativeTimeException
+	 */
 	public synchronized void pickUpElectricBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException {
 		if (this.isOnline) {
 			User user = identifyUser (card);
@@ -158,6 +204,12 @@ public abstract class Station {
 		}
 	}
 	
+	/**
+	 * This method allows to pick up a {@code MechanicBike} if the {@code Station} is online, if the {@code User} of the {@code Card} has no ongoing {@code Ride} and if there is an a {@code Slot} with a {@code MechanicBike} available
+	 * @param card
+	 * @param pickUpTime
+	 * @throws NegativeTimeException
+	 */
 	public synchronized void pickUpMechanicBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException {
 		if (this.isOnline) {
 			User user = identifyUser (card);
@@ -175,6 +227,12 @@ public abstract class Station {
 		}
 	}
 	
+	/**
+	 * This method allows to drop a {@code Bike} if the {@code Station} is online, if the {@code User} of the {@code Card} has an ongoing {@code Ride} and if there is an available {@code Slot}.
+	 * @param card
+	 * @param dropTime
+	 * @throws NegativeTimeException
+	 */
 	public synchronized void dropBike (Card card, LocalDateTime dropTime) throws NegativeTimeException {
 		if (this.isOnline) {	
 			User user = identifyUser (card);
@@ -235,6 +293,9 @@ public abstract class Station {
 	
 	public int getId() { return id; }
 	
+	/**
+	 * Redefinition of the equals() method
+	 */
 	@Override
 	public abstract boolean equals(Object obj);
 }

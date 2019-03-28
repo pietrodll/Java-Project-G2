@@ -5,6 +5,7 @@ import java.util.Comparator;
 import station.NoSlotStateAtDateException;
 import station.Station;
 import tools.NegativeTimeException;
+import tools.NullDateException;
 
 public class OccRateComparator implements Comparator<Station> {
 	
@@ -35,7 +36,10 @@ public class OccRateComparator implements Comparator<Station> {
 				return 0;
 			} catch (NegativeTimeException e) {
 				return 0;
+			} catch (NullDateException e) {
+				return 0;
 			}
+			
 			
 
 	}

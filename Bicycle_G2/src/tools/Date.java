@@ -28,21 +28,14 @@ public class Date {
 	 * @param endTime ({@code LocalDateTime})
 	 * @return the time ({@code int}) between {@code startTime} and {@code endTime}
 	 * @throws NegativeTimeException
+	 * @throws NullDateException
 	 */
-	public static int computeTime (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException {
-		int timeSpend = 0;
-		if (startTime == null) {
-			System.out.println("Error : The starting date is null");
-			return (Integer) null;
-		} else if (endTime == null) {
-			System.out.println("Error : The ending date is null");
-			return (Integer) null;
-		} else if (startTime== null && endTime == null){
-			System.out.println("Error : Both the starting date and the endind date are null");
-			return (Integer) null;
+	public static int computeTime (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException, NullDateException {
+		if (startTime== null || endTime == null){
+			throw new NullDateException();
 		}
 		else {
-			timeSpend = (int) startTime.until (endTime, ChronoUnit.MINUTES);
+			int timeSpend = (int) startTime.until (endTime, ChronoUnit.MINUTES);
 			if (timeSpend < 0) {
 				throw new NegativeTimeException(startTime, endTime);
 			}
@@ -50,7 +43,6 @@ public class Date {
 		}
 	}
 
-	
 	
 	/**
 	 * This method converts a {@code String} into the corresponding {@code LocalDateTime} object 
@@ -60,9 +52,6 @@ public class Date {
 	public static LocalDateTime dateInput(String userInput) throws DateTimeParseException {
 		LocalDateTime formatDateTime = LocalDateTime.parse(userInput, formatter);
 			return (formatDateTime);
-		
 	}
-	
-	
 
 }

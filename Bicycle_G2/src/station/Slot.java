@@ -6,11 +6,14 @@ import java.util.ArrayList;
 import bike.Bike;
 import tools.Date;
 import tools.NegativeTimeException;
+import tools.NullDateException;
 
 
 /**
- * A class representing parking slots
- *
+ * A class representing parking slots. When a {@code Slot} is created, it has a unique ID, is online and has no {@code Bike}.
+ * @author Chloé
+ * @see SlotState
+ * @see Station
  */
 public class Slot {
 	
@@ -29,6 +32,17 @@ public class Slot {
 		slotHistory = new ArrayList<SlotState>();
 	}
 	 
+	
+	/**
+	 * This method allows to find the {@code SlotState} of a {@code Slot} at a certain time t, using its index in the SlotHistory list.
+	 * If t is during a {@code SlotState}, this {@code SlotState} will be returned.
+	 * If t is at a changing time of {@code SlotState}, then the {@code SlotState} that starts at t will be returned.
+	 * If t is before the first {@code SlotState}, it means the {@code Slot} was not created at that time, it will throw an exception.
+	 * If t is after the beginning of the current {@code SlotState}, the current {@code SlotState} will be returned.
+	 * @param t
+	 * @return index of {@code SlotState} of time t in the SlotHistory
+	 * @throws NoSlotStateAtDateException
+	 */
 	public int indexSlotState (LocalDateTime t) throws NoSlotStateAtDateException{
 		int i;
 		int size = this.slotHistory.size();
@@ -52,17 +66,21 @@ public class Slot {
 		}
 	}
 	
-	
-	public int computeOccupationTime (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException, NoSlotStateAtDateException {
+	/**
+	 * This method calculates the occupation time of a {@code Slot} between startTime and endTime by using its {@code SlotState} history.
+	 * @param startTime
+	 * @param endTime
+	 * @return the time the {@code Slot} was occupied during startTime and endTime
+	 * @throws NegativeTimeException
+	 * @throws NoSlotStateAtDateException
+	 * @throws NullDateException
+	 */
+	public int computeOccupationTime (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException, NoSlotStateAtDateException, NullDateException {
 		int totalOccupationTime = 0;
 		int iStart;
 		int iEnd;
+		iEnd = indexSlotState (endTime);
 		try {
-			iEnd = indexSlotState (endTime);
-		} catch (NoSlotStateAtDateException e){
-			System.out.println("The Slot " + this + " did not exist during this interval of time ");
-			return -1;
-		} try {
 			iStart = indexSlotState (startTime);
 		} catch (NoSlotStateAtDateException e) {
 			iStart = 0;
@@ -80,22 +98,51 @@ public class Slot {
 		return totalOccupationTime;
 	}
 	
+	/creation de computeOccupationTime2 ?
+	public int computeOccupationTime2 (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException, NoSlotStateAtDateException, NullDateException {
+		int totalOccupationTime = 0;
+		int iStart;
+		int iEnd;
+		iEnd = indexSlotState (endTime);
+		try {
+			iStart = indexSlotState (startTime);
+		} catch (NoSlotStateAtDateException e) {
+			iStart = 0;
+		}
+		for (int i = iStart; i <= iEnd; i++) {
+			SlotState state = slotHistory.get(i);
+			if (state.getisOccupied() == true) {
+				if (state.getEndTime() == null) { 
+					totalOccupationTime += Date.computeTime (state.getStartTime(), endTime);	
+				}
+				else {totalOccupationTime += Date.computeTime (state.getStartTime(), state.getEndTime());
+				}
+			}			
+		}
+		return totalOccupationTime;
+	}
 	
+	/**
+	 * A {@code Slot} is occupied if it is offline or if it has a {@code Bike}.
+	 * @return whether the {@code Slot} is occupied
+	 */
 	public boolean getisOccupied() {
 		if (isOnline == false) {
 			return true;
-		}
-		else if ( bike != null ) {
+		} else if ( bike != null ) {
 			return true;
-		}
-		else {return false;}
+		} else {return false;}
 	}
 	
 	
-	public boolean isOnline() {
-		return isOnline;
-	}
-
+	public boolean isOnline() { return isOnline; }
+	
+	/**
+	 * This method sets the boolean isOnline. When an isOnline changes, a new {@code SlotState} has to be created
+	 * @param isOnline
+	 * @param changeTime
+	 * @throws NegativeTimeException
+	 */
 	public void setOnline(boolean isOnline, LocalDateTime changeTime) throws NegativeTimeException {
 		if (isOnline != this.isOnline) {
 			this.isOnline = isOnline;
@@ -107,6 +154,14 @@ public class Slot {
 		}
 	}
 	
+	public Bike getBike() { return bike; }
+	
+	/**
+	 * This method sets the {@code Bike} of the {@code Slot}. When the {@code Bike} changes, a new {@code SlotState} has to be created.
+	 * @param bike
+	 * @param changeTime
+	 * @throws NegativeTimeException
+	 */
 	public void setBike(Bike bike, LocalDateTime changeTime) throws NegativeTimeException {
 		if (bike != this.bike) {
 			this.bike = bike;
@@ -125,8 +180,10 @@ public class Slot {
 
 	public int getId() { return id; }
 	
-	public Bike getBike() { return bike; }
 	
+	/**
+	 * Redefinition of the equals() method 
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		boolean res = false;
@@ -135,12 +192,7 @@ public class Slot {
 			res = this.getId() == other.getId();
 		}
 		return res;
-	}
-
-
-									
-	
-	
+	}	
 
 	
 }

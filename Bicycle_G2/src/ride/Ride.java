@@ -33,13 +33,13 @@ public class Ride {
 	public LocalDateTime getStartRide() { return startRide; }
 	public LocalDateTime getEndRide() { return endRide; }
 	public Card getCard() { return card; }
-
+	
 
 	public void endRide(LocalDateTime endRide) {
 		this.endRide = endRide;
-		
-		this.net.archiveRide(this);
+		net.archiveRide(this);
 	}
+	
 	
 	public int getRideTime() throws NegativeTimeException {
 		int rideTime = -1;
