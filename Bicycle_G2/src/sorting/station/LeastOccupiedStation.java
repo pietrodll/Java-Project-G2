@@ -3,7 +3,6 @@ package sorting.station;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import station.Station;
 
 public class LeastOccupiedStation implements SortingStrategy {

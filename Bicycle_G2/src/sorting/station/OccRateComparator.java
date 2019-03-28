@@ -1,13 +1,9 @@
 package sorting.station;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Scanner;
-
 import station.NoSlotStateAtDateException;
 import station.Station;
-import tools.Date;
 import tools.NegativeTimeException;
 
 public class OccRateComparator implements Comparator<Station> {

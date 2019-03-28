@@ -1,8 +1,12 @@
 package ride;
 
+import java.util.ArrayList;
+
 import ride.path.PathStrategy;
 import station.Station;
 import tools.Point;
+import user.Observable;
+import user.Observer;
 
 /**
  * This class represents an itinerary for the users.
@@ -10,13 +14,14 @@ import tools.Point;
  * {@code computePath } affects values to the attributes {@code startStation} and {@code endStation}. 
  * @author Pietro Dellino
  */
-public class Itinerary {
+public class Itinerary implements Observable{
 	
 	private Point start;
 	private Point end;
 	private Station startStation;
 	private Station endStation;
-	
+	private ArrayList<Observer> observers = new ArrayList<Observer>(); // y reflechir
+	private boolean changed; //y reflechir
 	public Itinerary(Point start, Point end) {
 		this.start = start;
 		this.end = end;
@@ -54,6 +59,24 @@ public class Itinerary {
 		Station[] stations = ps.findPath(this.start, this.end, bikeType);
 		this.startStation = stations[0];
 		this.endStation = stations[1];
+	}
+	
+	@Override
+	public void registerObserver (Observer observer) {
+		observers.add(observer);}
+
+
+	@Override
+	public void removeObserver(Observer observer) {
+		observers.remove(observer);}
+
+
+	@Override 
+	public void notifyObservers () {
+		/*if (this.itinerary.getEndStation().isStationFull()) {
+			for (Observer ob : observers)
+				ob.update(this.itinerary.getEndStation().isStationFull());
+		}*/
 	}
 
 }

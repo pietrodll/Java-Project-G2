@@ -2,7 +2,6 @@ package sorting.station;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import station.Station;
 
 public class MoreUsedStation implements SortingStrategy {

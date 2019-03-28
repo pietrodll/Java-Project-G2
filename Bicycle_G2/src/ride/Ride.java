@@ -1,23 +1,19 @@
 package ride;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 import bike.*;
 import card.Card;
 import user.*;
-import ride.*;
 import tools.Date;
 import tools.NegativeTimeException;
 
-public class Ride implements Observable{
+public class Ride {
 	
 	private Bike bike;
 	private User user;
 	private Card card;
 	private LocalDateTime startRide;
 	private LocalDateTime endRide; 
-	private boolean changed;
-	private ArrayList<Observer> observers = new ArrayList<Observer>();
 	private Network net;
 	
 	
@@ -54,22 +50,7 @@ public class Ride implements Observable{
 		return rideTime;
 	}
 	
-	@Override
-	public void registerObserver (Observer observer) {
-		observers.add(observer);}
 
-
-	@Override
-	public void removeObserver(Observer observer) {
-		observers.remove(observer);}
-
-
-	@Override 
-	public void notifyObservers () {
-		/*if (this.itinerary.getEndStation().isStationFull()) {
-			for (Observer ob : observers)
-				ob.update(this.itinerary.getEndStation().isStationFull());
-		}*/
-	}
+	
 
 }

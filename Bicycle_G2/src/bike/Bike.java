@@ -1,6 +1,6 @@
 package bike;
 
-import card.Card;
+
 import card.CardVisitor;
 
 /**

@@ -2,7 +2,7 @@ package tools;
 
 import java.time.LocalDateTime;
 
-public class NegativeTimeException extends Exception{
+public class NegativeTimeException extends Exception {
 	
 	private LocalDateTime startTime;
 	private LocalDateTime endTime;

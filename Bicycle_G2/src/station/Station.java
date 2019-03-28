@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import tools.*;
 import user.User;
-import user.UserIDGenerator;
 import bike.*;
 import card.Card;
 import ride.Network;
@@ -94,11 +93,7 @@ public abstract class Station {
 		}
 		return null;
 	}
-	/**
-	 * Allows to look for a specific bike type
-	 * @param type
-	 * @return
-	 */							
+						
 	public Slot hasElectricBikeAvailable() {
 		if (this.isOnline) {
 			for (Slot s : parkingSlots) {
@@ -195,7 +190,6 @@ public abstract class Station {
 			}
 	}
 	
-	// faire les méthodes pour quand une station tombe en panne
 	
 	public Point getP() { return p; }
 
