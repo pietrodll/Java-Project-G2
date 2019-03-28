@@ -174,5 +174,45 @@ public class NetworkManager {
 		s.setOnline(true);
 	}
 	
+	public User findUserById(int id, Network net) throws InexistingUserIdException {
+		User user = null;
+		for (Card c : net.getCards()) {
+			if (c.getUser().getId() == id) {
+				user = c.getUser();
+			}
+		}
+		if (user == null) {
+			throw new InexistingUserIdException(id);
+		} else {
+			return user;
+		}
+	}
+	
+	public Card findCardByUserId(int id, Network net) throws InexistingUserIdException {
+		Card card = null;
+		for (Card c : net.getCards()) {
+			if (c.getUser().getId() == id) {
+				card = c;
+			}
+		}
+		if (card == null) {
+			throw new InexistingUserIdException(id);
+		} else {
+			return card;
+		}
+	}
+	
+	public void rentBike(int userId, int stationId, LocalDateTime pickUpTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException {
+		Card card = this.findCardByUserId(userId, net);
+		Station station = this.findStationByID(stationId, net);
+		station.pickUpBike(card, pickUpTime);
+	}
+	
+	public void returnBike(int userId, int stationId, LocalDateTime returnTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException {
+		Card card = this.findCardByUserId(userId, net);
+		Station station = this.findStationByID(stationId, net);
+		station.dropBike(card, returnTime);
+	}
+	
 	
 }
