@@ -4,6 +4,7 @@ package user;
 import ride.Itinerary;
 import ride.Network;
 import ride.Ride;
+import ride.path.PathStrategy;
 import station.StandardStation;
 import tools.NegativeTimeException;
 import tools.Point;
@@ -40,25 +41,42 @@ public class User implements Observer {
 		this.position = position;
 		ongoingRide = null;
 		itinerary = null;
-		
 		userStat = new UserStat();
 	}
 	
-	// la fonction startOngoingRide est forcément utilsée par la fonction pickUpBike qui vérifie deja si ongoing riede
+	
 	public void startOngoingRide (Network net, Bike bike, LocalDateTime startRide, Card card) {
-		this.ongoingRide = new Ride (net, bike, this, card, startRide);
+		if (ongoingRide == null) {
+			this.ongoingRide = new Ride (net, bike, this, card, startRide);
+		}
 	}
 	
-	// when finishing a ride you have to add all the user stat : time and credit
 	public void endOngoingRide(LocalDateTime endRide) throws NegativeTimeException {
-		int timeRide = ongoingRide.getRideTime();
-		Bike bike = ongoingRide.getBike();
-		Card card = ongoingRide.getCard();
-		ongoingRide.endRide(endRide);
-		float price = bike.ridePrice(card, timeRide);
-		userStat.addRide();
-		userStat.addAmount(price);
-		userStat.addTime(timeRide);
+		if (ongoingRide != null) {
+			if (this.itinerary != null) {
+				this.itinerary = null;	
+			}
+			int timeRide = ongoingRide.getRideTime();
+			Bike bike = ongoingRide.getBike();
+			Card card = ongoingRide.getCard();
+			ongoingRide.endRide(endRide);
+			float price = bike.ridePrice(card, timeRide);
+			userStat.addRide();
+			userStat.addAmount(price);	
+			userStat.addTime(timeRide);
+		}
+	}
+	
+	public Itinerary calculateItinerary(Point arrival, PathStrategy ps) {
+		Itinerary i1 = new Itinerary(this.position, arrival);
+		i1.computePath(ps);
+		return i1;		
+	}
+	
+	public Itinerary calculateItinerary(Point start, Point arrival, PathStrategy ps) {
+		Itinerary i1 = new Itinerary(start, arrival);
+		i1.computePath(ps);
+		return i1;		
 	}
 	
 	public String getUserName() { return userName; }
