@@ -3,6 +3,10 @@ package ride.path;
 import station.Station;
 import tools.Point;
 
+/**
+ * This class is used to compare stations according to their distance to a point and to their free slots. It is used to find the best station to finish a ride.
+ * @author Pietro Dellino
+ */
 public class DistanceEndComparator extends StationComparator {
 	
 	public DistanceEndComparator(Point point) { super(point); }

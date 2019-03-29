@@ -10,9 +10,10 @@ import station.Station;
 import tools.Point;
 
 /**
- * This {@code PathStrategy} 
+ * This {@code PathStrategy} minimizes the ride time. The return station is chosen in order to minimize the walking distance to the destination, and the pickup station is chosen in order to minimize the walking + riding time from the start point to the return station.
  * @author Pietro Dellino
  * @see PathStrategy
+ * @see FastestPathComparator
  */
 public class FastestPathStrategy implements PathStrategy {
 	

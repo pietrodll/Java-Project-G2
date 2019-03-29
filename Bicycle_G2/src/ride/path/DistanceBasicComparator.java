@@ -3,6 +3,10 @@ package ride.path;
 import station.Station;
 import tools.Point;
 
+/**
+ * This class is used to compare stations according to their distance to a point.
+ * @author Pietro Dellino
+ */
 public class DistanceBasicComparator extends StationComparator {
 
 	public DistanceBasicComparator(Point p) {

@@ -4,6 +4,13 @@ import bike.BikeFactory;
 import station.Station;
 import tools.Point;
 
+/**
+ * This class is used to compare stations according to the time spent to go from {@code start} to the {@code Station} by foot and from the {@code Station} to {@code returnPoint} by bicycle. It is used to find the best station to start a ride.
+ * @author Pietro Dellino
+ * @see StationComparator
+ * @see PathStrategy
+ * @see FastestPathStrategy
+ */
 public class FastestPathComparator extends StationComparator {
 	
 	public final static double WALKING_SPEED = 4.0;

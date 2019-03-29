@@ -6,6 +6,15 @@ import bike.BikeFactory;
 import station.Station;
 import tools.Point;
 
+/**
+ * This class contains some methods that are useful for the comparators.
+ * @see DistanceStartComparator
+ * @see DistanceEndComparator
+ * @see DistanceBasicComparator
+ * @see FastestPathComparator
+ * @author Pietro Dellino
+ *
+ */
 public abstract class StationComparator implements Comparator<Station> {
 	
 	protected Point point;

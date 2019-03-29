@@ -9,9 +9,9 @@ import station.Station;
 import tools.Point;
 
 /**
- * This class is an implementation of the {@code PathStrategy} interface and finds the start station and end station which minimize the walking distance of the user.
+ * This class is an implementation of the {@code PathStrategy} interface and finds the pickup station and return station which minimize the walking distance of the user.
  * @author Pietro Dellino
- *
+ * @see PathStrategy
  */
 public class MinimalWalkingStrategy implements PathStrategy {
 	
