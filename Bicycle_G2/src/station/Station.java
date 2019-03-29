@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import tools.*;
+import user.Observable;
+import user.Observer;
 import user.User;
 import bike.*;
 import card.Card;
@@ -15,7 +17,7 @@ import ride.Network;
  * @see StandardStation
  * @see PlusStation
  */
-public abstract class Station {
+public abstract class Station implements Observable {
 	
 	private int id;
 	private Point p;
@@ -27,13 +29,16 @@ public abstract class Station {
 	private int totalReturns;
 	private int totalOperations;
 
-	
+	private ArrayList<Observer> observers = new ArrayList<Observer>();
+	private boolean changed; 
 
 	public Station(Point p) {
 		this.p = p;
 		id = StationIDGenerator.getInstance().getNextStationID();
 		this.parkingSlots = new ArrayList<Slot>();
 		this.isOnline = true;
+		this.changed = false;
+		
 	}
 
 	/**
@@ -93,8 +98,7 @@ public abstract class Station {
 		if (this.isOnline) {
 			for (Slot s : parkingSlots) {
 				if (s.getisOccupied() == false) {
-					return s;
-				}
+					return s; }
 			}
 		}
 		return null;
@@ -229,6 +233,7 @@ public abstract class Station {
 	
 	/**
 	 * This method allows to drop a {@code Bike} if the {@code Station} is online, if the {@code User} of the {@code Card} has an ongoing {@code Ride} and if there is an available {@code Slot}.
+	 * If the {@code Station} becomes full, the changed attributes become true so that the observers are notified.
 	 * @param card
 	 * @param dropTime
 	 * @throws NegativeTimeException
@@ -243,12 +248,34 @@ public abstract class Station {
 					s.setBike(user.getOngoingRide().getBike(), dropTime);
 					this.setTotalReturns(getTotalReturns()+1);
 					user.endOngoingRide(dropTime);
+					if (this.isStationFull() == true) {
+							this.changed = true;
+							this.notifyObservers();
+					}
 				}else {System.out.println("Could not drop bike because Station" + this + "is full");
 				}
 			} else {System.out.println("Could not drop bike because there is no Ongoing Ride");}
 			}
 	}
 	
+	@Override
+	public void registerObserver (Observer observer) {
+		observers.add(observer);}
+
+
+	@Override
+	public void removeObserver(Observer observer) {
+		observers.remove(observer);}
+
+
+	@Override 
+	public void notifyObservers () {
+		if (this.changed) {
+			for (Observer ob : observers) {
+				ob.update();
+			} this.changed = false;
+		}	
+	}
 	
 	public Point getP() { return p; }
 

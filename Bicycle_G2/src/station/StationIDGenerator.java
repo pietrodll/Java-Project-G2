@@ -1,5 +1,6 @@
 package station;
 
+import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 /**
@@ -31,4 +32,12 @@ public class StationIDGenerator implements Serializable {
 		
 	public synchronized int getNextStationID() { return num ++; }
 
+	/**
+	 * This methods ensures that even when an {@code StationIDGenerator} is serialized, the unique instance is always returned.
+	 * @return The unique instance of the class.
+	 * @throws ObjectStreamException
+	 */
+	public Object readResolve() throws ObjectStreamException {
+		return instance;
+	}
 }

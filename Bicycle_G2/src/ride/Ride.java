@@ -8,6 +8,11 @@ import tools.Date;
 import tools.NegativeTimeException;
 import tools.NullDateException;
 
+/**
+ * This class represents a Ride of a {@code Network}. It has a starting and ending time, a {@code User} with its {@code Card} and a {@code Bike}. It is created without an ending code.
+ * @author Chloé
+ *
+ */
 public class Ride {
 	
 	private Bike bike;
@@ -35,13 +40,21 @@ public class Ride {
 	public LocalDateTime getEndRide() { return endRide; }
 	public Card getCard() { return card; }
 	
-
+	/**
+	 * This method sets the ending time of the Ride, and archive it in the Ride History of the {@code Network}.	 
+	 * @param endRide
+	 */
 	public void endRide(LocalDateTime endRide) {
 		this.endRide = endRide;
 		net.archiveRide(this);
 	}
 	
-	
+	/**
+	 * 
+	 * @return the duration of the {@code Ride}
+	 * @throws NegativeTimeException
+	 * @throws NullDateException
+	 */
 	public int getRideTime() throws NegativeTimeException, NullDateException {
 		int rideTime = -1;
 		if (this.endRide != null) {

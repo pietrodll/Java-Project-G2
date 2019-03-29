@@ -1,5 +1,6 @@
 package user;
 
+import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 /**
@@ -31,5 +32,14 @@ public class UserIDGenerator implements Serializable {
 	}
 	
 	public synchronized int getNextUserID() { return num ++; }
+	
+	/**
+	 * This methods ensures that even when an {@code UserIDGenerator} is serialized, the unique instance is always returned.
+	 * @return The unique instance of the class.
+	 * @throws ObjectStreamException
+	 */
+	public Object readResolve() throws ObjectStreamException {
+		return instance;
+	}
 
 }

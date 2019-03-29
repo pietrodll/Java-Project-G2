@@ -194,6 +194,9 @@ public class Slot {
 		return res;
 	}	
 
-	
+	@Override
+	public String toString() {
+		return "Slot" + this.getId();
+	}
 }
 

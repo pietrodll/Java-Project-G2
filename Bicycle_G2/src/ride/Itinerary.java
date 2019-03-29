@@ -1,12 +1,10 @@
 package ride;
 
-import java.util.ArrayList;
 
 import ride.path.PathStrategy;
 import station.Station;
 import tools.Point;
-import user.Observable;
-import user.Observer;
+
 
 /**
  * This class represents an itinerary for the users.
@@ -14,14 +12,14 @@ import user.Observer;
  * {@code computePath } affects values to the attributes {@code startStation} and {@code endStation}. 
  * @author Pietro Dellino
  */
-public class Itinerary implements Observable{
+public class Itinerary{
 	
 	private Point start;
 	private Point end;
 	private Station startStation;
 	private Station endStation;
-	private ArrayList<Observer> observers = new ArrayList<Observer>(); // y reflechir
-	private boolean changed; //y reflechir
+	private PathStrategy ps;
+	
 	public Itinerary(Point start, Point end) {
 		this.start = start;
 		this.end = end;
@@ -31,6 +29,15 @@ public class Itinerary implements Observable{
 	public Point getEnd() { return end; }
 	public Station getStartStation() { return startStation; }
 	public Station getEndStation() { return endStation; }
+	public PathStrategy getPs() { return ps; }
+
+	/**
+	 * This method is used when the ending {@code Station} has to be changed because the initial ending {@code Station} is full. 
+	 * @param endStation
+	 */
+	public void setEndStation(Station endStation) {
+		this.endStation = endStation;
+	}
 
 	/**
 	 * This method affects a value to {@code startStation} and {@code endStation} according to the
@@ -43,6 +50,7 @@ public class Itinerary implements Observable{
 		Station[] stations = ps.findPath(this.start, this.end);
 		this.startStation = stations[0];
 		this.endStation = stations[1];
+		this.ps = ps;
 	}
 	
 	/**
@@ -59,24 +67,9 @@ public class Itinerary implements Observable{
 		Station[] stations = ps.findPath(this.start, this.end, bikeType);
 		this.startStation = stations[0];
 		this.endStation = stations[1];
+		this.ps = ps;
 	}
 	
-	@Override
-	public void registerObserver (Observer observer) {
-		observers.add(observer);}
 
-
-	@Override
-	public void removeObserver(Observer observer) {
-		observers.remove(observer);}
-
-
-	@Override 
-	public void notifyObservers () {
-		/*if (this.itinerary.getEndStation().isStationFull()) {
-			for (Observer ob : observers)
-				ob.update(this.itinerary.getEndStation().isStationFull());
-		}*/
-	}
 
 }

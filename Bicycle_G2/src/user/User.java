@@ -10,6 +10,8 @@ import tools.NullDateException;
 import tools.Point;
 
 import java.time.LocalDateTime;
+import java.util.Scanner;
+
 import bike.Bike;
 import card.Card;
 
@@ -18,8 +20,8 @@ import card.Card;
  * Each {@code User} has a unique {@code id} and its own {@code UserStat} class that contains his statistics.
  * A {@code User} can have an Ongoing {@code Ride} and can be following an {@code Itinerary}.
  * @author Chloé
- *@see UserStat
- *@see UserIDGenerator
+ * @see UserStat
+ * @see UserIDGenerator
  */
 public class User implements Observer {
 	
@@ -68,6 +70,7 @@ public class User implements Observer {
 	
 	/**
 	 * If the {@code User} has an ongoing {@code Ride}, this method ends the ongoing {@code Ride}, resets the {@code Itinerary}, computes the cost of the ride and updates the user's statistics.
+	 * The method removes the {@code User} from the Observers of the arrival {@code Station}.
 	 * @param endRide
 	 * @throws NegativeTimeException
 	 * @throws NullDateException 
@@ -75,6 +78,7 @@ public class User implements Observer {
 	public void endOngoingRide(LocalDateTime endRide) throws NegativeTimeException, NullDateException {
 		if (this.ongoingRide != null) {
 			if (this.itinerary != null) {
+				this.itinerary.getEndStation().removeObserver(this);
 				this.itinerary = null;	
 			}
 			ongoingRide.endRide(endRide);
@@ -113,13 +117,30 @@ public class User implements Observer {
 		return i1;		
 	}
 	
+	/**
+	 * This method sets the {@code Itinerary} of a {@code User}. The {@code User} is added to the observer list of the arrival {@code Station}.
+	 * @param itinerary
+	 */
+	public void setItinerary(Itinerary itinerary) { 
+		this.itinerary = itinerary; 
+		itinerary.getEndStation().registerObserver(this);
+	}
 	
+	/**
+	 * The {@code User} is notified if he has an {@code Itinerary} and if the arrival {@code Station} of its {@code Itinerary} becomes full. He has the possibility to recalculte the ending {@code Station}.
+	 */
 	@Override
-	public void update(boolean isStationFull) {
-	/*	System.out.println("The destination Station does not have any more available slots");
-		Itinerary newItinerary = ongoingRide.getItinerary().computePath(ps, bikeType);
-		ongoingRide.setItinerary(newItinerary);
-		*/
+	public void update(){
+		System.out.println("The destination Station does not have any more available slots");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Do you want to recalculate arrival station ? Answer 'yes' if you do. ");
+		String s = sc.nextLine();
+		sc.close();
+		if (s.equals("yes")) {
+			PathStrategy ps = this.itinerary.getPs();
+			this.itinerary.setEndStation(ps.findEndStation(this.position, this.getItinerary().getEnd(), this.getOngoingRide().getBike()));
+		} else {this.itinerary = null;}
+		
 	}
 	
 	public String getUserName() { return userName; }
@@ -130,7 +151,6 @@ public class User implements Observer {
 	public Ride getOngoingRide() { return ongoingRide; }
 
 	public Itinerary getItinerary() { return itinerary; }
-	public void setItinerary(Itinerary itinerary) { this.itinerary = itinerary; }
 
 	public int getId() { return id; }
 

@@ -37,6 +37,5 @@ public interface PathStrategy {
 	 */
 	public Station findEndStation(Point start, Point end, Bike bike);
 
-	//rmq Chloé : j'ai crée dans Station les méthodes qui permettent de voir si les velos sont dispo
 	
 }

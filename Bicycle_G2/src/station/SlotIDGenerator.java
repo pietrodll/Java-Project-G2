@@ -1,5 +1,6 @@
 package station;
 
+import java.io.ObjectStreamException;
 import java.io.Serializable;
 /**
  * An ID generator for the cards. The ID of a {@code Slot} is the ID of its {@code Station} * 1000  plus a unique, within the {@code Station}, number.
@@ -31,7 +32,14 @@ public class SlotIDGenerator implements Serializable {
 		int numSlots = s.getParkingSlots().size();
 		return 1000*s.getId() + numSlots ;
 	}
-
+	/**
+	 * This methods ensures that even when an {@code SlotIDGenerator} is serialized, the unique instance is always returned.
+	 * @return The unique instance of the class.
+	 * @throws ObjectStreamException
+	 */
+	public Object readResolve() throws ObjectStreamException {
+		return instance;
+	}
 
 }
  

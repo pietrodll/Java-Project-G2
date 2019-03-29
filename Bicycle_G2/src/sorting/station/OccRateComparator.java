@@ -8,7 +8,7 @@ import tools.NegativeTimeException;
 import tools.NullDateException;
 
 /**
- * This class implements a {@code Comparator<Station>}. It 
+ * This class implements a {@code Comparator<Station>}. It compares the {@code Station} w.r.t the rate occupation during a given period of time.
  * @author Chloé
  * @see SortingStrategy
  * @see LeastOccupiedtation
@@ -23,7 +23,7 @@ public class OccRateComparator implements Comparator<Station> {
 		this.startTime = startTime;
 		this.endTime = endTime;
 	}
-
+	
 	@Override
 	public int compare(Station s1, Station s2) {			
 			LocalDateTime startDate = this.startTime;

@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import station.Station;
 
+/**
+ * This strategy sorts an {@code ArrayList} of {@code Station} w.r.t. the rate of occupation during a given period of time by using the {@code NumberOpComparator}. 
+ * @author Chloé
+ * @see SortingStrategy
+ * @see OccRateComparator
+ */
 public class LeastOccupiedStation implements SortingStrategy {
 	
 	private LocalDateTime startDate;
