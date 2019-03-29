@@ -9,6 +9,11 @@ import station.PlusStation;
 import station.Station;
 import tools.Point;
 
+/**
+ * This {@code PathStrategy} prefers a {@code PlusStation} if it is less than 10% further than the closest station.
+ * @author Pietro Dellino
+ * @see PathStrategy
+ */
 public class PreferPlusStrategy implements PathStrategy {
 	
 	private ArrayList<Station> stations;

@@ -18,6 +18,7 @@ import station.StationFactory;
 import station.StationSamePositionException;
 import station.TypeStationException;
 import tools.NegativeTimeException;
+import tools.NullDateException;
 import tools.Point;
 import user.User;
 
@@ -208,7 +209,7 @@ public class NetworkManager {
 		station.pickUpBike(card, pickUpTime);
 	}
 	
-	public void returnBike(int userId, int stationId, LocalDateTime returnTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException {
+	public void returnBike(int userId, int stationId, LocalDateTime returnTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NullDateException {
 		Card card = this.findCardByUserId(userId, net);
 		Station station = this.findStationByID(stationId, net);
 		station.dropBike(card, returnTime);

@@ -6,6 +6,7 @@ import card.Card;
 import user.*;
 import tools.Date;
 import tools.NegativeTimeException;
+import tools.NullDateException;
 
 public class Ride {
 	
@@ -41,7 +42,7 @@ public class Ride {
 	}
 	
 	
-	public int getRideTime() throws NegativeTimeException {
+	public int getRideTime() throws NegativeTimeException, NullDateException {
 		int rideTime = -1;
 		if (this.endRide != null) {
 			rideTime = Date.computeTime(this.startRide, this.endRide);

@@ -232,8 +232,9 @@ public abstract class Station {
 	 * @param card
 	 * @param dropTime
 	 * @throws NegativeTimeException
+	 * @throws NullDateException 
 	 */
-	public synchronized void dropBike (Card card, LocalDateTime dropTime) throws NegativeTimeException {
+	public synchronized void dropBike (Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException {
 		if (this.isOnline) {	
 			User user = identifyUser (card);
 			if (user.getOngoingRide() != null) {

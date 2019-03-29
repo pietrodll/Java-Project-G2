@@ -12,7 +12,6 @@ import bike.ElectricBike;
 import card.Card;
 import card.VlibreCard;
 import ride.Network;
-import tools.NegativeTimeException;
 import tools.Point;
 import user.User;
 
@@ -55,7 +54,7 @@ public class UserTest {
 	}
 	
 	@Test
-	void testEndOngoingRide () throws NegativeTimeException {
+	void testEndOngoingRide () throws Exception {
 		u1.startOngoingRide(net, b1, t1, c1);
 		u1.endOngoingRide(t2);
 		assertAll("Checks if the ended ride is correct",

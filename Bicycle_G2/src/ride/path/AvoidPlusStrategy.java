@@ -9,6 +9,11 @@ import station.PlusStation;
 import station.Station;
 import tools.Point;
 
+/**
+ * This {@code PathStrategy} avoids {@code PlusStations}.
+ * @see PathStrategy
+ * @author Pietro Dellino
+ */
 public class AvoidPlusStrategy implements PathStrategy {
 	
 	private ArrayList<Station> stations;

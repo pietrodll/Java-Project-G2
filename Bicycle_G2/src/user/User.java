@@ -6,6 +6,7 @@ import ride.Network;
 import ride.Ride;
 import ride.path.PathStrategy;
 import tools.NegativeTimeException;
+import tools.NullDateException;
 import tools.Point;
 
 import java.time.LocalDateTime;
@@ -69,8 +70,9 @@ public class User implements Observer {
 	 * If the {@code User} has an ongoing {@code Ride}, this method ends the ongoing {@code Ride}, resets the {@code Itinerary}, computes the cost of the ride and updates the user's statistics.
 	 * @param endRide
 	 * @throws NegativeTimeException
+	 * @throws NullDateException 
 	 */
-	public void endOngoingRide(LocalDateTime endRide) throws NegativeTimeException {
+	public void endOngoingRide(LocalDateTime endRide) throws NegativeTimeException, NullDateException {
 		if (this.ongoingRide != null) {
 			if (this.itinerary != null) {
 				this.itinerary = null;	

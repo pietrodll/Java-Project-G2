@@ -4,6 +4,11 @@ import bike.Bike;
 import station.Station;
 import tools.Point;
 
+/**
+ * This interface contains methods to calculate the best pickup station and return station.
+ * @author Pietro Dellino
+ *
+ */
 public interface PathStrategy {
 	
 	/**

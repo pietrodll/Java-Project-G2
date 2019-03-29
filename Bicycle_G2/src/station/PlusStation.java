@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import card.Card;
 import tools.NegativeTimeException;
+import tools.NullDateException;
 import tools.Point;
 
 /**
@@ -19,9 +20,10 @@ public class PlusStation extends Station {
 	
 	/**
 	 * If a {@code User} drops a {@code Bike} in a {@code PlusStation}, he gains 5 Time Credits on his Card (if he has one).
+	 * @throws NullDateException 
 	 */
 	@Override
-	public synchronized void dropBike(Card card, LocalDateTime dropTime) throws NegativeTimeException {
+	public synchronized void dropBike(Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException {
 		super.dropBike(card, dropTime);
 		card.addCredit(5);
 	}
