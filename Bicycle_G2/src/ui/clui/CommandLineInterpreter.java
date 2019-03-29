@@ -21,7 +21,7 @@ public class CommandLineInterpreter {
 		return command;
 	}
 	
-	public Object[] parseCommand(String s) {
+	public Command parseCommand(String s) {
 		String[] commandLine = s.split(" ");
 		String command = commandLine[0];
 		for (Command c : Command.values()) {
