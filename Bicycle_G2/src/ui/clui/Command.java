@@ -1,6 +1,6 @@
 package ui.clui;
 
-public enum Commands {
+public enum Command {
 	
 	SETUP("setup"),
 	RUNTEST("runtest"),
@@ -18,7 +18,7 @@ public enum Commands {
 	
 	private String keyword;
 	
-	Commands(String s) {
+	Command(String s) {
 		this.keyword = s;
 	}
 	
