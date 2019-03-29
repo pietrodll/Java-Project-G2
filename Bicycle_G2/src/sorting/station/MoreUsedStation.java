@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import station.Station;
 
+/**
+ * This strategy sorts an {@code ArrayList} of {@code Station} w.r.t. the number of operations by using the {@code NumberOpComparator}. 
+ * @author Chloé
+ * @see SortingStrategy
+ * @see NumberOpComparator
+ */
 public class MoreUsedStation implements SortingStrategy {
 
 	@Override
