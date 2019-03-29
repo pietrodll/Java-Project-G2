@@ -9,6 +9,11 @@ import ride.Network;
 import station.Station;
 import tools.Point;
 
+/**
+ * This {@code PathStrategy} 
+ * @author Pietro Dellino
+ * @see PathStrategy
+ */
 public class FastestPathStrategy implements PathStrategy {
 	
 	private ArrayList<Station> stations;
