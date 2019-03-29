@@ -1,4 +1,4 @@
-package ride.path.test;
+package test.ride.path;
 
 import static org.junit.jupiter.api.Assertions.*;
 

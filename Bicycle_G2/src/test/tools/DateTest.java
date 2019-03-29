@@ -1,4 +1,4 @@
-package tools.test;
+package test.tools;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;

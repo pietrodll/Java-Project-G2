@@ -1,4 +1,4 @@
-package ride.test;
+package test.ride;
 
 import static org.junit.jupiter.api.Assertions.*;
 

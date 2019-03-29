@@ -1,4 +1,4 @@
-package ui.clui.test;
+package test.ui.clui;
 
 import static org.junit.jupiter.api.Assertions.*;
 
