@@ -5,16 +5,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ui.clui.Command;
-import ui.clui.CommandLineInterpreter;
+import ui.clui.CommandLineReader;
 import ui.clui.InvalidCommandException;
 
-class CommandLineInterpreterTest {
+class CommandLineReaderTest {
 	
-	static CommandLineInterpreter cli;
+	static CommandLineReader cli;
 	
 	@BeforeAll
 	static void setup() {
-		cli = new CommandLineInterpreter();
+		cli = new CommandLineReader();
 	}
 
 	@Test
