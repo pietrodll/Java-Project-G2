@@ -1334,6 +1334,18 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6lteWVLcEemnmtBblIRTDA"/>
         </children>
         <children xmi:type="notation:BasicCompartment" xmi:id="_6lteWlLcEemnmtBblIRTDA" type="Interface_OperationCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_OLOukFLsEemnmtBblIRTDA" type="Operation_InterfaceOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_OKegoFLsEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_OLOukVLsEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_t_-5pVLsEemnmtBblIRTDA" type="Operation_InterfaceOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_t_-5oFLsEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_t_-5plLsEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_hj3-QFLsEemnmtBblIRTDA" type="Operation_InterfaceOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_hjuNQFLsEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_hj3-QVLsEemnmtBblIRTDA"/>
+          </children>
           <styles xmi:type="notation:TitleStyle" xmi:id="_6lteW1LcEemnmtBblIRTDA"/>
           <styles xmi:type="notation:SortingStyle" xmi:id="_6lteXFLcEemnmtBblIRTDA"/>
           <styles xmi:type="notation:FilteringStyle" xmi:id="_6lteXVLcEemnmtBblIRTDA"/>
@@ -1346,13 +1358,181 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6lteY1LcEemnmtBblIRTDA"/>
         </children>
         <element xmi:type="uml:Interface" href="MyVelib.uml#_6lHBYFLcEemnmtBblIRTDA"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6lteUVLcEemnmtBblIRTDA" x="54" y="32"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6lteUVLcEemnmtBblIRTDA" x="174" y="12"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_6rNPEFLsEemnmtBblIRTDA" type="Class_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_6rNPElLsEemnmtBblIRTDA" type="Class_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_6rNPE1LsEemnmtBblIRTDA" type="Class_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_6rNPFFLsEemnmtBblIRTDA" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_6rNPFVLsEemnmtBblIRTDA" type="Class_AttributeCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_Dcb0IFLtEemnmtBblIRTDA" type="Property_ClassAttributeLabel">
+            <element xmi:type="uml:Property" href="MyVelib.uml#_DbrmMFLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Dcb0IVLtEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_6rNPFlLsEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_6rNPF1LsEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_6rNPGFLsEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6rNPGVLsEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_6rNPGlLsEemnmtBblIRTDA" type="Class_OperationCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_CdPoAFLtEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_CdGeGVLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_CdPoAVLtEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_CdPoAlLtEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_CdGeFVLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_CdPoA1LtEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_CdPoBFLtEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_CdGeEFLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_CdPoBVLtEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_6rNPG1LsEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_6rNPHFLsEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_6rNPHVLsEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6rNPHlLsEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_6rNPH1LsEemnmtBblIRTDA" type="Class_NestedClassifierCompartment_CN">
+          <styles xmi:type="notation:TitleStyle" xmi:id="_6rNPIFLsEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_6rNPIVLsEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_6rNPIlLsEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6rNPI1LsEemnmtBblIRTDA"/>
+        </children>
+        <element xmi:type="uml:Class" href="MyVelib.uml#_6qdoMFLsEemnmtBblIRTDA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6rNPEVLsEemnmtBblIRTDA" x="14" y="192"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_IBgh0FLtEemnmtBblIRTDA" type="Class_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_IBgh0lLtEemnmtBblIRTDA" type="Class_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_IBgh01LtEemnmtBblIRTDA" type="Class_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_IBgh1FLtEemnmtBblIRTDA" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_IBgh1VLtEemnmtBblIRTDA" type="Class_AttributeCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_LvhrtlLtEemnmtBblIRTDA" type="Property_ClassAttributeLabel">
+            <element xmi:type="uml:Property" href="MyVelib.uml#_LvX6uVLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Lvhrt1LtEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_IBgh1lLtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_IBgh11LtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_IBgh2FLtEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IBgh2VLtEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_IBgh2lLtEemnmtBblIRTDA" type="Class_OperationCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_LvhrsFLtEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_LvX6tFLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_LvhrsVLtEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_LvhrslLtEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_LvX6sFLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Lvhrs1LtEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_LvhrtFLtEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_LvX6ulLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_LvhrtVLtEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_IBgh21LtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_IBgh3FLtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_IBgh3VLtEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IBgh3lLtEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_IBgh31LtEemnmtBblIRTDA" type="Class_NestedClassifierCompartment_CN">
+          <styles xmi:type="notation:TitleStyle" xmi:id="_IBgh4FLtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_IBgh4VLtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_IBgh4lLtEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IBgh41LtEemnmtBblIRTDA"/>
+        </children>
+        <element xmi:type="uml:Class" href="MyVelib.uml#_IAw68FLtEemnmtBblIRTDA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IBgh0VLtEemnmtBblIRTDA" x="14" y="32"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_OineYFLtEemnmtBblIRTDA" type="Class_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_OineYlLtEemnmtBblIRTDA" type="Class_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_OineY1LtEemnmtBblIRTDA" type="Class_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_OineZFLtEemnmtBblIRTDA" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_OineZVLtEemnmtBblIRTDA" type="Class_AttributeCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_Rp4KVVLtEemnmtBblIRTDA" type="Property_ClassAttributeLabel">
+            <element xmi:type="uml:Property" href="MyVelib.uml#_Rp4KQFLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Rp4KVlLtEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_OineZlLtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_OineZ1LtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_OineaFLtEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OineaVLtEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_OinealLtEemnmtBblIRTDA" type="Class_OperationCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_Rp4KT1LtEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_Rp4KQVLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Rp4KUFLtEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_Rp4KUVLtEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_Rp4KRlLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Rp4KUlLtEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_Rp4KU1LtEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_Rp4KSlLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Rp4KVFLtEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_Oinea1LtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_OinebFLtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_OinebVLtEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OineblLtEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_Oineb1LtEemnmtBblIRTDA" type="Class_NestedClassifierCompartment_CN">
+          <styles xmi:type="notation:TitleStyle" xmi:id="_OinecFLtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_OinecVLtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_OineclLtEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Oinec1LtEemnmtBblIRTDA"/>
+        </children>
+        <element xmi:type="uml:Class" href="MyVelib.uml#_Oh33gFLtEemnmtBblIRTDA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OineYVLtEemnmtBblIRTDA" x="14" y="352"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_WYenYFLtEemnmtBblIRTDA" type="Class_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_WYenYlLtEemnmtBblIRTDA" type="Class_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_WYenY1LtEemnmtBblIRTDA" type="Class_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_WYenZFLtEemnmtBblIRTDA" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_WYenZVLtEemnmtBblIRTDA" type="Class_AttributeCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_YkqLFFLtEemnmtBblIRTDA" type="Property_ClassAttributeLabel">
+            <element xmi:type="uml:Property" href="MyVelib.uml#_YkhBIFLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_YkqLFVLtEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_WYenZlLtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_WYenZ1LtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_WYenaFLtEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WYenaVLtEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_WYenalLtEemnmtBblIRTDA" type="Class_OperationCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_YkhBL1LtEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_YkhBKlLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_YkhBMFLtEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_YkqLEFLtEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_YkhBIVLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_YkqLEVLtEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_YkqLElLtEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_YkhBJVLtEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_YkqLE1LtEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_WYena1LtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_WYenbFLtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_WYenbVLtEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WYenblLtEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_WYenb1LtEemnmtBblIRTDA" type="Class_NestedClassifierCompartment_CN">
+          <styles xmi:type="notation:TitleStyle" xmi:id="_WYencFLtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_WYencVLtEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_WYenclLtEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WYenc1LtEemnmtBblIRTDA"/>
+        </children>
+        <element xmi:type="uml:Class" href="MyVelib.uml#_WXvAgFLtEemnmtBblIRTDA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WYenYVLtEemnmtBblIRTDA" x="14" y="512"/>
       </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_3YIIBFLcEemnmtBblIRTDA"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3YIIBVLcEemnmtBblIRTDA"/>
     </children>
     <element xmi:type="uml:Package" href="MyVelib.uml#_3XE_IFLcEemnmtBblIRTDA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3YIIAVLcEemnmtBblIRTDA" x="4560" y="460"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3YIIAVLcEemnmtBblIRTDA" x="4560" y="460" width="600" height="780"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_EKQr0FLfEemnmtBblIRTDA" type="Package_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_EKQr0lLfEemnmtBblIRTDA" type="Package_NameLabel"/>
@@ -1387,7 +1567,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EKQr1VLfEemnmtBblIRTDA"/>
     </children>
     <element xmi:type="uml:Package" href="MyVelib.uml#_EKHh4FLfEemnmtBblIRTDA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EKQr0VLfEemnmtBblIRTDA" x="4820" y="480"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EKQr0VLfEemnmtBblIRTDA" x="5160" y="480"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_M3T0IVLiEemnmtBblIRTDA" type="Package_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_M3T0I1LiEemnmtBblIRTDA" type="Package_NameLabel"/>
@@ -1480,6 +1660,26 @@
             <element xmi:type="uml:Operation" href="MyVelib.uml#_UqxXIFLnEemnmtBblIRTDA"/>
             <layoutConstraint xmi:type="notation:Location" xmi:id="_UrqvAVLnEemnmtBblIRTDA"/>
           </children>
+          <children xmi:type="notation:Shape" xmi:id="_suJJNFLqEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_suJJMFLqEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_suJJNVLqEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_v7OwRFLqEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_v7OwQFLqEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_v7OwRVLqEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_0IrBE1LqEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_0IrBEFLqEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_0IrBFFLqEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_3tADcFLqEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_3sQckFLqEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_3tADcVLqEemnmtBblIRTDA"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_8jw-EFLqEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_8jnNEFLqEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_8jw-EVLqEemnmtBblIRTDA"/>
+          </children>
           <styles xmi:type="notation:TitleStyle" xmi:id="_VWTZu1LiEemnmtBblIRTDA"/>
           <styles xmi:type="notation:SortingStyle" xmi:id="_VWTZvFLiEemnmtBblIRTDA"/>
           <styles xmi:type="notation:FilteringStyle" xmi:id="_VWTZvVLiEemnmtBblIRTDA"/>
@@ -1492,13 +1692,183 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VWTZw1LiEemnmtBblIRTDA"/>
         </children>
         <element xmi:type="uml:Class" href="MyVelib.uml#_VVs8wFLiEemnmtBblIRTDA"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VWTZsVLiEemnmtBblIRTDA" x="66" y="16"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VWTZsVLiEemnmtBblIRTDA" x="526" y="16"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_M8CNAFLrEemnmtBblIRTDA" type="Class_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_M8CNAlLrEemnmtBblIRTDA" type="Class_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_M8CNA1LrEemnmtBblIRTDA" type="Class_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_M8CNBFLrEemnmtBblIRTDA" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_M8CNBVLrEemnmtBblIRTDA" type="Class_AttributeCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_Q-_sIFLrEemnmtBblIRTDA" type="Property_ClassAttributeLabel">
+            <element xmi:type="uml:Property" href="MyVelib.uml#_Q-PeMFLrEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Q-_sIVLrEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_M8CNBlLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_M8CNB1LrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_M8CNCFLrEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M8CNCVLrEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_M8CNClLrEemnmtBblIRTDA" type="Class_OperationCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_T9KGYFLrEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_T8afgFLrEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_T9KGYVLrEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_M8CNC1LrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_M8CNDFLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_M8CNDVLrEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M8CNDlLrEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_M8CND1LrEemnmtBblIRTDA" type="Class_NestedClassifierCompartment_CN">
+          <styles xmi:type="notation:TitleStyle" xmi:id="_M8CNEFLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_M8CNEVLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_M8CNElLrEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M8CNE1LrEemnmtBblIRTDA"/>
+        </children>
+        <element xmi:type="uml:Class" href="MyVelib.uml#_M7SmIFLrEemnmtBblIRTDA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M8CNAVLrEemnmtBblIRTDA" x="169" y="97"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_e2pYcFLrEemnmtBblIRTDA" type="Class_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_e2pYclLrEemnmtBblIRTDA" type="Class_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_e2pYc1LrEemnmtBblIRTDA" type="Class_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_e2pYdFLrEemnmtBblIRTDA" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_e2pYdVLrEemnmtBblIRTDA" type="Class_AttributeCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_kXntsVLrEemnmtBblIRTDA" type="Property_ClassAttributeLabel">
+            <element xmi:type="uml:Property" href="MyVelib.uml#_kXntsFLrEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_kXntslLrEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_e2pYdlLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_e2pYd1LrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_e2pYeFLrEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_e2pYeVLrEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_e2pYelLrEemnmtBblIRTDA" type="Class_OperationCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_mtIMglLrEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_mtIMgFLrEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_mtIMg1LrEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_e2pYe1LrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_e2pYfFLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_e2pYfVLrEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_e2pYflLrEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_e2pYf1LrEemnmtBblIRTDA" type="Class_NestedClassifierCompartment_CN">
+          <styles xmi:type="notation:TitleStyle" xmi:id="_e2pYgFLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_e2pYgVLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_e2pYglLrEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_e2pYg1LrEemnmtBblIRTDA"/>
+        </children>
+        <element xmi:type="uml:Class" href="MyVelib.uml#_e1mPkFLrEemnmtBblIRTDA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_e2pYcVLrEemnmtBblIRTDA" x="234" y="352"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_s4aDAFLrEemnmtBblIRTDA" type="Class_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_s4aDAlLrEemnmtBblIRTDA" type="Class_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_s4aDA1LrEemnmtBblIRTDA" type="Class_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_s4aDBFLrEemnmtBblIRTDA" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_s4aDBVLrEemnmtBblIRTDA" type="Class_AttributeCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_xGKc4FLrEemnmtBblIRTDA" type="Property_ClassAttributeLabel">
+            <element xmi:type="uml:Property" href="MyVelib.uml#_xFa2AFLrEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_xGKc4VLrEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_s4aDBlLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_s4aDB1LrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_s4aDCFLrEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s4aDCVLrEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_s4aDClLrEemnmtBblIRTDA" type="Class_OperationCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_zU0s0lLrEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_zU0s0FLrEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_zU0s01LrEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_s4aDC1LrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_s4aDDFLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_s4aDDVLrEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s4aDDlLrEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_s4aDD1LrEemnmtBblIRTDA" type="Class_NestedClassifierCompartment_CN">
+          <styles xmi:type="notation:TitleStyle" xmi:id="_s4aDEFLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_s4aDEVLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_s4aDElLrEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s4aDE1LrEemnmtBblIRTDA"/>
+        </children>
+        <element xmi:type="uml:Class" href="MyVelib.uml#_s30NIFLrEemnmtBblIRTDA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s4aDAVLrEemnmtBblIRTDA" x="34" y="352"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_0bidQFLrEemnmtBblIRTDA" type="Class_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_0bidQlLrEemnmtBblIRTDA" type="Class_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_0bidQ1LrEemnmtBblIRTDA" type="Class_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_0bidRFLrEemnmtBblIRTDA" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_0bidRVLrEemnmtBblIRTDA" type="Class_AttributeCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_7rPlMVLrEemnmtBblIRTDA" type="Property_ClassAttributeLabel">
+            <element xmi:type="uml:Property" href="MyVelib.uml#_7rPlMFLrEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_7rPlMlLrEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_0bidRlLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_0bidR1LrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_0bidSFLrEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0bidSVLrEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_0bidSlLrEemnmtBblIRTDA" type="Class_OperationCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_59wvslLrEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_59wvsFLrEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_59wvs1LrEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_0bidS1LrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_0bidTFLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_0bidTVLrEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0bidTlLrEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_0bidT1LrEemnmtBblIRTDA" type="Class_NestedClassifierCompartment_CN">
+          <styles xmi:type="notation:TitleStyle" xmi:id="_0bidUFLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_0bidUVLrEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_0bidUlLrEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0bidU1LrEemnmtBblIRTDA"/>
+        </children>
+        <element xmi:type="uml:Class" href="MyVelib.uml#_0a8AUFLrEemnmtBblIRTDA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0bidQVLrEemnmtBblIRTDA" x="234" y="232"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_AghSEFLsEemnmtBblIRTDA" type="Class_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_AghSElLsEemnmtBblIRTDA" type="Class_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_AghSE1LsEemnmtBblIRTDA" type="Class_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_AghSFFLsEemnmtBblIRTDA" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_AghSFVLsEemnmtBblIRTDA" type="Class_AttributeCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_DJWVgVLsEemnmtBblIRTDA" type="Property_ClassAttributeLabel">
+            <element xmi:type="uml:Property" href="MyVelib.uml#_DJWVgFLsEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_DJWVglLsEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_AghSFlLsEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_AghSF1LsEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_AghSGFLsEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AghSGVLsEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_AghSGlLsEemnmtBblIRTDA" type="Class_OperationCompartment_CN">
+          <children xmi:type="notation:Shape" xmi:id="_D6ih4lLsEemnmtBblIRTDA" type="Operation_ClassOperationLabel">
+            <element xmi:type="uml:Operation" href="MyVelib.uml#_D6ih4FLsEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_D6ih41LsEemnmtBblIRTDA"/>
+          </children>
+          <styles xmi:type="notation:TitleStyle" xmi:id="_AghSG1LsEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_AghSHFLsEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_AghSHVLsEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AghSHlLsEemnmtBblIRTDA"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_AghSH1LsEemnmtBblIRTDA" type="Class_NestedClassifierCompartment_CN">
+          <styles xmi:type="notation:TitleStyle" xmi:id="_AghSIFLsEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_AghSIVLsEemnmtBblIRTDA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_AghSIlLsEemnmtBblIRTDA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AghSI1LsEemnmtBblIRTDA"/>
+        </children>
+        <element xmi:type="uml:Class" href="MyVelib.uml#_AfxrMFLsEemnmtBblIRTDA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AghSEVLsEemnmtBblIRTDA" x="54" y="232"/>
       </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_M3T0JVLiEemnmtBblIRTDA"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M3T0JlLiEemnmtBblIRTDA"/>
     </children>
     <element xmi:type="uml:Package" href="MyVelib.uml#_M3T0IFLiEemnmtBblIRTDA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M3T0IlLiEemnmtBblIRTDA" x="3120" y="620"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M3T0IlLiEemnmtBblIRTDA" x="2600" y="620" width="1120"/>
   </children>
   <styles xmi:type="notation:StringValueStyle" xmi:id="_vFerkUA0EemMsdUqvG6aSA" name="diagram_compatibility_version" stringValue="1.4.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_vFerkkA0EemMsdUqvG6aSA"/>
