@@ -2,13 +2,14 @@ package ui.clui;
 
 import bike.ElectricBike;
 import card.Card;
+import ride.Network;
 import station.Slot;
 import station.Station;
 import user.User;
 
 public class CommandLineDisplay {
 	
-	public String display(Station s) {
+	private String display(Station s, boolean show) {
 		String disp = "";
 		disp += "Station: id:" + s.getId() + '\n';
 		float x = (float) (Math.round(s.getP().getX()*1000)/1000.0);
@@ -24,21 +25,29 @@ public class CommandLineDisplay {
 			}
 			disp += '\n';
 		}
-		System.out.println(disp);
+		if (show) System.out.println(disp);
 		return disp;
 	}
 	
-	public String display(Card c) {
+	public String display(Station s) {
+		return this.display(s, true);
+	}
+	
+	private String display(Card c, boolean show) {
 		String disp = "";
 		disp += "Card: id:" + c.getId() + '\n';
 		disp += '\t' + "Owner: " + c.getUser().getUserName() + '\n';
 		disp += '\t' + "Type: " + c.getTypeString() + '\n';
 		disp += '\t' + "Credit: " + c.getTimeCredit() + " minutes" + '\n';
-		System.out.println(disp);
+		if (show) System.out.println(disp);
 		return disp;
 	}
 	
-	public String display(User u) {
+	public String display(Card c) {
+		return this.display(c, true);
+	}
+	
+	private String display(User u, boolean show) {
 		double credit = Math.round(u.getUserStat().getTotalAmount()*100)/100.0;
 		String disp = "";
 		disp += "User: id:" + u.getId() + '\n';
@@ -47,12 +56,22 @@ public class CommandLineDisplay {
 		disp += '\t' + "Total number of rides: " + u.getUserStat().getNumberRides() + '\n';
 		disp += '\t' + "Total ride time: " + Math.round(u.getUserStat().getTotalTime()) + " minutes" + '\n';
 		disp += '\t' + "Total credit earned: " + Math.round(u.getUserStat().getTotalCreditEarned()) + " minutes" + '\n';
-		System.out.println(disp);
+		if (show) System.out.println(disp);
 		return disp;
+	}
+	
+	public String display(User u) {
+		return this.display(u, true);
 	}
 	
 	public void display(String s) {
 		System.out.println(s);
+	}
+	
+	public String display(Network net) {
+		String disp = "";
+		
+		return null;
 	}
 	
 }

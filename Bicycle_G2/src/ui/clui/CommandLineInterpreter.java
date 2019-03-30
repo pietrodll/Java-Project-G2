@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class CommandLineInterpreter {
 		
-	public CommandLineInterpreter() {}
+	public CommandLineInterpreter() { super(); }
 	
 	public String readCommand() {
 		Scanner sc = new Scanner(System.in);
@@ -21,15 +21,19 @@ public class CommandLineInterpreter {
 		return command;
 	}
 	
-	public Command parseCommand(String s) {
-		String[] commandLine = s.split(" ");
-		String command = commandLine[0];
+	public Command parseCommand(String s) throws InvalidCommandException {
+		String com = s.split(" ")[0];
 		for (Command c : Command.values()) {
-			if (command.equals(c.getKeyword())) {
+			if (com.equals(c.getKeyword())) {
 				return c;
 			}
 		}
-		return null;
+		throw new InvalidCommandException(com);
+	}
+	
+	public String[] parseArgs(String s) {
+		String s1 = s.substring(s.indexOf('<')+1, s.lastIndexOf('>'));
+		return s1.split(">{1} *<{1}");
 	}
 
 }
