@@ -749,6 +749,10 @@
             <element xmi:type="uml:Property" href="MyVelib.uml#_W-F7kEfZEemzKf38hXMYDg"/>
             <layoutConstraint xmi:type="notation:Location" xmi:id="_W-1icUfZEemzKf38hXMYDg"/>
           </children>
+          <children xmi:type="notation:Shape" xmi:id="_Ci9o8VMCEemnmtBblIRTDA" type="Property_ClassAttributeLabel">
+            <element xmi:type="uml:Property" href="MyVelib.uml#_Ci9o8FMCEemnmtBblIRTDA"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Ci9o8lMCEemnmtBblIRTDA"/>
+          </children>
           <styles xmi:type="notation:TitleStyle" xmi:id="_TMJJZkfYEemzKf38hXMYDg"/>
           <styles xmi:type="notation:SortingStyle" xmi:id="_TMJJZ0fYEemzKf38hXMYDg"/>
           <styles xmi:type="notation:FilteringStyle" xmi:id="_TMJJaEfYEemzKf38hXMYDg"/>
