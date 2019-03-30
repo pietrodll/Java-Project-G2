@@ -70,8 +70,20 @@ public class CommandLineDisplay {
 	
 	public String display(Network net) {
 		String disp = "";
-		
-		return null;
+		disp += "Network: " + net.getName() + '\n' + "List of stations:" + '\n';
+		for (Station s : net.getStations()) {
+			disp += this.display(s, false);
+		}
+		disp += "List of cards:" + '\n';
+		for (Card c : net.getCards()) {
+			disp += this.display(c, false);
+		}
+		disp += "List of users:" + '\n';
+		for (Card c : net.getCards()) {
+			disp += this.display(c.getUser(), false);
+		}
+		System.out.println(disp);
+		return disp;
 	}
 	
 }
