@@ -667,6 +667,20 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_qJcMkFQCEem0lJrfHV-RWQ" name="StationIdGenerator">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_uFub8FQCEem0lJrfHV-RWQ" name="numStations" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_uFub81QCEem0lJrfHV-RWQ" name="instance" visibility="private" isStatic="true" type="_qJcMkFQCEem0lJrfHV-RWQ"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_uFub8VQCEem0lJrfHV-RWQ" name="getNextId">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_uFub8lQCEem0lJrfHV-RWQ" name="id" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_uFw4MFQCEem0lJrfHV-RWQ" name="getInstance" isStatic="true">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_uFw4MVQCEem0lJrfHV-RWQ" name="instance" type="_qJcMkFQCEem0lJrfHV-RWQ" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_rWsMYEfZEemzKf38hXMYDg" name="tools">
     <packagedElement xmi:type="uml:Class" xmi:id="_tVy9YEfZEemzKf38hXMYDg" name="Point">
@@ -746,7 +760,6 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_v7qTcFL9EemnmtBblIRTDA" name="NullDateException"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_8iKyMEffEemzKf38hXMYDg"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_mc_Y4EfhEemzKf38hXMYDg"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_hUh8YE9XEem8EYOBggYCvQ" name="ride">
     <packagedElement xmi:type="uml:Class" xmi:id="_mL23sE9XEem8EYOBggYCvQ" name="Network">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_zm6uoE9XEem8EYOBggYCvQ" name="stations" visibility="private">
@@ -889,6 +902,7 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_lnUgYFL-EemnmtBblIRTDA" name="id" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
       </ownedAttribute>
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_qbBMIFP_Eem0lJrfHV-RWQ" client="_hMFVkE9YEem8EYOBggYCvQ" supplier="_-Ev8oE-dEem8EYOBggYCvQ" contract="_-Ev8oE-dEem8EYOBggYCvQ"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_rgByUE-fEem8EYOBggYCvQ" name="getUserName">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_uutU0E-fEem8EYOBggYCvQ" name="firstName" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
@@ -1236,6 +1250,7 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_aYNOgVL8EemnmtBblIRTDA" name="startDate" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
       </ownedAttribute>
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_y6n1sFP_Eem0lJrfHV-RWQ" client="_DOSFkFL8EemnmtBblIRTDA" supplier="_Gt3RAFLfEemnmtBblIRTDA" contract="_Gt3RAFLfEemnmtBblIRTDA"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_TINysFL8EemnmtBblIRTDA" name="sorting">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_TINysVL8EemnmtBblIRTDA" name="stations">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
@@ -1246,6 +1261,7 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_H2EJAFL8EemnmtBblIRTDA" name="MoreUsedStation">
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_xJX6gFP_Eem0lJrfHV-RWQ" client="_H2EJAFL8EemnmtBblIRTDA" supplier="_Gt3RAFLfEemnmtBblIRTDA" contract="_Gt3RAFLfEemnmtBblIRTDA"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_S3OJUFL8EemnmtBblIRTDA" name="sorting">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_S3OJUVL8EemnmtBblIRTDA" name="stations">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
@@ -1574,7 +1590,7 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_MU4g4FMAEemnmtBblIRTDA" name="CommandLineInterpreter">
+    <packagedElement xmi:type="uml:Class" xmi:id="_MU4g4FMAEemnmtBblIRTDA" name="CommandLineReader">
       <ownedOperation xmi:type="uml:Operation" xmi:id="_QXR_UFMAEemnmtBblIRTDA" name="parseCommand">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_TDREcFMAEemnmtBblIRTDA" name="string">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
@@ -1595,7 +1611,93 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_nI1fIFP-Eem0lJrfHV-RWQ" name="CommandLineController">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_pW_YwFP-Eem0lJrfHV-RWQ" name="addBike">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_xTJXAFP-Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_1UE10FP-Eem0lJrfHV-RWQ" name="addSlot">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_1UE10VP-Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_3ggRIFP-Eem0lJrfHV-RWQ" name="addUser">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_3ggRIVP-Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_54Jd8FP-Eem0lJrfHV-RWQ" name="calculateItinerary">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_54Jd8VP-Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_78c4AFP-Eem0lJrfHV-RWQ" name="display">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_78c4AVP-Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_9gxxgFP-Eem0lJrfHV-RWQ" name="displayStation">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_9gxxgVP-Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="__NOFMFP-Eem0lJrfHV-RWQ" name="displayUser">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="__NOFMVP-Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_BftFMFP_Eem0lJrfHV-RWQ" name="help" concurrency="guarded"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Ed-NIFP_Eem0lJrfHV-RWQ" name="rentBike">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ed-NIVP_Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GbOkAFP_Eem0lJrfHV-RWQ" name="returnBike">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_GbOkAVP_Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_IDvZ8FP_Eem0lJrfHV-RWQ" name="runtest">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_IDvZ8VP_Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_KAezcFP_Eem0lJrfHV-RWQ" name="setup">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_KAezcVP_Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_LwSkMFP_Eem0lJrfHV-RWQ" name="slotOffline">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_LwSkMVP_Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_NT0zgFP_Eem0lJrfHV-RWQ" name="slotOnline">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_NT0zgVP_Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_PXt94FP_Eem0lJrfHV-RWQ" name="stationOffline">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_PXt94VP_Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_RSg2oFP_Eem0lJrfHV-RWQ" name="stationOnline">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_RSg2oVP_Eem0lJrfHV-RWQ" name="args">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
   </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_kFMnoFQBEem0lJrfHV-RWQ" name="composition"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_zXGEYFQBEem0lJrfHV-RWQ" name="composition"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FR95EFQDEem0lJrfHV-RWQ" name="use"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_NRmpIFQDEem0lJrfHV-RWQ" name="throw"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_QnwsoFQDEem0lJrfHV-RWQ" name="throw"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_UstIwFQDEem0lJrfHV-RWQ" name="use"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_YBFqoFQDEem0lJrfHV-RWQ" name="use"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_g7Z6QFQDEem0lJrfHV-RWQ" name="throw"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_sOKlEEZnEemNTJH6NZhuqA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sONBUEZnEemNTJH6NZhuqA" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
