@@ -135,9 +135,5 @@ class NetworkTest {
 		);
 	}
 
-	@Test
-	void testSortingStations() {
-		fail("Not yet implemented");
-	}
 
 }

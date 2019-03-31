@@ -3,7 +3,7 @@ package station;
 import tools.Point;
 
 /**
- * This exception is thrown when a Station is created on a position where there already is a Station.
+ * This exception is thrown when a {@code Station} is created on a position where there already is a Station.
  * @author Chloé
  *
  */
@@ -26,7 +26,6 @@ public class StationSamePositionException extends Exception {
 
 @Override
 public String getMessage() {
-	// TODO Auto-generated method stub
 	return "Error : Could not create station because there already is a station on the position : " + position + " .";
 }
 	

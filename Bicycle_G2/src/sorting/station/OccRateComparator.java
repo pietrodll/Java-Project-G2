@@ -24,6 +24,9 @@ public class OccRateComparator implements Comparator<Station> {
 		this.endTime = endTime;
 	}
 	
+	/**
+	 * Compares {@code Station} w.r.t. the rate occupation
+	 */
 	@Override
 	public int compare(Station s1, Station s2) {			
 			LocalDateTime startDate = this.startTime;

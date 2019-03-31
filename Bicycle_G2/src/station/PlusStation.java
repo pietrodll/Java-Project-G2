@@ -19,7 +19,7 @@ public class PlusStation extends Station {
 	}
 	
 	/**
-	 * If a {@code User} drops a {@code Bike} in a {@code PlusStation}, he gains 5 Time Credits on his Card (if he has one).
+	 * If a {@code User} drops a {@code Bike} in a {@code PlusStation}, he gains 5 Time Credits on his subscription Card (if he has one).
 	 * @return 
 	 * @throws NullDateException 
 	 * @throws StationOfflineException 

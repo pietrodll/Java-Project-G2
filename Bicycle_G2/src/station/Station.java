@@ -152,7 +152,7 @@ public abstract class Station implements Observable {
 	/**
 	 * 
 	 * @param card
-	 * @return user of the card
+	 * @return {@code User} of the card
 	 */
 	public User identifyUser (Card card) {
 		if (this.isOnline) {

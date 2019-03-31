@@ -3,7 +3,7 @@ package station;
 import java.time.LocalDateTime;
 
 /**
- * This exception is thrown when someone tries to get the {@code SlotState} of a {@Slot} before it was created.
+ * This exception is thrown when someone tries to get the {@code SlotState} of a {@code Slot} before it was created.
  * @author Chloé
  *
  */
@@ -27,7 +27,6 @@ public class NoSlotStateAtDateException extends Exception {
 
 	@Override
 	public String getMessage() {
-		// TODO Auto-generated method stub
 		return "There is no Slot State saved for time : [" + time + "].";
 }
 	

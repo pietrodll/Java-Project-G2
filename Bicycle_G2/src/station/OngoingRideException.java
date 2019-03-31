@@ -14,7 +14,6 @@ public class OngoingRideException extends Exception{
 	
 	@Override
 	public String getMessage() {
-		// TODO Auto-generated method stub
 		return "There is already an ongoing ride for this user, it is not possible to pick up a bike.";
 	}
 

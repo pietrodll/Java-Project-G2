@@ -18,7 +18,7 @@ public class StationFactory  {
 	 * When creating a new {@code Station}, the method checks if there is no other stations at the same position.
 	 * @param stationType
 	 * @param p
-	 * @return
+	 * @return the Station created
 	 * @throws TypeStationException
 	 * @throws StationSamePositionException
 	 */

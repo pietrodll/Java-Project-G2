@@ -24,7 +24,6 @@ public class TypeStationException extends Exception {
 
 	@Override
 	public String getMessage() {
-		// TODO Auto-generated method stub
 		return "Error : the type of Station' " + this.type + " ' does not exist ";
 }
 	

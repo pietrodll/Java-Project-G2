@@ -1,6 +1,6 @@
 package station;
 /**
- * This exception is thrown when a {@code User } tries to drop a {@code Bike} in a {@code Station} but he has no ongoing {@code Ride}, meaning he is not renting any {@code Bike}.
+ * This exception is thrown when a {@code User} tries to drop a {@code Bike} in a {@code Station} but he has no ongoing {@code Ride}, meaning he is not renting any {@code Bike}.
  * @author Chloé
  *
  */

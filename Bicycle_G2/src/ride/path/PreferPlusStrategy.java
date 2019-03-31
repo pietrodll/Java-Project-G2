@@ -22,6 +22,7 @@ public class PreferPlusStrategy implements PathStrategy {
 		this.stations = net.getStations();
 	}
 
+	
 	@Override
 	public Station[] findPath(Point start, Point end, int bikeType) {
 		ArrayList<Station> stationsBis = (ArrayList<Station>) this.stations.clone();
@@ -43,6 +44,7 @@ public class PreferPlusStrategy implements PathStrategy {
 		return stations;
 	}
 
+	
 	@Override
 	public Station[] findPath(Point start, Point end) {
 		ArrayList<Station> stationsBis = (ArrayList<Station>) this.stations.clone();
@@ -65,6 +67,7 @@ public class PreferPlusStrategy implements PathStrategy {
 		return stations;
 	}
 
+	
 	@Override
 	public Station findEndStation(Point start, Point end, Bike bike) {
 		ArrayList<Station> stationsBis = (ArrayList<Station>) this.stations.clone();

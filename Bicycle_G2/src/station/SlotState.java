@@ -6,7 +6,7 @@ import bike.Bike;
 import tools.NegativeTimeException;
 
 /**
- * This class represents a state of a {@code Slot} during a period of time. It has a beginning and ending time and gives the {@code Bike} the {@code Slot} has during the period, and whether the {@code Slot} is online. A {@code SlotState} can be created with or without an ending time.
+ * This class represents a state of a {@code Slot} during a period of time. It has a beginning and ending time and gives the {@code Bike} parked in the {@code Slot} during the period, and whether the {@code Slot} is online. A {@code SlotState} can be created with or without an ending time.
  * @author Chloé
  *
  */

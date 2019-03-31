@@ -77,6 +77,7 @@ public class UniformityStrategy implements PathStrategy {
 		return n;
 	}
 	
+	
 	@Override
 	public Station[] findPath(Point start, Point end, int bikeType) {
 		ArrayList<Station> stationsBis = (ArrayList<Station>) this.stations.clone();
@@ -106,6 +107,7 @@ public class UniformityStrategy implements PathStrategy {
 		return stations;
 	}
 
+	
 	@Override
 	public Station[] findPath(Point start, Point end) {
 		ArrayList<Station> stationsBis = (ArrayList<Station>) this.stations.clone();

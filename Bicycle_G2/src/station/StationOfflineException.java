@@ -1,5 +1,10 @@
 package station;
 
+/**
+ * This exception is thrown when a {@code Station} is offline, but a {@code User} tries to pick up or drop a {@code Bike}.
+ * @author Chloé
+ *
+ */
 public class StationOfflineException extends Exception{
 
 	/**
@@ -20,7 +25,6 @@ public class StationOfflineException extends Exception{
 
 	@Override
 	public String getMessage() {
-		// TODO Auto-generated method stub
 		return "Error : the Station : " + s1 + " is Offline, no operation possible.";
 	}
 

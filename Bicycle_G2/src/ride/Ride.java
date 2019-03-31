@@ -9,7 +9,7 @@ import tools.NegativeTimeException;
 import tools.NullDateException;
 
 /**
- * This class represents a Ride of a {@code Network}. It has a starting and ending time, a {@code User} with its {@code Card} and a {@code Bike}. It is created without an ending code.
+ * This class represents a {@code Ride} of a {@code Network}. It has a starting and ending time, a {@code User} with its {@code Card} and a {@code Bike}. It is created without an ending time.
  * @author Chloé
  *
  */
@@ -41,7 +41,7 @@ public class Ride {
 	public Card getCard() { return card; }
 	
 	/**
-	 * This method sets the ending time of the Ride, and archive it in the Ride History of the {@code Network}.	 
+	 * This method sets the ending time of the {@code Ride}, and archive it in the Ride History of the {@code Network}.	 
 	 * @param endRide
 	 */
 	public void endRide(LocalDateTime endRide) {

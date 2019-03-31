@@ -35,10 +35,10 @@ public class Slot {
 	
 	/**
 	 * This method allows to find the {@code SlotState} of a {@code Slot} at a certain time t, using its index in the SlotHistory list.
-	 * If t is during a {@code SlotState}, this {@code SlotState} will be returned.
-	 * If t is at a changing time of {@code SlotState}, then the {@code SlotState} that starts at t will be returned.
-	 * If t is before the first {@code SlotState}, it means the {@code Slot} was not created at that time, it will throw an exception.
-	 * If t is after the beginning of the current {@code SlotState}, the current {@code SlotState} will be returned.
+	 * <br> If t is during a {@code SlotState}, this {@code SlotState} will be returned.
+	 * <br> If t is at a changing time of {@code SlotState}, then the {@code SlotState} that starts at t will be returned.
+	 * <br> If t is before the first {@code SlotState}, it means the {@code Slot} was not created at that time, it will throw an exception.
+	 * <br>If t is after the beginning of the current {@code SlotState}, the current {@code SlotState} will be returned.
 	 * @param t
 	 * @return index of {@code SlotState} of time t in the SlotHistory
 	 * @throws NoSlotStateAtDateException
@@ -98,30 +98,7 @@ public class Slot {
 		return totalOccupationTime;
 	}
 	
-	// creation de computeOccupationTime2 ?
-	public int computeOccupationTime2 (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException, NoSlotStateAtDateException, NullDateException {
-		int totalOccupationTime = 0;
-		int iStart;
-		int iEnd;
-		iEnd = indexSlotState (endTime);
-		try {
-			iStart = indexSlotState (startTime);
-		} catch (NoSlotStateAtDateException e) {
-			iStart = 0;
-		}
-		for (int i = iStart; i <= iEnd; i++) {
-			SlotState state = slotHistory.get(i);
-			if (state.getisOccupied() == true) {
-				if (state.getEndTime() == null) { 
-					totalOccupationTime += Date.computeTime (state.getStartTime(), endTime);	
-				}
-				else {totalOccupationTime += Date.computeTime (state.getStartTime(), state.getEndTime());
-				}
-			}			
-		}
-		return totalOccupationTime;
-	}
-	
+		
 	/**
 	 * A {@code Slot} is occupied if it is offline or if it has a {@code Bike}.
 	 * @return whether the {@code Slot} is occupied
