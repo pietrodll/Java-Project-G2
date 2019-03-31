@@ -183,7 +183,9 @@ public class RentalTest {
 							() -> {
 								s1.setOnline(false);
 								u1.getItinerary();
-								() -> assertNotNull(u1.getItinerary().getPs());
+								() -> {
+									() -> assertNotNull(u1.getItinerary().getPs())
+								}
 							}
 					);
 					
