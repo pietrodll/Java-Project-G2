@@ -1,5 +1,9 @@
 package ui.clui;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import card.CardFactory;
@@ -438,6 +442,47 @@ public class CommandLineController {
 		}
 		disp += "Please notice that the time format has to be \"YYYY-MM-dd HH:mm\"\n";
 		cld.display(disp);
+	}
+	
+	public void runtest(String filename) {
+		String path = "";
+		FileReader file = null;
+		BufferedReader reader = null;
+		try {
+			file = new FileReader(path + filename);
+			reader = new BufferedReader(file);
+			String line;
+			line = reader.readLine();
+			while (line != null) {
+				try {
+					clr.interpreteCommand(line, this);
+				} catch (InvalidCommandException | ExistingNameException | InvalidArgumentsException
+						| InexistingNetworkNameException | InexistingStationIdException | InexistingSlotIdException
+						| NegativeTimeException | TypeStationException | StationSamePositionException
+						| InexistingUserIdException | NullDateException | NoSlotAvailableException
+						| NoOngoingRideException | StationOfflineException | OngoingRideException
+						| NoBikeAvailableException e) {
+					cld.display(e.getMessage());
+					continue;
+				} catch (Exception e) {
+					cld.display("An unknown error has occured.");
+					e.printStackTrace();
+					continue;
+				}
+			}
+			cld.display("Test completed");
+		} catch (FileNotFoundException e) {
+			cld.display("Test File not found");
+		} catch (IOException e) {
+			
+		} finally {
+			if (file != null) {
+				try { file.close(); } catch (IOException e) {}
+			}
+			if (reader != null) {
+				try { reader.close(); } catch (IOException e) {}
+			}
+		}
 	}
 
 }

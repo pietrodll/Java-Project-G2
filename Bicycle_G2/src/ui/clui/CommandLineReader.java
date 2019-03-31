@@ -1,5 +1,9 @@
 package ui.clui;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 import controller.ExistingNameException;
@@ -116,6 +120,7 @@ public class CommandLineReader {
 			break;
 		}
 	}
+
 	
 	public static void main(String[] args) {
 		CommandLineController clc = new CommandLineController();
@@ -143,8 +148,8 @@ public class CommandLineReader {
 					instruction = clr.readCommand("Please write your command:");
 					continue;
 				}
-				instruction = clr.readCommand("Please write your instruction:");
 			}
+			instruction = clr.readCommand("Please write your instruction:");
 		}
 		cld.display("It has been a pleasure to work for you.");
 		clr.close();
