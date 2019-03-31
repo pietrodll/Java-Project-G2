@@ -32,7 +32,7 @@ import tools.Point;
 import user.User;
 
 /**
- * This class contains all the methods that can be used in the command line. Every methods take {@code String[]} arguments in 
+ * This class contains all the methods that can be used in the command line. Every methods take {@code String[]} arguments in order to be compatible with {@link CommandLineReader#parseArgs(String)}.
  * @author Pietro Dellino
  *
  */
@@ -458,7 +458,7 @@ public class CommandLineController {
 	public void runtest(String[] args) throws InvalidArgumentsException {
 		if (args.length == 1) {
 			String filename = args[0];
-			String path = "../../../testfiles";
+			String path = System.getProperty("user.dir") + "/testfiles/";
 			FileReader file = null;
 			BufferedReader reader = null;
 			try {
@@ -482,6 +482,7 @@ public class CommandLineController {
 						e.printStackTrace();
 						continue;
 					}
+					line = reader.readLine();
 				}
 				cld.display("Test completed");
 			} catch (FileNotFoundException e) {

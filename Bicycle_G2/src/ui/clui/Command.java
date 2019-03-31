@@ -1,5 +1,9 @@
 package ui.clui;
 
+/**
+ * This {@code enum} contains all the possible commands of the CLUI, with their keyword and the format of the instruction (that is showed with the method {@link CommandLineController#help()}.
+ * @author Pietro Dellino
+ */
 public enum Command {
 	
 	SETUP("setup", "setup <networkName> or setup <networkName> <nStations> <nSlots> <side> <nBikes>"),
