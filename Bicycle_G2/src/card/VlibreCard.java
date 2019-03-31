@@ -8,6 +8,7 @@ import user.User;
  * This class represents VLibre Cards.
  * Its methods allow to calculate the price of a ride when the users has this type of card.
  * @author Pietro Dellino
+ * @see CardVisitor
  */
 public class VlibreCard extends Card {
 	

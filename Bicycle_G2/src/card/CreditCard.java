@@ -4,6 +4,11 @@ import bike.ElectricBike;
 import bike.MechanicBike;
 import user.User;
 
+/**
+ * This card is used to calculate the price of a ride for a user who does not have any card subscription.
+ * @author Pietro Dellino
+ * @see CardVisitor
+ */
 public class CreditCard extends Card {
 	
 	private final int timeCredit = 0;
