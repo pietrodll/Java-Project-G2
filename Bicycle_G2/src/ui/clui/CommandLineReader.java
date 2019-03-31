@@ -47,9 +47,13 @@ public class CommandLineReader {
 		throw new InvalidCommandException(com);
 	}
 	
-	public String[] parseArgs(String s) {
-		String s1 = s.substring(s.indexOf('<')+1, s.lastIndexOf('>'));
-		return s1.split(">{1} *<{1}");
+	public String[] parseArgs(String s) throws InvalidArgumentsException {
+		try {
+			String s1 = s.substring(s.indexOf('<')+1, s.lastIndexOf('>'));
+			return s1.split(">{1} *<{1}");
+		} catch (StringIndexOutOfBoundsException e) {
+			throw new InvalidArgumentsException();
+		}
 	}
 	
 	public void close() {
@@ -132,6 +136,7 @@ public class CommandLineReader {
 				continue;
 			} catch (Exception e) {
 				cld.display("An unknown error has occured.");
+				e.printStackTrace();
 				instruction = clr.readCommand("Please write your command:");
 				continue;
 			}

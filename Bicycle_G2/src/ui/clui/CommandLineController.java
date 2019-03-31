@@ -29,7 +29,7 @@ import user.User;
 
 /**
  * 
- * @author pietr
+ * @author Pietro Dellino
  *
  */
 public class CommandLineController {
@@ -429,6 +429,10 @@ public class CommandLineController {
 		} else {
 			throw new InvalidArgumentsException();
 		}
+	}
+	
+	public void help() {
+		
 	}
 
 }
