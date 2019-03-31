@@ -350,6 +350,16 @@ public class CommandLineController {
 		}
 	}
 	
+	/**
+	 * This method applies command line instructions of the form: <br>
+	 * {@code sortStation <networkName> <more-used>} <br>
+	 * or <br>
+	 * {@code sortStation <networkName> <least-occupied> <startTime> <endTime>} <br>
+	 * {@code startTime} and {@code endTime} have to be on the following format: {@code YYYY-MM-dd HH:mm}
+	 * @param args an array of {@code String}
+	 * @throws InexistingNetworkNameException
+	 * @throws InvalidArgumentsException
+	 */
 	public void sortStation(String[] args) throws InexistingNetworkNameException, InvalidArgumentsException {
 		if (args.length == 2) {
 			Network net = nm.findNetworkByName(args[0]);

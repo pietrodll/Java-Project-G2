@@ -1,6 +1,5 @@
 package ui.clui;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import bike.ElectricBike;
