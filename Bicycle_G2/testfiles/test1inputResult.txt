@@ -1,0 +1,136 @@
+Network: myVelib
+List of stations:
+Station: id:0
+	Position: x=0.713 y=0.259
+Slots: 10
+	id:0	Online	Occupied	Bike id:7	Type: Electric
+	id:1	Online	Occupied	Bike id:12	Type: Electric
+	id:2	Online	Occupied	Bike id:19	Type: Electric
+	id:3	Online	Occupied	Bike id:22	Type: Electric
+	id:4	Online	Occupied	Bike id:46	Type: Mechanic
+	id:5	Online	Occupied	Bike id:58	Type: Mechanic
+	id:6	Online	Occupied	Bike id:59	Type: Mechanic
+	id:7	Online	Free
+	id:8	Online	Free
+	id:9	Online	Free
+Station: id:1
+	Position: x=0.724 y=1.749
+Slots: 10
+	id:1000	Online	Occupied	Bike id:16	Type: Electric
+	id:1001	Online	Occupied	Bike id:24	Type: Mechanic
+	id:1002	Online	Occupied	Bike id:32	Type: Mechanic
+	id:1003	Online	Occupied	Bike id:38	Type: Mechanic
+	id:1004	Online	Occupied	Bike id:40	Type: Mechanic
+	id:1005	Online	Occupied	Bike id:65	Type: Mechanic
+	id:1006	Online	Free
+	id:1007	Online	Free
+	id:1008	Online	Free
+	id:1009	Online	Free
+Station: id:2
+	Position: x=0.998 y=2.556
+Slots: 10
+	id:2000	Online	Occupied	Bike id:17	Type: Electric
+	id:2001	Online	Occupied	Bike id:28	Type: Mechanic
+	id:2002	Online	Occupied	Bike id:35	Type: Mechanic
+	id:2003	Online	Occupied	Bike id:51	Type: Mechanic
+	id:2004	Online	Occupied	Bike id:52	Type: Mechanic
+	id:2005	Online	Occupied	Bike id:69	Type: Mechanic
+	id:2006	Online	Free
+	id:2007	Online	Free
+	id:2008	Online	Free
+	id:2009	Online	Free
+Station: id:3
+	Position: x=0.066 y=3.411
+Slots: 10
+	id:3000	Online	Occupied	Bike id:1	Type: Electric
+	id:3001	Online	Occupied	Bike id:23	Type: Mechanic
+	id:3002	Online	Occupied	Bike id:29	Type: Mechanic
+	id:3003	Online	Occupied	Bike id:36	Type: Mechanic
+	id:3004	Online	Occupied	Bike id:45	Type: Mechanic
+	id:3005	Online	Occupied	Bike id:62	Type: Mechanic
+	id:3006	Online	Free
+	id:3007	Online	Free
+	id:3008	Online	Free
+	id:3009	Online	Free
+Station: id:4
+	Position: x=1.258 y=0.531
+Slots: 10
+	id:4000	Online	Occupied	Bike id:13	Type: Electric
+	id:4001	Online	Occupied	Bike id:14	Type: Electric
+	id:4002	Online	Occupied	Bike id:25	Type: Mechanic
+	id:4003	Online	Occupied	Bike id:26	Type: Mechanic
+	id:4004	Online	Occupied	Bike id:27	Type: Mechanic
+	id:4005	Online	Occupied	Bike id:37	Type: Mechanic
+	id:4006	Online	Occupied	Bike id:42	Type: Mechanic
+	id:4007	Online	Occupied	Bike id:55	Type: Mechanic
+	id:4008	Online	Occupied	Bike id:66	Type: Mechanic
+	id:4009	Online	Free
+Station: id:5
+	Position: x=1.02 y=1.441
+Slots: 10
+	id:5000	Online	Occupied	Bike id:8	Type: Electric
+	id:5001	Online	Occupied	Bike id:64	Type: Mechanic
+	id:5002	Online	Free
+	id:5003	Online	Free
+	id:5004	Online	Free
+	id:5005	Online	Free
+	id:5006	Online	Free
+	id:5007	Online	Free
+	id:5008	Online	Free
+	id:5009	Online	Free
+Station: id:6
+	Position: x=1.387 y=2.705
+Slots: 10
+	id:6000	Online	Occupied	Bike id:6	Type: Electric
+	id:6001	Online	Occupied	Bike id:9	Type: Electric
+	id:6002	Online	Occupied	Bike id:10	Type: Electric
+	id:6003	Online	Occupied	Bike id:33	Type: Mechanic
+	id:6004	Online	Occupied	Bike id:43	Type: Mechanic
+	id:6005	Online	Occupied	Bike id:48	Type: Mechanic
+	id:6006	Online	Occupied	Bike id:63	Type: Mechanic
+	id:6007	Online	Occupied	Bike id:67	Type: Mechanic
+	id:6008	Online	Occupied	Bike id:70	Type: Mechanic
+	id:6009	Online	Occupied	Bike id:72	Type: Mechanic
+Station: id:7
+	Position: x=1.939 y=3.493
+Slots: 10
+	id:7000	Online	Occupied	Bike id:21	Type: Electric
+	id:7001	Online	Occupied	Bike id:30	Type: Mechanic
+	id:7002	Online	Occupied	Bike id:44	Type: Mechanic
+	id:7003	Online	Occupied	Bike id:47	Type: Mechanic
+	id:7004	Online	Occupied	Bike id:56	Type: Mechanic
+	id:7005	Online	Occupied	Bike id:57	Type: Mechanic
+	id:7006	Online	Occupied	Bike id:60	Type: Mechanic
+	id:7007	Online	Occupied	Bike id:68	Type: Mechanic
+	id:7008	Online	Free
+	id:7009	Online	Free
+Station: id:8
+	Position: x=2.187 y=0.131
+Slots: 10
+	id:8000	Online	Occupied	Bike id:0	Type: Electric
+	id:8001	Online	Occupied	Bike id:3	Type: Electric
+	id:8002	Online	Occupied	Bike id:4	Type: Electric
+	id:8003	Online	Occupied	Bike id:5	Type: Electric
+	id:8004	Online	Occupied	Bike id:18	Type: Electric
+	id:8005	Online	Occupied	Bike id:34	Type: Mechanic
+	id:8006	Online	Occupied	Bike id:41	Type: Mechanic
+	id:8007	Online	Occupied	Bike id:61	Type: Mechanic
+	id:8008	Online	Occupied	Bike id:71	Type: Mechanic
+	id:8009	Online	Free
+Station: id:9
+	Position: x=2.56 y=1.484
+Slots: 10
+	id:9000	Online	Occupied	Bike id:2	Type: Electric
+	id:9001	Online	Occupied	Bike id:11	Type: Electric
+	id:9002	Online	Occupied	Bike id:15	Type: Electric
+	id:9003	Online	Occupied	Bike id:20	Type: Electric
+	id:9004	Online	Occupied	Bike id:31	Type: Mechanic
+	id:9005	Online	Occupied	Bike id:39	Type: Mechanic
+	id:9006	Online	Occupied	Bike id:49	Type: Mechanic
+	id:9007	Online	Occupied	Bike id:50	Type: Mechanic
+	id:9008	Online	Occupied	Bike id:53	Type: Mechanic
+	id:9009	Online	Occupied	Bike id:54	Type: Mechanic
+List of cards:
+List of users:
+
+Test completed

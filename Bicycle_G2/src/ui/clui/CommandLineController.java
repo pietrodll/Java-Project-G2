@@ -459,13 +459,14 @@ public class CommandLineController {
 	public void runtest(String[] args) throws InvalidArgumentsException {
 		if (args.length == 1) {
 			String filename = args[0];
-			String path = System.getProperty("user.dir") + "/testfiles/";
+			String path = System.getProperty("user.dir") + "\\testfiles\\";
+			String writeFileName = path + filename.substring(0, filename.lastIndexOf('.')) + "Result.txt";
 			FileReader file = null;
 			BufferedReader reader = null;
 			PrintStream oldStream = System.out;
 			PrintStream writerStream = null;
 			try {
-				writerStream = new PrintStream(path + filename.substring(0, filename.lastIndexOf('.')) + "Result.txt");
+				writerStream = new PrintStream(writeFileName);
 				System.setOut(writerStream);
 				file = new FileReader(path + filename);
 				reader = new BufferedReader(file);
@@ -493,6 +494,7 @@ public class CommandLineController {
 				}
 				cld.display("Test completed");
 				System.setOut(oldStream);
+				cld.display("Test result written in file " + writeFileName);
 			} catch (FileNotFoundException e) {
 				cld.display("Test File not found");
 			} catch (IOException e) {
