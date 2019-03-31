@@ -34,7 +34,7 @@ public abstract class Station implements Observable {
 
 	public Station(Point p) {
 		this.p = p;
-		id = StationIDGenerator.getInstance().getNextStationID();
+		id = StationIdGenerator.getInstance().getNextStationID();
 		this.parkingSlots = new ArrayList<Slot>();
 		this.isOnline = true;
 		this.changed = false;

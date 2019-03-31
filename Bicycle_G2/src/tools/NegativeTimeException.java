@@ -19,7 +19,7 @@ public class NegativeTimeException extends Exception {
 		super();
 		this.startTime = startTime;
 		this.endTime = endTime;
-		System.out.println("Error : The starting date [" + startTime + "] is after the ending date [" + endTime + "]."  );
+		
 	}
 
 	public LocalDateTime getStartTime() {
@@ -30,7 +30,11 @@ public class NegativeTimeException extends Exception {
 		return endTime;
 	}
 	
-	
-	
+	@Override
+	public String getMessage() {
+		// TODO Auto-generated method stub
+		return "Error : The starting date [" + startTime + "] is after the ending date [" + endTime + "].";
+	}
+
 
 }

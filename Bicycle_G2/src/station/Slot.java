@@ -26,7 +26,7 @@ public class Slot {
 	
 	public Slot(Station s) {
 		this.s = s;
-		id = SlotIDGenerator.getInstance().getSlotID(s);
+		id = SlotIdGenerator.getInstance().getSlotID(s);
 		bike = null;
 		isOnline = true;
 		slotHistory = new ArrayList<SlotState>();
