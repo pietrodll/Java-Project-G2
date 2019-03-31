@@ -128,6 +128,10 @@ public class Slot {
 				lastState.setEndTime (changeTime);}
 			SlotState newState = new SlotState (changeTime, isOnline, this.getBike());
 			slotHistory.add(newState);
+			if (this.s.isStationFull() == true){
+				this.s.setChanged(true);
+				this.s.notifyObservers();
+			}
 		}
 	}
 	
@@ -147,6 +151,10 @@ public class Slot {
 				lastState.setEndTime(changeTime);}
 			SlotState newState = new SlotState (changeTime, this.isOnline(), bike);
 			slotHistory.add(newState);
+			if (this.s.isStationFull() == true){
+				this.s.setChanged(true);
+				this.s.notifyObservers();
+			}
 		}
 	}
 	
