@@ -432,7 +432,12 @@ public class CommandLineController {
 	}
 	
 	public void help() {
-		
+		String disp = "Welcome to the help center of the myVelib system\nHere are the instructions you can write:\n";
+		for (Command c : Command.values()) {
+			disp += c.getFormat() + '\n';
+		}
+		disp += "Please notice that the time format has to be \"YYYY-MM-dd HH:mm\"\n";
+		cld.display(disp);
 	}
 
 }

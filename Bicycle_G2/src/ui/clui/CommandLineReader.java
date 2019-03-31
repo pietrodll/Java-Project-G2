@@ -124,23 +124,27 @@ public class CommandLineReader {
 		cld.display("Welcome to the myVelib system. You can type \"help\" to see the possible commands and \"exit\" to stop the system");
 		String instruction = clr.readCommand("Please write your instruction:");
 		while (!instruction.equalsIgnoreCase("exit")) {
-			try {
-				clr.interpreteCommand(instruction, clc);
-			} catch (InvalidCommandException | ExistingNameException | InvalidArgumentsException
-					| InexistingNetworkNameException | InexistingStationIdException | InexistingSlotIdException
-					| NegativeTimeException | TypeStationException | StationSamePositionException
-					| InexistingUserIdException | NullDateException | NoSlotAvailableException | NoOngoingRideException
-					| StationOfflineException | OngoingRideException | NoBikeAvailableException e) {
-				cld.display(e.getMessage());
-				instruction = clr.readCommand("Please write your command:");
-				continue;
-			} catch (Exception e) {
-				cld.display("An unknown error has occured.");
-				e.printStackTrace();
-				instruction = clr.readCommand("Please write your command:");
-				continue;
+			if (instruction.equalsIgnoreCase("help")) {
+				clc.help();
+			} else {
+				try {
+					clr.interpreteCommand(instruction, clc);
+				} catch (InvalidCommandException | ExistingNameException | InvalidArgumentsException
+						| InexistingNetworkNameException | InexistingStationIdException | InexistingSlotIdException
+						| NegativeTimeException | TypeStationException | StationSamePositionException
+						| InexistingUserIdException | NullDateException | NoSlotAvailableException | NoOngoingRideException
+						| StationOfflineException | OngoingRideException | NoBikeAvailableException e) {
+					cld.display(e.getMessage());
+					instruction = clr.readCommand("Please write your command:");
+					continue;
+				} catch (Exception e) {
+					cld.display("An unknown error has occured.");
+					e.printStackTrace();
+					instruction = clr.readCommand("Please write your command:");
+					continue;
+				}
+				instruction = clr.readCommand("Please write your instruction:");
 			}
-			instruction = clr.readCommand("Please write your instruction:");
 		}
 		cld.display("It has been a pleasure to work for you.");
 		clr.close();
