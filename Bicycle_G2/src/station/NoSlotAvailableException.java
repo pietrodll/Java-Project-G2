@@ -1,5 +1,10 @@
 package station;
 
+/**
+ * This exception is thrown when a {@code User} tries to drop a {@code Bike} to a {@code Station} that is full.
+ * @author Chloé
+ *
+ */
 public class NoSlotAvailableException extends Exception {
 
 	/**

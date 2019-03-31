@@ -1,5 +1,10 @@
 package station;
 
+/**
+ * This exception is thrown when a {@code User} tries to pick up a {@code MechanicBike} from a {@code Station} that has no {@code MechanicBike} available.
+ * @author Chloé
+ *
+ */
 public class NoMechanicBikeAvailableException extends Exception {
 
 	/**
