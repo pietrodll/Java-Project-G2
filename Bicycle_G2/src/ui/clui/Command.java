@@ -11,6 +11,7 @@ public enum Command {
 	ADD_STATION("addStation"),
 	ADD_SLOT("addSlot"),
 	ADD_BIKE("addBike"),
+	ADD_USER("addUser"),
 	RETURN_BIKE("returnBike"),
 	RENT_BIKE("rentBike"),
 	DISPLAY_USER("displayUser"),
