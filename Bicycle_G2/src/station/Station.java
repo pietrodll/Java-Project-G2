@@ -283,7 +283,16 @@ public abstract class Station implements Observable {
 
 	public boolean isOnline() { return isOnline; }
 
-	public void setOnline(boolean isOnline) { this.isOnline = isOnline; }
+	/**
+	 * This method sets the boolean isOnline. If a Station goes offline, all its Observers are notified.
+	 * @param isOnline
+	 */
+	public void setOnline(boolean isOnline) { 
+		if (this.isOnline() == true && isOnline == false) {
+			this.changed = true;
+			this.notifyObservers();
+		}
+		this.isOnline = isOnline; }
 
 	public ArrayList<Slot> getParkingSlots() { return parkingSlots; }
 
