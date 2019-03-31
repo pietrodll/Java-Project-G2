@@ -6,7 +6,16 @@ import controller.ExistingNameException;
 import controller.InexistingNetworkNameException;
 import controller.InexistingSlotIdException;
 import controller.InexistingStationIdException;
+import controller.InexistingUserIdException;
+import station.NoBikeAvailableException;
+import station.NoOngoingRideException;
+import station.NoSlotAvailableException;
+import station.OngoingRideException;
+import station.StationOfflineException;
+import station.StationSamePositionException;
+import station.TypeStationException;
 import tools.NegativeTimeException;
+import tools.NullDateException;
 
 public class CommandLineReader {
 	
@@ -47,6 +56,63 @@ public class CommandLineReader {
 		sc.close();
 	}
 	
+	public void interpreteCommand(String instruction, CommandLineController clc) throws InvalidCommandException, ExistingNameException, InvalidArgumentsException, InexistingNetworkNameException, InexistingStationIdException, InexistingSlotIdException, NegativeTimeException, TypeStationException, StationSamePositionException, InexistingUserIdException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException, OngoingRideException, NoBikeAvailableException {
+		Command com = this.parseCommand(instruction);
+		String[] args = this.parseArgs(instruction);
+		switch (com) {
+		case SETUP:
+			clc.setup(args);
+			break;
+		case RUNTEST:
+			break;
+		case STATION_ONLINE:
+			clc.stationOnline(args);
+			break;
+		case STATION_OFFLINE:
+			clc.stationOffline(args);
+			break;
+		case SLOT_ONLINE:
+			clc.slotOnline(args);
+			break;
+		case SLOT_OFFLINE:
+			clc.slotOffline(args);
+			break;
+		case ADD_STATION:
+			clc.addStation(args);
+			break;
+		case ADD_SLOT:
+			clc.addSlot(args);
+			break;
+		case ADD_USER:
+			clc.addUser(args);
+			break;
+		case ADD_BIKE:
+			clc.addBike(args);
+			break;
+		case RETURN_BIKE:
+			clc.returnBike(args);
+			break;
+		case RENT_BIKE:
+			clc.rentBike(args);
+			break;
+		case DISPLAY_USER:
+			clc.displayUser(args);
+			break;
+		case DISPLAY_STATION:
+			clc.displayStation(args);
+			break;
+		case DISPLAY:
+			clc.display(args);
+			break;
+		case SORT_STATION:
+			clc.sortStation(args);
+			break;
+		case CALCULATE_ITINERARY:
+			clc.calculateItinerary(args);
+			break;
+		}
+	}
+	
 	public static void main(String[] args) {
 		CommandLineController clc = new CommandLineController();
 		CommandLineDisplay cld = new CommandLineDisplay();
@@ -54,77 +120,20 @@ public class CommandLineReader {
 		cld.display("Welcome to the myVelib system. You can type \"help\" to see the possible commands and \"exit\" to stop the system");
 		String instruction = clr.readCommand("Please write your instruction:");
 		while (!instruction.equalsIgnoreCase("exit")) {
-			Command com = null;
 			try {
-				com = clr.parseCommand(instruction);
-			} catch (InvalidCommandException e) {
-				instruction = clr.readCommand("Your instruction is invalid. Please write another instruction.");
+				clr.interpreteCommand(instruction, clc);
+			} catch (InvalidCommandException | ExistingNameException | InvalidArgumentsException
+					| InexistingNetworkNameException | InexistingStationIdException | InexistingSlotIdException
+					| NegativeTimeException | TypeStationException | StationSamePositionException
+					| InexistingUserIdException | NullDateException | NoSlotAvailableException | NoOngoingRideException
+					| StationOfflineException | OngoingRideException | NoBikeAvailableException e) {
+				cld.display(e.getMessage());
+				instruction = clr.readCommand("Please write your command:");
 				continue;
-			}
-			String[] arg = clr.parseArgs(instruction);
-			switch (com) {
-			case SETUP:
-				try {
-					clc.setup(arg);
-				} catch (ExistingNameException | InvalidArgumentsException e) {
-					cld.display(e.getMessage());
-					instruction = clr.readCommand("Please write your instruction:");
-					continue;
-				}
-				break;
-			case RUNTEST:
-				cld.display("Not yet implemented");
-				break;
-			case STATION_ONLINE:
-				try {
-					clc.stationOnline(arg);
-				} catch (InexistingNetworkNameException | InexistingStationIdException | InvalidArgumentsException e) {
-					cld.display(e.getMessage());
-					instruction = clr.readCommand("Please write your instruction:");
-					continue;
-				}
-				break;
-			case STATION_OFFLINE:
-				try {
-					clc.stationOffline(arg);
-				} catch (InexistingNetworkNameException | InexistingStationIdException | InvalidArgumentsException e) {
-					cld.display(e.getMessage());
-					instruction = clr.readCommand("Please write your instruction:");
-					continue;
-				}
-				break;
-			case SLOT_ONLINE:
-				try {
-					clc.slotOnline(arg);
-				} catch (InexistingNetworkNameException | InexistingSlotIdException | NegativeTimeException | InvalidArgumentsException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				break;
-			case SLOT_OFFLINE:
-				break;
-			case ADD_STATION:
-				break;
-			case ADD_SLOT:
-				break;
-			case ADD_USER:
-				break;
-			case ADD_BIKE:
-				break;
-			case RETURN_BIKE:
-				break;
-			case RENT_BIKE:
-				break;
-			case DISPLAY_USER:
-				break;
-			case DISPLAY_STATION:
-				break;
-			case DISPLAY:
-				break;
-			case SORT_STATION:
-				break;
-			case CALCULATE_ITINERARY:
-				break;
+			} catch (Exception e) {
+				cld.display("An unknown error has occured.");
+				instruction = clr.readCommand("Please write your command:");
+				continue;
 			}
 			instruction = clr.readCommand("Please write your instruction:");
 		}
