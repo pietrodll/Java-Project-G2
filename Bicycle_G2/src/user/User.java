@@ -21,7 +21,7 @@ import card.Card;
  * A {@code User} can have an Ongoing {@code Ride} and can be following an {@code Itinerary}.
  * @author Chloé
  * @see UserStat
- * @see UserIDGenerator
+ * @see UserIdGenerator
  */
 public class User implements Observer {
 	
@@ -36,7 +36,7 @@ public class User implements Observer {
 	public User(String userName) {
 		super();
 		this.userName = userName;
-		id = UserIDGenerator.getInstance().getNextUserID();
+		id = UserIdGenerator.getInstance().getNextUserID();
 		position = new Point (0,0);
 		ongoingRide = null;
 		itinerary = null;
@@ -46,7 +46,7 @@ public class User implements Observer {
 	public User(String userName, Point position) {
 		super();
 		this.userName = userName;
-		id = UserIDGenerator.getInstance().getNextUserID();
+		id = UserIdGenerator.getInstance().getNextUserID();
 		this.position = position;
 		ongoingRide = null;
 		itinerary = null;
