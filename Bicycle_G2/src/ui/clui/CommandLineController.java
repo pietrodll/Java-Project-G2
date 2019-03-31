@@ -3,13 +3,14 @@ package ui.clui;
 import java.time.LocalDateTime;
 
 import card.CardFactory;
-import controller.ExistingNameException;
-import controller.InexistingNetworkNameException;
-import controller.InexistingSlotIdException;
-import controller.InexistingStationIdException;
-import controller.InexistingUserIdException;
-import controller.NetworkManager;
+import controller.*;
+import ride.Itinerary;
 import ride.Network;
+import ride.path.AvoidPlusStrategy;
+import ride.path.FastestPathStrategy;
+import ride.path.MinimalWalkingStrategy;
+import ride.path.PreferPlusStrategy;
+import ride.path.UniformityStrategy;
 import sorting.station.LeastOccupiedStation;
 import sorting.station.MoreUsedStation;
 import station.NoBikeAvailableException;
@@ -23,6 +24,7 @@ import station.TypeStationException;
 import tools.Date;
 import tools.NegativeTimeException;
 import tools.NullDateException;
+import tools.Point;
 import user.User;
 
 /**
@@ -383,8 +385,67 @@ public class CommandLineController {
 		}
 	}
 	
-	public void calculateItinerary(String[] args) {
-		
+	/**
+	 * This method applies command line instructions of the form: <br>
+	 * {@code calculateItinerary <networkName> <userID> <startX> <startY> <destinationX> <destinationY> <pathStrategy>} <br>
+	 * The {@code pathStrategy} can be {@code minimal-walking}, {@code fastest-path}, {@code prefer-plus}, {@code avoid-plus}, or {@code uniformity}.
+	 * @throws InexistingUserIdException
+	 * @throws InvalidArgumentsException
+	 * @throws InexistingNetworkNameException 
+	 */
+	public void calculateItinerary(String[] args) throws InexistingUserIdException, InvalidArgumentsException, InexistingNetworkNameException {
+		if (args.length == 7) {
+			Network net = nm.findNetworkByName(args[0]);
+			int id = Integer.parseInt(args[1]);
+			double startX = Double.parseDouble(args[2]);
+			double startY = Double.parseDouble(args[3]);
+			double destX = Double.parseDouble(args[4]);
+			double destY = Double.parseDouble(args[5]);
+			Point start = new Point(startX, startY);
+			Point destination = new Point(destX, destY);
+			User u = nm.findUserById(id, net);
+			Itinerary it;
+			if (args[6].equalsIgnoreCase("minimal-walking")) {
+				it = u.calculateItinerary(start, destination, new MinimalWalkingStrategy(net));
+			} else if (args[6].equalsIgnoreCase("fastest-path")) {
+				it = u.calculateItinerary(start, destination, new FastestPathStrategy(net));
+			} else if (args[6].equalsIgnoreCase("prefer-plus")) {
+				it = u.calculateItinerary(start, destination, new PreferPlusStrategy(net));
+			} else if (args[6].equalsIgnoreCase("avoid-plus")) {
+				it = u.calculateItinerary(start, destination, new AvoidPlusStrategy(net));
+			} else if (args[6].equalsIgnoreCase("uniformity")) {
+				it = u.calculateItinerary(start, destination, new UniformityStrategy(net));
+			} else {
+				throw new InvalidArgumentsException();
+			}
+			cld.display("Pickup station:");
+			cld.display(it.getStartStation());
+			cld.display("Return station:");
+			cld.display(it.getEndStation());
+			String s = clr.readCommand("Do you want to follow this itinerary? [y/n]");
+			if (s.trim().equalsIgnoreCase("y")) {
+				u.setItinerary(it);
+			}
+		} else {
+			throw new InvalidArgumentsException();
+		}
+	}
+	
+	public static void main(String[] args) {
+		CommandLineController clc = new CommandLineController();
+		clc.cld.display("Welcome to the myVelib system. You can type \"help\" to see the possible commands and \"exit\" to stop the system");
+		String instruction = clc.clr.readCommand("Please write your instruction:");
+		while (!instruction.equalsIgnoreCase("exit")) {
+			try {
+				Command com = clc.clr.parseCommand(instruction);
+				clc.cld.display("Your command is: " + com.getKeyword());
+			} catch (InvalidCommandException e) {
+				instruction = clc.clr.readCommand("Your instruction is invalid. Please write another instruction.");
+				continue;
+			}
+			instruction = clc.clr.readCommand("Please write your instruction:");
+		}
+		clc.cld.display("It has been a pleasure to work for you.");
 	}
 
 }
