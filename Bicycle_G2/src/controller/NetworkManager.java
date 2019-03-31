@@ -29,8 +29,7 @@ import user.User;
  */
 public class NetworkManager {
 	
-	// penser à comment gerer la date de creation de network
-	public static final LocalDateTime CREATION_DATE = LocalDateTime.of(2000, 1, 1, 0, 0);
+	public static final LocalDateTime CREATION_DATE = LocalDateTime.of(2019, 1, 1, 0, 0);
 	private ArrayList<Network> networks;
 	
 	public NetworkManager() { this.networks = new ArrayList<Network>(); }
@@ -207,6 +206,16 @@ public class NetworkManager {
 		Card card = this.findCardByUserId(userId, net);
 		Station station = this.findStationByID(stationId, net);
 		station.pickUpBike(card, pickUpTime);
+	}
+	
+	public void rentBike(int userId, int stationId, int bikeType, LocalDateTime pickUpTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException {
+		Card card = this.findCardByUserId(userId, net);
+		Station station = this.findStationByID(stationId, net);
+		if (bikeType == BikeFactory.ELECTRIC) {
+			station.pickUpElectricBike(card, pickUpTime);
+		} else if (bikeType == BikeFactory.MECHANIC) {
+			station.pickUpMechanicBike(card, pickUpTime);
+		}
 	}
 	
 	public void returnBike(int userId, int stationId, LocalDateTime returnTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NullDateException {
