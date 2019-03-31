@@ -12,6 +12,7 @@ import bike.BikeFactory;
 import card.Card;
 import card.CardFactory;
 import ride.Network;
+import sorting.station.SortingStrategy;
 import station.NoBikeAvailableException;
 import station.NoElectricBikeAvailableException;
 import station.NoMechanicBikeAvailableException;
@@ -302,6 +303,10 @@ public class NetworkManager {
 				sl.setBike(b, changeTime);
 			}
 		}
+	}
+	
+	public ArrayList<Station> sortStations(Network net, SortingStrategy s) {
+		return net.sortingStations(s);
 	}
 
 }
