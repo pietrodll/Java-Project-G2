@@ -11,6 +11,7 @@ import bike.ElectricBike;
 import bike.MechanicBike;
 import card.Card;
 import card.VmaxCard;
+import ride.Network;
 import station.StandardStation;
 import station.Station;
 import tools.NegativeTimeException;
@@ -22,6 +23,7 @@ import user.UserStat;
 class CommandLineDisplayTest {
 	
 	static CommandLineDisplay cld;
+	static Network net;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -30,7 +32,7 @@ class CommandLineDisplayTest {
 
 	@Test
 	void testDisplayStation() throws NegativeTimeException {
-		Station s = new StandardStation(new Point(1.055645,10.54896));
+		Station s = new StandardStation(new Point(1.055645,10.54896), net);
 		assertAll(
 			() -> assertEquals("Station: id:0\n" + "\tPosition: x=1.056 y=10.549\n" + "Slots: 0\n", cld.display(s)),
 			() -> {
