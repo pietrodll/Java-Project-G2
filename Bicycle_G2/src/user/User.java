@@ -7,6 +7,7 @@ import ride.Ride;
 import ride.path.PathStrategy;
 import station.NoOngoingRideException;
 import station.OngoingRideException;
+import station.Station;
 import tools.NegativeTimeException;
 import tools.NullDateException;
 import tools.Point;
@@ -133,20 +134,25 @@ public class User implements Observer {
 	}
 	
 	/**
-	 * The {@code User} is notified if he has an {@code Itinerary} and if the arrival {@code Station} of its {@code Itinerary} becomes full. He has the possibility to recalculte the ending {@code Station}.
+	 * The {@code User} is notified if he has an {@code Itinerary}, an ongoing {@code Ride} and if the arrival {@code Station} of its {@code Itinerary} becomes full. He has the possibility to recalculte the ending {@code Station}.
 	 */
 	@Override
-	public void update(){
-		System.out.println("The destination Station does not have any more available slots");
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Do you want to recalculate arrival station ? Answer 'yes' if you do. ");
-		String s = sc.nextLine();
-		sc.close();
-		if (s.equals("yes")) {
-			System.out.println("hello");
-			
-			this.itinerary.setEndStation(this.itinerary.getPs().findEndStation(this.position, this.getItinerary().getEnd(), this.getOngoingRide().getBike()));
-			System.out.println("bye");
+	public void update() {
+		System.out.println("Notification : The destination Station does not have any more available slots or is offline. ");
+		//this.itinerary.getEndStation().removeObserver(this);
+		if (this.ongoingRide != null) {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Do you want to recalculate arrival station ? Answer 'yes' if you do. ");
+			String s = sc.nextLine();
+			sc.close();
+			if (s.equals("yes")) {
+				if (this.itinerary != null) {
+					PathStrategy ps = this.itinerary.getPs();
+					Station s1 = ps.findEndStation(this.itinerary.getStartStation().getP(), this.itinerary.getEnd(), this.getOngoingRide().getBike());
+					this.itinerary.setEndStation(s1);
+					s1.registerObserver(this);
+				}
+			} else {this.itinerary = null;}
 		} else {this.itinerary = null;}
 		
 	}

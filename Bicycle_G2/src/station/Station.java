@@ -183,6 +183,7 @@ public abstract class Station implements Observable {
 					user.startOngoingRide(this.net, b, pickUpTime, card);
 					s.setBike(null, pickUpTime);
 					this.setTotalRents(getTotalRents()+1);
+					user.setPosition(p); 
 				} else { throw new NoBikeAvailableException() ;
 				}
 			} else {throw new OngoingRideException();	
@@ -209,6 +210,7 @@ public abstract class Station implements Observable {
 					user.startOngoingRide(this.net, b, pickUpTime, card);
 					s.setBike(null, pickUpTime);
 					this.setTotalRents(getTotalRents()+1);
+					user.setPosition(p);
 				}else {throw new NoElectricBikeAvailableException() ;
 				}
 			} else {throw new OngoingRideException();	
@@ -236,6 +238,7 @@ public abstract class Station implements Observable {
 					user.startOngoingRide(this.net, b, pickUpTime, card);
 					s.setBike(null, pickUpTime);
 					this.setTotalRents(getTotalRents()+1);
+					user.setPosition(p);
 				}else {throw new NoMechanicBikeAvailableException() ;
 				}
 			} else {throw new OngoingRideException();	
@@ -266,6 +269,7 @@ public abstract class Station implements Observable {
 					s.setBike(user.getOngoingRide().getBike(), dropTime);
 					this.setTotalReturns(getTotalReturns()+1);
 					double price =user.endOngoingRide(dropTime);
+					user.setPosition(p);
 					if (this.isStationFull() == true) {
 							this.changed = true;
 							this.notifyObservers();
@@ -354,13 +358,11 @@ public abstract class Station implements Observable {
 	
 	public int getId() { return id; }
 	
-	public boolean isChanged() {
-		return changed;
-	}
+	public boolean isChanged() { return changed; }
 
-	public void setChanged(boolean changed) {
-		this.changed = changed;
-	}
+	public void setChanged(boolean changed) { this.changed = changed; }
+
+	public ArrayList<Observer> getObservers() {	return observers; }
 
 	/**
 	 * Redefinition of the equals() method
