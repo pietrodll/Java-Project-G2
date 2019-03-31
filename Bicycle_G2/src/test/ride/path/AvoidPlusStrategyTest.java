@@ -13,7 +13,6 @@ import bike.ElectricBike;
 import bike.MechanicBike;
 import ride.Network;
 import ride.path.AvoidPlusStrategy;
-import ride.path.PreferPlusStrategy;
 import station.Station;
 import station.StationFactory;
 import tools.Point;
