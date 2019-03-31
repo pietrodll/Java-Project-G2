@@ -430,22 +430,5 @@ public class CommandLineController {
 			throw new InvalidArgumentsException();
 		}
 	}
-	
-	public static void main(String[] args) {
-		CommandLineController clc = new CommandLineController();
-		clc.cld.display("Welcome to the myVelib system. You can type \"help\" to see the possible commands and \"exit\" to stop the system");
-		String instruction = clc.clr.readCommand("Please write your instruction:");
-		while (!instruction.equalsIgnoreCase("exit")) {
-			try {
-				Command com = clc.clr.parseCommand(instruction);
-				clc.cld.display("Your command is: " + com.getKeyword());
-			} catch (InvalidCommandException e) {
-				instruction = clc.clr.readCommand("Your instruction is invalid. Please write another instruction.");
-				continue;
-			}
-			instruction = clc.clr.readCommand("Please write your instruction:");
-		}
-		clc.cld.display("It has been a pleasure to work for you.");
-	}
 
 }

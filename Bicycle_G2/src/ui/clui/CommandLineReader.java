@@ -2,6 +2,12 @@ package ui.clui;
 
 import java.util.Scanner;
 
+import controller.ExistingNameException;
+import controller.InexistingNetworkNameException;
+import controller.InexistingSlotIdException;
+import controller.InexistingStationIdException;
+import tools.NegativeTimeException;
+
 public class CommandLineReader {
 	
 	private Scanner sc;
@@ -51,18 +57,79 @@ public class CommandLineReader {
 			Command com = null;
 			try {
 				com = clr.parseCommand(instruction);
-				cld.display("Your command is: " + com.getKeyword());
 			} catch (InvalidCommandException e) {
 				instruction = clr.readCommand("Your instruction is invalid. Please write another instruction.");
 				continue;
 			}
+			String[] arg = clr.parseArgs(instruction);
 			switch (com) {
 			case SETUP:
-				
+				try {
+					clc.setup(arg);
+				} catch (ExistingNameException | InvalidArgumentsException e) {
+					cld.display(e.getMessage());
+					instruction = clr.readCommand("Please write your instruction:");
+					continue;
+				}
+				break;
+			case RUNTEST:
+				cld.display("Not yet implemented");
+				break;
+			case STATION_ONLINE:
+				try {
+					clc.stationOnline(arg);
+				} catch (InexistingNetworkNameException | InexistingStationIdException | InvalidArgumentsException e) {
+					cld.display(e.getMessage());
+					instruction = clr.readCommand("Please write your instruction:");
+					continue;
+				}
+				break;
+			case STATION_OFFLINE:
+				try {
+					clc.stationOffline(arg);
+				} catch (InexistingNetworkNameException | InexistingStationIdException | InvalidArgumentsException e) {
+					cld.display(e.getMessage());
+					instruction = clr.readCommand("Please write your instruction:");
+					continue;
+				}
+				break;
+			case SLOT_ONLINE:
+				try {
+					clc.slotOnline(arg);
+				} catch (InexistingNetworkNameException | InexistingSlotIdException | NegativeTimeException | InvalidArgumentsException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case SLOT_OFFLINE:
+				break;
+			case ADD_STATION:
+				break;
+			case ADD_SLOT:
+				break;
+			case ADD_USER:
+				break;
+			case ADD_BIKE:
+				break;
+			case RETURN_BIKE:
+				break;
+			case RENT_BIKE:
+				break;
+			case DISPLAY_USER:
+				break;
+			case DISPLAY_STATION:
+				break;
+			case DISPLAY:
+				break;
+			case SORT_STATION:
+				break;
+			case CALCULATE_ITINERARY:
+				break;
 			}
 			instruction = clr.readCommand("Please write your instruction:");
 		}
 		cld.display("It has been a pleasure to work for you.");
+		clr.close();
 	}
 
 }
