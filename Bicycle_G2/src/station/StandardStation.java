@@ -1,5 +1,6 @@
 package station;
 
+import ride.Network;
 import tools.Point;
 /**
  * This class represents Standard stations, it extends the class {@code Station}.
@@ -8,8 +9,8 @@ import tools.Point;
  */
 public class StandardStation extends Station  {
 	
-	public StandardStation (Point p) {
-		super (p);
+	public StandardStation (Point p, Network net) {
+		super (p, net);
 	}
 
 	/**

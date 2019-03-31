@@ -32,12 +32,14 @@ public abstract class Station implements Observable {
 	private ArrayList<Observer> observers = new ArrayList<Observer>();
 	private boolean changed; 
 
-	public Station(Point p) {
+	public Station(Point p, Network net) {
 		this.p = p;
 		id = StationIdGenerator.getInstance().getNextStationID();
 		this.parkingSlots = new ArrayList<Slot>();
 		this.isOnline = true;
 		this.changed = false;
+		this.net = net;
+		
 		
 	}
 
@@ -257,23 +259,27 @@ public abstract class Station implements Observable {
 	 */
 	public synchronized double dropBike (Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException, OngoingRideException {
 		if (this.isOnline) {	
-			User user = identifyUser (card);
+			User user = identifyUser(card);
+			System.out.println(user);
 			if (user.getOngoingRide() != null) {
 				if (this.isStationFull() == false) {
 					Slot s = availableSlot();
 					s.setBike(user.getOngoingRide().getBike(), dropTime);
 					this.setTotalReturns(getTotalReturns()+1);
-					double price = user.endOngoingRide(dropTime);
+					double price =user.endOngoingRide(dropTime);
 					if (this.isStationFull() == true) {
 							this.changed = true;
 							this.notifyObservers();
 					}
 					return price;
-				}else {throw new NoSlotAvailableException();
+				} else {
+					throw new NoSlotAvailableException();
 				}
-			} else {throw new NoOngoingRideException();	
+			} else {
+				throw new NoOngoingRideException();	
 			}
-		}else  {throw new StationOfflineException(this);
+		}else  {
+			throw new StationOfflineException(this);
 		}
 	}
 	

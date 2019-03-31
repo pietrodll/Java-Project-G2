@@ -64,6 +64,8 @@ public class Network implements Serializable {
 	}
 	
 	public void archiveRide(Ride r) {
+		System.out.println("44");
 		this.rideHistory.add(r);
+		System.out.println("55");
 	}
 }

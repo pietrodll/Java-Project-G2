@@ -3,6 +3,7 @@ package station;
 import java.time.LocalDateTime;
 
 import card.Card;
+import ride.Network;
 import tools.NegativeTimeException;
 import tools.NullDateException;
 import tools.Point;
@@ -14,8 +15,8 @@ import tools.Point;
  */
 public class PlusStation extends Station {
 	
-	public PlusStation (Point p) {
-		super (p);
+	public PlusStation (Point p, Network net) {
+		super (p, net);
 	}
 	
 	/**

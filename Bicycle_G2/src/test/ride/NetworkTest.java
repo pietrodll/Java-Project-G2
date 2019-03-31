@@ -46,12 +46,12 @@ class NetworkTest {
 		Network net = new Network();
 		assertAll(
 			() -> {
-				Station s = new StandardStation(new Point(0, 0));
+				Station s = new StandardStation(new Point(0, 0), net);
 				net.addStation(s);
 				assertEquals(1, net.getStations().size(), "1 station");
 			},
 			() -> {
-				Station s = new PlusStation(new Point(0, 0));
+				Station s = new PlusStation(new Point(0, 0), net);
 				net.addStation(s);
 				assertEquals(2, net.getStations().size(), "2 stations");
 			}
@@ -61,9 +61,9 @@ class NetworkTest {
 	@Test
 	void testRemoveStation() {
 		Network net = new Network();
-		Station s1 = new StandardStation(new Point(0, 1));
-		Station s2 = new PlusStation(new Point(1, 1));
-		Station s3 = new StandardStation(new Point(1, 0));
+		Station s1 = new StandardStation(new Point(0, 1), net);
+		Station s2 = new PlusStation(new Point(1, 1), net);
+		Station s3 = new StandardStation(new Point(1, 0), net);
 		net.addStation(s1);
 		net.addStation(s2);
 		net.addStation(s3);

@@ -86,7 +86,7 @@ public class User implements Observer {
 			}
 			ongoingRide.endRide(endRide);
 			int timeRide = ongoingRide.getRideTime();
-			float price = ongoingRide.getBike().ridePrice(ongoingRide.getCard(), timeRide);
+			double price = ongoingRide.getBike().ridePrice(ongoingRide.getCard(), timeRide);
 			this.userStat.addRide();
 			this.userStat.addAmount((double)price);	
 			this.userStat.addTime(timeRide);

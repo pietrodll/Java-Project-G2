@@ -29,11 +29,11 @@ public class StationFactory  {
 		}
 		
 		if (stationType.equalsIgnoreCase("Standard")) {
-			Station s1 = new StandardStation(p);
+			Station s1 = new StandardStation(p, net);
 			this.net.addStation(s1);
 			return s1;
 		} else if (stationType.equalsIgnoreCase("Plus")) {
-			Station s2 = new PlusStation(p);
+			Station s2 = new PlusStation(p, net);
 			this.net.addStation(s2);	
 			return s2;
 		} else {
