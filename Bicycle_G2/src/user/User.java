@@ -56,18 +56,16 @@ public class User implements Observer {
 	}
 	
 	/**
-	 * If the {@code User} does not have an ongoing {@code Ride}, this method sets a new ongoing {@code Ride}. This method checks if the card used belongs to the user.
+	 * If the {@code User} does not have an ongoing {@code Ride}, this method sets a new ongoing {@code Ride}. 
 	 * @param net
 	 * @param bike
 	 * @param startRide
 	 * @param card
-	 * @throws OngoingRideException 
+	 * @throws OngoingRideException  
 	 */
 	public void startOngoingRide (Network net, Bike bike, LocalDateTime startRide, Card card) throws OngoingRideException {
 		if (ongoingRide == null) {
-			if (card.getUser() == this) {
-				this.ongoingRide = new Ride (net, bike, this, card, startRide);
-			}
+			this.ongoingRide = new Ride (net, bike, this, card, startRide);
 		} else {throw new OngoingRideException();}
 	}
 	

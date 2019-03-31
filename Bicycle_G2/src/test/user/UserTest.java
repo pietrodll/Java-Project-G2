@@ -58,7 +58,7 @@ public class UserTest {
 	}
 	
 	@Test
-	void testStartOngoingRide2 () throws OngoingRideException {
+	void testCannotStartRideIfNotUserCard () throws OngoingRideException {
 		u2.startOngoingRide(net, b1, t1, c1);
 		
 		

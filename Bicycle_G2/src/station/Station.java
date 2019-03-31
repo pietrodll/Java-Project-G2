@@ -252,8 +252,9 @@ public abstract class Station implements Observable {
 	 * @throws NoSlotAvailableException 
 	 * @throws NoOngoingRideException 
 	 * @throws StationOfflineException 
+	 * @return price of the {@code Ride}
 	 */
-	public synchronized void dropBike (Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException {
+	public synchronized double dropBike (Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException {
 		if (this.isOnline) {	
 			User user = identifyUser (card);
 			if (user.getOngoingRide() != null) {
@@ -261,11 +262,12 @@ public abstract class Station implements Observable {
 					Slot s = availableSlot();
 					s.setBike(user.getOngoingRide().getBike(), dropTime);
 					this.setTotalReturns(getTotalReturns()+1);
-					user.endOngoingRide(dropTime);
+					double price = user.endOngoingRide(dropTime);
 					if (this.isStationFull() == true) {
 							this.changed = true;
 							this.notifyObservers();
 					}
+					return price;
 				}else {throw new NoSlotAvailableException();
 				}
 			} else {throw new NoOngoingRideException();	
