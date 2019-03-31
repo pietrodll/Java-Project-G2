@@ -14,6 +14,6 @@ public class NoBikeAvailableException extends Exception {
 	
 	@Override
 	public String getMessage() {
-		return "There is no bike available in this station.";
+		return "There is no bike available in this station. ";
 	}
 }
