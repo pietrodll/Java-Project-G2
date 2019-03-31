@@ -1,5 +1,10 @@
 package controller;
 
+/**
+ * This exception is thrown when searching for a {@code Network} name that does not exist. 
+ * @author Chloé
+ *
+ */
 public class InexistingNetworkNameException extends Exception {
 	
 	/**

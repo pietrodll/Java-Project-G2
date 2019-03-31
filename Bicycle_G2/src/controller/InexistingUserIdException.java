@@ -1,5 +1,10 @@
 package controller;
 
+/**
+ * This exception is thrown when searching for a {@code User} {@code id} that does not exist.
+ * @author Pietro Dellino
+ *
+ */
 public class InexistingUserIdException extends Exception {
 	
 	private int id;

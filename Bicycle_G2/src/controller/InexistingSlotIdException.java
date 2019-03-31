@@ -1,5 +1,10 @@
 package controller;
 
+/**
+ * This exception is thrown when searching for {@code Slot id} that does not exist.
+ * @author Chloé
+ *
+ */
 public class InexistingSlotIdException extends Exception {
 	
 	/**

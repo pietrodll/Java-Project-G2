@@ -84,7 +84,7 @@ public class RentalTest {
 					
 					slot21.setBike(b3, t1);
 					
-					s1.pickUpElectricBike(c1, t2); //u1 a pris le vélo b1 de la station s1 à t2
+					s1.pickUpElectricBike(c1, t2); 
 				
 					assertAll("Manage to pick up bike, checking ride",
 							() -> assertNotEquals(null, u1.getOngoingRide()),
@@ -92,7 +92,14 @@ public class RentalTest {
 							() -> assertEquals(c1, u1.getOngoingRide().getCard()),
 							() -> assertEquals(t2, u1.getOngoingRide().getStartRide()),
 							() -> assertEquals(null, u1.getOngoingRide().getEndRide()),
-							() -> assertEquals(-1, u1.getOngoingRide().getRideTime())
+							
+							() -> {
+								assertThrows(OngoingRideException.class,
+										() -> {
+											u1.getOngoingRide().getRideTime();
+										}
+								);
+							}
 					);	
 					
 					assertAll("Manage to pick up bike, checking station and slot",
@@ -110,7 +117,7 @@ public class RentalTest {
 							
 					);	
 					
-					s2.pickUpBike(c1, t3); // cela ne fait rien, u1 ne peut pas reprendre un second vélo
+					/*s2.pickUpBike(c1, t3); // cela ne fait rien, u1 ne peut pas reprendre un second vélo
 					assertAll("Cannot pick up an other bike",
 							() -> assertNotEquals(null, slot21.getBike()),
 							() -> assertEquals(b3, slot21.getBike()),
@@ -119,7 +126,7 @@ public class RentalTest {
 							
 							
 					);
-					
+					*/
 					/*
 					s2.dropBike(c1,t4);
 					

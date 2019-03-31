@@ -1,5 +1,10 @@
 package controller;
 
+/**
+ * This exception is thrown when creating a {@code Network} with a name that already exists.
+ * @author Chloé
+ *
+ */
 public class ExistingNameException extends Exception {
 	
 	/**

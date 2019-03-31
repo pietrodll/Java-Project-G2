@@ -2,6 +2,11 @@ package controller;
 
 import ride.Network;
 
+/**
+ * This exception is thrown when searching for a {@code Station }{@code id} that does not exist.
+ * @author Chloé
+ *
+ */
 public class InexistingStationIdException extends Exception {
 	
 	/**

@@ -1,5 +1,9 @@
 package ui.clui;
-
+/**
+ * This exception is thrown when an invalid command is entered.
+ * @author Chloé
+ *
+ */
 public class InvalidCommandException extends Exception {
 	
 	/**

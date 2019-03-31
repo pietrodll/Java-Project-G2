@@ -25,9 +25,10 @@ public class PlusStation extends Station {
 	 * @throws StationOfflineException 
 	 * @throws NoOngoingRideException 
 	 * @throws NoSlotAvailableException 
+	 * @throws OngoingRideException 
 	 */
 	@Override
-	public synchronized double dropBike(Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException {
+	public synchronized double dropBike(Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException, OngoingRideException {
 		double price = super.dropBike(card, dropTime);
 		card.addCredit(5);
 		return price;

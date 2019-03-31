@@ -76,8 +76,9 @@ public class User implements Observer {
 	 * @throws NegativeTimeException
 	 * @throws NullDateException 
 	 * @throws NoOngoingRideException 
+	 * @throws OngoingRideException 
 	 */
-	public double endOngoingRide(LocalDateTime endRide) throws NegativeTimeException, NullDateException, NoOngoingRideException {
+	public double endOngoingRide(LocalDateTime endRide) throws NegativeTimeException, NullDateException, NoOngoingRideException, OngoingRideException {
 		if (this.ongoingRide != null) {
 			if (this.itinerary != null) {
 				this.itinerary.getEndStation().removeObserver(this);

@@ -253,8 +253,9 @@ public abstract class Station implements Observable {
 	 * @throws NoOngoingRideException 
 	 * @throws StationOfflineException 
 	 * @return price of the {@code Ride}
+	 * @throws OngoingRideException 
 	 */
-	public synchronized double dropBike (Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException {
+	public synchronized double dropBike (Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException, OngoingRideException {
 		if (this.isOnline) {	
 			User user = identifyUser (card);
 			if (user.getOngoingRide() != null) {

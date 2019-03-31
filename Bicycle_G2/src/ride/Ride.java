@@ -3,6 +3,7 @@ import java.time.LocalDateTime;
 
 import bike.*;
 import card.Card;
+import station.OngoingRideException;
 import user.*;
 import tools.Date;
 import tools.NegativeTimeException;
@@ -54,14 +55,14 @@ public class Ride {
 	 * @return the duration of the {@code Ride}
 	 * @throws NegativeTimeException
 	 * @throws NullDateException
+	 * @throws OngoingRideException 
 	 */
-	public int getRideTime() throws NegativeTimeException, NullDateException {
-		int rideTime = -1;
+	public int getRideTime() throws NegativeTimeException, NullDateException, OngoingRideException {
 		if (this.endRide != null) {
-			rideTime = Date.computeTime(this.startRide, this.endRide);
-		} else { System.out.println("Could not get the total ride time because the ride is not finished");
+			int rideTime = Date.computeTime(this.startRide, this.endRide);
+			return rideTime;
+		} else { throw new OngoingRideException();
 		}
-		return rideTime;
 	}
 	
 

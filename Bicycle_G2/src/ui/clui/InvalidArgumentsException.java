@@ -1,5 +1,10 @@
 package ui.clui;
 
+/**
+ * This exception is thrown when an invalid argument is entered.
+ * @author Chloé
+ *
+ */
 public class InvalidArgumentsException extends Exception {
 
 	/**

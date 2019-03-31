@@ -80,9 +80,8 @@ public class StationTest {
 		Station s1 = sf.createStation("Standard", p1);
 		Card c1 = cf.createCard(1,u1);
 		Card c2 = cf.createCard(2, u2);
-		assertEquals(u1, s1.identifyUser(c1), "ll");
-		assertEquals(u2, s1.identifyUser(c2), "mm");
-		
+		assertEquals(u1, s1.identifyUser(c1));
+		assertEquals(u2, s1.identifyUser(c2));
 	}	
 	
 	@Test
@@ -227,25 +226,21 @@ public class StationTest {
 						LocalDateTime t1t2 = LocalDateTime.of(2019, 03, 26, 15, 00);
 						LocalDateTime t4t5 = LocalDateTime.of(2019,  03, 26, 16, 40);
 						LocalDateTime t6 = LocalDateTime.of(2019, 03, 26, 16, 50);
+						
 						assertAll("Computing Occupation Rate and all associated methods",
 								() -> {
 									assertAll("IndexSlotState method for Slot 11",
 											() -> {
 												assertThrows(NoSlotStateAtDateException.class, 
 														() -> {
-															Object i = slot11.indexSlotState(t11);	
+															slot11.indexSlotState(t11);	
 														},"If date is before creation of a slot, then throws Exception"
 													);
 											},
 											() -> assertEquals(2, slot11.indexSlotState(t10), "If date is during a Slot State"),
 											() -> assertEquals(2, slot11.indexSlotState(t3), "If date is at a change of Slot State"),
-											() -> assertEquals (4, slot11.indexSlotState(t6), "If date is during the current Slot State"),
+											() -> assertEquals (4, slot11.indexSlotState(t6), "If date is during the current Slot State")
 											
-											() -> assertTrue(t10.isAfter(t1), "1"),
-											() -> assertTrue(t10.isAfter(t2), "2"),
-											() -> assertTrue(t10.isAfter(t3), "3"),
-											() -> assertTrue(t10.isBefore(t4), "4"),
-											() -> assertTrue(t10.isBefore(t5), "5")
 										);
 								},
 								() -> {
