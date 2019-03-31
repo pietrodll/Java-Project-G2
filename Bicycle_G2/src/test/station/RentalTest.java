@@ -17,6 +17,7 @@ public class RentalTest {
 	
 	private Network net;
 	private StationFactory sf;
+	private CardFactory cf;
 	private User u1;
 	private User u2;
 	
@@ -24,6 +25,7 @@ public class RentalTest {
 	void setUp() throws TypeStationException, StationSamePositionException {
 		net = new Network();
 		sf = new StationFactory(net);
+		cf = new CardFactory(net);
 		
 		u1 = new User ("DellinoPietro");
 		u2 = new User ("GentgenChloé");
@@ -36,8 +38,8 @@ public class RentalTest {
 		Station s2 = sf.createStation("Standard", p2);
 		Station s3 = sf.createStation("Plus", p3);
 		
-		Card c1 = CardFactory.createCard(1,u1);
-		Card c2 = CardFactory.createCard(2, u2);
+		Card c1 = cf.createCard(1,u1);
+		Card c2 = cf.createCard(2, u2);
 		
 		Bike b1 = new ElectricBike();
 		Bike b2 = new MechanicBike();

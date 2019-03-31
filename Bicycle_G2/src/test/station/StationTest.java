@@ -20,6 +20,7 @@ public class StationTest {
 	
 	private Network net;
 	private StationFactory sf;
+	private CardFactory cf;
 	private User u1;
 	private User u2;
 	
@@ -27,6 +28,7 @@ public class StationTest {
 	void setUp() {
 		net = new Network();
 		sf = new StationFactory(net);
+		cf = new CardFactory(net);
 		u1 = new User ("DellinoPietro");
 		u2 = new User ("GentgenChloé");
 	}
@@ -76,8 +78,8 @@ public class StationTest {
 	void testCardIdentification() throws TypeStationException, StationSamePositionException {
 		Point p1 = new Point(3, 10);
 		Station s1 = sf.createStation("Standard", p1);
-		Card c1 = CardFactory.createCard(1,u1);
-		Card c2 = CardFactory.createCard(2, u2);
+		Card c1 = cf.createCard(1,u1);
+		Card c2 = cf.createCard(2, u2);
 		assertEquals(u1, s1.identifyUser(c1), "ll");
 		assertEquals(u2, s1.identifyUser(c2), "mm");
 		
