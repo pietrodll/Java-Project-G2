@@ -5,6 +5,8 @@ import ride.Itinerary;
 import ride.Network;
 import ride.Ride;
 import ride.path.PathStrategy;
+import station.NoOngoingRideException;
+import station.OngoingRideException;
 import tools.NegativeTimeException;
 import tools.NullDateException;
 import tools.Point;
@@ -59,13 +61,14 @@ public class User implements Observer {
 	 * @param bike
 	 * @param startRide
 	 * @param card
+	 * @throws OngoingRideException 
 	 */
-	public void startOngoingRide (Network net, Bike bike, LocalDateTime startRide, Card card) {
+	public void startOngoingRide (Network net, Bike bike, LocalDateTime startRide, Card card) throws OngoingRideException {
 		if (ongoingRide == null) {
 			if (card.getUser() == this) {
 				this.ongoingRide = new Ride (net, bike, this, card, startRide);
 			}
-		}
+		} else {throw new OngoingRideException();}
 	}
 	
 	/**
@@ -74,8 +77,9 @@ public class User implements Observer {
 	 * @param endRide
 	 * @throws NegativeTimeException
 	 * @throws NullDateException 
+	 * @throws NoOngoingRideException 
 	 */
-	public void endOngoingRide(LocalDateTime endRide) throws NegativeTimeException, NullDateException {
+	public double endOngoingRide(LocalDateTime endRide) throws NegativeTimeException, NullDateException, NoOngoingRideException {
 		if (this.ongoingRide != null) {
 			if (this.itinerary != null) {
 				this.itinerary.getEndStation().removeObserver(this);
@@ -84,12 +88,12 @@ public class User implements Observer {
 			ongoingRide.endRide(endRide);
 			int timeRide = ongoingRide.getRideTime();
 			float price = ongoingRide.getBike().ridePrice(ongoingRide.getCard(), timeRide);
-			
-			userStat.addRide();
-			userStat.addAmount(price);	
-			userStat.addTime(timeRide);
+			this.userStat.addRide();
+			this.userStat.addAmount((double)price);	
+			this.userStat.addTime(timeRide);
 			this.ongoingRide = null;
-		}
+			return price;
+		} else {throw new NoOngoingRideException();}
 	}
 	
 	/**
