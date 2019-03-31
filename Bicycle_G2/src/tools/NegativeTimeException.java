@@ -32,7 +32,6 @@ public class NegativeTimeException extends Exception {
 	
 	@Override
 	public String getMessage() {
-		// TODO Auto-generated method stub
 		return "Error : The starting date [" + startTime + "] is after the ending date [" + endTime + "].";
 	}
 

@@ -185,7 +185,7 @@ public abstract class Station implements Observable {
 				}
 			} else {throw new OngoingRideException();	
 			}
-		} else  {throw new StationOfflineException();}
+		} else  {throw new StationOfflineException(this);}
 	}
 	
 	/**
@@ -211,7 +211,7 @@ public abstract class Station implements Observable {
 				}
 			} else {throw new OngoingRideException();	
 			}
-		} else  {throw new StationOfflineException();
+		} else  {throw new StationOfflineException(this);
 		} 
 	}
 	
@@ -238,7 +238,7 @@ public abstract class Station implements Observable {
 				}
 			} else {throw new OngoingRideException();	
 			}
-		} else  {throw new StationOfflineException();
+		} else  {throw new StationOfflineException(this);
 		}
 	}
 	
@@ -270,7 +270,7 @@ public abstract class Station implements Observable {
 				}
 			} else {throw new NoOngoingRideException();	
 			}
-		}else  {throw new StationOfflineException();
+		}else  {throw new StationOfflineException(this);
 		}
 	}
 	

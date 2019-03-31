@@ -19,14 +19,17 @@ public class NoSlotStateAtDateException extends Exception {
 	public NoSlotStateAtDateException(LocalDateTime time) {
 		super();
 		this.time = time;
-		System.out.println("There is no Slot State saved for time : [" + time + "].");
 	}
 
 	public LocalDateTime getTime() {
 		return time;
 	}
 
-
+	@Override
+	public String getMessage() {
+		// TODO Auto-generated method stub
+		return "There is no Slot State saved for time : [" + time + "].";
+}
 	
 	
 

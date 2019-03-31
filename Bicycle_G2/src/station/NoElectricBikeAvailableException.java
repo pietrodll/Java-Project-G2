@@ -12,6 +12,9 @@ public class NoElectricBikeAvailableException extends Exception {
 	 */
 	private static final long serialVersionUID = -3101773794035526661L;
 	
-	
+	@Override
+	public String getMessage() {
+		return "There is no electric bike available in this station.";
+	}
 
 }

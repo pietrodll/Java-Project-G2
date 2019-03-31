@@ -11,7 +11,10 @@ public class NullDateException extends Exception {
 	 */
 	private static final long serialVersionUID = -7067785442305650426L;
 	
-	public NullDateException() {
-		System.out.println("Error : The date is null");
+	
+	@Override
+	public String getMessage() {
+		return "Error : The date is null";
 	}
+	
 }

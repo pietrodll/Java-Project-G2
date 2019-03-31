@@ -11,5 +11,10 @@ public class NoOngoingRideException extends Exception {
 	 */
 	private static final long serialVersionUID = -1397588095644305919L;
 	
+	@Override
+	public String getMessage() {
+		return "There is no ongoing ride for this user, it is not possible to drop a bike.";
+	}
+	
 
 }

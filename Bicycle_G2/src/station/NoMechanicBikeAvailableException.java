@@ -13,4 +13,8 @@ public class NoMechanicBikeAvailableException extends Exception {
 	private static final long serialVersionUID = -5629390867860698689L;
 	
 
+	@Override
+	public String getMessage() {
+		return "There is no mechanic bike available in this station.";
+	}
 }

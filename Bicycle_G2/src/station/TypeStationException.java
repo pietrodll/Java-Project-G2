@@ -22,7 +22,11 @@ public class TypeStationException extends Exception {
 		return type;
 	}
 
-
+	@Override
+	public String getMessage() {
+		// TODO Auto-generated method stub
+		return "Error : the type of Station' " + this.type + " ' does not exist ";
+}
 	
 	
 
