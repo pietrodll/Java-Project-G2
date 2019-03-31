@@ -2,9 +2,9 @@ package ui.clui;
 
 import java.util.Scanner;
 
-public class CommandLineInterpreter {
+public class CommandLineReader {
 		
-	public CommandLineInterpreter() { super(); }
+	public CommandLineReader() { super(); }
 	
 	public String readCommand() {
 		Scanner sc = new Scanner(System.in);

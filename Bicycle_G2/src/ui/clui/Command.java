@@ -13,6 +13,10 @@ public enum Command {
 	ADD_BIKE("addBike"),
 	RETURN_BIKE("returnBike"),
 	RENT_BIKE("rentBike"),
+	DISPLAY_USER("displayUser"),
+	DISPLAY_STATION("displayStation"),
+	DISPLAY("display"),
+	SORT_STATION("sortStation"),
 	CALCULATE_ITINERARY("calculateItinerary");
 	
 	
