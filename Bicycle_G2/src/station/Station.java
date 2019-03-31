@@ -260,7 +260,6 @@ public abstract class Station implements Observable {
 	public synchronized double dropBike (Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException, OngoingRideException {
 		if (this.isOnline) {	
 			User user = identifyUser(card);
-			System.out.println(user);
 			if (user.getOngoingRide() != null) {
 				if (this.isStationFull() == false) {
 					Slot s = availableSlot();
@@ -355,6 +354,14 @@ public abstract class Station implements Observable {
 	
 	public int getId() { return id; }
 	
+	public boolean isChanged() {
+		return changed;
+	}
+
+	public void setChanged(boolean changed) {
+		this.changed = changed;
+	}
+
 	/**
 	 * Redefinition of the equals() method
 	 */

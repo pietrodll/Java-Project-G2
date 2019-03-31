@@ -8,7 +8,10 @@ import bike.Bike;
 import bike.ElectricBike;
 import bike.MechanicBike;
 import card.*;
+import ride.Itinerary;
 import ride.Network;
+import ride.path.FastestPathStrategy;
+import ride.path.PathStrategy;
 import station.*;
 import tools.Point;
 import user.User;
@@ -33,6 +36,8 @@ public class RentalTest {
 		Point p1 = new Point (1,3);
 		Point p2 = new Point (2,3);
 		Point p3 = new Point (4,9);
+		Point p4 = new Point (5,2);
+		Point p5 = new Point (5,9);
 		
 		Station s1 = sf.createStation("Standard", p1);
 		Station s2 = sf.createStation("Standard", p2);
@@ -75,7 +80,7 @@ public class RentalTest {
 		LocalDateTime t4t5 = LocalDateTime.of(2019,  03, 26, 16, 40);
 		LocalDateTime t6 = LocalDateTime.of(2019, 03, 26, 16, 50);
 		
-		assertAll("Scenario 1 of picking up bike",
+		assertAll("Renting of a Bike",
 				() -> {
 					slot11.setOnline(false, t1);
 					slot12.setBike(b1, t1);
@@ -85,12 +90,13 @@ public class RentalTest {
 					slot21.setBike(b3, t1);
 					slot22.setBike(b4, t1);
 					
+					
 					assertAll("No ongoing ride",
 							() -> assertNull(u1.getOngoingRide())
 					); 
 					
 					s1.pickUpElectricBike(c1, t2); 
-				
+					
 					assertAll("Manage to pick up bike, checking ride",
 							() -> assertNotEquals(null, u1.getOngoingRide()),
 							() -> assertEquals(b1, u1.getOngoingRide().getBike()),
@@ -136,34 +142,61 @@ public class RentalTest {
 					s2.dropBike(c1,t3);
 					
 					assertAll ("Manage to drop bike, checking ride and rideHistory",
-							() -> assertTrue(s2.isOnline()),
 							() -> assertNull(u1.getOngoingRide()),
 							() -> assertTrue(s2.isStationFull()),
 							() -> assertNull(s2.availableSlot()),
+							
 							() -> {
 								assertThrows(NoOngoingRideException.class,
 										() -> {
 											s2.dropBike(c1, t5);
 										}
 								);
+							},
+						
+							() -> assertEquals(1, net.getRideHistory().size()),
+							() -> assertEquals(t2, net.getRideHistory().get(0).getStartRide()),
+							() -> assertEquals(t3, net.getRideHistory().get(0).getEndRide()),
+							() -> assertEquals(b1, net.getRideHistory().get(0).getBike()),
+							() -> assertEquals(27, net.getRideHistory().get(0).getRideTime()),
+							() -> assertEquals(net, net.getRideHistory().get(0).getNet()),
+							() -> assertEquals(1, s2.getTotalOperations())
+						
+					
+					 ); 
+					PathStrategy ps = new FastestPathStrategy(net);
+					Itinerary i2 = u1.calculateItinerary(p5, p1, ps);
+					
+					assertAll("Compute itinerary",									
+							() -> assertNull(u1.getItinerary()),
+							() -> assertEquals(s1, i2.getEndStation()),
+							() -> assertEquals(s2, i2.getStartStation())
+							
+					);
+					
+					u1.setItinerary(i2);
+					assertAll("Follow itinerary",
+							() -> assertNotNull(u1.getItinerary())
+							
+					);
+					assertAll("Notification if Station goes offline",
+							() -> {
+								s1.setOnline(false);
+								u1.getItinerary();
+								() -> assertNotNull(u1.getItinerary().getPs());
 							}
-					);	
-							//() -> assertEquals(1, net.getRideHistory().size()),
-							//() -> assertEquals(null, net.getRideHistory().get(0).getEndRide()),
-							//() -> assertEquals(b1, net.getRideHistory().get(0).getBike())
-							//() -> assertEquals(-1, net.getRideHistory().get(0).getRideTime(),"1")
-							
-							
-							
-					/*
-					 ); */
+					);
 					
-					/*s2.dropBike(c2,t4);
+					/*assertAll("Notification if no Slots available",
+							() -> {
+								slot15.setBike(b6, t6);
+								slot12.setBike(b7, t6);
 					
-					assertAll ("Cannot drop bike Manage to drop bike, checking ride and rideHistory",
-						() -> assertEquals(null, u2.getOngoingRide())	
-							
-							
+							}
+					);*/
+					/*assertAll(
+						() -> assertNull(s1.availableSlot())
+					
 					);*/
 					
 					

@@ -95,17 +95,6 @@ public class User implements Observer {
 		} else {throw new NoOngoingRideException();}
 	}
 	
-	/**
-	 * This method calculates an itinerary given an arrival position and a {@code PathStrategy}. The start position is the current position of the {@code} User.
-	 * @param arrival
-	 * @param ps
-	 * @return itinerary
-	 */
-	public Itinerary calculateItinerary(Point arrival, PathStrategy ps) {
-		Itinerary i1 = new Itinerary(this.position, arrival);
-		i1.computePath(ps); 
-		return i1;		
-	}
 	
 	/**
 	 * This method calculates an itinerary given a starting position, an arrival position and a {@code PathStrategy}. 
@@ -117,6 +106,20 @@ public class User implements Observer {
 	public Itinerary calculateItinerary(Point start, Point arrival, PathStrategy ps) {
 		Itinerary i1 = new Itinerary(start, arrival);
 		i1.computePath(ps);
+		return i1;		
+	}
+	
+	/**
+	 * This method calculates an itinerary given a starting position, an arrival position and a {@code PathStrategy}, and considering the {@code BikeType} wanted.
+	 * @param start
+	 * @param arrival
+	 * @param ps
+	 * @param bikeType
+	 * @return itinerary
+	 */
+	public Itinerary calculateItinerary(Point start, Point arrival, PathStrategy ps, int bikeType) {
+		Itinerary i1 = new Itinerary(start, arrival);
+		i1.computePath(ps, bikeType);
 		return i1;		
 	}
 	
@@ -140,8 +143,10 @@ public class User implements Observer {
 		String s = sc.nextLine();
 		sc.close();
 		if (s.equals("yes")) {
-			PathStrategy ps = this.itinerary.getPs();
-			this.itinerary.setEndStation(ps.findEndStation(this.position, this.getItinerary().getEnd(), this.getOngoingRide().getBike()));
+			System.out.println("hello");
+			
+			this.itinerary.setEndStation(this.itinerary.getPs().findEndStation(this.position, this.getItinerary().getEnd(), this.getOngoingRide().getBike()));
+			System.out.println("bye");
 		} else {this.itinerary = null;}
 		
 	}

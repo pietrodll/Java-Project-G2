@@ -1,7 +1,6 @@
 package ui.clui;
 
 import java.util.ArrayList;
-
 import bike.ElectricBike;
 import card.Card;
 import ride.Network;
