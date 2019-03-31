@@ -1,5 +1,7 @@
 package controller;
 
+import ride.Network;
+
 public class InexistingStationIdException extends Exception {
 	
 	/**
@@ -7,14 +9,16 @@ public class InexistingStationIdException extends Exception {
 	 */
 	private static final long serialVersionUID = 7313842031546783752L;
 	private int stationID;
+	private Network net;
 
-	public InexistingStationIdException(int id) {
+	public InexistingStationIdException(int id, Network net) {
 		this.stationID = id;
+		this.net = net;
 	}
 	
 	@Override
 	public String getMessage() {
-		String message = "Could not find a station with id " + this.stationID;
+		String message = "Could not find a station with id " + this.stationID + " in network " + this.net.getName() + ".";
 		return message;
 	}
 

@@ -38,6 +38,7 @@ import user.User;
 public class NetworkManager {
 	
 	public static final LocalDateTime CREATION_DATE = LocalDateTime.of(2019, 1, 1, 0, 0);
+	public static final LocalDateTime ADDING_DATE = LocalDateTime.of(2019, 1, 1, 0, 1);
 
 	private ArrayList<Network> networks;
 	
@@ -94,9 +95,9 @@ public class NetworkManager {
 		for (int i = 0; i < nBikes; i++) {
 			Station randomStation = net.getStations().get(rand.nextInt(nStation));
 			if (i < 0.3*nBikes) {
-				this.addBike(randomStation, BikeFactory.ELECTRIC, CREATION_DATE);
+				this.addBike(randomStation, BikeFactory.ELECTRIC, ADDING_DATE);
 			} else {
-				this.addBike(randomStation, BikeFactory.MECHANIC, CREATION_DATE);
+				this.addBike(randomStation, BikeFactory.MECHANIC, ADDING_DATE);
 			}
 		}
 		return net;
@@ -110,16 +111,13 @@ public class NetworkManager {
 	 */
 	private void addBike(Station s, int bikeType, LocalDateTime changeTime) {
 		if (!s.isStationFull()) {
-			for (Slot slot : s.getParkingSlots()) {
-				if (slot.getisOccupied()) {
-					try {
-						Bike b = BikeFactory.createBike(bikeType);
-						slot.setBike(b, changeTime);
-					} catch (NegativeTimeException e) {
-						System.out.println("This shouldn't happen");
-						e.printStackTrace();
-					}
-				}
+			Slot slot = s.availableSlot();
+			try {
+				Bike b = BikeFactory.createBike(bikeType);
+				slot.setBike(b, changeTime);
+			} catch (NegativeTimeException e) {
+				System.out.println("This shouldn't happen");
+				e.printStackTrace();
 			}
 		}
 	}
@@ -161,7 +159,7 @@ public class NetworkManager {
 		for (Station s : net.getStations()) {
 			if (s.getId() == id) { return s; }
 		}
-		throw new InexistingStationIdException(id);
+		throw new InexistingStationIdException(id, net);
 	}
 
 	public void addUser(String userName, int cardType, String networkName) throws InexistingNetworkNameException {
