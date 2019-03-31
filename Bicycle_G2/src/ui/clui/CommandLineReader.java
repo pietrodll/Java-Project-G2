@@ -165,7 +165,6 @@ public class CommandLineReader {
 			break;
 		}
 	}
-
 	
 	public static void main(String[] args) {
 		CommandLineController clc = new CommandLineController();

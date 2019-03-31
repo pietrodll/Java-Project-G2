@@ -1,5 +1,7 @@
 package ui.clui;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import bike.ElectricBike;
 import card.Card;
@@ -9,7 +11,21 @@ import station.Slot;
 import station.Station;
 import user.User;
 
+/**
+ * This class displays objects on the console.
+ * @author Pietro Dellino
+ */
 public class CommandLineDisplay {
+	
+	private BufferedWriter bw = null;
+	
+	public CommandLineDisplay() {
+		super();
+	}
+	
+	public CommandLineDisplay(BufferedWriter bw) {
+		this.bw = bw;
+	}
 	
 	private String display(Station s, boolean show) {
 		String disp = "";
@@ -32,7 +48,13 @@ public class CommandLineDisplay {
 	}
 	
 	public String display(Station s) {
-		return this.display(s, true);
+		String disp = this.display(s, true);
+		if (this.bw != null) {
+			try {
+				bw.write(disp);
+			} catch (IOException e) {}
+		}
+		return disp;
 	}
 	
 	private String display(Card c, boolean show) {
@@ -46,7 +68,13 @@ public class CommandLineDisplay {
 	}
 	
 	public String display(Card c) {
-		return this.display(c, true);
+		String disp = this.display(c, true);
+		if (this.bw != null) {
+			try {
+				bw.write(disp);
+			} catch (IOException e) {}
+		}
+		return disp;
 	}
 	
 	private String display(User u, boolean show) {
@@ -63,11 +91,23 @@ public class CommandLineDisplay {
 	}
 	
 	public String display(User u) {
-		return this.display(u, true);
+		String disp = this.display(u, true);
+		if (this.bw != null) {
+			try {
+				bw.write(disp);
+			} catch (IOException e) {}
+		}
+		return disp;
 	}
 	
-	public void display(String s) {
+	public String display(String s) {
 		System.out.println(s);
+		if (this.bw != null) {
+			try {
+				bw.write(s);
+			} catch (IOException e) {}
+		}
+		return s;
 	}
 	
 	public String display(Network net) {
@@ -85,6 +125,11 @@ public class CommandLineDisplay {
 			disp += this.display(c.getUser(), false);
 		}
 		System.out.println(disp);
+		if (this.bw != null) {
+			try {
+				bw.write(disp);
+			} catch (IOException e) {}
+		}
 		return disp;
 	}
 	
@@ -95,6 +140,11 @@ public class CommandLineDisplay {
 			disp += this.display(s);
 		}
 		System.out.println(disp);
+		if (this.bw != null) {
+			try {
+				bw.write(disp);
+			} catch (IOException e) {}
+		}
 		return disp;
 	}
 	

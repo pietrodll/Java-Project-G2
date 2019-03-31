@@ -1,8 +1,10 @@
 package ui.clui;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
@@ -45,6 +47,12 @@ public class CommandLineController {
 	public CommandLineController() {
 		this.clr = new CommandLineReader();
 		this.cld = new CommandLineDisplay();
+		this.nm = new NetworkManager();
+	}
+	
+	public CommandLineController(BufferedWriter bw) {
+		this.clr = new CommandLineReader();
+		this.cld = new CommandLineDisplay(bw);
 		this.nm = new NetworkManager();
 	}
 	
@@ -461,30 +469,37 @@ public class CommandLineController {
 			String path = System.getProperty("user.dir") + "/testfiles/";
 			FileReader file = null;
 			BufferedReader reader = null;
+			FileWriter writer = null;
+			BufferedWriter bw = null;
 			try {
+				writer = new FileWriter(path + filename.substring(0, filename.lastIndexOf('.')) + "Result.txt");
+				bw = new BufferedWriter(writer);
+				CommandLineController clcFile = new CommandLineController(bw);
 				file = new FileReader(path + filename);
 				reader = new BufferedReader(file);
 				String line;
 				line = reader.readLine();
 				while (line != null) {
 					try {
-						clr.interpreteCommand(line, this);
+						clcFile.clr.interpreteCommand(line, clcFile);
 					} catch (InvalidCommandException | ExistingNameException | InvalidArgumentsException
 							| InexistingNetworkNameException | InexistingStationIdException | InexistingSlotIdException
 							| NegativeTimeException | TypeStationException | StationSamePositionException
 							| InexistingUserIdException | NullDateException | NoSlotAvailableException
 							| NoOngoingRideException | StationOfflineException | OngoingRideException
 							| NoBikeAvailableException e) {
-						cld.display(e.getMessage());
+						clcFile.cld.display(e.getMessage());
+						line = reader.readLine();
 						continue;
 					} catch (Exception e) {
-						cld.display("An unknown error has occured.");
+						clcFile.cld.display("An unknown error has occured.");
 						e.printStackTrace();
+						line = reader.readLine();
 						continue;
 					}
 					line = reader.readLine();
 				}
-				cld.display("Test completed");
+				clcFile.cld.display("Test completed");
 			} catch (FileNotFoundException e) {
 				cld.display("Test File not found");
 			} catch (IOException e) {
@@ -494,6 +509,12 @@ public class CommandLineController {
 				}
 				if (reader != null) {
 					try { reader.close(); } catch (IOException e) {}
+				}
+				if (writer != null) {
+					try { writer.close(); } catch (IOException e) {} 
+				}
+				if (bw != null) {
+					try { bw.close(); } catch (IOException e) {} 
 				}
 			}
 		} else {
