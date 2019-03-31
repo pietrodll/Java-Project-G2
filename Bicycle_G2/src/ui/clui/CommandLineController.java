@@ -6,8 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-import org.junit.experimental.theories.Theories;
-
 import card.CardFactory;
 import controller.*;
 import ride.Itinerary;
@@ -34,7 +32,7 @@ import tools.Point;
 import user.User;
 
 /**
- * 
+ * This class contains all the methods that can be used in the command line. Every methods take {@code String[]} arguments in 
  * @author Pietro Dellino
  *
  */
@@ -264,8 +262,9 @@ public class CommandLineController {
 	 * @throws StationOfflineException 
 	 * @throws NoOngoingRideException 
 	 * @throws NoSlotAvailableException 
+	 * @throws OngoingRideException 
 	 */
-	public void returnBike(String[] args) throws InexistingNetworkNameException, InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NullDateException, InvalidArgumentsException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException {
+	public void returnBike(String[] args) throws InexistingNetworkNameException, InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NullDateException, InvalidArgumentsException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException, OngoingRideException {
 		if (args.length == 4) {
 			int userID = Integer.parseInt(args[0]);
 			int stationID = Integer.parseInt(args[1]);

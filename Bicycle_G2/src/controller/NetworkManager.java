@@ -314,8 +314,9 @@ public class NetworkManager {
 	 * @throws NoSlotAvailableException
 	 * @throws NoOngoingRideException
 	 * @throws StationOfflineException
+	 * @throws OngoingRideException 
 	 */
-	public void returnBike(int userId, int stationId, LocalDateTime returnTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException {
+	public void returnBike(int userId, int stationId, LocalDateTime returnTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException, OngoingRideException {
 		Card card = this.findCardByUserId(userId, net);
 		Station station = this.findStationByID(stationId, net);
 		station.dropBike(card, returnTime);
@@ -409,7 +410,7 @@ public class NetworkManager {
 	}
 	
 	/**
-	 * This method adds a {@code StandardStation} to a {@code Network}.
+	 * This method adds a {@code PlusStation} to a {@code Network}.
 	 * @param net
 	 * @param numSlots
 	 * @param x
@@ -423,6 +424,12 @@ public class NetworkManager {
 		s.addSlot(numSlots);
 	}
 	
+	/**
+	 * This method adds an {@code ElectricBike} to the first free {@code Station} of a {@code Network}.
+	 * @param net
+	 * @param changeTime
+	 * @throws NegativeTimeException
+	 */
 	public void addElectricBike(Network net, LocalDateTime changeTime) throws NegativeTimeException {
 		Bike b = BikeFactory.createBike(BikeFactory.ELECTRIC);
 		for (Station s : net.getStations()) {
@@ -433,6 +440,12 @@ public class NetworkManager {
 		}
 	}
 	
+	/**
+	 * This method adds a {@code MechanicBike} to the first free {@code Station} of a {@code Network}.
+	 * @param net
+	 * @param changeTime
+	 * @throws NegativeTimeException
+	 */
 	public void addMechanicBike(Network net, LocalDateTime changeTime) throws NegativeTimeException {
 		Bike b = BikeFactory.createBike(BikeFactory.MECHANIC);
 		for (Station s : net.getStations()) {
@@ -443,6 +456,12 @@ public class NetworkManager {
 		}
 	}
 	
+	/**
+	 * This method returns an {@code ArrayList} of stations ordered according to a specific {@code SortingStrategy}.
+	 * @param net
+	 * @param s
+	 * @return a sorted {@code ArrayList} of stations.
+	 */
 	public ArrayList<Station> sortStations(Network net, SortingStrategy s) {
 		return net.sortingStations(s);
 	}
