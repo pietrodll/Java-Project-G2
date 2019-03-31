@@ -10,7 +10,14 @@ import controller.InexistingStationIdException;
 import controller.InexistingUserIdException;
 import controller.NetworkManager;
 import ride.Network;
+import sorting.station.LeastOccupiedStation;
+import sorting.station.MoreUsedStation;
+import station.NoBikeAvailableException;
+import station.NoOngoingRideException;
+import station.NoSlotAvailableException;
+import station.OngoingRideException;
 import station.Station;
+import station.StationOfflineException;
 import station.StationSamePositionException;
 import station.TypeStationException;
 import tools.Date;
@@ -18,6 +25,11 @@ import tools.NegativeTimeException;
 import tools.NullDateException;
 import user.User;
 
+/**
+ * 
+ * @author pietr
+ *
+ */
 public class CommandLineController {
 	
 	private CommandLineReader clr;
@@ -241,8 +253,11 @@ public class CommandLineController {
 	 * @throws InexistingStationIdException 
 	 * @throws InexistingUserIdException 
 	 * @throws InvalidArgumentsException 
+	 * @throws StationOfflineException 
+	 * @throws NoOngoingRideException 
+	 * @throws NoSlotAvailableException 
 	 */
-	public void returnBike(String[] args) throws InexistingNetworkNameException, InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NullDateException, InvalidArgumentsException {
+	public void returnBike(String[] args) throws InexistingNetworkNameException, InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NullDateException, InvalidArgumentsException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException {
 		if (args.length == 4) {
 			int userID = Integer.parseInt(args[0]);
 			int stationID = Integer.parseInt(args[1]);
@@ -265,8 +280,11 @@ public class CommandLineController {
 	 * @throws InexistingStationIdException 
 	 * @throws InexistingUserIdException 
 	 * @throws InvalidArgumentsException 
+	 * @throws StationOfflineException 
+	 * @throws NoBikeAvailableException 
+	 * @throws OngoingRideException 
 	 */
-	public void rentBike(String[] args) throws InexistingNetworkNameException, InexistingUserIdException, InexistingStationIdException, NegativeTimeException, InvalidArgumentsException {
+	public void rentBike(String[] args) throws InexistingNetworkNameException, InexistingUserIdException, InexistingStationIdException, NegativeTimeException, InvalidArgumentsException, OngoingRideException, NoBikeAvailableException, StationOfflineException {
 		if (args.length == 4) {
 			int userID = Integer.parseInt(args[0]);
 			int stationID = Integer.parseInt(args[1]);
@@ -316,10 +334,47 @@ public class CommandLineController {
 		}
 	}
 	
-	public void display(String[] args) {
+	/**
+	 * This method applies command line instructions of the form: <br>
+	 * {@code display <networkName>}
+	 * @param args an array of {@code String}
+	 * @throws InexistingNetworkNameException
+	 * @throws InvalidArgumentsException
+	 */
+	public void display(String[] args) throws InexistingNetworkNameException, InvalidArgumentsException {
 		if (args.length == 1) {
-			
+			Network net = nm.findNetworkByName(args[0]);
+			cld.display(net);
+		} else {
+			throw new InvalidArgumentsException();
 		}
+	}
+	
+	public void sortStation(String[] args) throws InexistingNetworkNameException, InvalidArgumentsException {
+		if (args.length == 2) {
+			Network net = nm.findNetworkByName(args[0]);
+			if (args[1].equalsIgnoreCase("more-used")) {
+				cld.displaySortedStations(net, new MoreUsedStation());
+			} else {
+				throw new InvalidArgumentsException();
+			}
+		} else if (args.length == 4) {
+			Network net = nm.findNetworkByName(args[0]);
+			LocalDateTime startTime = Date.dateInput(args[2]);
+			LocalDateTime endTime = Date.dateInput(args[3]);
+			if (args[1].equalsIgnoreCase("least-occupied")) {
+				cld.displaySortedStations(net, new LeastOccupiedStation(startTime, endTime));
+			} else {
+				throw new InvalidArgumentsException();
+			}
+
+		} else {
+			throw new InvalidArgumentsException();
+		}
+	}
+	
+	public void calculateItinerary(String[] args) {
+		
 	}
 
 }

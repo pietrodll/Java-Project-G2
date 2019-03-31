@@ -1,8 +1,12 @@
 package ui.clui;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import bike.ElectricBike;
 import card.Card;
 import ride.Network;
+import sorting.station.SortingStrategy;
 import station.Slot;
 import station.Station;
 import user.User;
@@ -81,6 +85,16 @@ public class CommandLineDisplay {
 		disp += "List of users:" + '\n';
 		for (Card c : net.getCards()) {
 			disp += this.display(c.getUser(), false);
+		}
+		System.out.println(disp);
+		return disp;
+	}
+	
+	public String displaySortedStations(Network net, SortingStrategy strat) {
+		ArrayList<Station> sortedStations = net.sortingStations(strat);
+		String disp = "Sorted stations of network " + net.getName() + " according to strategy " + strat.toString() + '\n';
+		for (Station s : sortedStations) {
+			disp += this.display(s);
 		}
 		System.out.println(disp);
 		return disp;
