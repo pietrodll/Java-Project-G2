@@ -36,16 +36,6 @@ public class Network implements Serializable {
 		this.name = name;
 	}
 	
-	/*
-	
-	public static synchronized Network getNetwork() {
-		if (network == null) { network = new Network(); }
-		return network;
-	}
-	
-	public Object readResolve() throws ObjectStreamException { return network; }
-	
-	*/
 	
 	public ArrayList<Station> getStations() { return stations; }
 	public ArrayList<Ride> getRideHistory() { return rideHistory; }
