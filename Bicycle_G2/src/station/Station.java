@@ -167,8 +167,11 @@ public abstract class Station implements Observable {
 	 * @param card
 	 * @param pickUpTime
 	 * @throws NegativeTimeException
+	 * @throws OngoingRideException 
+	 * @throws NoBikeAvailableException 
+	 * @throws StationOfflineException 
 	 */
-	public synchronized void pickUpBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException {
+	public synchronized void pickUpBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException, OngoingRideException, NoBikeAvailableException, StationOfflineException {
 		if (this.isOnline) {
 			User user = identifyUser (card);
 			if (user.getOngoingRide() == null) {
@@ -178,11 +181,11 @@ public abstract class Station implements Observable {
 					user.startOngoingRide(this.net, b, pickUpTime, card);
 					s.setBike(null, pickUpTime);
 					this.setTotalRents(getTotalRents()+1);
-				} else { System.out.println("Could not pick up a bike from Station" + this + ", no bike available");
+				} else { throw new NoBikeAvailableException() ;
 				}
-			} else {System.out.println("Could not pick up a bike because there is already an ongoing Ride ");	
+			} else {throw new OngoingRideException();	
 			}
-		}
+		} else  {throw new StationOfflineException();}
 	}
 	
 	/**
@@ -190,8 +193,11 @@ public abstract class Station implements Observable {
 	 * @param card
 	 * @param pickUpTime
 	 * @throws NegativeTimeException
+	 * @throws NoElectricBikeAvailableException 
+	 * @throws OngoingRideException 
+	 * @throws StationOfflineException 
 	 */
-	public synchronized void pickUpElectricBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException {
+	public synchronized void pickUpElectricBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException, NoElectricBikeAvailableException, OngoingRideException, StationOfflineException {
 		if (this.isOnline) {
 			User user = identifyUser (card);
 			if (user.getOngoingRide() == null) {
@@ -201,11 +207,12 @@ public abstract class Station implements Observable {
 					user.startOngoingRide(this.net, b, pickUpTime, card);
 					s.setBike(null, pickUpTime);
 					this.setTotalRents(getTotalRents()+1);
-				}else { System.out.println("Could not pick up an electric bike from Station" + this + ", no electric bike available");
+				}else {throw new NoElectricBikeAvailableException() ;
 				}
-			} else {System.out.println("Could not pick up a bike because there is already an ongoing Ride ");	
+			} else {throw new OngoingRideException();	
 			}
-		}
+		} else  {throw new StationOfflineException();
+		} 
 	}
 	
 	/**
@@ -213,8 +220,11 @@ public abstract class Station implements Observable {
 	 * @param card
 	 * @param pickUpTime
 	 * @throws NegativeTimeException
+	 * @throws NoMechanicBikeAvailableException 
+	 * @throws OngoingRideException 
+	 * @throws StationOfflineException 
 	 */
-	public synchronized void pickUpMechanicBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException {
+	public synchronized void pickUpMechanicBike(Card card, LocalDateTime pickUpTime) throws NegativeTimeException, NoMechanicBikeAvailableException, OngoingRideException, StationOfflineException {
 		if (this.isOnline) {
 			User user = identifyUser (card);
 			if (user.getOngoingRide() == null) {
@@ -224,10 +234,11 @@ public abstract class Station implements Observable {
 					user.startOngoingRide(this.net, b, pickUpTime, card);
 					s.setBike(null, pickUpTime);
 					this.setTotalRents(getTotalRents()+1);
-				}else { System.out.println("Could not pick up a mechanic bike from Station" + this + ", no mechanic bike available");
+				}else {throw new NoMechanicBikeAvailableException() ;
 				}
-			} else {System.out.println("Could not pick up a bike because there is already an ongoing Ride ");	
+			} else {throw new OngoingRideException();	
 			}
+		} else  {throw new StationOfflineException();
 		}
 	}
 	
@@ -238,8 +249,11 @@ public abstract class Station implements Observable {
 	 * @param dropTime
 	 * @throws NegativeTimeException
 	 * @throws NullDateException 
+	 * @throws NoSlotAvailableException 
+	 * @throws NoOngoingRideException 
+	 * @throws StationOfflineException 
 	 */
-	public synchronized void dropBike (Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException {
+	public synchronized void dropBike (Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException {
 		if (this.isOnline) {	
 			User user = identifyUser (card);
 			if (user.getOngoingRide() != null) {
@@ -252,10 +266,12 @@ public abstract class Station implements Observable {
 							this.changed = true;
 							this.notifyObservers();
 					}
-				}else {System.out.println("Could not drop bike because Station" + this + "is full");
+				}else {throw new NoSlotAvailableException();
 				}
-			} else {System.out.println("Could not drop bike because there is no Ongoing Ride");}
+			} else {throw new NoOngoingRideException();	
 			}
+		}else  {throw new StationOfflineException();
+		}
 	}
 	
 	@Override

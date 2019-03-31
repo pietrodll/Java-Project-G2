@@ -21,9 +21,12 @@ public class PlusStation extends Station {
 	/**
 	 * If a {@code User} drops a {@code Bike} in a {@code PlusStation}, he gains 5 Time Credits on his Card (if he has one).
 	 * @throws NullDateException 
+	 * @throws StationOfflineException 
+	 * @throws NoOngoingRideException 
+	 * @throws NoSlotAvailableException 
 	 */
 	@Override
-	public synchronized void dropBike(Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException {
+	public synchronized void dropBike(Card card, LocalDateTime dropTime) throws NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException {
 		super.dropBike(card, dropTime);
 		card.addCredit(5);
 	}

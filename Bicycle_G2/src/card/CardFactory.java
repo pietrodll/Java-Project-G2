@@ -1,5 +1,6 @@
 package card;
 
+import ride.Network;
 import user.User;
 
 /**
@@ -9,18 +10,31 @@ import user.User;
  */
 public class CardFactory {
 	
+	public Network net;
+	
+	public CardFactory(Network net) {
+		super();
+		this.net = net;
+	}
+
 	public static final int VLIBRE = 1;
 	public static final int VMAX = 2;
 	public static final int CREDIT = 3;
 	
-	public static Card createCard(int cardType, User user) {
+	public Card createCard(int cardType, User user) {
 		switch (cardType) {
 		case VLIBRE:
-			return new VlibreCard(user);
+			Card c1 = new VlibreCard(user);
+			this.net.addCard(c1);
+			return c1;
 		case VMAX:
-			return new VmaxCard(user);
+			Card c2 = new VmaxCard(user);
+			this.net.addCard(c2);
+			return c2;
 		case CREDIT:
-			return new CreditCard(user);
+			Card c3 = new CreditCard(user);
+			this.net.addCard(c3);
+			return c3;
 		default:
 			return null;
 		}

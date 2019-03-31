@@ -12,9 +12,14 @@ import bike.BikeFactory;
 import card.Card;
 import card.CardFactory;
 import ride.Network;
+import station.NoBikeAvailableException;
+import station.NoOngoingRideException;
+import station.NoSlotAvailableException;
+import station.OngoingRideException;
 import station.Slot;
 import station.Station;
 import station.StationFactory;
+import station.StationOfflineException;
 import station.StationSamePositionException;
 import station.TypeStationException;
 import tools.NegativeTimeException;
@@ -29,7 +34,6 @@ import user.User;
  */
 public class NetworkManager {
 	
-	// penser à comment gerer la date de creation de network
 	public static final LocalDateTime CREATION_DATE = LocalDateTime.of(2000, 1, 1, 0, 0);
 	private ArrayList<Network> networks;
 	
@@ -158,9 +162,9 @@ public class NetworkManager {
 
 	public void addUser(String userName, int cardType, String networkName) throws InexistingNetworkNameException {
 		User user = new User(userName);
-		Card card = CardFactory.createCard(cardType, user);
 		Network net = this.findNetworkByName(networkName);
-		net.addCard(card);
+		CardFactory cf = new CardFactory(net);
+		cf.createCard(cardType, user);
 	}
 	
 	public void setStationOffline(String networkName, int stationID) throws InexistingNetworkNameException, InexistingStationIdException {
@@ -203,13 +207,13 @@ public class NetworkManager {
 		}
 	}
 	
-	public void rentBike(int userId, int stationId, LocalDateTime pickUpTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException {
+	public void rentBike(int userId, int stationId, LocalDateTime pickUpTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException, OngoingRideException, NoBikeAvailableException, StationOfflineException {
 		Card card = this.findCardByUserId(userId, net);
 		Station station = this.findStationByID(stationId, net);
 		station.pickUpBike(card, pickUpTime);
 	}
 	
-	public void returnBike(int userId, int stationId, LocalDateTime returnTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NullDateException {
+	public void returnBike(int userId, int stationId, LocalDateTime returnTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException {
 		Card card = this.findCardByUserId(userId, net);
 		Station station = this.findStationByID(stationId, net);
 		station.dropBike(card, returnTime);
