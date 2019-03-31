@@ -83,6 +83,7 @@ public class RentalTest {
 					slot14.setOnline(false,t1);
 					
 					slot21.setBike(b3, t1);
+					slot22.setBike(b4, t1);
 					
 					s1.pickUpElectricBike(c1, t2); 
 				
@@ -116,22 +117,33 @@ public class RentalTest {
 							() -> assertEquals(null, s1.hasElectricBikeAvailable())
 							
 					);	
-					
-					/*s2.pickUpBike(c1, t3); // cela ne fait rien, u1 ne peut pas reprendre un second vélo
+					 
 					assertAll("Cannot pick up an other bike",
-							() -> assertNotEquals(null, slot21.getBike()),
-							() -> assertEquals(b3, slot21.getBike()),
-							() -> assertEquals(b1, u1.getOngoingRide().getBike()),
-							() -> assertEquals(1, slot21.getSlotHistory().size())
-							
-							
+							() -> {
+								assertThrows(OngoingRideException.class,
+										() -> {
+											s2.pickUpBike(c1, t3); 
+										}
+								);
+							}	
 					);
-					*/
-					/*
-					s2.dropBike(c1,t4);
+					
+					//s2.dropBike(c1,t3);
 					
 					assertAll ("Manage to drop bike, checking ride and rideHistory",
-							() -> assertEquals(null,u1.getOngoingRide())//,
+							() -> assertTrue(s2.isOnline()),
+							() -> assertNotNull(u1.getOngoingRide()),
+							() -> assertFalse(s2.isStationFull()),
+							() -> assertEquals(slot23, s2.availableSlot()),
+							() -> assertNotNull(u1.getOngoingRide())
+							/*() -> {
+								assertThrows(NoOngoingRideException.class,
+										() -> {
+											s2.dropBike(c1, t5);
+										}
+								);
+							}*/
+					);	
 							//() -> assertEquals(1, net.getRideHistory().size()),
 							//() -> assertEquals(null, net.getRideHistory().get(0).getEndRide()),
 							//() -> assertEquals(b1, net.getRideHistory().get(0).getBike())
@@ -139,7 +151,8 @@ public class RentalTest {
 							
 							
 							
-					);
+					/*
+					 ); */
 					
 					/*s2.dropBike(c2,t4);
 					
