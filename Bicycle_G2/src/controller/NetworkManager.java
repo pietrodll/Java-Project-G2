@@ -148,6 +148,12 @@ public class NetworkManager {
 		return points;
 	}
 	
+	/**
+	 * This method returns a {@code Network} corresponding to the name entered.
+	 * @param name ({@code String}) the name of the network
+	 * @return the {@code Network} corresponding to the name
+	 * @throws InexistingNetworkNameException
+	 */
 	public Network findNetworkByName(String name) throws InexistingNetworkNameException {
 		for (Network n : this.networks) {
 			if (name.equals(n.getName())) { return n; }
@@ -155,6 +161,13 @@ public class NetworkManager {
 		throw new InexistingNetworkNameException(name);
 	}
 	
+	/**
+	 * This method returns a {@code Station} with the entered id.
+	 * @param id the {@code id} of the {@code Station}
+	 * @param net a {@code Network}
+	 * @return
+	 * @throws InexistingStationIdException
+	 */
 	public Station findStationByID(int id, Network net) throws InexistingStationIdException {
 		for (Station s : net.getStations()) {
 			if (s.getId() == id) { return s; }
@@ -162,6 +175,13 @@ public class NetworkManager {
 		throw new InexistingStationIdException(id, net);
 	}
 
+	/**
+	 * This method adds a user to a network.
+	 * @param userName
+	 * @param cardType an {@code int} taken from {@link CardFactory}
+	 * @param networkName
+	 * @throws InexistingNetworkNameException
+	 */
 	public void addUser(String userName, int cardType, String networkName) throws InexistingNetworkNameException {
 		User user = new User(userName);
 		Network net = this.findNetworkByName(networkName);
@@ -169,18 +189,39 @@ public class NetworkManager {
 		cf.createCard(cardType, user);
 	}
 	
+	/**
+	 * This method sets a {@code Station} offline.
+	 * @param networkName
+	 * @param stationID
+	 * @throws InexistingNetworkNameException
+	 * @throws InexistingStationIdException
+	 */
 	public void setStationOffline(String networkName, int stationID) throws InexistingNetworkNameException, InexistingStationIdException {
 		Network net = this.findNetworkByName(networkName);
 		Station s = this.findStationByID(stationID, net);
 		s.setOnline(false);
 	}
 	
+	/**
+	 * This method sets a {@code Station} online.
+	 * @param networkName
+	 * @param stationID
+	 * @throws InexistingNetworkNameException
+	 * @throws InexistingStationIdException
+	 */
 	public void setStationOnline(String networkName, int stationID) throws InexistingNetworkNameException, InexistingStationIdException {
 		Network net = this.findNetworkByName(networkName);
 		Station s = this.findStationByID(stationID, net);
 		s.setOnline(true);
 	}
 	
+	/**
+	 * This method finds a {@code User} in a {@code Network} according to the user ID.
+	 * @param id
+	 * @param net
+	 * @return a {@code User}
+	 * @throws InexistingUserIdException
+	 */
 	public User findUserById(int id, Network net) throws InexistingUserIdException {
 		User user = null;
 		for (Card c : net.getCards()) {
@@ -195,6 +236,13 @@ public class NetworkManager {
 		}
 	}
 	
+	/**
+	 * This method finds a {@code Card} in a {@code Network} according to the owner ID.
+	 * @param id
+	 * @param net
+	 * @return a {@code Card}
+	 * @throws InexistingUserIdException
+	 */
 	public Card findCardByUserId(int id, Network net) throws InexistingUserIdException {
 		Card card = null;
 		for (Card c : net.getCards()) {
@@ -209,12 +257,40 @@ public class NetworkManager {
 		}
 	}
 	
+	/**
+	 * This methods makes a user rent a bike, without taking care of the type.
+	 * @param userId
+	 * @param stationId
+	 * @param pickUpTime
+	 * @param net
+	 * @throws InexistingUserIdException
+	 * @throws InexistingStationIdException
+	 * @throws NegativeTimeException
+	 * @throws OngoingRideException
+	 * @throws NoBikeAvailableException
+	 * @throws StationOfflineException
+	 */
 	public void rentBike(int userId, int stationId, LocalDateTime pickUpTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException, OngoingRideException, NoBikeAvailableException, StationOfflineException {
 		Card card = this.findCardByUserId(userId, net);
 		Station station = this.findStationByID(stationId, net);
 		station.pickUpBike(card, pickUpTime);
 	}
 	
+	/**
+	 * This methods makes a user rent a bike of a specified type.
+	 * @param userId
+	 * @param stationId
+	 * @param bikeType
+	 * @param pickUpTime
+	 * @param net
+	 * @throws InexistingUserIdException
+	 * @throws InexistingStationIdException
+	 * @throws NegativeTimeException
+	 * @throws NoElectricBikeAvailableException
+	 * @throws OngoingRideException
+	 * @throws StationOfflineException
+	 * @throws NoMechanicBikeAvailableException
+	 */
 	public void rentBike(int userId, int stationId, int bikeType, LocalDateTime pickUpTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NoElectricBikeAvailableException, OngoingRideException, StationOfflineException, NoMechanicBikeAvailableException {
 		Card card = this.findCardByUserId(userId, net);
 		Station station = this.findStationByID(stationId, net);
@@ -225,12 +301,33 @@ public class NetworkManager {
 		}
 	}
 	
+	/**
+	 * This method makes a user return a bike.
+	 * @param userId
+	 * @param stationId
+	 * @param returnTime
+	 * @param net
+	 * @throws InexistingUserIdException
+	 * @throws InexistingStationIdException
+	 * @throws NegativeTimeException
+	 * @throws NullDateException
+	 * @throws NoSlotAvailableException
+	 * @throws NoOngoingRideException
+	 * @throws StationOfflineException
+	 */
 	public void returnBike(int userId, int stationId, LocalDateTime returnTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException {
 		Card card = this.findCardByUserId(userId, net);
 		Station station = this.findStationByID(stationId, net);
 		station.dropBike(card, returnTime);
 	}
 	
+	/**
+	 * This method finds {@code Slot} according to its ID.
+	 * @param id
+	 * @param net
+	 * @return a {@code Slot}
+	 * @throws InexistingSlotIdException
+	 */
 	public Slot findSlotById(int id, Network net) throws InexistingSlotIdException {
 		int stationId = id/1000;
 		Station s = null;
@@ -254,29 +351,72 @@ public class NetworkManager {
 		}
 	}
 	
+	/**
+	 * This method sets a slot online.
+	 * @param networkName
+	 * @param slotID
+	 * @param changeTime
+	 * @throws InexistingNetworkNameException
+	 * @throws InexistingSlotIdException
+	 * @throws NegativeTimeException
+	 */
 	public void setSlotOnline(String networkName, int slotID, LocalDateTime changeTime) throws InexistingNetworkNameException, InexistingSlotIdException, NegativeTimeException {
 		Network net = this.findNetworkByName(networkName);
 		Slot s = this.findSlotById(slotID, net);
 		s.setOnline(true, changeTime);
 	}
 	
+	/**
+	 * This method sets a slot offline.
+	 * @param networkName
+	 * @param slotID
+	 * @param changeTime
+	 * @throws InexistingNetworkNameException
+	 * @throws InexistingSlotIdException
+	 * @throws NegativeTimeException
+	 */
 	public void setSlotOffline(String networkName, int slotID, LocalDateTime changeTime) throws InexistingNetworkNameException, InexistingSlotIdException, NegativeTimeException {
 		Network net = this.findNetworkByName(networkName);
 		Slot s = this.findSlotById(slotID, net);
 		s.setOnline(false, changeTime);
 	}
 
+	/**
+	 * This method adds one or more slots to a station.
+	 * @param net
+	 * @param stationID
+	 * @param numSlots
+	 * @throws InexistingStationIdException
+	 */
 	public void addSlot(Network net, int stationID, int numSlots) throws InexistingStationIdException {
 		Station s = this.findStationByID(stationID, net);
 		s.addSlot(numSlots);
 	}
 	
+	/**
+	 * This method adds a {@code StandardStation} to a {@code Network}.
+	 * @param net
+	 * @param numSlots
+	 * @param x
+	 * @param y
+	 * @throws TypeStationException
+	 * @throws StationSamePositionException
+	 */
 	public void addStandardStation(Network net, int numSlots, double x, double y) throws TypeStationException, StationSamePositionException {
 		StationFactory sf = new StationFactory(net);
 		Station s = sf.createStation("Standard", new Point(x, y));
 		s.addSlot(numSlots);
 	}
 	
+	/**
+	 * This method adds a {@code StandardStation} to a {@code Network}.
+	 * @param net
+	 * @param numSlots
+	 * @param x
+	 * @param y
+	 * @throws TypeStationException
+	 * @throws StationSamePositionException
+	 */
 	public void addPlusStation(Network net, int numSlots, double x, double y) throws TypeStationException, StationSamePositionException {
 		StationFactory sf = new StationFactory(net);
 		Station s = sf.createStation("Plus", new Point(x, y));

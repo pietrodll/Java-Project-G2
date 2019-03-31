@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+import org.junit.experimental.theories.Theories;
+
 import card.CardFactory;
 import controller.*;
 import ride.Itinerary;
@@ -435,6 +437,9 @@ public class CommandLineController {
 		}
 	}
 	
+	/**
+	 * This method shows all the possible commands to the user.
+	 */
 	public void help() {
 		String disp = "Welcome to the help center of the myVelib system\nHere are the instructions you can write:\n";
 		for (Command c : Command.values()) {
@@ -444,44 +449,55 @@ public class CommandLineController {
 		cld.display(disp);
 	}
 	
-	public void runtest(String filename) {
-		String path = "";
-		FileReader file = null;
-		BufferedReader reader = null;
-		try {
-			file = new FileReader(path + filename);
-			reader = new BufferedReader(file);
-			String line;
-			line = reader.readLine();
-			while (line != null) {
-				try {
-					clr.interpreteCommand(line, this);
-				} catch (InvalidCommandException | ExistingNameException | InvalidArgumentsException
-						| InexistingNetworkNameException | InexistingStationIdException | InexistingSlotIdException
-						| NegativeTimeException | TypeStationException | StationSamePositionException
-						| InexistingUserIdException | NullDateException | NoSlotAvailableException
-						| NoOngoingRideException | StationOfflineException | OngoingRideException
-						| NoBikeAvailableException e) {
-					cld.display(e.getMessage());
-					continue;
-				} catch (Exception e) {
-					cld.display("An unknown error has occured.");
-					e.printStackTrace();
-					continue;
+	/**
+	 * This method applies command line instructions of the form: <br>
+	 * {@code runtest <filename>} <br>
+	 * The files have to be in the {@code testfiles} folder of the project.
+	 * @param args
+	 * @throws InvalidArgumentsException 
+	 */
+	public void runtest(String[] args) throws InvalidArgumentsException {
+		if (args.length == 1) {
+			String filename = args[0];
+			String path = "../../../testfiles";
+			FileReader file = null;
+			BufferedReader reader = null;
+			try {
+				file = new FileReader(path + filename);
+				reader = new BufferedReader(file);
+				String line;
+				line = reader.readLine();
+				while (line != null) {
+					try {
+						clr.interpreteCommand(line, this);
+					} catch (InvalidCommandException | ExistingNameException | InvalidArgumentsException
+							| InexistingNetworkNameException | InexistingStationIdException | InexistingSlotIdException
+							| NegativeTimeException | TypeStationException | StationSamePositionException
+							| InexistingUserIdException | NullDateException | NoSlotAvailableException
+							| NoOngoingRideException | StationOfflineException | OngoingRideException
+							| NoBikeAvailableException e) {
+						cld.display(e.getMessage());
+						continue;
+					} catch (Exception e) {
+						cld.display("An unknown error has occured.");
+						e.printStackTrace();
+						continue;
+					}
+				}
+				cld.display("Test completed");
+			} catch (FileNotFoundException e) {
+				cld.display("Test File not found");
+			} catch (IOException e) {
+			} finally {
+				if (file != null) {
+					try { file.close(); } catch (IOException e) {}
+				}
+				if (reader != null) {
+					try { reader.close(); } catch (IOException e) {}
 				}
 			}
-			cld.display("Test completed");
-		} catch (FileNotFoundException e) {
-			cld.display("Test File not found");
-		} catch (IOException e) {
-			
-		} finally {
-			if (file != null) {
-				try { file.close(); } catch (IOException e) {}
-			}
-			if (reader != null) {
-				try { reader.close(); } catch (IOException e) {}
-			}
+		} else {
+			throw new InvalidArgumentsException();
 		}
 	}
 

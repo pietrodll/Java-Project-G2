@@ -1,9 +1,5 @@
 package ui.clui;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
 
 import controller.ExistingNameException;
@@ -72,6 +68,7 @@ public class CommandLineReader {
 			clc.setup(args);
 			break;
 		case RUNTEST:
+			clc.runtest(args);
 			break;
 		case STATION_ONLINE:
 			clc.stationOnline(args);
