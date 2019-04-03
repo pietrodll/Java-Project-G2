@@ -8,6 +8,8 @@ import controller.InexistingSlotIdException;
 import controller.InexistingStationIdException;
 import controller.InexistingUserIdException;
 import station.NoBikeAvailableException;
+import station.NoElectricBikeAvailableException;
+import station.NoMechanicBikeAvailableException;
 import station.NoOngoingRideException;
 import station.NoSlotAvailableException;
 import station.OngoingRideException;
@@ -107,8 +109,10 @@ public class CommandLineReader {
 	 * @throws StationOfflineException
 	 * @throws OngoingRideException
 	 * @throws NoBikeAvailableException
+	 * @throws NoMechanicBikeAvailableException 
+	 * @throws NoElectricBikeAvailableException 
 	 */
-	public void interpreteCommand(String instruction, CommandLineController clc) throws InvalidCommandException, ExistingNameException, InvalidArgumentsException, InexistingNetworkNameException, InexistingStationIdException, InexistingSlotIdException, NegativeTimeException, TypeStationException, StationSamePositionException, InexistingUserIdException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException, OngoingRideException, NoBikeAvailableException {
+	public void interpreteCommand(String instruction, CommandLineController clc) throws InvalidCommandException, ExistingNameException, InvalidArgumentsException, InexistingNetworkNameException, InexistingStationIdException, InexistingSlotIdException, NegativeTimeException, TypeStationException, StationSamePositionException, InexistingUserIdException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException, OngoingRideException, NoBikeAvailableException, NoElectricBikeAvailableException, NoMechanicBikeAvailableException {
 		Command com = this.parseCommand(instruction);
 		String[] args = this.parseArgs(instruction);
 		switch (com) {
@@ -182,7 +186,8 @@ public class CommandLineReader {
 						| InexistingNetworkNameException | InexistingStationIdException | InexistingSlotIdException
 						| NegativeTimeException | TypeStationException | StationSamePositionException
 						| InexistingUserIdException | NullDateException | NoSlotAvailableException | NoOngoingRideException
-						| StationOfflineException | OngoingRideException | NoBikeAvailableException e) {
+						| StationOfflineException | OngoingRideException | NoBikeAvailableException
+						| NoElectricBikeAvailableException | NoMechanicBikeAvailableException e) {
 					cld.display(e.getMessage());
 					instruction = clr.readCommand("Please write your command:");
 					continue;

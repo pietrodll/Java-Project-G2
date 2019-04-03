@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.time.LocalDateTime;
 
+import bike.BikeFactory;
 import card.CardFactory;
 import controller.*;
 import ride.Itinerary;
@@ -19,6 +20,8 @@ import ride.path.UniformityStrategy;
 import sorting.station.LeastOccupiedStation;
 import sorting.station.MoreUsedStation;
 import station.NoBikeAvailableException;
+import station.NoElectricBikeAvailableException;
+import station.NoMechanicBikeAvailableException;
 import station.NoOngoingRideException;
 import station.NoSlotAvailableException;
 import station.OngoingRideException;
@@ -61,7 +64,7 @@ public class CommandLineController {
 	public void setup(String[] args) throws ExistingNameException, InvalidArgumentsException {
 		if (args.length == 1) {
 			nm.setupNetwork(args[0]);
-		} else if (args.length == 4) {
+		} else if (args.length == 5) {
 			String name = args[0];
 			int nStat = Integer.parseInt(args[1]);
 			int nSlot = Integer.parseInt(args[2]);
@@ -291,14 +294,30 @@ public class CommandLineController {
 	 * @throws StationOfflineException 
 	 * @throws NoBikeAvailableException 
 	 * @throws OngoingRideException 
+	 * @throws NoMechanicBikeAvailableException 
+	 * @throws NoElectricBikeAvailableException 
 	 */
-	public void rentBike(String[] args) throws InexistingNetworkNameException, InexistingUserIdException, InexistingStationIdException, NegativeTimeException, InvalidArgumentsException, OngoingRideException, NoBikeAvailableException, StationOfflineException {
+	public void rentBike(String[] args) throws InexistingNetworkNameException, InexistingUserIdException, InexistingStationIdException, NegativeTimeException, InvalidArgumentsException, OngoingRideException, NoBikeAvailableException, StationOfflineException, NoElectricBikeAvailableException, NoMechanicBikeAvailableException {
 		if (args.length == 4) {
 			int userID = Integer.parseInt(args[0]);
 			int stationID = Integer.parseInt(args[1]);
 			LocalDateTime time = Date.dateInput(args[2]);
 			Network net = nm.findNetworkByName(args[3]);
 			nm.rentBike(userID, stationID, time, net);
+		} else if (args.length == 5) {
+			int userID = Integer.parseInt(args[0]);
+			int stationID = Integer.parseInt(args[1]);
+			int bikeType;
+			if (args[2].equalsIgnoreCase("mechanic")) {
+				bikeType = BikeFactory.MECHANIC;
+			} else if (args[2].equalsIgnoreCase("electric")) {
+				bikeType = BikeFactory.ELECTRIC;
+			} else {
+				throw new InvalidArgumentsException();
+			}
+			LocalDateTime time = Date.dateInput(args[3]);
+			Network net = nm.findNetworkByName(args[4]);
+			nm.rentBike(userID, stationID, bikeType, time, net);
 		} else {
 			throw new InvalidArgumentsException();
 		}
