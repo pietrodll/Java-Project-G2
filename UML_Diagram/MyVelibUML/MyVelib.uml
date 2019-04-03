@@ -87,6 +87,8 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_RoycEEffEemzKf38hXMYDg" name="bike" type="_0RNwoEA0EemMsdUqvG6aSA" direction="return"/>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_2nj6wFYeEemQorXodzndJQ" name="use"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="__2HVAFYeEemQorXodzndJQ" name="use"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_NC_wQEZsEemNTJH6NZhuqA" name="card">
     <packagedElement xmi:type="uml:Class" xmi:id="_-lIcsEZkEemNTJH6NZhuqA" name="InsufficientCreditException">
@@ -349,11 +351,11 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_JuvJkFL2EemnmtBblIRTDA" name="throw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Q1njEFYfEemQorXodzndJQ" name="use"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_MMu5AEagEemyBK4PUSviPg"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_MEP18EahEemyBK4PUSviPg"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_FvL1AEfYEemzKf38hXMYDg" name="station">
-    <packagedElement xmi:type="uml:Class" xmi:id="_Lc_FUEfYEemzKf38hXMYDg" name="Station">
+    <packagedElement xmi:type="uml:Class" xmi:id="_Lc_FUEfYEemzKf38hXMYDg" name="Station" isAbstract="true">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_-E6woEfaEemzKf38hXMYDg" name="id" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
       </ownedAttribute>
@@ -681,6 +683,14 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_uFw4MVQCEem0lJrfHV-RWQ" name="instance" type="_qJcMkFQCEem0lJrfHV-RWQ" direction="return"/>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_kFMnoFQBEem0lJrfHV-RWQ" name="composition"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_zXGEYFQBEem0lJrfHV-RWQ" name="composition"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FR95EFQDEem0lJrfHV-RWQ" name="use"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_NRmpIFQDEem0lJrfHV-RWQ" name="throw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_QnwsoFQDEem0lJrfHV-RWQ" name="throw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_UstIwFQDEem0lJrfHV-RWQ" name="use"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_YBFqoFQDEem0lJrfHV-RWQ" name="use"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_g7Z6QFQDEem0lJrfHV-RWQ" name="throw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_rWsMYEfZEemzKf38hXMYDg" name="tools">
     <packagedElement xmi:type="uml:Class" xmi:id="_tVy9YEfZEemzKf38hXMYDg" name="Point">
@@ -759,7 +769,6 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_v7qTcFL9EemnmtBblIRTDA" name="NullDateException"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_8iKyMEffEemzKf38hXMYDg"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_hUh8YE9XEem8EYOBggYCvQ" name="ride">
     <packagedElement xmi:type="uml:Class" xmi:id="_mL23sE9XEem8EYOBggYCvQ" name="Network">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_zm6uoE9XEem8EYOBggYCvQ" name="stations" visibility="private">
@@ -1037,6 +1046,8 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_PXdakU-eEem8EYOBggYCvQ" name="observer" type="_-Ev8oE-dEem8EYOBggYCvQ"/>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_YYe3kFYfEemQorXodzndJQ" name="use"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_oMb4gFYfEemQorXodzndJQ" name="have"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_3XE_IFLcEemnmtBblIRTDA" name="ride.path">
     <packagedElement xmi:type="uml:Interface" xmi:id="_6lHBYFLcEemnmtBblIRTDA" name="PathStrategy">
@@ -1295,6 +1306,8 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_wUngkFYfEemQorXodzndJQ" name="use"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_2Xb-oFYfEemQorXodzndJQ" name="use"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_M3T0IFLiEemnmtBblIRTDA" name="controller">
     <packagedElement xmi:type="uml:Class" xmi:id="_VVs8wFLiEemnmtBblIRTDA" name="NetworkManager">
@@ -1334,7 +1347,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_57_HsFLjEemnmtBblIRTDA" name="addSlot">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_57_HsFLjEemnmtBblIRTDA" name="addSlot" raisedException="_0a8AUFLrEemnmtBblIRTDA">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_8SK78FLjEemnmtBblIRTDA" name="net" type="_mL23sE9XEem8EYOBggYCvQ"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_9u4KgFLjEemnmtBblIRTDA" name="stationID">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
@@ -1355,7 +1368,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_NNM5sFLkEemnmtBblIRTDA" name="addUser">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_NNM5sFLkEemnmtBblIRTDA" name="addUser" raisedException="_e1mPkFLrEemnmtBblIRTDA">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_P7N_IFLkEemnmtBblIRTDA" name="name">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
@@ -1366,20 +1379,20 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_cjvl4FLkEemnmtBblIRTDA" name="findCardByUserId">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_cjvl4FLkEemnmtBblIRTDA" name="findCardByUserId" raisedException="_AfxrMFLsEemnmtBblIRTDA">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_hLLrEFLkEemnmtBblIRTDA" name="userID">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedParameter>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_iuBW0FLkEemnmtBblIRTDA" name="net" type="_mL23sE9XEem8EYOBggYCvQ"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_pRAisFLkEemnmtBblIRTDA" name="card" type="_DU6QcEZjEemNTJH6NZhuqA" direction="return"/>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_kQ2bgFLkEemnmtBblIRTDA" name="findNetworkByName">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_kQ2bgFLkEemnmtBblIRTDA" name="findNetworkByName" raisedException="_e1mPkFLrEemnmtBblIRTDA">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_rkXscFLkEemnmtBblIRTDA" name="name">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_svyWsFLkEemnmtBblIRTDA" name="net" type="_mL23sE9XEem8EYOBggYCvQ" direction="return"/>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_wMXyUFLkEemnmtBblIRTDA" name="findSlotById" concurrency="guarded">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_wMXyUFLkEemnmtBblIRTDA" name="findSlotById" concurrency="guarded" raisedException="_s30NIFLrEemnmtBblIRTDA">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_wMXyUVLkEemnmtBblIRTDA" name="slotID">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedParameter>
@@ -1393,7 +1406,7 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_2IVaclLkEemnmtBblIRTDA" name="net" type="_mL23sE9XEem8EYOBggYCvQ"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_2IVac1LkEemnmtBblIRTDA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_6KjSsFLkEemnmtBblIRTDA" name="findUserById" concurrency="guarded">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_6KjSsFLkEemnmtBblIRTDA" name="findUserById" concurrency="guarded" raisedException="_AfxrMFLsEemnmtBblIRTDA">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_6KjSsVLkEemnmtBblIRTDA" name="userID">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedParameter>
@@ -1414,7 +1427,7 @@
         </ownedParameter>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_zrU6kFLmEemnmtBblIRTDA" name="points" type="_tVy9YEfZEemzKf38hXMYDg" direction="return"/>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_2ysUIFLmEemnmtBblIRTDA" name="rentBike">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_2ysUIFLmEemnmtBblIRTDA" name="rentBike" raisedException="_AfxrMFLsEemnmtBblIRTDA _0a8AUFLrEemnmtBblIRTDA">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="__g6ogFLmEemnmtBblIRTDA" name="userID">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedParameter>
@@ -1426,7 +1439,7 @@
         </ownedParameter>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_OrIv8FLnEemnmtBblIRTDA" name="net" type="_mL23sE9XEem8EYOBggYCvQ"/>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_QIyZsFLnEemnmtBblIRTDA" name="returnBike">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_QIyZsFLnEemnmtBblIRTDA" name="returnBike" raisedException="_0a8AUFLrEemnmtBblIRTDA _AfxrMFLsEemnmtBblIRTDA">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_QIyZsVLnEemnmtBblIRTDA" name="userID">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedParameter>
@@ -1438,7 +1451,7 @@
         </ownedParameter>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_QIyZtFLnEemnmtBblIRTDA" name="net" type="_mL23sE9XEem8EYOBggYCvQ"/>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_UqxXIFLnEemnmtBblIRTDA" name="setSlotOffline">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_UqxXIFLnEemnmtBblIRTDA" name="setSlotOffline" raisedException="_e1mPkFLrEemnmtBblIRTDA _s30NIFLrEemnmtBblIRTDA">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_mko0UFLqEemnmtBblIRTDA" name="networkName">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
@@ -1449,7 +1462,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_suJJMFLqEemnmtBblIRTDA" name="setSlotOnline">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_suJJMFLqEemnmtBblIRTDA" name="setSlotOnline" raisedException="_s30NIFLrEemnmtBblIRTDA _e1mPkFLrEemnmtBblIRTDA">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_suJJMVLqEemnmtBblIRTDA" name="networkName">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
@@ -1548,8 +1561,9 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_uBtF8FYjEemQorXodzndJQ" name="throw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_n6YiYFYjEemQorXodzndJQ" name="throw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_JuvJkFL2EemnmtBblIRTDA" name="throws"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_Ru8yUFL_EemnmtBblIRTDA" name="ui.clui">
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_XpXiUFL_EemnmtBblIRTDA" name="Command">
       <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_ZQNkUFL_EemnmtBblIRTDA" name="ADD_BIKE"/>
@@ -1607,6 +1621,14 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_ccdocFMAEemnmtBblIRTDA" name="question">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_-ASfAFYiEemQorXodzndJQ" name="parseArgs">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_QTJyYFYjEemQorXodzndJQ" name="instruction">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_R7-xYFYjEemQorXodzndJQ" name="args" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
       </ownedOperation>
@@ -1690,14 +1712,9 @@
       </ownedOperation>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_kFMnoFQBEem0lJrfHV-RWQ" name="composition"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_zXGEYFQBEem0lJrfHV-RWQ" name="composition"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_FR95EFQDEem0lJrfHV-RWQ" name="use"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_NRmpIFQDEem0lJrfHV-RWQ" name="throw"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_QnwsoFQDEem0lJrfHV-RWQ" name="throw"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_UstIwFQDEem0lJrfHV-RWQ" name="use"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_YBFqoFQDEem0lJrfHV-RWQ" name="use"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_g7Z6QFQDEem0lJrfHV-RWQ" name="throw"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_xOyF8FYjEemQorXodzndJQ" name="throw"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_zhuY8FYjEemQorXodzndJQ" name="throw"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_8N1NcFYjEemQorXodzndJQ" name="throw"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_sOKlEEZnEemNTJH6NZhuqA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sONBUEZnEemNTJH6NZhuqA" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
