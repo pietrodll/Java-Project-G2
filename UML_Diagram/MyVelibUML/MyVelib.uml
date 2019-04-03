@@ -1065,23 +1065,19 @@
     <packagedElement xmi:type="uml:Package" xmi:id="_k3YUgFZcEemQorXodzndJQ" name="bike">
       <packagedElement xmi:type="uml:Class" xmi:id="_SCUTAFZcEemQorXodzndJQ" name="ElectricBike">
         <generalization xmi:type="uml:Generalization" xmi:id="_gXwukFZcEemQorXodzndJQ" general="_KpXIcFZcEemQorXodzndJQ"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_T4RvEFZcEemQorXodzndJQ" name="ridePrice">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_T4RvEVZcEemQorXodzndJQ" name="card">
-            <type xmi:type="uml:Interface" href="VisitorPattern.uml#_9nhFkEKNEemGZJ64oLpHbA"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_T4RvElZcEemQorXodzndJQ" name="rideTime">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_6xU78FZfEemT2alk9r6byA" name="ridePrice">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_6xU78VZfEemT2alk9r6byA" name="card" type="_DU6QcEZjEemNTJH6NZhuqA"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_6xU78lZfEemT2alk9r6byA" name="rideTime">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
           </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_T4RvE1ZcEemQorXodzndJQ" name="cost" direction="return">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_6xU781ZfEemT2alk9r6byA" name="cost" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EFloat"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Interface" xmi:id="_XoZKsFZcEemQorXodzndJQ" name="CardVisitable">
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_cl938FZcEemQorXodzndJQ" name="ridePrice">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_cl938VZcEemQorXodzndJQ" name="card">
-            <type xmi:type="uml:Interface" href="VisitorPattern.uml#_9nhFkEKNEemGZJ64oLpHbA"/>
-          </ownedParameter>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_cl938FZcEemQorXodzndJQ" name="ridePrice" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_cl938VZcEemQorXodzndJQ" name="card" type="_DU6QcEZjEemNTJH6NZhuqA"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_cl938lZcEemQorXodzndJQ" name="rideTime">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
           </ownedParameter>
@@ -1094,10 +1090,8 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_NoWCEFZcEemQorXodzndJQ" name="id" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_NoM4IFZcEemQorXodzndJQ" name="ridePrice" isAbstract="true">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_NoM4IVZcEemQorXodzndJQ" name="card">
-            <type xmi:type="uml:Interface" href="VisitorPattern.uml#_9nhFkEKNEemGZJ64oLpHbA"/>
-          </ownedParameter>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_NoM4IFZcEemQorXodzndJQ" name="ridePrice" visibility="public" isAbstract="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_NoM4IVZcEemQorXodzndJQ" name="card" type="_DU6QcEZjEemNTJH6NZhuqA"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_NoM4IlZcEemQorXodzndJQ" name="rideTime">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
           </ownedParameter>
@@ -1109,9 +1103,7 @@
       <packagedElement xmi:type="uml:Class" xmi:id="_OzcjQFZcEemQorXodzndJQ" name="MechanicBike">
         <generalization xmi:type="uml:Generalization" xmi:id="_faBT8FZcEemQorXodzndJQ" general="_KpXIcFZcEemQorXodzndJQ"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Qmq0YFZcEemQorXodzndJQ" name="ridePrice">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Qmq0YVZcEemQorXodzndJQ" name="card">
-            <type xmi:type="uml:Interface" href="VisitorPattern.uml#_9nhFkEKNEemGZJ64oLpHbA"/>
-          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Qmq0YVZcEemQorXodzndJQ" name="card" type="_DU6QcEZjEemNTJH6NZhuqA"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_Qmq0YlZcEemQorXodzndJQ" name="rideTime">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
           </ownedParameter>
@@ -1125,9 +1117,7 @@
       <packagedElement xmi:type="uml:Class" xmi:id="_8L8AIFZcEemQorXodzndJQ" name="VlibreCard">
         <generalization xmi:type="uml:Generalization" xmi:id="_jyhIwFZdEemQorXodzndJQ" general="_WWnkUFZdEemQorXodzndJQ"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_-tsyQFZcEemQorXodzndJQ" name="computeRidePrice">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-tsyQVZcEemQorXodzndJQ" name="bike">
-            <type xmi:type="uml:Class" href="VisitorPattern.uml#_Xmc0IEKLEemGZJ64oLpHbA"/>
-          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-tsyQVZcEemQorXodzndJQ" name="bike" type="_Xmc0IEKLEemGZJ64oLpHbA"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-tsyQlZcEemQorXodzndJQ" name="rideTime">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
           </ownedParameter>
@@ -1135,10 +1125,8 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EFloat"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_-tsyRFZcEemQorXodzndJQ" name="computeRidePrice">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-tsyRVZcEemQorXodzndJQ" name="bike">
-            <type xmi:type="uml:Class" href="VisitorPattern.uml#_7AybQEKKEemGZJ64oLpHbA"/>
-          </ownedParameter>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_-tsyRFZcEemQorXodzndJQ" name="computeRidePrice" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-tsyRVZcEemQorXodzndJQ" name="bike" type="_7AybQEKKEemGZJ64oLpHbA"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-tsyRlZcEemQorXodzndJQ" name="rideTime">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
           </ownedParameter>
@@ -1149,25 +1137,21 @@
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_B4n2IFZdEemQorXodzndJQ" name="VmaxCard">
         <generalization xmi:type="uml:Generalization" xmi:id="_km2vwFZdEemQorXodzndJQ" general="_WWnkUFZdEemQorXodzndJQ"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_LjHlgFZdEemQorXodzndJQ" name="computeRidePrice">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_LjHlgVZdEemQorXodzndJQ" name="bike">
-            <type xmi:type="uml:Class" href="VisitorPattern.uml#_7AybQEKKEemGZJ64oLpHbA"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_LjHlglZdEemQorXodzndJQ" name="rideTime">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_pqaB0FZgEemT2alk9r6byA" name="computeRidePrice" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_pqaB0VZgEemT2alk9r6byA" name="bike" type="_7AybQEKKEemGZJ64oLpHbA"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_pqaB0lZgEemT2alk9r6byA" name="rideTime">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
           </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_LjHlg1ZdEemQorXodzndJQ" name="cost" direction="return">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_pqaB01ZgEemT2alk9r6byA" name="cost" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EFloat"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_LjHlhFZdEemQorXodzndJQ" name="computeRidePrice">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_LjHlhVZdEemQorXodzndJQ" name="bike">
-            <type xmi:type="uml:Class" href="VisitorPattern.uml#_Xmc0IEKLEemGZJ64oLpHbA"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_LjHlhlZdEemQorXodzndJQ" name="rideTime">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_pqaB1FZgEemT2alk9r6byA" name="computeRidePrice">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_pqaB1VZgEemT2alk9r6byA" name="bike" type="_Xmc0IEKLEemGZJ64oLpHbA"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_pqaB1lZgEemT2alk9r6byA" name="rideTime">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
           </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_LjHlh1ZdEemQorXodzndJQ" name="cost" direction="return">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_pqaB11ZgEemT2alk9r6byA" name="cost" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EFloat"/>
           </ownedParameter>
         </ownedOperation>
@@ -1177,25 +1161,21 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_PXfPCFZdEemQorXodzndJQ" name="timeCredit" visibility="private" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_PXfPAFZdEemQorXodzndJQ" name="computeRidePrice">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_PXfPAVZdEemQorXodzndJQ" name="bike">
-            <type xmi:type="uml:Class" href="VisitorPattern.uml#_7AybQEKKEemGZJ64oLpHbA"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_PXfPAlZdEemQorXodzndJQ" name="rideTime">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_qvzjoFZgEemT2alk9r6byA" name="computeRidePrice" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qvzjoVZgEemT2alk9r6byA" name="bike" type="_7AybQEKKEemGZJ64oLpHbA"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qvzjolZgEemT2alk9r6byA" name="rideTime">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
           </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_PXfPA1ZdEemQorXodzndJQ" name="cost" direction="return">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qvzjo1ZgEemT2alk9r6byA" name="cost" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EFloat"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_PXfPBFZdEemQorXodzndJQ" name="computeRidePrice">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_PXfPBVZdEemQorXodzndJQ" name="bike">
-            <type xmi:type="uml:Class" href="VisitorPattern.uml#_Xmc0IEKLEemGZJ64oLpHbA"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_PXfPBlZdEemQorXodzndJQ" name="rideTime">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_qvzjpFZgEemT2alk9r6byA" name="computeRidePrice">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qvzjpVZgEemT2alk9r6byA" name="bike" type="_Xmc0IEKLEemGZJ64oLpHbA"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qvzjplZgEemT2alk9r6byA" name="rideTime">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
           </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_PXfPB1ZdEemQorXodzndJQ" name="cost" direction="return">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qvzjp1ZgEemT2alk9r6byA" name="cost" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EFloat"/>
           </ownedParameter>
         </ownedOperation>
@@ -1268,7 +1248,7 @@
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Realization" xmi:id="_qpaIEFZdEemQorXodzndJQ" client="_WWnkUFZdEemQorXodzndJQ" supplier="_dKMw8FZdEemQorXodzndJQ"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_DT99UFZeEemQorXodzndJQ" name="has as attribute" client="_WWnkUFZdEemQorXodzndJQ" supplier="_xfU3AFZdEemQorXodzndJQ"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_DT99UFZeEemQorXodzndJQ" name="has as attribute" client="_ZXxoM1ZdEemQorXodzndJQ" supplier="_t2XzUFZdEemQorXodzndJQ"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_t2XzUFZdEemQorXodzndJQ" name="user">
       <packagedElement xmi:type="uml:Class" xmi:id="_xfU3AFZdEemQorXodzndJQ" name="User">
@@ -2014,6 +1994,139 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_RSg2oVP_Eem0lJrfHV-RWQ" name="args">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_XVIzUFZjEemT2alk9r6byA" name="ride.path">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_ZiUckFZjEemT2alk9r6byA" name="PathStrategy">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_c282EFZjEemT2alk9r6byA" name="findEndStation" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_c282EVZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_c282ElZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_c282E1ZjEemT2alk9r6byA" name="bike" type="_0RNwoEA0EemMsdUqvG6aSA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_c282FFZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_c282FVZjEemT2alk9r6byA" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_c282FlZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_c282F1ZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_c282GFZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_c282GVZjEemT2alk9r6byA" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_c282GlZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_c282G1ZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_c282HFZjEemT2alk9r6byA" name="bikeType">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_c282HVZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_gmd0wFZjEemT2alk9r6byA" name="MinimalWalkStrategy">
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_53E9YFZjEemT2alk9r6byA" client="_gmd0wFZjEemT2alk9r6byA" supplier="_ZiUckFZjEemT2alk9r6byA" contract="_ZiUckFZjEemT2alk9r6byA"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rzVV0FZjEemT2alk9r6byA" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rzVV0VZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rzVV0lZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rzVV01ZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rzVV1FZjEemT2alk9r6byA" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rzVV1VZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rzVV1lZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rzVV11ZjEemT2alk9r6byA" name="bikeType">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rzVV2FZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rzVV2VZjEemT2alk9r6byA" name="findEndStation" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rzVV2lZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rzVV21ZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rzVV3FZjEemT2alk9r6byA" name="bike" type="_0RNwoEA0EemMsdUqvG6aSA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rzVV3VZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_kQi50FZjEemT2alk9r6byA" name="FastestPathStrategy">
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_4qLscFZjEemT2alk9r6byA" client="_kQi50FZjEemT2alk9r6byA" supplier="_ZiUckFZjEemT2alk9r6byA" contract="_ZiUckFZjEemT2alk9r6byA"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_soIP0FZjEemT2alk9r6byA" name="findEndStation" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_soIP0VZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_soIP0lZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_soIP01ZjEemT2alk9r6byA" name="bike" type="_0RNwoEA0EemMsdUqvG6aSA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_soIP1FZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_soIP1VZjEemT2alk9r6byA" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_soIP1lZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_soIP11ZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_soIP2FZjEemT2alk9r6byA" name="bikeType">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_soIP2VZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_soRZwFZjEemT2alk9r6byA" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_soRZwVZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_soRZwlZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_soRZw1ZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mEQTIFZjEemT2alk9r6byA" name="AvoidPlusStrategy">
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_4LbT4FZjEemT2alk9r6byA" client="_mEQTIFZjEemT2alk9r6byA" supplier="_ZiUckFZjEemT2alk9r6byA" contract="_ZiUckFZjEemT2alk9r6byA"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_sDbnUFZjEemT2alk9r6byA" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sDbnUVZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sDbnUlZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sDbnU1ZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_sDkxQFZjEemT2alk9r6byA" name="findEndStation" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sDkxQVZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sDkxQlZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sDkxQ1ZjEemT2alk9r6byA" name="bike" type="_0RNwoEA0EemMsdUqvG6aSA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sDkxRFZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_sDkxRVZjEemT2alk9r6byA" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sDkxRlZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sDkxR1ZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sDkxSFZjEemT2alk9r6byA" name="bikeType">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sDkxSVZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ne_y0FZjEemT2alk9r6byA" name="PreferPlusStrategy">
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_5N8g0FZjEemT2alk9r6byA" client="_ne_y0FZjEemT2alk9r6byA" supplier="_ZiUckFZjEemT2alk9r6byA" contract="_ZiUckFZjEemT2alk9r6byA"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_sSL1AFZjEemT2alk9r6byA" name="findEndStation" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sSL1AVZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sSL1AlZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sSL1A1ZjEemT2alk9r6byA" name="bike" type="_0RNwoEA0EemMsdUqvG6aSA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sSL1BFZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_sSL1BVZjEemT2alk9r6byA" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sSL1BlZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sSL1B1ZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sSL1CFZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_sSL1CVZjEemT2alk9r6byA" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sSL1ClZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sSL1C1ZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sSL1DFZjEemT2alk9r6byA" name="bikeType">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sSL1DVZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_o8E00FZjEemT2alk9r6byA" name="UniformityStrategy">
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_3XZ18FZjEemT2alk9r6byA" client="_o8E00FZjEemT2alk9r6byA" supplier="_ZiUckFZjEemT2alk9r6byA" contract="_ZiUckFZjEemT2alk9r6byA"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rfga4FZjEemT2alk9r6byA" name="findEndStation" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rfga4VZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rfga4lZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rfga41ZjEemT2alk9r6byA" name="bike" type="_0RNwoEA0EemMsdUqvG6aSA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rfga5FZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rfga5VZjEemT2alk9r6byA" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rfga5lZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rfga51ZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rfga6FZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rfpk0FZjEemT2alk9r6byA" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rfpk0VZjEemT2alk9r6byA" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rfpk0lZjEemT2alk9r6byA" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rfpk01ZjEemT2alk9r6byA" name="bikeType">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rfpk1FZjEemT2alk9r6byA" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
       </ownedOperation>
     </packagedElement>
   </packagedElement>

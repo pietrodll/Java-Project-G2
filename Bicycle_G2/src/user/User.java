@@ -107,7 +107,7 @@ public class User implements Observer {
 	public Itinerary calculateItinerary(Point start, Point arrival, PathStrategy ps) {
 		Itinerary i1 = new Itinerary(start, arrival);
 		i1.computePath(ps);
-		return i1;		
+		return i1;
 	}
 	
 	/**
