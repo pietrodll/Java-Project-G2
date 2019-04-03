@@ -4499,9 +4499,9 @@
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_69rAwVZdEemQorXodzndJQ"/>
       <element xmi:type="uml:Usage" href="MyVelib.uml#_69YF0FZdEemQorXodzndJQ"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_69rAwlZdEemQorXodzndJQ" points="[300, 760, -643984, -643984]$[180, 760, -643984, -643984]$[180, 490, -643984, -643984]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_69rAwlZdEemQorXodzndJQ" points="[300, 760, -643984, -643984]$[157, 760, -643984, -643984]$[160, 490, -643984, -643984]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6-Q2oFZdEemQorXodzndJQ" id="(0.0,0.26666666666666666)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6-Q2oVZdEemQorXodzndJQ" id="(0.5882352941176471,0.9819819819819819)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6-Q2oVZdEemQorXodzndJQ" id="(0.5960264900662252,0.990990990990991)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_DUQ4QFZeEemQorXodzndJQ" type="Usage_Edge" source="_WWnkUVZdEemQorXodzndJQ" target="_xfoZAFZdEemQorXodzndJQ">
       <children xmi:type="notation:DecorationNode" xmi:id="_DUQ4Q1ZeEemQorXodzndJQ" type="Usage_NameLabel">
