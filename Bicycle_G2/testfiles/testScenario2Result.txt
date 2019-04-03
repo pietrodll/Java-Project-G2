@@ -1,0 +1,27 @@
+Station: id:1
+	Position: x=0.314 y=1.211
+Slots: 5
+	id:1000	Online	Occupied	Bike id:2	Type: Electric
+	id:1001	Online	Occupied	Bike id:3	Type: Electric
+	id:1002	Online	Occupied	Bike id:10	Type: Mechanic
+	id:1003	Online	Occupied	Bike id:14	Type: Mechanic
+	id:1004	Online	Occupied	Bike id:17	Type: Mechanic
+
+Error : The starting date [2019-02-02T15:35] is after the ending date [2019-02-02T12:35].
+Station: id:1
+	Position: x=0.314 y=1.211
+Slots: 5
+	id:1000	Online	Free
+	id:1001	Online	Occupied	Bike id:3	Type: Electric
+	id:1002	Online	Occupied	Bike id:10	Type: Mechanic
+	id:1003	Online	Occupied	Bike id:14	Type: Mechanic
+	id:1004	Online	Occupied	Bike id:17	Type: Mechanic
+
+User: id:0
+	Name: Pietro
+	Total amount paid: 10.0 euros
+	Total number of rides: 2
+	Total ride time: 360 minutes
+	Total credit earned: 0 minutes
+
+Test completed
