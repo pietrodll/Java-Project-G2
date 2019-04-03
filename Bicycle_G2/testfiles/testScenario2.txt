@@ -1,0 +1,7 @@
+setup <Velib2> <5> <5> <2> <22>
+addUser <Pietro> <vlibre> <Velib>
+displayStation <Velib> <1>
+rentBike <0> <1> <2019-02-02 12:35> <Velib>
+displayStation <Velib> <1>
+returnBike <0> <1> <2019-02-02 15:35> <Velib>
+displayUser <Velib> <0>
