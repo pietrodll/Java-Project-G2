@@ -766,8 +766,21 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_nQjFwFYkEemQorXodzndJQ" name="getMessage">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_nQjFwVYkEemQorXodzndJQ" name="message" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_v7qTcFL9EemnmtBblIRTDA" name="NullDateException"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_v7qTcFL9EemnmtBblIRTDA" name="NullDateException">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_nja-cFYkEemQorXodzndJQ" name="getMessage">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_nja-cVYkEemQorXodzndJQ" name="message" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_udso8FYkEemQorXodzndJQ" name="throw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_rwrCAFYkEemQorXodzndJQ" name="throw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_hUh8YE9XEem8EYOBggYCvQ" name="ride">
     <packagedElement xmi:type="uml:Class" xmi:id="_mL23sE9XEem8EYOBggYCvQ" name="Network">
@@ -1190,6 +1203,7 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_MZjOMFLvEemnmtBblIRTDA" name="DistanceBasicComparator">
+      <generalization xmi:type="uml:Generalization" xmi:id="_zbixEFYmEemQorXodzndJQ" general="_T2gkcFLuEemnmtBblIRTDA"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_QQUrcFLvEemnmtBblIRTDA" name="compare">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_QQUrcVLvEemnmtBblIRTDA" name="station1" type="_Lc_FUEfYEemzKf38hXMYDg"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_QQUrclLvEemnmtBblIRTDA" name="station2" type="_Lc_FUEfYEemzKf38hXMYDg"/>
@@ -1199,6 +1213,7 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_SE5ncFLvEemnmtBblIRTDA" name="DistanceStartComparator">
+      <generalization xmi:type="uml:Generalization" xmi:id="_1Ht_AFYmEemQorXodzndJQ" general="_T2gkcFLuEemnmtBblIRTDA"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_UG4tUFLvEemnmtBblIRTDA" name="compare">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_UG4tUVLvEemnmtBblIRTDA" name="station1" type="_Lc_FUEfYEemzKf38hXMYDg"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_UG4tUlLvEemnmtBblIRTDA" name="station2" type="_Lc_FUEfYEemzKf38hXMYDg"/>
@@ -1208,6 +1223,7 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_Ul6LoFLvEemnmtBblIRTDA" name="DistanceEndComparator">
+      <generalization xmi:type="uml:Generalization" xmi:id="_2DMv0FYmEemQorXodzndJQ" general="_T2gkcFLuEemnmtBblIRTDA"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_WR8PoFLvEemnmtBblIRTDA" name="compare">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_WR8PoVLvEemnmtBblIRTDA" name="station1" type="_Lc_FUEfYEemzKf38hXMYDg"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_WR8PolLvEemnmtBblIRTDA" name="station2" type="_Lc_FUEfYEemzKf38hXMYDg"/>
@@ -1217,6 +1233,7 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_oGvG8FLvEemnmtBblIRTDA" name="FastestPathComparator">
+      <generalization xmi:type="uml:Generalization" xmi:id="_3JGn8FYmEemQorXodzndJQ" general="_T2gkcFLuEemnmtBblIRTDA"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_p4A3UFLvEemnmtBblIRTDA" name="ELECTRIC_SPEED" isStatic="true" isReadOnly="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
       </ownedAttribute>
@@ -1242,6 +1259,10 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Realization" xmi:id="_uSoWgFYmEemQorXodzndJQ" client="_WXvAgFLtEemnmtBblIRTDA" supplier="_6lHBYFLcEemnmtBblIRTDA"/>
+    <packagedElement xmi:type="uml:Realization" xmi:id="_vS_nUFYmEemQorXodzndJQ" client="_6qdoMFLsEemnmtBblIRTDA" supplier="_6lHBYFLcEemnmtBblIRTDA"/>
+    <packagedElement xmi:type="uml:Realization" xmi:id="_wNvYUFYmEemQorXodzndJQ" client="_Oh33gFLtEemnmtBblIRTDA" supplier="_6lHBYFLcEemnmtBblIRTDA"/>
+    <packagedElement xmi:type="uml:Realization" xmi:id="_xdkogFYmEemQorXodzndJQ" client="_IAw68FLtEemnmtBblIRTDA" supplier="_6lHBYFLcEemnmtBblIRTDA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_EKHh4FLfEemnmtBblIRTDA" name="sorting.station">
     <packagedElement xmi:type="uml:Interface" xmi:id="_Gt3RAFLfEemnmtBblIRTDA" name="SortingStrategy">
@@ -1563,6 +1584,9 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_uBtF8FYjEemQorXodzndJQ" name="throw"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_n6YiYFYjEemQorXodzndJQ" name="throw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_xOyF8FYjEemQorXodzndJQ" name="throw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_zhuY8FYjEemQorXodzndJQ" name="throw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_8N1NcFYjEemQorXodzndJQ" name="throw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_Ru8yUFL_EemnmtBblIRTDA" name="ui.clui">
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_XpXiUFL_EemnmtBblIRTDA" name="Command">
@@ -1712,9 +1736,6 @@
       </ownedOperation>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_xOyF8FYjEemQorXodzndJQ" name="throw"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_zhuY8FYjEemQorXodzndJQ" name="throw"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_8N1NcFYjEemQorXodzndJQ" name="throw"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_sOKlEEZnEemNTJH6NZhuqA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sONBUEZnEemNTJH6NZhuqA" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
