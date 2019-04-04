@@ -2130,6 +2130,43 @@
       </ownedOperation>
     </packagedElement>
   </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_ShtGoFa9EemzZIv0tJQ4Ew" name="ride">
+    <packagedElement xmi:type="uml:Class" xmi:id="_TowOQFa9EemzZIv0tJQ4Ew" name="Itinerary">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_YJB7gla9EemzZIv0tJQ4Ew" name="start" visibility="private" type="_tVy9YEfZEemzKf38hXMYDg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_YJEXxFa9EemzZIv0tJQ4Ew" name="endStation" visibility="private" type="_Lc_FUEfYEemzKf38hXMYDg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_YJEXyVa9EemzZIv0tJQ4Ew" name="startStation" visibility="private" type="_Lc_FUEfYEemzKf38hXMYDg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_YJEXyla9EemzZIv0tJQ4Ew" name="end" visibility="private" type="_tVy9YEfZEemzKf38hXMYDg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_YJEXy1a9EemzZIv0tJQ4Ew" name="ps" visibility="private" type="_6lHBYFLcEemnmtBblIRTDA"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_YJB7gFa9EemzZIv0tJQ4Ew" name="getPs" concurrency="guarded">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YJB7gVa9EemzZIv0tJQ4Ew" name="ps" type="_6lHBYFLcEemnmtBblIRTDA" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_YJB7g1a9EemzZIv0tJQ4Ew" name="getStartStation">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YJB7hFa9EemzZIv0tJQ4Ew" name="startStation" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_YJEXwFa9EemzZIv0tJQ4Ew" name="getStart" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YJEXwVa9EemzZIv0tJQ4Ew" name="start" type="_tVy9YEfZEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_YJEXwla9EemzZIv0tJQ4Ew" name="computePath">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YJEXw1a9EemzZIv0tJQ4Ew" name="ps" type="_6lHBYFLcEemnmtBblIRTDA"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_YJEXxVa9EemzZIv0tJQ4Ew" name="setEndStation">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YJEXxla9EemzZIv0tJQ4Ew" name="endStation" type="_Lc_FUEfYEemzKf38hXMYDg"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_YJEXx1a9EemzZIv0tJQ4Ew" name="getEndStation">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YJEXyFa9EemzZIv0tJQ4Ew" name="endStation" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_YJEXzFa9EemzZIv0tJQ4Ew" name="getEnd">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YJEXzVa9EemzZIv0tJQ4Ew" name="end" type="_tVy9YEfZEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_YJEXzla9EemzZIv0tJQ4Ew" name="computePath">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YJEXz1a9EemzZIv0tJQ4Ew" name="ps" type="_6lHBYFLcEemnmtBblIRTDA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YJEX0Fa9EemzZIv0tJQ4Ew" name="bikeType">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_gTFy4Fa9EemzZIv0tJQ4Ew" name="has as atribute" client="_TowOQFa9EemzZIv0tJQ4Ew" supplier="_ZiUckFZjEemT2alk9r6byA"/>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_sOKlEEZnEemNTJH6NZhuqA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sONBUEZnEemNTJH6NZhuqA" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
