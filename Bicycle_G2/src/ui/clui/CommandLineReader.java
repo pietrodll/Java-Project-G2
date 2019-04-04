@@ -12,6 +12,7 @@ import station.NoElectricBikeAvailableException;
 import station.NoMechanicBikeAvailableException;
 import station.NoOngoingRideException;
 import station.NoSlotAvailableException;
+import station.NoSlotStateAtDateException;
 import station.OngoingRideException;
 import station.StationOfflineException;
 import station.StationSamePositionException;
@@ -111,8 +112,9 @@ public class CommandLineReader {
 	 * @throws NoBikeAvailableException
 	 * @throws NoMechanicBikeAvailableException 
 	 * @throws NoElectricBikeAvailableException 
+	 * @throws NoSlotStateAtDateException 
 	 */
-	public void interpreteCommand(String instruction, CommandLineController clc) throws InvalidCommandException, ExistingNameException, InvalidArgumentsException, InexistingNetworkNameException, InexistingStationIdException, InexistingSlotIdException, NegativeTimeException, TypeStationException, StationSamePositionException, InexistingUserIdException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException, OngoingRideException, NoBikeAvailableException, NoElectricBikeAvailableException, NoMechanicBikeAvailableException {
+	public void interpreteCommand(String instruction, CommandLineController clc) throws InvalidCommandException, ExistingNameException, InvalidArgumentsException, InexistingNetworkNameException, InexistingStationIdException, InexistingSlotIdException, NegativeTimeException, TypeStationException, StationSamePositionException, InexistingUserIdException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException, OngoingRideException, NoBikeAvailableException, NoElectricBikeAvailableException, NoMechanicBikeAvailableException, NoSlotStateAtDateException {
 		Command com = this.parseCommand(instruction);
 		String[] args = this.parseArgs(instruction);
 		switch (com) {
@@ -167,6 +169,8 @@ public class CommandLineReader {
 		case CALCULATE_ITINERARY:
 			clc.calculateItinerary(args);
 			break;
+		case DISPLAY_ITINERARY:
+			clc.displayItinerary(args);
 		}
 	}
 	

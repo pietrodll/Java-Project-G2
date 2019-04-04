@@ -1,12 +1,17 @@
 package ui.clui;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import bike.ElectricBike;
 import card.Card;
+import ride.Itinerary;
 import ride.Network;
 import sorting.station.SortingStrategy;
+import station.NoSlotStateAtDateException;
 import station.Slot;
 import station.Station;
+import tools.NegativeTimeException;
+import tools.NullDateException;
 import user.User;
 
 /**
@@ -101,11 +106,40 @@ public class CommandLineDisplay {
 		return disp;
 	}
 	
-	public String displaySortedStations(Network net, SortingStrategy strat) {
+	private String display(Itinerary it, boolean show) {
+		String disp = "";
+		disp += "Pickup station:\n";
+		disp += this.display(it.getStartStation(), false);
+		disp += "Return station:\n";
+		disp += this.display(it.getEndStation(), false);
+		if (show) System.out.println(disp);
+		return disp;
+	}
+	
+	public String display(Itinerary it) {
+		return this.display(it, true);
+	}
+	
+	private String displayStationStat(Station s, LocalDateTime startTime, LocalDateTime endTime, boolean show) throws NoSlotStateAtDateException, NegativeTimeException, NullDateException {
+		String disp = "";
+		disp += "Station: id:" + s.getId() + '\n'
+				+ '\t' + "Total rents: " + s.getTotalRents() + '\n'
+				+ '\t' + "Total returns: " + s.getTotalReturns() + '\n'
+				+ '\t' + "Total operations: " + s.getTotalOperations() + '\n'
+				+ '\t' + "Occupation rate: " + s.getRateOccupation(startTime, endTime) + '\n';
+		if (show) System.out.println(disp);
+		return disp;
+	}
+	
+	public String displayStationStat(Station s, LocalDateTime startTime, LocalDateTime endTime) throws NoSlotStateAtDateException, NegativeTimeException, NullDateException {
+		return this.displayStationStat(s, startTime, endTime, true);
+	}
+	
+	public String displaySortedStations(Network net, SortingStrategy strat, LocalDateTime startTime, LocalDateTime endTime) throws NoSlotStateAtDateException, NegativeTimeException, NullDateException {
 		ArrayList<Station> sortedStations = net.sortingStations(strat);
 		String disp = "Sorted stations of network " + net.getName() + " according to strategy " + strat.toString() + '\n';
 		for (Station s : sortedStations) {
-			disp += this.display(s);
+			disp += this.displayStationStat(s, startTime, endTime, false);
 		}
 		System.out.println(disp);
 		return disp;

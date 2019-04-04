@@ -22,7 +22,8 @@ public enum Command {
 	DISPLAY_STATION("displayStation", "displayStation <networkName> <stationID>"),
 	DISPLAY("display", "display <networkName>"),
 	SORT_STATION("sortStation", "sortStation <networkName> <more-used> or sortStation <networkName> <least-occupied> <startTime> <endTime>"),
-	CALCULATE_ITINERARY("calculateItinerary", "calculateItinerary <networkName> <userID> <startX> <startY> <destinationX> <destinationY> <pathStrategy>");
+	CALCULATE_ITINERARY("calculateItinerary", "calculateItinerary <networkName> <userID> <startX> <startY> <destinationX> <destinationY> <pathStrategy>"),
+	DISPLAY_ITINERARY("displayItinerary", "displayItinerary <userID> <networkName>");
 	
 	
 	private String keyword;

@@ -18,4 +18,9 @@ public class MoreUsedStation implements SortingStrategy {
 		Collections.reverse(s);
 		return s;
 	}
+	
+	@Override
+	public String toString() {
+		return "More Used";
+	}
 }

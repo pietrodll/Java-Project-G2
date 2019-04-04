@@ -24,6 +24,7 @@ import station.NoElectricBikeAvailableException;
 import station.NoMechanicBikeAvailableException;
 import station.NoOngoingRideException;
 import station.NoSlotAvailableException;
+import station.NoSlotStateAtDateException;
 import station.OngoingRideException;
 import station.Station;
 import station.StationOfflineException;
@@ -407,28 +408,25 @@ public class CommandLineController {
 	
 	/**
 	 * This method applies command line instructions of the form: <br>
-	 * {@code sortStation <networkName> <more-used>} <br>
-	 * or <br>
-	 * {@code sortStation <networkName> <least-occupied> <startTime> <endTime>} <br>
+	 * {@code sortStation <networkName> <sortingStrategy> <startTime> <endTime>} <br>
 	 * {@code startTime} and {@code endTime} have to be on the following format: {@code YYYY-MM-dd HH:mm}
+	 * The sorting strategy can be {@code more-used} or {@code least-occupied}.
 	 * @param args an array of {@code String}
 	 * @throws InexistingNetworkNameException
 	 * @throws InvalidArgumentsException
+	 * @throws NullDateException 
+	 * @throws NegativeTimeException 
+	 * @throws NoSlotStateAtDateException 
 	 */
-	public void sortStation(String[] args) throws InexistingNetworkNameException, InvalidArgumentsException {
-		if (args.length == 2) {
-			Network net = nm.findNetworkByName(args[0]);
-			if (args[1].equalsIgnoreCase("more-used")) {
-				cld.displaySortedStations(net, new MoreUsedStation());
-			} else {
-				throw new InvalidArgumentsException();
-			}
-		} else if (args.length == 4) {
+	public void sortStation(String[] args) throws InexistingNetworkNameException, InvalidArgumentsException, NoSlotStateAtDateException, NegativeTimeException, NullDateException {
+		if (args.length == 4) {
 			Network net = nm.findNetworkByName(args[0]);
 			LocalDateTime startTime = Date.dateInput(args[2]);
 			LocalDateTime endTime = Date.dateInput(args[3]);
 			if (args[1].equalsIgnoreCase("least-occupied")) {
-				cld.displaySortedStations(net, new LeastOccupiedStation(startTime, endTime));
+				cld.displaySortedStations(net, new LeastOccupiedStation(startTime, endTime), startTime, endTime);
+			} else if (args[1].equalsIgnoreCase("more-used")) {
+				cld.displaySortedStations(net, new MoreUsedStation(), startTime, endTime);
 			} else {
 				throw new InvalidArgumentsException();
 			}
@@ -485,6 +483,24 @@ public class CommandLineController {
 	}
 	
 	/**
+	 * This method applies command line instructions of the form: <br>
+	 * {@code displayItinerary <networkName> <userID>} <br>
+	 * @throws InexistingNetworkNameException 
+	 * @throws InexistingUserIdException 
+	 * @throws InvalidArgumentsException 
+	 */
+	public void displayItinerary(String[] args) throws InexistingNetworkNameException, InexistingUserIdException, InvalidArgumentsException {
+		if (args.length == 2) {
+			Network net = nm.findNetworkByName(args[0]);
+			int userId = Integer.parseInt(args[1]);
+			User u = nm.findUserById(userId, net);
+			cld.display(u.getItinerary());
+		} else {
+			throw new InvalidArgumentsException();
+		}
+	}
+	
+	/**
 	 * This method shows all the possible commands to the user.
 	 */
 	public void help() {
@@ -506,7 +522,7 @@ public class CommandLineController {
 	public void runtest(String[] args) throws InvalidArgumentsException {
 		if (args.length == 1) {
 			String filename = args[0];
-			String path = System.getProperty("user.dir") + "\\testfiles\\";
+			String path = System.getProperty("user.dir") + "\\eval\\";
 			String writeFileName = path + filename.substring(0, filename.lastIndexOf('.')) + "Result.txt";
 			FileReader file = null;
 			BufferedReader reader = null;
@@ -572,7 +588,7 @@ public class CommandLineController {
 		FileReader file = null;
 		BufferedReader reader = null;
 		try {
-			file = new FileReader(path + "\\" + filename);
+			file = new FileReader(path + "\\eval\\" + filename);
 			reader = new BufferedReader(file);
 			String line;
 			line = reader.readLine();

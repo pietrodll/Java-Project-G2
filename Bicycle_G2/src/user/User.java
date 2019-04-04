@@ -11,10 +11,10 @@ import station.Station;
 import tools.NegativeTimeException;
 import tools.NullDateException;
 import tools.Point;
+import ui.clui.CommandLineDisplay;
+import ui.clui.CommandLineReader;
 
 import java.time.LocalDateTime;
-import java.util.Scanner;
-
 import bike.Bike;
 import card.Card;
 
@@ -77,7 +77,7 @@ public class User implements Observer {
 	 * @throws NegativeTimeException
 	 * @throws NullDateException 
 	 * @throws NoOngoingRideException 
-	 * @throws OngoingRideException 
+	 * @throws OngoingRideException
 	 */
 	public double endOngoingRide(LocalDateTime endRide) throws NegativeTimeException, NullDateException, NoOngoingRideException, OngoingRideException {
 		if (this.ongoingRide != null) {
@@ -154,13 +154,11 @@ public class User implements Observer {
 	 */
 	@Override
 	public int update() {
-		System.out.println("Notification : The destination Station does not have any more available slots or is offline. ");
-		
+		CommandLineReader clr = new CommandLineReader();
+		CommandLineDisplay cld = new CommandLineDisplay();
+		cld.display("Notification : The destination Station does not have any more available slots or is offline.");
 		if (this.ongoingRide != null) {
-			Scanner sc = new Scanner(System.in);
-			System.out.println("Do you want to recalculate arrival station ? Answer 'yes' if you do. ");
-			String s = sc.nextLine();
-			sc.close();
+			String s = clr.readCommand("Do you want to recalculate arrival station ? Answer 'yes' if you do.");
 			if (s.equals("yes")) {
 				if (this.itinerary != null) {
 					PathStrategy ps = this.itinerary.getPs();

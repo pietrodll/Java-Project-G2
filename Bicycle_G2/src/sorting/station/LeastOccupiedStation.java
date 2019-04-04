@@ -26,5 +26,10 @@ public class LeastOccupiedStation implements SortingStrategy {
 		Collections.sort(s,new OccRateComparator(startDate, endDate));
 		return s;
 	}
+	
+	@Override
+	public String toString() {
+		return "Least Occupied";
+	}
 
 }

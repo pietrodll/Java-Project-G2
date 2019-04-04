@@ -3,3 +3,4 @@ addUser <Pietro> <vlibre> <myVelib>
 rentBike <0> <10> <2019-02-06 12:35> <myVelib>
 returnBike <0> <10> <2019-02-06 13:35> <myVelib>
 displayUser <myVelib> <0>
+sortStation <myVelib> <more-used> <2019-01-01 00:00> <2019-04-04 12:00>

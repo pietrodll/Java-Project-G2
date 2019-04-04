@@ -31,8 +31,8 @@ public class Slot {
 		isOnline = true;
 		slotHistory = new ArrayList<SlotState>();
 	}
-	 
-	
+
+
 	/**
 	 * This method allows to find the {@code SlotState} of a {@code Slot} at a certain time t, using its index in the SlotHistory list.
 	 * <br> If t is during a {@code SlotState}, this {@code SlotState} will be returned.
@@ -46,7 +46,8 @@ public class Slot {
 	public int indexSlotState (LocalDateTime t) throws NoSlotStateAtDateException{
 		int i;
 		int size = this.slotHistory.size();
-		for (i=0; i<=size -2; i ++) {
+		if (size == 1 || size == 0) return 0;
+		for (i=0; i <= size-2; i ++) {
 			if (slotHistory.get(i).getStartTime().isBefore(t) && slotHistory.get(i).getEndTime().isAfter(t)){
 				return i;
 			}
@@ -60,8 +61,7 @@ public class Slot {
 		SlotState a = slotHistory.get(size-1);
 		if (t.isAfter(a.getStartTime())){
 			return size - 1;
-		}
-		else {
+		} else {
 			throw new NoSlotStateAtDateException(t);	
 		}
 	}
@@ -76,6 +76,7 @@ public class Slot {
 	 * @throws NullDateException
 	 */
 	public int computeOccupationTime (LocalDateTime startTime, LocalDateTime endTime) throws NegativeTimeException, NoSlotStateAtDateException, NullDateException {
+		if (this.slotHistory.size() == 0) return 0;
 		int totalOccupationTime = 0;
 		int iStart;
 		int iEnd;
