@@ -11,7 +11,7 @@ import tools.NullDateException;
  * This class implements a {@code Comparator<Station>}. It compares the {@code Station} w.r.t the rate occupation during a given period of time.
  * @author Chloé
  * @see SortingStrategy
- * @see LeastOccupiedtation
+ * @see LeastOccupiedStation
  */
 public class OccRateComparator implements Comparator<Station> {
 	
