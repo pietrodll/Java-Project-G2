@@ -121,6 +121,7 @@ public class Slot {
 	 * @throws NegativeTimeException
 	 */
 	public void setOnline(boolean isOnline, LocalDateTime changeTime) throws NegativeTimeException {
+		boolean wasSlotOnline = this.isOnline();
 		if (isOnline != this.isOnline) {
 			this.isOnline = isOnline;
 			if (slotHistory.size()!= 0) {
@@ -128,7 +129,7 @@ public class Slot {
 				lastState.setEndTime (changeTime);}
 			SlotState newState = new SlotState (changeTime, isOnline, this.getBike());
 			slotHistory.add(newState);
-			if (this.s.isStationFull() == true){
+			if (wasSlotOnline == true && this.s.isStationFull() == true){
 				this.s.setChanged(true);
 				this.s.notifyObservers();
 			}
@@ -144,6 +145,7 @@ public class Slot {
 	 * @throws NegativeTimeException
 	 */
 	public void setBike(Bike bike, LocalDateTime changeTime) throws NegativeTimeException {
+		boolean wasStationFull = this.s.isStationFull();
 		if (bike != this.bike) {
 			this.bike = bike;
 			if (slotHistory.size()!= 0) {
@@ -151,7 +153,7 @@ public class Slot {
 				lastState.setEndTime(changeTime);}
 			SlotState newState = new SlotState (changeTime, this.isOnline(), bike);
 			slotHistory.add(newState);
-			if (this.s.isStationFull() == true){
+			if (wasStationFull == false && this.s.isStationFull() == true){
 				this.s.setChanged(true);
 				this.s.notifyObservers();
 			}

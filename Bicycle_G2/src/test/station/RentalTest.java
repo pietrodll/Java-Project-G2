@@ -13,6 +13,7 @@ import ride.Network;
 import ride.path.FastestPathStrategy;
 import ride.path.PathStrategy;
 import station.*;
+import tools.NegativeTimeException;
 import tools.Point;
 import user.User;
 
@@ -79,6 +80,9 @@ public class RentalTest {
 		LocalDateTime t1t2 = LocalDateTime.of(2019, 03, 26, 15, 00);
 		LocalDateTime t6 = LocalDateTime.of(2019, 03, 26, 16, 50);
 		LocalDateTime t7 = LocalDateTime.of(2019,  03, 26, 17, 40);
+		LocalDateTime t8 = LocalDateTime.of(2019,  03, 26, 17, 50);
+		LocalDateTime t9 = LocalDateTime.of(2019,  03, 26, 17, 59);
+		LocalDateTime t10 = LocalDateTime.of(2019,  03, 26, 18, 11);
 		
 		assertAll("Renting of a Bike",
 				() -> {
@@ -139,6 +143,8 @@ public class RentalTest {
 							}	
 					);
 					
+
+					
 					s2.dropBike(c1,t3);
 					
 					assertAll ("Manage to drop bike, checking ride and rideHistory",
@@ -165,70 +171,16 @@ public class RentalTest {
 					
 					 ); 
 					PathStrategy ps = new FastestPathStrategy(net);
-					Itinerary i2 = u1.calculateItinerary(p5, p1, ps);
+					Itinerary i1 = u1.calculateItinerary(p5, p1, ps);
 					
-					assertAll("Compute itinerary",									
+					assertAll("Compute itinerary 1",									
 							() -> assertNull(u1.getItinerary()),
-							() -> assertEquals(s1, i2.getEndStation()),
-							() -> assertEquals(s2, i2.getStartStation())
+							() -> assertEquals(s1, i1.getEndStation()),
+							() -> assertEquals(s2, i1.getStartStation())
 							
 					);
 					
-					u1.setItinerary(i2);
-					assertAll("Follow itinerary",
-							() -> assertNotNull(u1.getItinerary())	
-					);
-					
-					
-				
-					assertAll("Observer Pattern : User added to observers of the Station",
-							() -> assertEquals(1, s1.getObservers().size()),
-							() -> assertEquals(u1, s1.getObservers().get(0))
-					);
-					
-					assertAll("Observer Pattern : Notification if Station goes offline but no ongoing ride, no possibility to recalculate itinerary ",
-							() -> {
-								s1.setOnline(false);
-							},
-							() -> assertNull(u1.getItinerary())
-					);
-							
-					s1.setOnline(true);
-					slot15.setBike(b6, t5);
-					slot12.setOnline(false, t6);
-					
-					assertAll("Observer Pattern : Notification if no Slots available but no ongoing Ride so no possibility to recalculate itinerary",
-							() -> assertNull(s1.availableSlot()),
-							() -> assertNull(u1.getItinerary())
-							/*() -> assertEquals(0, s1.getObservers().size())*/
-					);
-					
-					s2.pickUpBike(c1, t7);
-					slot15.setBike(null,t7);
-					Itinerary i3 = u1.calculateItinerary(p5, p3, ps);
-					
-					
-					assertAll("Compute itinerary 2",									
-							() -> assertNull(u1.getItinerary()),
-							() -> assertEquals(s3, i3.getEndStation()),
-							() -> assertEquals(s2, i3.getStartStation())
-							
-					);
-					
-					u1.setItinerary(i3);
-					
-					assertAll("Observer Pattern : User added to observers of the Station",
-							() -> assertEquals(1, s3.getObservers().size()),
-							() -> assertEquals(u1, s1.getObservers().get(0))
-					);
-					
-					/*assertAll(
-						() -> assertNull(s1.availableSlot())
-					
-					);*/
-					
-					
-					
+
 				}
 		);
 	}

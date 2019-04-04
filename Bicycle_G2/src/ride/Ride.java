@@ -21,6 +21,7 @@ public class Ride {
 	private Card card;
 	private LocalDateTime startRide;
 	private LocalDateTime endRide; 
+	private int rideTime;
 	private Network net;
 	
 	
@@ -44,10 +45,14 @@ public class Ride {
 	/**
 	 * This method sets the ending time of the {@code Ride}, and archive it in the Ride History of the {@code Network}.	 
 	 * @param endRide
+	 * @throws NullDateException 
+	 * @throws NegativeTimeException 
 	 */
-	public void endRide(LocalDateTime endRide) {
+	public void endRide(LocalDateTime endRide) throws NegativeTimeException, NullDateException {
 		this.endRide = endRide;
 		net.archiveRide(this);
+		this.rideTime = Date.computeTime(this.startRide, this.endRide);
+		
 	}
 	
 	/**
@@ -59,8 +64,7 @@ public class Ride {
 	 */
 	public int getRideTime() throws NegativeTimeException, NullDateException, OngoingRideException {
 		if (this.endRide != null) {
-			int rideTime = Date.computeTime(this.startRide, this.endRide);
-			return rideTime;
+			return this.rideTime;
 		} else { throw new OngoingRideException();
 		}
 	}

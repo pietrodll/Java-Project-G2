@@ -268,7 +268,7 @@ public abstract class Station implements Observable {
 					Slot s = availableSlot();
 					s.setBike(user.getOngoingRide().getBike(), dropTime);
 					this.setTotalReturns(getTotalReturns()+1);
-					double price =user.endOngoingRide(dropTime);
+					double price = user.endOngoingRide(dropTime);
 					user.setPosition(p);
 					if (this.isStationFull() == true) {
 							this.changed = true;
@@ -299,10 +299,27 @@ public abstract class Station implements Observable {
 	@Override 
 	public void notifyObservers () {
 		if (this.changed) {
+			ArrayList<User> UserToRemoveFromObserversNoItinerary = new ArrayList<User>();
+			ArrayList<User> UserToRemoveFromObserversItinerary = new ArrayList<User>();
 			for (Observer ob : observers) {
-				ob.update();
-			} this.changed = false;
-		}	
+				int i = ob.update();
+				if (i == 0) {
+					UserToRemoveFromObserversNoItinerary.add((User) ob);
+				}
+				if (i == 1) {
+					UserToRemoveFromObserversItinerary.add((User) ob);
+				}
+			}
+			for (User user : UserToRemoveFromObserversNoItinerary) {
+				user.setItinerary(null);
+			}
+			for (User user : UserToRemoveFromObserversItinerary) {
+				if (user.getItinerary().getEndStation() != this) {
+					this.getObservers().remove(user);
+				}
+			}	
+		} this.changed = false;
+		
 	}
 	
 	public Point getP() { return p; }
@@ -316,11 +333,13 @@ public abstract class Station implements Observable {
 	 * @param isOnline
 	 */
 	public void setOnline(boolean isOnline) { 
-		if (this.isOnline() == true && isOnline == false) {
+		boolean wasOnline = this.isOnline;
+		this.isOnline = isOnline; 
+		if (wasOnline == true && isOnline == false) {
 			this.changed = true;
 			this.notifyObservers();
 		}
-		this.isOnline = isOnline; }
+	}
 
 	public ArrayList<Slot> getParkingSlots() { return parkingSlots; }
 

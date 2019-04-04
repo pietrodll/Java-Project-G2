@@ -124,22 +124,38 @@ public class User implements Observer {
 		return i1;		
 	}
 	
+	
 	/**
 	 * This method sets the {@code Itinerary} of a {@code User}. The {@code User} is added to the observer list of the arrival {@code Station}.
 	 * @param itinerary
 	 */
 	public void setItinerary(Itinerary itinerary) { 
-		this.itinerary = itinerary; 
-		itinerary.getEndStation().registerObserver(this);
+		if (this.itinerary == null) {
+			if (itinerary != null) {
+				itinerary.getEndStation().registerObserver(this);
+				this.itinerary = itinerary; 
+			}				
+		} else {
+			if (itinerary == null) {
+				Station s = this.itinerary.getEndStation();
+				s.removeObserver(this);
+				this.itinerary = itinerary;
+			} 
+			else {
+				this.itinerary.getEndStation().removeObserver(this);
+				itinerary.getEndStation().registerObserver(this);
+				this.itinerary = itinerary; 
+			}		
+		}
 	}
 	
 	/**
 	 * The {@code User} is notified if he has an {@code Itinerary}, an ongoing {@code Ride} and if the arrival {@code Station} of its {@code Itinerary} becomes full. He has the possibility to recalculte the ending {@code Station}.
 	 */
 	@Override
-	public void update() {
+	public int update() {
 		System.out.println("Notification : The destination Station does not have any more available slots or is offline. ");
-		//this.itinerary.getEndStation().removeObserver(this);
+		
 		if (this.ongoingRide != null) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Do you want to recalculate arrival station ? Answer 'yes' if you do. ");
@@ -152,9 +168,14 @@ public class User implements Observer {
 					this.itinerary.setEndStation(s1);
 					s1.registerObserver(this);
 				}
-			} else {this.itinerary = null;}
-		} else {this.itinerary = null;}
-		
+				return 1;
+			} 
+			else {
+				return 0;}
+		} else {
+			return 0;
+			
+			}
 	}
 	
 	public String getUserName() { return userName; }

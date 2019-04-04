@@ -6,6 +6,6 @@ package user;
  *
  */
 public interface Observer {
-	public void update();
+	public int update();
 
 }

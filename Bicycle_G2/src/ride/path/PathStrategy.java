@@ -29,7 +29,7 @@ public interface PathStrategy {
 	public Station[] findPath(Point start, Point end);
 	
 	/**
-	 * This method finds the best station to drop the bike, assuming that the user is currently riding it. It is useful when the initial end station (computed at the beginning of the ride) becomes unavailable.
+	 * This method finds the best station to drop the bike, assuming that the user is currently riding it. It is useful when the initial end station (computed at the beginning of the ride) becomes unavailable. It is also usefull is a user did not chose to follow an itinerary before starting his ride.
 	 * @param start The {@code Point} which is the current position of the user
 	 * @param end The {@code Point} which is the destination of the itinerary
 	 * @param bike The bike the user wants to drop
