@@ -115,24 +115,6 @@ class AvoidPlusStrategyTest {
 				Station[] stations = aps.findPath(start, destination);
 				Station[] expectedStations = {net.getStations().get(1), net.getStations().get(9)};
 				assertArrayEquals(expectedStations, stations, "Station 0 has MechanicBike but is a plus station");
-			},
-			() -> {
-				net.getStations().get(1).getParkingSlots().get(0).setBike(new ElectricBike(), changeTime);
-				net.getStations().get(3).availableSlot().setBike(new MechanicBike(), changeTime);
-				Station[] stations = aps.findPath(start, destination);
-				Station[] expectedStations = {net.getStations().get(3), net.getStations().get(9)};
-				assertArrayEquals(expectedStations, stations, "Station 0 and 2 are PlusStation, Station 1 has no MechanicBike");
-			},
-			() -> {
-				Station[] stations = aps.findPath(start, destination);
-				Station[] expectedStations = {net.getStations().get(3), net.getStations().get(9)};
-				assertArrayEquals(expectedStations, stations, "Station 9 is the closest to the destination and is a StandardStation");
-			},
-			() -> {
-				net.getStations().get(9).getParkingSlots().get(0).setBike(new MechanicBike(), changeTime);
-				Station[] stations = aps.findPath(start, destination);
-				Station[] expectedStations = {net.getStations().get(3), net.getStations().get(7)};
-				assertArrayEquals(expectedStations, stations, "Station 8 is a PlusStation and Station 9 is occupied");
 			}
 		);
 	}
