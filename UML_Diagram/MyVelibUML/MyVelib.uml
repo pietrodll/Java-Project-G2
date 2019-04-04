@@ -1522,8 +1522,35 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Realization" xmi:id="_uSoWgFYmEemQorXodzndJQ" client="_WXvAgFLtEemnmtBblIRTDA" supplier="_6lHBYFLcEemnmtBblIRTDA"/>
     <packagedElement xmi:type="uml:Realization" xmi:id="_vS_nUFYmEemQorXodzndJQ" client="_6qdoMFLsEemnmtBblIRTDA" supplier="_6lHBYFLcEemnmtBblIRTDA"/>
-    <packagedElement xmi:type="uml:Realization" xmi:id="_wNvYUFYmEemQorXodzndJQ" client="_Oh33gFLtEemnmtBblIRTDA" supplier="_6lHBYFLcEemnmtBblIRTDA"/>
+    <packagedElement xmi:type="uml:Realization" xmi:id="_wNvYUFYmEemQorXodzndJQ" client="_Oh33gFLtEemnmtBblIRTDA" supplier="_t_-5oFLsEemnmtBblIRTDA"/>
     <packagedElement xmi:type="uml:Realization" xmi:id="_xdkogFYmEemQorXodzndJQ" client="_IAw68FLtEemnmtBblIRTDA" supplier="_6lHBYFLcEemnmtBblIRTDA"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_-UDKcFbQEemzZIv0tJQ4Ew" name="UnformityStrategy">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_AlXFwFbREemzZIv0tJQ4Ew" name="stations" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_OcOu8FbREemzZIv0tJQ4Ew" client="_-UDKcFbQEemzZIv0tJQ4Ew" supplier="_6lHBYFLcEemnmtBblIRTDA" contract="_6lHBYFLcEemnmtBblIRTDA"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_AlXFwVbREemzZIv0tJQ4Ew" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_AlXFwlbREemzZIv0tJQ4Ew" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_AlXFw1bREemzZIv0tJQ4Ew" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_AlXFxFbREemzZIv0tJQ4Ew" name="bikeType">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_AlXFxVbREemzZIv0tJQ4Ew" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AlXFxlbREemzZIv0tJQ4Ew" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_AlXFx1bREemzZIv0tJQ4Ew" name="findPath" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_AlXFyFbREemzZIv0tJQ4Ew" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_AlXFyVbREemzZIv0tJQ4Ew" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_AlXFylbREemzZIv0tJQ4Ew" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_AlXFy1bREemzZIv0tJQ4Ew" name="findEndStation" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_AlXFzFbREemzZIv0tJQ4Ew" name="start" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_AlXFzVbREemzZIv0tJQ4Ew" name="end" type="_tVy9YEfZEemzKf38hXMYDg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_AlXFzlbREemzZIv0tJQ4Ew" name="bike" type="_0RNwoEA0EemMsdUqvG6aSA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_AlXFz1bREemzZIv0tJQ4Ew" name="station" type="_Lc_FUEfYEemzKf38hXMYDg" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_EKHh4FLfEemnmtBblIRTDA" name="sorting.station">
     <packagedElement xmi:type="uml:Interface" xmi:id="_Gt3RAFLfEemnmtBblIRTDA" name="SortingStrategy">

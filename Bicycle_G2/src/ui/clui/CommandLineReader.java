@@ -174,6 +174,7 @@ public class CommandLineReader {
 		CommandLineController clc = new CommandLineController();
 		CommandLineDisplay cld = new CommandLineDisplay();
 		CommandLineReader clr = new CommandLineReader();
+		clc.runSetupFile();
 		cld.display("Welcome to the myVelib system. You can type \"help\" to see the possible commands and \"exit\" to stop the system");
 		String instruction = clr.readCommand("Please write your instruction:");
 		while (!instruction.equalsIgnoreCase("exit")) {

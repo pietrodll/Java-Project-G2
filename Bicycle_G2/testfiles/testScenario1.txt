@@ -1,2 +1,5 @@
-setup <myVelib>
 display <myVelib>
+addUser <Pietro> <vlibre> <myVelib>
+rentBike <0> <10> <2019-02-06 12:35> <myVelib>
+returnBike <0> <10> <2019-02-06 13:35> <myVelib>
+displayUser <myVelib> <0>

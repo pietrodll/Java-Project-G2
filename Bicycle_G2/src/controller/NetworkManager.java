@@ -316,10 +316,11 @@ public class NetworkManager {
 	 * @throws StationOfflineException
 	 * @throws OngoingRideException 
 	 */
-	public void returnBike(int userId, int stationId, LocalDateTime returnTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException, OngoingRideException {
+	public double returnBike(int userId, int stationId, LocalDateTime returnTime, Network net) throws InexistingUserIdException, InexistingStationIdException, NegativeTimeException, NullDateException, NoSlotAvailableException, NoOngoingRideException, StationOfflineException, OngoingRideException {
 		Card card = this.findCardByUserId(userId, net);
 		Station station = this.findStationByID(stationId, net);
-		station.dropBike(card, returnTime);
+		double price = station.dropBike(card, returnTime);
+		return price;
 	}
 	
 	/**
@@ -440,6 +441,22 @@ public class NetworkManager {
 		}
 	}
 	
+	public void addElectricBike(Network net, Station st, LocalDateTime changeTime) throws NoSlotAvailableException {
+		if (st.isStationFull()) {
+			throw new NoSlotAvailableException();
+		} else {
+			this.addBike(st, BikeFactory.ELECTRIC, changeTime);
+		}
+	}
+	
+	public void addMechanicBike(Network net, Station st, LocalDateTime changeTime) throws NoSlotAvailableException {
+		if (st.isStationFull()) {
+			throw new NoSlotAvailableException();
+		} else {
+			this.addBike(st, BikeFactory.MECHANIC, changeTime);
+		}
+	}
+	
 	/**
 	 * This method adds a {@code MechanicBike} to the first free {@code Station} of a {@code Network}.
 	 * @param net
@@ -464,6 +481,13 @@ public class NetworkManager {
 	 */
 	public ArrayList<Station> sortStations(Network net, SortingStrategy s) {
 		return net.sortingStations(s);
+	}
+	
+	/**
+	 * This function resets the networks.
+	 */
+	public void resetNetworks() {
+		this.networks = new ArrayList<Network>();
 	}
 
 }

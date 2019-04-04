@@ -74,6 +74,7 @@ public class CommandLineController {
 		} else {
 			throw new InvalidArgumentsException();
 		}
+		cld.display("Network \"" + args[0] + "\" setup successfully.");
 	}
 	
 	/**
@@ -89,6 +90,7 @@ public class CommandLineController {
 			String netName = args[0];
 			int stationId = Integer.parseInt(args[1]);
 			nm.setStationOnline(netName, stationId);
+			cld.display("Station" + stationId + " is now online.");
 		} else {
 			throw new InvalidArgumentsException();
 		}
@@ -107,6 +109,7 @@ public class CommandLineController {
 			String netName = args[0];
 			int stationId = Integer.parseInt(args[1]);
 			nm.setStationOffline(netName, stationId);
+			cld.display("Station" + stationId + " is now offline.");
 		} else {
 			throw new InvalidArgumentsException();
 		}
@@ -128,6 +131,7 @@ public class CommandLineController {
 			int slotId = Integer.parseInt(args[1]);
 			LocalDateTime time = Date.dateInput(args[2]);
 			nm.setSlotOnline(netName, slotId, time);
+			cld.display("Slot" + slotId + " is now online.");
 		} else {
 			throw new InvalidArgumentsException();
 		}
@@ -149,6 +153,7 @@ public class CommandLineController {
 			int slotId = Integer.parseInt(args[1]);
 			LocalDateTime time = Date.dateInput(args[2]);
 			nm.setSlotOffline(netName, slotId, time);
+			cld.display("Slot" + slotId + " is now offline.");
 		} else {
 			throw new InvalidArgumentsException();
 		}
@@ -178,6 +183,7 @@ public class CommandLineController {
 			} else {
 				throw new InvalidArgumentsException();
 			}
+			cld.display("Station added successfully to network \"" + name + "\".");
 		} else {
 			throw new InvalidArgumentsException();
 		}
@@ -197,6 +203,7 @@ public class CommandLineController {
 			int stationID = Integer.parseInt(args[1]);
 			int numSlots = Integer.parseInt(args[2]);
 			nm.addSlot(net, stationID, numSlots);
+			cld.display("Slot added successfully to station" + stationID + ".");
 		} else {
 			throw new InvalidArgumentsException();
 		}
@@ -205,14 +212,18 @@ public class CommandLineController {
 	/**
 	 * This method applies command line instructions of the form: <br>
 	 * {@code addBike <networkName> <type> <time>} <br>
+	 * or <br>
+	 * {@code addBike <networkName> <stationID> <type> <time>}
 	 * The {@code time} has to be on the following format: {@code YYYY-MM-dd HH:mm}
 	 * The type has to be {@code electric} or {@code mechanic}. The case is ignored.
 	 * @param args an array of {@code String}
 	 * @throws InexistingNetworkNameException 
 	 * @throws NegativeTimeException 
 	 * @throws InvalidArgumentsException 
+	 * @throws InexistingStationIdException 
+	 * @throws NoSlotAvailableException 
 	 */
-	public void addBike(String[] args) throws InexistingNetworkNameException, NegativeTimeException, InvalidArgumentsException {
+	public void addBike(String[] args) throws InexistingNetworkNameException, NegativeTimeException, InvalidArgumentsException, InexistingStationIdException, NoSlotAvailableException {
 		if (args.length == 3) {
 			Network net = nm.findNetworkByName(args[0]);
 			LocalDateTime time = Date.dateInput(args[2]);
@@ -220,6 +231,19 @@ public class CommandLineController {
 				nm.addElectricBike(net, time);
 			} else if (args[1].equalsIgnoreCase("mechanic")) {
 				nm.addMechanicBike(net, time);
+			} else {
+				throw new InvalidArgumentsException();
+			}
+			cld.display("Bike added successfully.");
+		} else if (args.length == 4) {
+			Network net = nm.findNetworkByName(args[0]);
+			LocalDateTime time = Date.dateInput(args[3]);
+			int id = Integer.parseInt(args[1]);
+			Station s = nm.findStationByID(id, net);
+			if (args[2].equalsIgnoreCase("electric")) {
+				nm.addElectricBike(net, s, time);
+			} else if (args[2].equalsIgnoreCase("mechanic")) {
+				nm.addMechanicBike(net, s, time);
 			} else {
 				throw new InvalidArgumentsException();
 			}
@@ -247,6 +271,7 @@ public class CommandLineController {
 			} else {
 				throw new InvalidArgumentsException();
 			}
+			cld.display("User added successfully.");
 		} else {
 			throw new InvalidArgumentsException();
 		}
@@ -274,7 +299,8 @@ public class CommandLineController {
 			int stationID = Integer.parseInt(args[1]);
 			LocalDateTime time = Date.dateInput(args[2]);
 			Network net = nm.findNetworkByName(args[3]);
-			nm.returnBike(userID, stationID, time, net);
+			double price = nm.returnBike(userID, stationID, time, net);
+			cld.display(String.format("Bike successfully returned at station" + stationID + " by user" + userID + ". The price of the ride is %.2f euros.", price));
 		} else {
 			throw new InvalidArgumentsException();
 		}
@@ -304,6 +330,7 @@ public class CommandLineController {
 			LocalDateTime time = Date.dateInput(args[2]);
 			Network net = nm.findNetworkByName(args[3]);
 			nm.rentBike(userID, stationID, time, net);
+			cld.display("Bike successfully rented at station" + stationID + " by user" + userID + ".");
 		} else if (args.length == 5) {
 			int userID = Integer.parseInt(args[0]);
 			int stationID = Integer.parseInt(args[1]);
@@ -318,6 +345,7 @@ public class CommandLineController {
 			LocalDateTime time = Date.dateInput(args[3]);
 			Network net = nm.findNetworkByName(args[4]);
 			nm.rentBike(userID, stationID, bikeType, time, net);
+			cld.display("Bike successfully rented at station" + stationID + " by user" + userID + ".");
 		} else {
 			throw new InvalidArgumentsException();
 		}
@@ -485,6 +513,7 @@ public class CommandLineController {
 			PrintStream oldStream = System.out;
 			PrintStream writerStream = null;
 			try {
+				this.runSetupTestFile();
 				writerStream = new PrintStream(writeFileName);
 				System.setOut(writerStream);
 				file = new FileReader(path + filename);
@@ -511,9 +540,10 @@ public class CommandLineController {
 					}
 					line = reader.readLine();
 				}
+				this.nm.resetNetworks();
 				cld.display("Test completed");
 				System.setOut(oldStream);
-				cld.display("Test result written in file " + writeFileName);
+				cld.display("Test result written in file " + writeFileName + '\n' + "Networks reset.");
 			} catch (FileNotFoundException e) {
 				cld.display("Test File not found");
 			} catch (IOException e) {
@@ -531,6 +561,50 @@ public class CommandLineController {
 		} else {
 			throw new InvalidArgumentsException();
 		}
+	}
+	
+	/**
+	 * This method loads a setup file
+	 */
+	private void runSetupFile(String filename) {
+		nm.resetNetworks();
+		String path = System.getProperty("user.dir");
+		FileReader file = null;
+		BufferedReader reader = null;
+		try {
+			file = new FileReader(path + "\\" + filename);
+			reader = new BufferedReader(file);
+			String line;
+			line = reader.readLine();
+			while (line != null) {
+				clr.interpreteCommand(line, this);
+				line = reader.readLine();
+			}
+		} catch (Exception e) {
+			cld.display("Error: could not setup correctly.");
+		} finally {
+			if (file != null) {
+				try { file.close(); } catch (IOException e) {}
+			}
+			if (reader != null) {
+				try { reader.close(); } catch (IOException e) {}
+			}
+		}
+		cld.display("Setup file loaded successfully.");
+	}
+	
+	/**
+	 * This method runs the setup file used for the CLUI
+	 */
+	public void runSetupFile() {
+		this.runSetupFile("my_Velib.ini");
+	}
+	
+	/**
+	 * This method runs the setup file for the tests.
+	 */
+	public void runSetupTestFile() {
+		this.runSetupFile("my_Velib_test.ini");
 	}
 
 }
