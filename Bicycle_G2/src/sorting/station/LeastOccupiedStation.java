@@ -13,8 +13,8 @@ import station.Station;
  */
 public class LeastOccupiedStation implements SortingStrategy {
 	
-	private LocalDateTime startDate;
-	private LocalDateTime endDate;
+	private LocalDateTime startDate = LocalDateTime.of(2019,  1, 1, 0, 0);
+	private LocalDateTime endDate = LocalDateTime.of(2019, 12, 1, 0 ,0);
 	
 	public LeastOccupiedStation(LocalDateTime startDate, LocalDateTime endTime) {
 		this.startDate = startDate;
